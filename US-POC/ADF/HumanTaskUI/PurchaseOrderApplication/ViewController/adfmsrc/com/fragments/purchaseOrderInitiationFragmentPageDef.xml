@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="purchaseOrderInitiationFragmentPageDef" Package="com.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_InitiatorHumanTask" RangeSize="25"
+                    BeanClass="ViewController_InitiatorHumanTask.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="ViewController_InitiatorHumanTask" BeanClass="ViewController_InitiatorHumanTask.task"
+                      id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="ViewController_InitiatorHumanTask"
+                      BeanClass="ViewController_InitiatorHumanTask.InitiatorHumanTaskPayloadType" id="payloadIterator"/>
+    <accessorIterator MasterBinding="payloadIterator" Binds="Input" RangeSize="25"
+                      DataControl="ViewController_InitiatorHumanTask"
+                      BeanClass="ViewController_InitiatorHumanTask.Input" id="InputIterator"/>
+    <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
+                      DataControl="ViewController_InitiatorHumanTask"
+                      BeanClass="ViewController_InitiatorHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_InitiatorHumanTask"
+                  InstanceName="data.ViewController_InitiatorHumanTask"
+                  ReturnName="data.ViewController_InitiatorHumanTask.methodResults.getTaskDetails_ViewController_InitiatorHumanTask_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Type">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Code">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Quantity">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Rate">
+      <AttrNames>
+        <Item Value="Rate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Preferred_Supplier">
+      <AttrNames>
+        <Item Value="Preferred_Supplier"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Need_by">
+      <AttrNames>
+        <Item Value="Need_by"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Operating_unit">
+      <AttrNames>
+        <Item Value="Operating_unit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Project">
+      <AttrNames>
+        <Item Value="Project"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsIterator" id="Task">
+      <AttrNames>
+        <Item Value="Task"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction"
+            DataControl="ViewController_InitiatorHumanTask"/>
+    <tree IterBinding="Item_DetailsIterator" id="Item_Details">
+      <nodeDefinition DefName="ViewController_InitiatorHumanTask.Item_Details_Type" Name="Item_Details0">
+        <AttrNames>
+          <Item Value="Type"/>
+          <Item Value="Description"/>
+          <Item Value="Code"/>
+          <Item Value="Quantity"/>
+          <Item Value="Rate"/>
+          <Item Value="Preferred_Supplier"/>
+          <Item Value="Need_by"/>
+          <Item Value="Operating_unit"/>
+          <Item Value="Project"/>
+          <Item Value="Task"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Item_DetailsIterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <list IterBinding="Item_DetailsIterator" id="Type1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Type"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Mobile"/>
+        <Item Value="Laptop"/>
+        <Item Value="IPhone"/>
+      </ValueList>
+    </list>
+    <list IterBinding="Item_DetailsIterator" id="Preferred_Supplier1" DTSupportsMRU="true"
+          SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="Preferred_Supplier"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Flipkart"/>
+        <Item Value="Ebay"/>
+        <Item Value="Lenskart"/>
+        <Item Value="Jabong"/>
+      </ValueList>
+    </list>
+    <list IterBinding="Item_DetailsIterator" id="Project1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Project"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Project1"/>
+        <Item Value="Project2"/>
+        <Item Value="Project3"/>
+        <Item Value="Project4"/>
+      </ValueList>
+    </list>
+    <list IterBinding="Item_DetailsIterator" id="Task1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Task"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Task1"/>
+        <Item Value="Task2"/>
+        <Item Value="Task3"/>
+        <Item Value="Task3"/>
+      </ValueList>
+    </list>
+  </bindings>
+</pageDefinition>
