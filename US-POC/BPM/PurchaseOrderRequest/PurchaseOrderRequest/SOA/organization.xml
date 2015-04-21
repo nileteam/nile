@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ns0:organization xmlns:ns2="http://xmlns.oracle.com/bpm/lpg/peopleQuery" xmlns:ns1="http://xmlns.oracle.com/bpm/identity" xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/task" xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/taskQuery" xmlns:ns0="http://xmlns.oracle.com/bpm/organization">
+   <ns0:updateExistingObjects>false</ns0:updateExistingObjects>
+   <ns0:organizationalUnits/>
+   <ns0:applicationRoles>
+      <ns0:applicationRole id="PurchaseOrderRequest.ProcessOwner" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.Process Owner</ns1:name>
+         <ns0:processRole id="ProcessOwner" name="Process Owner"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.ProcessReviewer" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.Process Reviewer</ns1:name>
+         <ns0:processRole id="ProcessReviewer" name="Process Reviewer"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.BusinessOwner" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.BusinessOwner</ns1:name>
+         <ns0:processRole id="BusinessOwner" name="BusinessOwner"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.Purchasing" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.Purchasing</ns1:name>
+         <ns0:processRole id="Purchasing" name="Purchasing"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.PurchasingManager" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.PurchasingManager</ns1:name>
+         <ns0:processRole id="PurchasingManager" name="PurchasingManager"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.VPCorpProcurement" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.VPCorpProcurement</ns1:name>
+         <ns0:processRole id="VPCorpProcurement" name="VPCorpProcurement"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.Executive" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.Executive</ns1:name>
+         <ns0:processRole id="Executive" name="Executive"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="PurchaseOrderRequest.PurchasingCo-Ordinator" isProcessRole="true">
+         <ns1:name>PurchaseOrderRequest.PurchasingCo-Ordinator</ns1:name>
+         <ns0:processRole id="PurchasingCo-Ordinator" name="PurchasingCo-Ordinator"/>
+      </ns0:applicationRole>
+   </ns0:applicationRoles>
+   <ns0:applicationRoleOrgUnitCalendarAssociations/>
+   <ns0:participantPropertiesList/>
+   <ns0:holidayRules/>
+   <ns0:calendarRules/>
+   <ns0:businessParameters/>
+</ns0:organization>

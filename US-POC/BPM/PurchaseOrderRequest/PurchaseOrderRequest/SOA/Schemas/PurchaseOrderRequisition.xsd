@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.PurchaseOrderRequisition.org"
+            targetNamespace="http://www.PurchaseOrderRequisition.org"
+            elementFormDefault="qualified">
+    <xsd:complexType name="Header_Type">
+    <xsd:sequence>
+      
+      <xsd:element name="Requisition_no" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Requester" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Total_value" minOccurs="0" type="xsd:integer"/>
+     
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Attachment_Type">
+    <xsd:sequence>
+      <xsd:element name="Description" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Lines_Type">
+    <xsd:sequence>
+      <xsd:element name="Num" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Item" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Rev" type="xsd:string" minOccurs="0"/>      
+      <xsd:element name="Category" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="UOM" type="xsd:string" minOccurs="0"/>
+    
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Currency_Type">
+    <xsd:sequence>
+       <xsd:element name="Num" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Currency"  type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Rate_Type"  type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Rate_Date" minOccurs="0" type="xsd:dateTime"/>      
+      <xsd:element name="Rate" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Price" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Amount"  minOccurs="0" type="xsd:integer"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Source_Details_Type">
+    <xsd:sequence>
+       <xsd:element name="Num" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Note_to_Buyer"  type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Buyer"  type="xsd:string" minOccurs="0"/>
+      <xsd:element name="RFQ_reqired" minOccurs="0" type="xsd:boolean"/>      
+      <xsd:element name="Supplier_item" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Document_Type" type="xsd:string" minOccurs="0"/>
+  
+    </xsd:sequence>
+  </xsd:complexType>
+   <xsd:complexType name="Details_Type">
+    <xsd:sequence>
+       <xsd:element name="Num" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Urgent" type="xsd:boolean"  minOccurs="0" />
+      <xsd:element name="Justification"  type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Note_to_receiver" minOccurs="0" type="xsd:string" />      
+      <xsd:element name="Transaction_Nature" type="xsd:string" minOccurs="0"/>
+  
+  
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Item_Details_Type">
+    <xsd:sequence>     
+      <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Quantity" minOccurs="0" type="xsd:integer"/>
+       <xsd:element name="Rate" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Preferred_Supplier" minOccurs="0" type="xsd:string"/>
+      <xsd:element name="Need_by" minOccurs="0" type="xsd:date"/>
+      <xsd:element name="Operating_unit" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Project" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Task" type="xsd:string" minOccurs="0"/>
+   </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Related_Links_Type">
+    <xsd:sequence>
+      <xsd:element name="Name" minOccurs="0" type="xsd:string"/>
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Input" >
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0">
+        <xsd:element name="Header" type="Header_Type" minOccurs="0"/>
+        <xsd:element name="Item_Details" type="Item_Details_Type" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+
