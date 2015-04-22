@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">fetchTaskOnLoad</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>fetchTaskOnLoad&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">121.896484</property>
+      <property
+         name="x">128.0</property>
+   </MethodCall>
+   <View
+      id="View6">
+      <property
+         name="activityId">PoWorkSpacePage</property>
+      <property
+         name="page">/pages/PoWorkSpacePage.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>PoWorkSpacePage&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">122.79297</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">391.0</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="MethodCall3"
+      to="View6">
+      <property
+         name="fromOutcome">go</property>
+      <property
+         name="sdm:polyPoints">R50,170.31291,121.5459,348.6871,122.44238,L50</property>
+   </ControlFlowCase>
+</SDM>

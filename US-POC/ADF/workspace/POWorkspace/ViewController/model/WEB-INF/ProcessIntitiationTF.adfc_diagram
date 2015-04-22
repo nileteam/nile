@@ -1,0 +1,47 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <MethodCall
+      id="MethodCall2">
+      <property
+         name="activityId">fetchTaskListOnLoad</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>fetchTaskListOnLoad&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">161.59766</property>
+      <property
+         name="x">195.0</property>
+   </MethodCall>
+   <View
+      id="View3">
+      <property
+         name="activityId">ProcessInitiationView</property>
+      <property
+         name="page">/pages/ProcessInitiation.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ProcessInitiationView&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">160.5459</property>
+      <property
+         name="x">446.0</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall2"
+      to="View3">
+      <property
+         name="fromOutcome">go</property>
+      <property
+         name="sdm:polyPoints">R50,236.0,161.24707,405.0,160.19531,L50</property>
+   </ControlFlowCase>
+</SDM>

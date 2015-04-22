@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="com.poworkspace.view" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/login.jspx" usageId="com_poworkspace_view_loginPageDef"/>
+    <page path="/TestPage.jspx" usageId="com_poworkspace_view_TestPagePageDef"/>
+    <page path="/pages/PoWorkSpacePage.jsff" usageId="com_poworkspace_view_PoWorkSpacePagePageDef"/>
+    <page path="/WEB-INF/POWorkSpaceTF.xml#POWorkSpaceTF@fetchTaskOnLoad"
+          usageId="com_poworkspace_view_POWorkSpaceTF_POWorkSpaceTF_fetchTaskOnLoadPageDef"/>
+    <page path="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF@fetchTaskListOnLoad"
+          usageId="com_poworkspace_view_ProcessIntitiationTF_ProcessIntitiationTF_fetchTaskListOnLoadPageDef"/>
+    <page path="/pages/ProcessInitiation.jsff" usageId="com_poworkspace_view_ProcessInitiationPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="com_poworkspace_view_loginPageDef" path="com.poworkspace.view.pageDefs.loginPageDef"/>
+    <page id="com_poworkspace_view_TestPagePageDef" path="com.poworkspace.view.pageDefs.TestPagePageDef"/>
+    <page id="com_poworkspace_view_PoWorkSpacePagePageDef" path="pages.PoWorkSpacePagePageDef"/>
+    <page id="com_poworkspace_view_POWorkSpaceTF_POWorkSpaceTF_fetchTaskOnLoadPageDef"
+          path="com.poworkspace.view.pageDefs.POWorkSpaceTF_POWorkSpaceTF_fetchTaskOnLoadPageDef"/>
+    <page id="com_poworkspace_view_ProcessIntitiationTF_ProcessIntitiationTF_fetchTaskListOnLoadPageDef"
+          path="com.poworkspace.view.pageDefs.ProcessIntitiationTF_ProcessIntitiationTF_fetchTaskListOnLoadPageDef"/>
+    <page id="com_poworkspace_view_ProcessInitiationPageDef" path="pages.ProcessInitiationPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="POWorkspaceAppModuleDataControl" Package="com.poworkspace.appModule"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="POWorkspaceAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>

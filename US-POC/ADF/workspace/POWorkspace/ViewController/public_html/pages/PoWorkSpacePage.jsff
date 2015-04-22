@@ -1,0 +1,160 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <af:resource type="css" source="/resources/css/jquery-ui.css"/>
+    <af:resource type="javascript" source="http://code.jquery.com/jquery-1.10.2.js"/>
+    <af:resource type="javascript" source="http://code.jquery.com/ui/1.10.4/jquery-ui.js"/>
+    
+    <af:resource type="javascript">
+          $(document).bind('yourproject.namespace.successfulSignIn', function (e) {
+              //alert('Got it');
+              //$('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
+              //$('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
+              $('.ui-accordion-header-active').slideUp('slow','linear');
+              $('.ui-accordion-content-active').slideUp('slow','linear');
+          });
+          
+          function removeTask(e) {
+              alert('Hmm..');
+              $('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
+              $('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
+              //$('.ui-accordion-content-active').fadeOut(300, function(){ $(this).remove();})
+          }
+        </af:resource>
+    
+    <af:resource type="javascript">
+      $(function () {
+          //accordion starts
+          $("#accordion").accordion( {
+              collapsible : true, heightStyle : "content", autoHeight: false, active : false, animate :  {
+                  duration : 1000
+              },
+              header : "h3", activate : function (event, ui) {
+                  var header = $('.ui-accordion-header-active');
+                  var taskId = header.find("td.column-1 &gt; span").text();
+                  var uri = header.find("td.column-7 &gt; span").text();
+                  var ctx = $(".abxzmy").text();
+                  console.log(taskId);
+                  if (taskId !== '' || taskId === null || taskId === undefined) {
+                      var url = uri + "&amp;bpmWorklistTaskId=" + taskId + "&amp;bpmWorklistContext=" + ctx;
+                      console.log(url);
+                      if ($('.ui-accordion-header-active').next().children().length &gt; 0) {
+                          console.log('iFrameContainer already contains the iframe you noob!!!');
+                      }
+                      else {
+                          var iFrame = document.createElement("iframe");
+                          iFrame.src = url;
+                          iFrame.width = '100%';
+                          $($('.ui-accordion-header-active').next()).append(iFrame);
+                      }
+                  }
+              }
+          });//accordion ends
+      });
+    </af:resource>
+    <af:resource type="css">
+        #accordion .ui-accordion-content {
+            width: 100%;
+            //height: 90%;
+            background-color: #ffffff;
+            color: #777;
+            font-size: 10pt;
+            line-height: 16pt;
+            padding: 0px;
+        }
+
+        .headerTable, .accTable {
+            width: 100%;
+        }
+
+        th.column-1 {
+            display: none;
+        }
+
+        th.column-2, th.column-6 {
+            width: 30%;
+        }
+
+        th.column-3, th.column-4, th.column-5 {
+            width: 10%
+        }
+
+        td.column-1 {
+            display: none;
+        }
+
+        td.column-2, td.column-6 {
+            width: 30%;
+            text-align: center;
+        }
+
+        td.column-3, td.column-4, td.column-5 {
+            width: 10%;
+            text-align: center;
+        }
+    </af:resource>
+    <af:panelGroupLayout id="pgl1">
+        <div>
+            <table id="t1" class="headerTable">
+                <tr>
+                    <th class="column-1">Tid</th>
+                    <th class="column-2">Title</th>
+                    <th class="column-3">Process</th>
+                    <th class="column-4">Priority</th>
+                    <th class="column-5">Assigned</th>
+                    <th class="column-6">Assignees</th>
+                </tr>
+            </table>
+        </div>
+        <div id="accordion">
+            <af:iterator id="i2" value="#{bindings.TaskListVO1.collectionModel}" var="row">
+                <h3 id="accHead">
+                    <table class="accTable">
+                        <?audit suppress oracle.ide.xml.validation-error?><tr>
+                            <td class="column-1">
+                                <af:outputText value="#{row.TaskID}" id="ot1" visible="false"/>
+                            </td>
+                            <td class="column-2">
+                                <af:outputText value="#{row.Title}"/>
+                            </td>
+                            <td class="column-3">
+                                <af:outputText value="#{row.Process}"/>
+                            </td>
+                            <td class="column-4">
+                                <af:outputText value="#{row.Priority}"/>
+                            </td>
+                            <td class="column-5">
+                                <af:outputText value="#{row.Assigned}"/>
+                            </td>
+                            <td class="column-6">
+                                <af:outputText value="#{row.Assignees}"/>
+                            </td>
+                            <td class="column-7">
+                                <af:outputText value="#{row.TaskFlowURI}" visible="false"/>
+                            </td>
+                        </tr>
+                    </table>
+                </h3>
+                <div id="iFrameContainer">
+                    <!--<button type="button" onclick="removeTask();">Done</button>-->
+                    <!--<af:panelGroupLayout id="pgl2">
+                        <af:inlineFrame id="if1"
+                                        source="http://192.168.1.152:7503/workflow/uiproj/faces/adf.task-flow?adf.tfDoc=%2FWEB-INF%2FFirstTask_TaskFlow.xml&amp;adf.tfId=FirstTask_TaskFlow&amp;bpmBrowserWindowStatus=taskFlowReturn&amp;bpmWorklistContext=#{pageFlowScope.PoWorkSpaceBean.contextString}&amp;bpmWorklistHome=home.jspx&amp;bpmWorklistHttpURL=http%3A%2F%2F192.168.1.35%3A7003%2Fbpm%2Fworkspace%2Ffaces&amp;bpmWorklistReassign=reassignTask.jspx&amp;bpmWorklistRequestInfo=requestInfo.jspx&amp;bpmWorklistRoute=routeTask.jspx&amp;bpmWorklistSecurity=signTask.jspx&amp;bpmWorklistTaskId=#{row.TaskID}"
+                                        styleClass="AFStretchWidth" inlineStyle="height:400px;"/>
+                    </af:panelGroupLayout>-->
+                </div>
+            </af:iterator>
+        </div>
+        <!--af:iterator id="i1" value="#{bindings.TaskListVO1.collectionModel}" var="row">
+            <af:panelAccordion id="pa1" discloseNone="true"
+                               attributeChangeListener="#{pageFlowScope.PoWorkSpaceBean.attributeChangeListener}">
+                <af:showDetailItem id="pane1" text="#{row.TaskID}#{row.Title}" stretchChildren="first"
+                                   disclosureListener="#{pageFlowScope.PoWorkSpaceBean.disclosedListener}">
+                    <af:inlineFrame id="if1" binding="#{pageFlowScope.PoWorkSpaceBean.inlineFrame}"/>
+                </af:showDetailItem>
+            </af:panelAccordion>
+        </af:iterator-->
+        <af:outputText value="#{pageFlowScope.PoWorkSpaceBean.contextString}" id="bpmcontext" visible="false"
+                       styleClass="abxzmy"/>
+    </af:panelGroupLayout>
+</jsp:root>

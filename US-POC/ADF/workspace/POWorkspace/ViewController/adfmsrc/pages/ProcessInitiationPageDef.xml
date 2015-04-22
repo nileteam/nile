@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="ProcessInitiationPageDef"
+                Package="pages">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="InitiatableProcessVO1" RangeSize="25" DataControl="POWorkspaceAppModuleDataControl"
+              id="InitiatableProcessVO1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="InitiatableProcessVO1Iterator" id="InitiatableProcessVO1">
+      <nodeDefinition DefName="com.poworkspace.view.InitiatableProcessVO" Name="InitiatableProcessVO10">
+        <AttrNames>
+          <Item Value="ProcessName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

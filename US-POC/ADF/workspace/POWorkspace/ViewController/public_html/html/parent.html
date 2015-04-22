@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>parent</title>
+        <link rel="stylesheet" media="screen" href="../resources/css/jquery-ui.css" type="text/css"/>
+        <script src="http://code.jquery.com/jquery-1.10.2.js" type="text/javascript"></script>
+        <script src="http://code.jquery.com/ui/1.10.4/jquery-ui.js" type="text/javascript"></script>
+        <script type="text/javascript">
+          $(document).bind('yourproject.namespace.successfulSignIn', function (e) {
+              //alert('Got it');
+              $('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
+              $('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
+          });
+        </script>
+        <script>
+          $(function () {
+              $("#accordion").accordion();
+          });
+          
+          function removeTask(e) {
+              alert('Hmm..');
+              $('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
+              $('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
+              //$('.ui-accordion-content-active').fadeOut(300, function(){ $(this).remove();})
+          }
+        </script>
+    </head>
+    <body>
+        <div id="accordion">
+            <h3>Section 1</h3>
+            <div>
+                <p>Mauris mauris ante, blandit et, ultrices a, suscipit eget, quam. Integer ut neque. Vivamus nisi
+                   metus, molestie vel, gravida in, condimentum sit amet, nunc. Nam a nibh. Donec suscipit eros. Nam mi.
+                   Proin viverra leo ut odio. Curabitur malesuada. Vestibulum a velit eu ante scelerisque vulputate.</p>
+            </div>
+            <h3>Section 2</h3>
+            <div>
+                <button type="button" ></button>
+            </div>
+            <h3>Section 3</h3>
+            <div>
+                <button type="button" ></button>
+            </div>
+            <h3>Section 4</h3>
+            <div>
+                <button type="button" onclick="removeTask();">Done</button>
+                <iframe src="child.html"></iframe>
+            </div>
+        </div>
+        <iframe src="child.html"></iframe>
+    </body>
+</html>
