@@ -12,7 +12,7 @@
       </globalConfiguration>
       <participants isAdhocRoutingSupported="false">
          <stage name="Stage1" disabled="false">
-            <participant disabled="false" name="Stage1.Participant1">
+            <participant disabled="false" name="default.DefaultPerformer">
                <resource type="STATIC" identityType="user">noneditabletest</resource>
             </participant>
          </stage>
@@ -33,14 +33,17 @@
       </notification>
    </routingSlip>
    <workflowConfiguration features="ucm,RSCUSTOMIZATION" xmlns="http://xmlns.oracle.com/bpel/workflow/configuration"
-                          xmlns:ns0="http://www.PurchaseOrderRequisition.org">
+                          xmlns:ns0="http://www.PurchaseOrderRequisition.org"
+                          xmlns:xsd="http://www.w3.org/2001/XMLSchema">
       <outcomes>
          <outcome>APPROVE</outcome>
          <outcome>REJECT</outcome>
       </outcomes>
       <payload externalSchema="false" xmlSchemaDefinition="../Schemas/NonEditableHumantaskPayload.xsd"
                typedTaskSchemaLocation="../Schemas/NonEditableHumantaskWorkflowTask.xsd">
-         <messageAttribute name="Input" attributeType="ELEMENT" type="ns0:Input" updatable="false" external="false"/>
+         <messageAttribute name="Input" attributeType="ELEMENT" type="ns0:Input" updatable="true" external="false"/>
+         <messageAttribute name="Comments" attributeType="SIMPLE_TYPE" type="xsd:string" updatable="true"
+                           external="false"/>
       </payload>
       <bpelEventListener>false</bpelEventListener>
       <bpelNoCallbacks>false</bpelNoCallbacks>

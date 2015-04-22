@@ -1,9 +1,10 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.PurchaseOrderRequisition.org">
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:ns0="http://www.PurchaseOrderRequisition.org">
    <import namespace="http://www.PurchaseOrderRequisition.org" schemaLocation="PurchaseOrderRequisition.xsd"/>
    <complexType name="NonEditableHumantaskPayloadType">
       <sequence>
          <element ref="ns0:Input"/>
+         <element name="Comments" type="xsd:string"/>
       </sequence>
    </complexType>
 </schema>
