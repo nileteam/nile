@@ -23,7 +23,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
    </list>
    <list n="listOfChildren">
-      <hash><url n="URL" path="PurchaseOrderRequest/PurchaseOrderRequest.jpr"/></hash>
+      <hash><url n="URL" path="POC_US_BPM/POC_US_BPM.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">

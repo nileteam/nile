@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+            xmlns="http://www.PurchaseOrderRequisition.org"
+            targetNamespace="http://www.PurchaseOrderRequisition.org"
+            elementFormDefault="qualified">
+    <xsd:complexType name="Header_Type">
+    <xsd:sequence>
+      
+      <xsd:element name="Requisition_no" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Requester" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Status" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Total_value" minOccurs="0" type="xsd:integer"/>
+     
+      
+    </xsd:sequence>
+  </xsd:complexType>
+  <xsd:complexType name="Item_Details_Type">
+    <xsd:sequence>     
+      <xsd:element name="Type" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Code" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Quantity" minOccurs="0" type="xsd:integer"/>
+       <xsd:element name="Rate" minOccurs="0" type="xsd:integer"/>
+      <xsd:element name="Preferred_Supplier" minOccurs="0" type="xsd:string"/>
+      <xsd:element name="Need_by" minOccurs="0" type="xsd:date"/>
+      <xsd:element name="Operating_unit" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Project" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Task" type="xsd:string" minOccurs="0"/>
+   </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Input" >
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0">
+        <xsd:element name="Header" type="Header_Type" minOccurs="0"/>
+        <xsd:element name="Item_Details" type="Item_Details_Type" minOccurs="0" maxOccurs="unbounded"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>
+

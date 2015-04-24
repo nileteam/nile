@@ -66,7 +66,7 @@
       <string v="oracle.bpm.fusion.studio.BPMProjectSettings/bpmProjectsProcessesContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/cepContentSet"/>
    </list>
-   <value n="defaultPackage" v="purchaseorderrequest"/>
+   <value n="defaultPackage" v="POC_US_BPM"/>
    <hash n="oracle.bpm.fusion.studio.BPMProjectSettings">
       <hash n="bpmProjectsProcessesContentSet">
          <list n="url-path">
@@ -118,7 +118,7 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
-         <hash n="PurchaseOrderRequest">
+         <hash n="POC_US_BPM">
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
@@ -193,21 +193,21 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/sca_PurchaseOrderRequest${composite.revision_id}.jar"/>
+            <url n="jarURL" path="deploy/sca_POC_US_BPM${composite.revision_id}.jar"/>
             <value n="profileClass" v="oracle.tip.tools.ide.fabric.deploy.sar.SarProfile"/>
-            <value n="profileName" v="PurchaseOrderRequest"/>
+            <value n="profileName" v="POC_US_BPM"/>
          </hash>
       </hash>
       <list n="profileList">
-         <string v="PurchaseOrderRequest"/>
+         <string v="POC_US_BPM"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.maven.compiler.MavenConfiguration">
       <url n="pomfileURL" path="pom.xml"/>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
-      <value n="j2eeWebAppName" v="Purchase-Order-Request-PurchaseOrderRequest-webapp"/>
-      <value n="j2eeWebContextRoot" v="Purchase-Order-Request-PurchaseOrderRequest-context-root"/>
+      <value n="j2eeWebAppName" v="Purchase-Order-Request-POC_US_BPM-webapp"/>
+      <value n="j2eeWebContextRoot" v="Purchase-Order-Request-POC_US_BPM-context-root"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="javaContentSet">
