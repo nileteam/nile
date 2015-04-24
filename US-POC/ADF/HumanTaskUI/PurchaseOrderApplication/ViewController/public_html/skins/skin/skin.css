@@ -1,0 +1,22 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+.testskin{
+font-family: Arial;
+
+font-size: 12px;
+padding-left: 50px;
+
+text-align: left;
+color: black;
+background-color: LightGray; 
+
+}
+
+af|button{
+
+background-color: Black; 
+}
+
