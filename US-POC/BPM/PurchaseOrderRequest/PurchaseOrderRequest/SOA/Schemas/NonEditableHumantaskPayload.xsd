@@ -5,6 +5,7 @@
       <sequence>
          <element ref="ns0:Input"/>
          <element name="Comments" type="xsd:string"/>
+         <element name="Role" type="xsd:string"/>
       </sequence>
    </complexType>
 </schema>

@@ -149,11 +149,11 @@
         </dgm:operations>
     </dgm:gService>
     <dgm:gReference name="BPM-NotificationService">
-        <dgm:body borderWidth="2" arcRad="20" X="783" Y="318" width="136" height="168">
+        <dgm:body borderWidth="2" arcRad="20" X="776" Y="318" width="136" height="168">
             <dgm:borderColor r="153" g="153" b="153"/>
             <dgm:bgColor r="255" g="255" b="255"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="773" Y="311" width="156" height="182">
+        <dgm:shadow arcRad="20" X="766" Y="311" width="156" height="182">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="BPM-NotificationService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
@@ -171,12 +171,12 @@
         </dgm:operations>
     </dgm:gReference>
     <dgm:gComponent name="EditableHumanTask">
-        <dgm:body borderWidth="2" arcRad="20" X="458" Y="246" width="130" height="86">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="246" width="130" height="86">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="448" Y="239" width="150" height="102">
+        <dgm:shadow arcRad="20" X="444" Y="239" width="150" height="102">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
@@ -184,12 +184,12 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="NonEditableHumantask">
-        <dgm:body borderWidth="2" arcRad="20" X="458" Y="126" width="130" height="86">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="126" width="130" height="86">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="448" Y="119" width="150" height="102">
+        <dgm:shadow arcRad="20" X="444" Y="119" width="150" height="102">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
@@ -197,12 +197,12 @@
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="CreatePurchaseOrder">
-        <dgm:body borderWidth="2" arcRad="20" X="230" Y="280" width="130" height="261">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="280" width="130" height="261">
             <dgm:borderColor r="69" g="113" b="140"/>
             <dgm:lightBgColor r="166" g="208" b="230"/>
             <dgm:darkBgColor r="99" g="162" b="201"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="220" Y="273" width="150" height="277">
+        <dgm:shadow arcRad="20" X="216" Y="273" width="150" height="277">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:outputPort name="HumanTasks.NonEditableHumantask.reference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
@@ -217,97 +217,97 @@
         <dgm:nodeIcon URI="/oracle/bpm/fusion/soa/msg/images/bpmncomponent20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gComponent name="InitiatorHumanTask">
-        <dgm:body borderWidth="2" arcRad="20" X="458" Y="480" width="130" height="61">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="480" width="130" height="61">
             <dgm:borderColor r="109" g="136" b="65"/>
             <dgm:lightBgColor r="201" g="224" b="155"/>
             <dgm:darkBgColor r="157" g="195" b="93"/>
         </dgm:body>
-        <dgm:shadow arcRad="20" X="448" Y="473" width="150" height="77">
+        <dgm:shadow arcRad="20" X="444" Y="473" width="150" height="77">
             <dgm:bgColor r="196" g="228" b="240"/>
         </dgm:shadow>
         <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
         <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
     </dgm:gComponent>
     <dgm:gWireLink source="client" target="EditableHumanTask/client" width="2">
-        <dgm:gSegment X1="168" Y1="238" X2="409" Y2="238"/>
-        <dgm:gSegment X1="409" Y1="238" X2="409" Y2="271"/>
-        <dgm:gSegment X1="409" Y1="271" X2="448" Y2="271"/>
+        <dgm:gSegment X1="168" Y1="238" X2="405" Y2="238"/>
+        <dgm:gSegment X1="405" Y1="238" X2="405" Y2="271"/>
+        <dgm:gSegment X1="405" Y1="271" X2="444" Y2="271"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="client_2" target="NonEditableHumantask/client" width="2">
-        <dgm:gSegment X1="168" Y1="36" X2="394" Y2="36"/>
-        <dgm:gSegment X1="394" Y1="36" X2="394" Y2="151"/>
-        <dgm:gSegment X1="394" Y1="151" X2="448" Y2="151"/>
+        <dgm:gSegment X1="168" Y1="36" X2="390" Y2="36"/>
+        <dgm:gSegment X1="390" Y1="36" X2="390" Y2="151"/>
+        <dgm:gSegment X1="390" Y1="151" X2="444" Y2="151"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.NonEditableHumantask.reference" target="NonEditableHumantask/TaskService" width="2">
-        <dgm:gSegment X1="370" Y1="305" X2="394" Y2="305"/>
-        <dgm:gSegment X1="394" Y1="305" X2="394" Y2="176"/>
-        <dgm:gSegment X1="394" Y1="176" X2="448" Y2="176"/>
+        <dgm:gSegment X1="366" Y1="305" X2="390" Y2="305"/>
+        <dgm:gSegment X1="390" Y1="305" X2="390" Y2="176"/>
+        <dgm:gSegment X1="390" Y1="176" X2="444" Y2="176"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.EditableHumanTask.reference" target="EditableHumanTask/TaskService" width="2">
-        <dgm:gSegment X1="370" Y1="330" X2="409" Y2="330"/>
-        <dgm:gSegment X1="409" Y1="330" X2="409" Y2="296"/>
-        <dgm:gSegment X1="409" Y1="296" X2="448" Y2="296"/>
+        <dgm:gSegment X1="366" Y1="330" X2="405" Y2="330"/>
+        <dgm:gSegment X1="405" Y1="330" X2="405" Y2="296"/>
+        <dgm:gSegment X1="405" Y1="296" X2="444" Y2="296"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12671148595817" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="355" X2="394" Y2="355"/>
-        <dgm:gSegment X1="394" Y1="355" X2="394" Y2="358"/>
-        <dgm:gSegment X1="394" Y1="358" X2="674" Y2="358"/>
-        <dgm:gSegment X1="674" Y1="358" X2="674" Y2="328"/>
-        <dgm:gSegment X1="674" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="355" X2="390" Y2="355"/>
+        <dgm:gSegment X1="390" Y1="355" X2="390" Y2="358"/>
+        <dgm:gSegment X1="390" Y1="358" X2="667" Y2="358"/>
+        <dgm:gSegment X1="667" Y1="358" X2="667" Y2="328"/>
+        <dgm:gSegment X1="667" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12671152400795" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="380" X2="689" Y2="380"/>
-        <dgm:gSegment X1="689" Y1="380" X2="689" Y2="328"/>
-        <dgm:gSegment X1="689" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="380" X2="682" Y2="380"/>
+        <dgm:gSegment X1="682" Y1="380" X2="682" Y2="328"/>
+        <dgm:gSegment X1="682" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672276866543" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="405" X2="704" Y2="405"/>
-        <dgm:gSegment X1="704" Y1="405" X2="704" Y2="328"/>
-        <dgm:gSegment X1="704" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="405" X2="697" Y2="405"/>
+        <dgm:gSegment X1="697" Y1="405" X2="697" Y2="328"/>
+        <dgm:gSegment X1="697" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672287804079" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="430" X2="394" Y2="430"/>
-        <dgm:gSegment X1="394" Y1="430" X2="394" Y2="424"/>
-        <dgm:gSegment X1="394" Y1="424" X2="719" Y2="424"/>
-        <dgm:gSegment X1="719" Y1="424" X2="719" Y2="328"/>
-        <dgm:gSegment X1="719" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="430" X2="390" Y2="430"/>
+        <dgm:gSegment X1="390" Y1="430" X2="390" Y2="424"/>
+        <dgm:gSegment X1="390" Y1="424" X2="712" Y2="424"/>
+        <dgm:gSegment X1="712" Y1="424" X2="712" Y2="328"/>
+        <dgm:gSegment X1="712" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672544571081" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="455" X2="409" Y2="455"/>
-        <dgm:gSegment X1="409" Y1="455" X2="409" Y2="439"/>
-        <dgm:gSegment X1="409" Y1="439" X2="734" Y2="439"/>
-        <dgm:gSegment X1="734" Y1="439" X2="734" Y2="328"/>
-        <dgm:gSegment X1="734" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="455" X2="405" Y2="455"/>
+        <dgm:gSegment X1="405" Y1="455" X2="405" Y2="439"/>
+        <dgm:gSegment X1="405" Y1="439" X2="727" Y2="439"/>
+        <dgm:gSegment X1="727" Y1="439" X2="727" Y2="328"/>
+        <dgm:gSegment X1="727" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672545660835" target="BPM-NotificationService" width="2">
-        <dgm:gSegment X1="370" Y1="480" X2="424" Y2="480"/>
-        <dgm:gSegment X1="424" Y1="480" X2="424" Y2="454"/>
-        <dgm:gSegment X1="424" Y1="454" X2="749" Y2="454"/>
-        <dgm:gSegment X1="749" Y1="454" X2="749" Y2="328"/>
-        <dgm:gSegment X1="749" Y1="328" X2="773" Y2="328"/>
+        <dgm:gSegment X1="366" Y1="480" X2="420" Y2="480"/>
+        <dgm:gSegment X1="420" Y1="480" X2="420" Y2="454"/>
+        <dgm:gSegment X1="420" Y1="454" X2="742" Y2="454"/>
+        <dgm:gSegment X1="742" Y1="454" X2="742" Y2="328"/>
+        <dgm:gSegment X1="742" Y1="328" X2="766" Y2="328"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>
     <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.InitiatorHumanTask.reference" target="InitiatorHumanTask/TaskService" width="2">
-        <dgm:gSegment X1="370" Y1="505" X2="448" Y2="505"/>
+        <dgm:gSegment X1="366" Y1="505" X2="444" Y2="505"/>
         <dgm:baseColor r="153" g="153" b="153"/>
         <dgm:selectedColor r="49" g="106" b="196"/>
     </dgm:gWireLink>

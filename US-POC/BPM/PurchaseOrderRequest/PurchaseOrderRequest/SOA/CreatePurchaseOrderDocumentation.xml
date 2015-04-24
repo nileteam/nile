@@ -230,14 +230,6 @@
                <description locale="en"></description>
             </descriptions>
          </topicDocumentation>
-         <topicDocumentation name="GTW12672354545960">
-            <labels>
-               <label locale="en">Requires Exec Approval ?</label>
-            </labels>
-            <descriptions>
-               <description locale="en"></description>
-            </descriptions>
-         </topicDocumentation>
          <topicDocumentation name="GTW12672514541519">
             <labels>
                <label locale="en">Approved ?</label>
@@ -316,22 +308,6 @@
             </descriptions>
          </topicDocumentation>
          <topicDocumentation name="sf12672362140313">
-            <labels>
-               <label locale="en">No</label>
-            </labels>
-            <descriptions>
-               <description locale="en"></description>
-            </descriptions>
-         </topicDocumentation>
-         <topicDocumentation name="sf12672479389852">
-            <labels>
-               <label locale="en">Yes</label>
-            </labels>
-            <descriptions>
-               <description locale="en"></description>
-            </descriptions>
-         </topicDocumentation>
-         <topicDocumentation name="sf12672507015273">
             <labels>
                <label locale="en">No</label>
             </labels>
