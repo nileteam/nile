@@ -11,6 +11,10 @@ import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
+
 import javax.faces.context.FacesContext;
 
 import javax.faces.event.ActionEvent;
@@ -46,6 +50,16 @@ public class PoWorkSpaceBean {
     private boolean tittleIsAsc = true;
     private boolean priorityIsAsc = true;
     private boolean assignedIsAsc = true;
+    
+    private String taskId;
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
 
     public void setContextString(String contextString) {
         this.contextString = contextString;
@@ -62,6 +76,19 @@ public class PoWorkSpaceBean {
 
     public String fetchTaskOnLoad() {
         System.out.println(" inside fetchTaskOnLoad");
+        
+        System.out.println("Onload Called................");
+        
+        FacesContext fctx = FacesContext.getCurrentInstance();
+        ELContext elctx = fctx.getELContext();
+        ExpressionFactory exprFactory = fctx.getApplication().getExpressionFactory();
+        
+        ValueExpression ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.taskId}", Object.class);
+        String taskIdReceived = (String)ve1.getValue(elctx);
+        System.out.println("Workspace Task Id Received : " + taskIdReceived);
+        
+        setTaskId(taskIdReceived);
+        
 
         try {
 

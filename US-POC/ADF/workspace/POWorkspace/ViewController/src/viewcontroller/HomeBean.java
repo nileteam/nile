@@ -7,6 +7,16 @@ import oracle.adf.view.rich.context.AdfFacesContext;
 
 public class HomeBean {
     private RichRegion workspaceRegion;
+    
+    private String taskId;
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
 
     public HomeBean() {
     }

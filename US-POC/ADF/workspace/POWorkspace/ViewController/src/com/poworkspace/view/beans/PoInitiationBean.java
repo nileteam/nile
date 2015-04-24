@@ -7,9 +7,13 @@ import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
 
+import javax.faces.event.ActionListener;
+
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.binding.BindingContainer;
 
 import oracle.bpel.services.workflow.verification.IWorkflowContext;
 
@@ -17,6 +21,8 @@ import oracle.bpm.services.processmetadata.ProcessMetadataSummary;
 
 import oracle.jbo.Row;
 import oracle.jbo.ViewObject;
+
+import oracle.jbo.uicli.binding.JUEventBinding;
 
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
 import org.apache.myfaces.trinidad.util.Service;
@@ -27,6 +33,16 @@ public class PoInitiationBean {
 
     public IWorkflowContext workflowContext = null;
     public String contextString = "";
+
+    private String taskId;
+
+    public void setTaskId(String taskId) {
+        this.taskId = taskId;
+    }
+
+    public String getTaskId() {
+        return taskId;
+    }
 
     public void setContextString(String contextString) {
         this.contextString = contextString;
@@ -51,7 +67,7 @@ public class PoInitiationBean {
             ViewObject vo = dcIter.getViewObject();
             vo.executeEmptyRowSet();
             System.out.println("vo::" + vo);
-            
+
             List<ProcessMetadataSummary> list = BPMTaskHelper.fetchInitiatorProcessList();
 
             for (ProcessMetadataSummary pms : list) {
@@ -59,7 +75,7 @@ public class PoInitiationBean {
                 String compositeDN = pms.getCompositeDN();
                 System.out.println("Process Name" + processName);
                 System.out.println("CompositeDN" + compositeDN);
-                
+
                 Row row = vo.createRow();
                 row.setAttribute("ProcessName", processName);
                 row.setAttribute("CompositeDN", compositeDN);
@@ -85,13 +101,23 @@ public class PoInitiationBean {
         System.out.println(compositeDNParam);
         String taskid = BPMTaskHelper.initiateBpmTask(procParam, compositeDNParam);
         System.out.println("Initiated Task Id: " + taskid);
-        
+
+        //Setting TaskId for contextual event and fire the event eventBinding
+        setTaskId(taskId);
+        BindingContainer bindingContainer = BindingContext.getCurrent().getCurrentBindingsEntry();
+        JUEventBinding eventBinding = (JUEventBinding) bindingContainer.get("eventBinding");
+
+        ActionListener actionListener = (ActionListener) eventBinding.getListener();
+        actionListener.processAction(actionEvent);
+        System.out.println("Fired................");
+
+
         StringBuffer script = new StringBuffer();
         ExtendedRenderKitService service =
             (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
                                                                    ExtendedRenderKitService.class);
         script.append("callButtonAction()");
         service.addScript(FacesContext.getCurrentInstance(), script.toString());
-        
+
     }
 }

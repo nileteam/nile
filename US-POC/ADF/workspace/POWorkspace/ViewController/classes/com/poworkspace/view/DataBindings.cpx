@@ -31,6 +31,7 @@
     <page id="com_poworkspace_view_testPIPageDef" path="viewcontroller.pageDefs.testPIPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="TaskInitiationEventHandler" path="viewcontroller.TaskInitiationEventHandler"/>
     <BC4JDataControl id="POWorkspaceAppModuleDataControl" Package="com.poworkspace.appModule"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"

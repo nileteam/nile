@@ -16,5 +16,10 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <eventBinding id="eventBinding" Listener="javax.faces.event.ActionListener">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="sendTaskId" customPayLoad="#{pageFlowScope.PoInitiationBean.taskId}" eventType="Action Event"/>
+      </events>
+    </eventBinding>
   </bindings>
 </pageDefinition>

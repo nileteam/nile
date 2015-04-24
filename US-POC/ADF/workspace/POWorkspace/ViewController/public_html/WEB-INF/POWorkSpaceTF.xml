@@ -10,6 +10,11 @@
       <value>#{pageFlowScope.refreshParam}</value>
       <class>java.lang.String</class>
     </input-parameter-definition>
+    <input-parameter-definition id="__4">
+      <name>taskId</name>
+      <value>#{pageFlowScope.taskId}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
     <managed-bean id="__5">
       <managed-bean-name>PoWorkSpaceBean</managed-bean-name>
       <managed-bean-class>com.poworkspace.view.beans.PoWorkSpaceBean</managed-bean-class>
