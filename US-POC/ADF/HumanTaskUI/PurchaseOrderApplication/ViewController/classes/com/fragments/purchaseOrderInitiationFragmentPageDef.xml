@@ -18,6 +18,9 @@
     <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
                       DataControl="ViewController_InitiatorHumanTask"
                       BeanClass="ViewController_InitiatorHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
+    <accessorIterator MasterBinding="InputIterator" Binds="Header" RangeSize="25"
+                      DataControl="ViewController_InitiatorHumanTask"
+                      BeanClass="ViewController_InitiatorHumanTask.Header_Type" id="HeaderIterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -144,5 +147,25 @@
         <Item Value="Task3"/>
       </ValueList>
     </list>
+    <action IterBinding="InputIterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="HeaderIterator" id="Requisition_no">
+      <AttrNames>
+        <Item Value="Requisition_no"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HeaderIterator" id="Requester">
+      <AttrNames>
+        <Item Value="Requester"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="HeaderIterator" id="Status">
+      <AttrNames>
+        <Item Value="Status"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="HeaderIterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Item_DetailsIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="ViewController_InitiatorHumanTask"/>
   </bindings>
 </pageDefinition>

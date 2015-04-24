@@ -15,4 +15,32 @@
                       InitiationTask="true" DocumentStoreConfiguration="false"/>
     </Source>
   </AdapterDataControl>
+  <AdapterDataControl id="ViewController_EditableHumanTask"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_EditableHumanTask"
+                      BeanClass="ViewController_EditableHumanTask" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/E:/git_app_checkout/nile/US-POC/BPM/PurchaseOrderRequest/PurchaseOrderRequest/SOA/Schemas/EditableHumanTaskWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="../../../../BPM/PurchaseOrderRequest/PurchaseOrderRequest/SOA/HumanTasks/EditableHumanTask.task"
+                      InitiationTask="false" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ViewController_NonEditableHumantask"
+                      FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_NonEditableHumantask"
+                      BeanClass="ViewController_NonEditableHumantask" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/E:/git_app_checkout/nile/US-POC/BPM/PurchaseOrderRequest/PurchaseOrderRequest/SOA/Schemas/NonEditableHumantaskWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="/E:/git_app_checkout/nile/US-POC/BPM/PurchaseOrderRequest/PurchaseOrderRequest/SOA/HumanTasks/NonEditableHumantask.task"
+                      InitiationTask="false" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
 </DataControlConfigs>

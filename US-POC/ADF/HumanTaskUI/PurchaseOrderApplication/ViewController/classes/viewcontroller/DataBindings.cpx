@@ -10,13 +10,37 @@
     <page path="/taskDetails1.jspx" usageId="viewcontroller_taskDetails1PageDef"/>
     <page path="/WEB-INF/com/fragments/purchaseOrderInitiationFragment.jsff"
           usageId="viewcontroller_purchaseOrderInitiationFragmentPageDef"/>
+    <page path="/taskDetails2.jspx" usageId="viewcontroller_taskDetails2PageDef"/>
+    <page path="/WEB-INF/com/fragments/purchaseOrderEditableFragment.jsff"
+          usageId="viewcontroller_purchaseOrderEditableFragmentPageDef"/>
+    <page path="/taskDetails3.jspx" usageId="viewcontroller_taskDetails3PageDef"/>
+    <page path="/WEB-INF/com/fragments/purchaseOrderNonEditableFragment.jsff"
+          usageId="viewcontroller_purchaseOrderNonEditableFragmentPageDef"/>
+    <page path="/WEB-INF/com/flows/PurchaseOrderInitiationTF.xml#PurchaseOrderInitiationTF@OnLoad"
+          usageId="viewcontroller_PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadPageDef"/>
+    <page path="/taskDetails4.jspx" usageId="viewcontroller_taskDetails4PageDef"/>
+    <page path="/WEB-INF/com/fragments/purchaseOrderEditableNewFragment.jsff"
+          usageId="viewcontroller_purchaseOrderEditableNewFragmentPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_taskDetails1PageDef" path="viewcontroller.pageDefs.taskDetails1PageDef"/>
     <page id="viewcontroller_purchaseOrderInitiationFragmentPageDef"
           path="com.fragments.purchaseOrderInitiationFragmentPageDef"/>
+    <page id="viewcontroller_taskDetails2PageDef" path="viewcontroller.pageDefs.taskDetails2PageDef"/>
+    <page id="viewcontroller_purchaseOrderEditableFragmentPageDef"
+          path="com.fragments.purchaseOrderEditableFragmentPageDef"/>
+    <page id="viewcontroller_taskDetails3PageDef" path="viewcontroller.pageDefs.taskDetails3PageDef"/>
+    <page id="viewcontroller_purchaseOrderNonEditableFragmentPageDef"
+          path="com.fragments.purchaseOrderNonEditableFragmentPageDef"/>
+    <page id="viewcontroller_PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadPageDef"
+          path="com.flows.PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadPageDef"/>
+    <page id="viewcontroller_taskDetails4PageDef" path="viewcontroller.pageDefs.taskDetails4PageDef"/>
+    <page id="viewcontroller_purchaseOrderEditableNewFragmentPageDef"
+          path="viewcontroller.pageDefs.purchaseOrderEditableNewFragmentPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ViewController_NonEditableHumantask" path="viewcontroller.ViewController_NonEditableHumantask"/>
+    <dc id="ViewController_EditableHumanTask" path="viewcontroller.ViewController_EditableHumanTask"/>
     <dc id="ViewController_InitiatorHumanTask" path="viewcontroller.ViewController_InitiatorHumanTask"/>
   </dataControlUsages>
 </Application>

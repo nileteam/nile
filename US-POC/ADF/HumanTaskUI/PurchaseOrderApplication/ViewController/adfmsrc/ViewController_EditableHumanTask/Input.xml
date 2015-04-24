@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.10.8" id="Input"
+          Package="ViewController_EditableHumanTask" BeanClass="ViewController_EditableHumanTask.Input"
+          isJavaBased="false">
+  <AccessorAttribute id="Header" IsCollection="true" BeanClass="ViewController_EditableHumanTask.Header_Type"
+                     CollectionBeanClass="ViewController_EditableHumanTask.Header_Type_Header_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://www.PurchaseOrderRequisition.org"/>
+      <Property Name="nextSibling" Value="Item_Details"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Header"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="Header"/>
+      <Property Name="targetNamespace" Value="http://www.PurchaseOrderRequisition.org"/>
+    </Properties>
+  </AccessorAttribute>
+  <AccessorAttribute id="Item_Details" IsCollection="true"
+                     BeanClass="ViewController_EditableHumanTask.Item_Details_Type"
+                     CollectionBeanClass="ViewController_EditableHumanTask.Item_Details_Type_Item_Details_Operations">
+    <Properties>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="2147483640"/>
+      <Property Name="LABEL" Value="Item Details"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="Item_Details"/>
+      <Property Name="targetNamespace" Value="http://www.PurchaseOrderRequisition.org"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>
