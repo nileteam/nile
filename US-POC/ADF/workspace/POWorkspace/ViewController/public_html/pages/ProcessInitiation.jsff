@@ -1,15 +1,24 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <af:listView value="#{bindings.InitiatableProcessVO1.collectionModel}" var="item"
-               emptyText="#{bindings.InitiatableProcessVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
-               fetchSize="#{bindings.InitiatableProcessVO1.rangeSize}" id="lv1">
-    <af:listItem id="li1">
-      <af:panelGroupLayout layout="horizontal" id="pgl1">
-        <f:facet name="separator">
-          <af:spacer width="10" id="s1"/>
-        </f:facet>
-      </af:panelGroupLayout>
-    </af:listItem>
-  </af:listView>
+  <!--<af:table value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row"
+            rows="#{bindings.InitiatableProcessVO1.rangeSize}"
+            emptyText="#{bindings.InitiatableProcessVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" fetchSize="#{bindings.InitiatableProcessVO1.rangeSize}" id="t1">
+    <af:column headerText="#{bindings.InitiatableProcessVO1.hints.ProcessName.label}" id="c1">
+      <af:outputText value="#{row.ProcessName}" shortDesc="#{bindings.InitiatableProcessVO1.hints.ProcessName.tooltip}"
+                     id="ot1"/>
+    </af:column>
+  </af:table>-->
+  
+  <af:panelGroupLayout id="pgl1">
+    <af:iterator id="i1" value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row">
+      <af:link text="#{row.ProcessName}" id="l1"
+               actionListener="#{pageFlowScope.PoInitiationBean.initiateProcessActionListener}">
+        <f:attribute name="procParam" value="#{row.ProcessName}"/>
+        <f:attribute name="compositeDNParam" value="#{row.CompositeDN}"/>
+        <af:clientListener method="callButtonAction" type="click"/>
+      </af:link>
+    </af:iterator>
+  </af:panelGroupLayout>
 </jsp:root>

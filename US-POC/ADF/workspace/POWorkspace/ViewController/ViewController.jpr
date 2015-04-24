@@ -319,11 +319,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
+            <value n="id" v="Resource Bundle Support"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
             <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Resource Bundle Support"/>
+            <value n="id" v="BC4J Security"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle Page Templates"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -366,7 +374,14 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
+                  <url path="../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar" jar-entry=""/>
+               </list>
+               <value n="description" v="Library2"/>
+               <value n="id" v="Library2"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Oracle.bpm.client.jar"/>
@@ -375,10 +390,10 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar" jar-entry=""/>
+                  <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar" jar-entry=""/>
                </list>
-               <value n="description" v="Library2"/>
-               <value n="id" v="Library2"/>
+               <value n="description" v="Library3"/>
+               <value n="id" v="Library3"/>
             </hash>
          </list>
       </hash>
@@ -500,10 +515,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="ADF_Library_Dependencies.library"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Commons Logging 1.0.4"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -512,11 +523,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
+            <value n="id" v="Resource Bundle Support"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
             <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Resource Bundle Support"/>
+            <value n="id" v="BC4J Security"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle Page Templates"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -681,6 +700,16 @@
             <value n="runInEditor" v="true"/>
             <value n="showInPalette" v="true"/>
             <value n="taglibURL" v="@project@../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar!/META-INF/worklistcomponents.taglib.xml"/>
+            <value n="URI" v="http://xmlns.oracle.com/bpel/workflow/worklist"/>
+            <value n="version" v="2.0"/>
+         </hash>
+         <hash>
+            <value n="libraries" v="ADF Faces Components"/>
+            <value n="name" v="worklistComponents"/>
+            <value n="prefix" v="wlc"/>
+            <value n="runInEditor" v="true"/>
+            <value n="showInPalette" v="true"/>
+            <value n="taglibURL" v="@project@../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar!/META-INF/worklistcomponents.taglib.xml"/>
             <value n="URI" v="http://xmlns.oracle.com/bpel/workflow/worklist"/>
             <value n="version" v="2.0"/>
          </hash>
@@ -861,6 +890,17 @@
             <value n="runInEditor" v="true"/>
             <value n="showInPalette" v="true"/>
             <value n="tldURL" v="@project@../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar!/META-INF/worklistComponents.tld"/>
+            <value n="URI" v="http://xmlns.oracle.com/bpel/workflow/worklist"/>
+            <value n="version" v="1.0"/>
+         </hash>
+         <hash>
+            <value n="jspVersion" v="2.1"/>
+            <value n="libraries" v="Library3"/>
+            <value n="name" v="worklistComponents"/>
+            <value n="prefix" v="wlc"/>
+            <value n="runInEditor" v="true"/>
+            <value n="showInPalette" v="true"/>
+            <value n="tldURL" v="@project@../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar!/META-INF/worklistComponents.tld"/>
             <value n="URI" v="http://xmlns.oracle.com/bpel/workflow/worklist"/>
             <value n="version" v="1.0"/>
          </hash>

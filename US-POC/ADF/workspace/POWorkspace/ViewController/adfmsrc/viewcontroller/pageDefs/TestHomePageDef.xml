@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="TestHomePageDef"
+                Package="viewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="POWorkSpaceTF1" taskFlowId="/WEB-INF/POWorkSpaceTF.xml#POWorkSpaceTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding" RefreshCondition="true"/>
+    <taskFlow id="ProcessIntitiationTF1" taskFlowId="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+  </executables>
+  <bindings/>
+</pageDefinition>

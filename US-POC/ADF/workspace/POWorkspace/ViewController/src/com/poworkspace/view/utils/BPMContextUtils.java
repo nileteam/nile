@@ -22,11 +22,12 @@ public class BPMContextUtils {
     }
 
     public static IBPMContext getIBPMContext(String userName, String password) throws Exception {
-        IBPMContext ctx =
-            getBPMServiceClientFactory().getBPMUserAuthenticationService().authenticate(LoadProperties.fetchProperty().getProperty("EJB_SECURITY_PRINCIPAL"),
-                                                                                        LoadProperties.fetchProperty().getProperty("EJB_SECURITY_CREDENTIALS").toCharArray(),
-                                                                                        null);
-        ctx = getBPMServiceClientFactory().getBPMUserAuthenticationService().authenticateOnBehalfOf(ctx, userName);
+//        IBPMContext ctx =
+//            getBPMServiceClientFactory().getBPMUserAuthenticationService().authenticate(LoadProperties.fetchProperty().getProperty("EJB_SECURITY_PRINCIPAL"),
+     //                                                                                   LoadProperties.fetchProperty().getProperty("EJB_SECURITY_CREDENTIALS").toCharArray(),
+   //                                                                                     null);
+//        ctx = getBPMServiceClientFactory().getBPMUserAuthenticationService().authenticateOnBehalfOf(ctx, userName);
+        IBPMContext ctx = getBPMServiceClientFactory().getBPMUserAuthenticationService().authenticate(userName, password.toCharArray(), null);
         return ctx;
     }
 

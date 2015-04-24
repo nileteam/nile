@@ -12,6 +12,7 @@
       <nodeDefinition DefName="com.poworkspace.view.InitiatableProcessVO" Name="InitiatableProcessVO10">
         <AttrNames>
           <Item Value="ProcessName"/>
+          <Item Value="CompositeDN"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

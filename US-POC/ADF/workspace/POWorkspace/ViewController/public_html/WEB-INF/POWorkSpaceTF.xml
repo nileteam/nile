@@ -5,6 +5,11 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <input-parameter-definition id="__3">
+      <name>refreshParam</name>
+      <value>#{pageFlowScope.refreshParam}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
     <managed-bean id="__5">
       <managed-bean-name>PoWorkSpaceBean</managed-bean-name>
       <managed-bean-class>com.poworkspace.view.beans.PoWorkSpaceBean</managed-bean-class>

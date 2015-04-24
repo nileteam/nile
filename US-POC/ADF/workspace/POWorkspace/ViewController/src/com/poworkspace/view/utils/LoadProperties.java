@@ -22,6 +22,7 @@ public class LoadProperties {
 
         try {
 
+            //input = new FileInputStream(FILEPATH + "config.properties");
             input = new FileInputStream("config.properties");
 
             // load a properties file

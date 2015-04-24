@@ -23,6 +23,8 @@ import oracle.bpel.services.bpm.common.IBPMContext;
 import oracle.bpel.services.workflow.WorkflowException;
 import oracle.bpel.services.workflow.verification.IWorkflowContext;
 
+import oracle.bpm.services.common.exception.BPMException;
+
 import weblogic.security.URLCallbackHandler;
 import weblogic.security.services.Authentication;
 
@@ -47,27 +49,29 @@ public class Login {
     public String getPassword() {
         return _password;
     }
-    
+
     public String doLogin() {
         String un = _username;
         byte[] pw = _password.getBytes();
         FacesContext ctx = FacesContext.getCurrentInstance();
-        HttpServletRequest request = (HttpServletRequest)ctx.getExternalContext().getRequest();
+        HttpServletRequest request = (HttpServletRequest) ctx.getExternalContext().getRequest();
         try {
             Subject subject = Authentication.login(new URLCallbackHandler(un, pw));
             weblogic.servlet.security.ServletAuthentication.runAs(subject, request);
-            
+
             IWorkflowContext workflowContext = WorkflowContextUtils.initBPMContext(_username, _password);
             JSFUtils.setManagedBeanValue("sessionScope.workflowContext", workflowContext);
-            
+
             IBPMContext ibpmContext = BPMContextUtils.getIBPMContext(_username, _password);
             JSFUtils.setManagedBeanValue("sessionScope.ibpmContext", ibpmContext);
-            
-            String loginUrl = "/adfAuthentication?success_url=/faces/main";
-            HttpServletResponse response = (HttpServletResponse)ctx.getExternalContext().getResponse();
+
+            String loginUrl = "/adfAuthentication?success_url=/faces/TestHome.jspx";
+            HttpServletResponse response = (HttpServletResponse) ctx.getExternalContext().getResponse();
             sendForward(request, response, loginUrl);
         } catch (FailedLoginException fle) {
-            FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Incorrect Username or Password", "An incorrect Username or Password was specified");
+            FacesMessage msg =
+                new FacesMessage(FacesMessage.SEVERITY_ERROR, "Incorrect Username or Password",
+                                 "An incorrect Username or Password was specified");
             ctx.addMessage(null, msg);
         } catch (LoginException le) {
             reportUnexpectedLoginError("LoginException", le);
@@ -93,16 +97,33 @@ public class Login {
     }
 
     private void reportUnexpectedLoginError(String errType, Exception e) {
-        FacesMessage msg = new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unexpected error during login", "Unexpected error during login (" + errType + "), please consult logs for detail");
+        FacesMessage msg =
+            new FacesMessage(FacesMessage.SEVERITY_ERROR, "Unexpected error during login",
+                             "Unexpected error during login (" + errType + "), please consult logs for detail");
         FacesContext.getCurrentInstance().addMessage(null, msg);
         e.printStackTrace();
     }
-    
+
     public String onLogout() {
         FacesContext fctx = FacesContext.getCurrentInstance();
         ExternalContext ectx = fctx.getExternalContext();
+        IBPMContext ibpmContext = (IBPMContext) JSFUtils.getManagedBeanValue("sessionScope.ibpmContext");
+        IWorkflowContext workflowContext =
+            (IWorkflowContext) JSFUtils.getManagedBeanValue("sessionScope.workflowContext");
 
-        String url = ectx.getRequestContextPath() + "/adfAuthentication?logout=true&end_url=/faces/main.jspx";     
+        try {
+            BPMContextUtils.getBPMServiceClientFactory().getBPMUserAuthenticationService().destroyBPMContext(ibpmContext);
+        } catch (BPMException e) {
+            e.printStackTrace();
+        }
+
+        try {
+            WorkflowContextUtils.detroyContxt(workflowContext);
+        } catch (WorkflowException e) {
+            e.printStackTrace();
+        }
+
+        String url = ectx.getRequestContextPath() + "/adfAuthentication?logout=true&end_url=/faces/login.jspx";
 
         try {
             ectx.redirect(url);

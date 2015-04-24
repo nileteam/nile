@@ -77,4 +77,9 @@
     <managed-bean-class>com.poworkspace.view.beans.Login</managed-bean-class>
     <managed-bean-scope>request</managed-bean-scope>
   </managed-bean>
+  <managed-bean id="__20">
+    <managed-bean-name>HomeBean</managed-bean-name>
+    <managed-bean-class>viewcontroller.HomeBean</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

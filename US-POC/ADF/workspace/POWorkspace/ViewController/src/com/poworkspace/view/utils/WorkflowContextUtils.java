@@ -30,6 +30,14 @@ public class WorkflowContextUtils {
         //
         return ctx;
     }
+    
+    public static void detroyContxt(IWorkflowContext ctx) throws WorkflowException {
+        IWorkflowServiceClient wfSvcClient =
+            WorkflowServiceClientFactory.getWorkflowServiceClient(LoadProperties.getIWorkflowConnectionPropertyMap(), null);
+
+        ITaskQueryService querySvc = wfSvcClient.getTaskQueryService();
+        querySvc.destroyWorkflowContext(ctx);
+    }
 
     //    public static void main(String[] a) {
     //        try {

@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="untitled1.jspx" id="d1">
+        <af:resource type="javascript">
+        function callButtonAction() {
+                  //Method to get component using id (here button is top container)
+                  console.log("inside callButtonAction");
+                  console.log("will now fetch button component from page..");
+                  var button = AdfPage.PAGE.findComponentByAbsoluteId('cb3');
+                  console.log("printing button object..");
+                  console.log(button);
+                  console.log("button object fetched .. Now calling ActionEvent..");
+                  //Method to queue ActionEvent from component
+                  AdfActionEvent.queue(button, button.getPartialSubmit());
+                  console.log("Action event called...");
+              }
+        </af:resource>
+            <af:form id="f1">
+                <af:pageTemplate viewId="/oracle/templates/tabletFirstTemplate.jspx" id="pt1">
+                    <f:facet name="header">
+                        <af:outputText value="Custom BPM Workspace" id="ot1" inlineStyle="font-size:large;"/>
+                    </f:facet>
+                    <f:facet name="status"/>
+                    <f:facet name="appNav"/>
+                    <f:facet name="globalLinks">
+                        <af:commandLink text="Logout" id="cl1" immediate="true"
+                                    action="#{loginBean.onLogout}"/>
+                    </f:facet>
+                    <f:facet name="footer">
+                        <af:outputText value="Copyright @ Nile Technologies Pvt Ltd." id="ot2"/>
+                    </f:facet>
+                    <f:facet name="center">
+                        <af:panelBox text="PanelBox2" id="pb2">
+                            <f:facet name="toolbar">
+                                <af:commandButton text="Refresh" id="cb3"
+                                           action="#{pageFlowScope.HomeBean.refreshTaskListAction}" styleClass="programmaticButton"/>
+                            </f:facet>
+                            <af:region value="#{bindings.POWorkSpaceTF1.regionModel}" id="r1"
+                                       binding="#{pageFlowScope.HomeBean.workspaceRegion}"/>
+                        </af:panelBox>
+                    </f:facet>
+                    <f:facet name="start">
+                        <af:panelBox text="PanelBox1" id="pb1">
+                            <f:facet name="toolbar"/>
+                            <af:region value="#{bindings.ProcessIntitiationTF1.regionModel}" id="r2"/>
+                        </af:panelBox>
+                    </f:facet>
+                    <f:facet name="end"/>
+                </af:pageTemplate>
+            </af:form>
+        </af:document>
+    </f:view>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:HomeBean-->
+</jsp:root>

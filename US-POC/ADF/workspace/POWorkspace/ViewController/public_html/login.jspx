@@ -4,6 +4,18 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
         <af:document title="login" id="d1">
+        <af:resource type="javascript">
+        function callButtonAction(evt) {
+        var _keyCode = evt.getKeyCode();
+        if (_keyCode == AdfKeyStroke.ENTER_KEY ){
+            console.log("Enter key pressed")
+                  //Method to get component using id (here button is top container)
+                  var button = AdfPage.PAGE.findComponentByAbsoluteId('cb1');
+                  //Method to queue ActionEvent from component
+                  AdfActionEvent.queue(button, button.getPartialSubmit());
+            }
+        }
+        </af:resource>
             <af:form id="f1">
                 <af:panelBox text="Login Form" id="pb1">
                     <f:facet name="toolbar"/>
@@ -12,7 +24,9 @@
                             <af:commandButton text="Login" id="cb1" action="#{loginBean.doLogin}"/>
                         </f:facet>
                         <af:inputText label="Username" id="it1" value="#{loginBean.username}" clientComponent="true"/>
-                        <af:inputText label="Password" id="it2" secret="true" value="#{loginBean.password}"/>
+                        <af:inputText label="Password" id="it2" secret="true" value="#{loginBean.password}">
+                            <af:clientListener type="keyPress" method="callButtonAction"/>
+                        </af:inputText>
                     </af:panelFormLayout>
                 </af:panelBox>
             </af:form>
