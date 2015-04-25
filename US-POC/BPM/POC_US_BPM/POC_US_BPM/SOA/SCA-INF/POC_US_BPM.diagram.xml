@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dgm:gDiagram xmlns:dgm="http://xmlns.oracle.com/sca/soadgm">
+    <dgm:gService name="client">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="577" width="137" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="570" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="client" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>initiateTask</dgm:item>
+            <dgm:item>reinitiateTask</dgm:item>
+            <dgm:item>overrideRoutingSlip</dgm:item>
+            <dgm:item>skipCurrentAssignment</dgm:item>
+            <dgm:item>updateTask</dgm:item>
+            <dgm:item>mergeAndUpdateTask</dgm:item>
+            <dgm:item>submitInfoForTask</dgm:item>
+            <dgm:item>getUsersToRequestInfoForTask</dgm:item>
+            <dgm:item>getFutureParticipants</dgm:item>
+            <dgm:item>getApprovers</dgm:item>
+            <dgm:item>escalateTask</dgm:item>
+            <dgm:item>escalateTasks</dgm:item>
+            <dgm:item>withdrawTask</dgm:item>
+            <dgm:item>withdrawTasks</dgm:item>
+            <dgm:item>suspendTask</dgm:item>
+            <dgm:item>suspendTasks</dgm:item>
+            <dgm:item>resumeTask</dgm:item>
+            <dgm:item>resumeTasks</dgm:item>
+            <dgm:item>acquireTask</dgm:item>
+            <dgm:item>acquireTasks</dgm:item>
+            <dgm:item>releaseTask</dgm:item>
+            <dgm:item>releaseTasks</dgm:item>
+            <dgm:item>reassignTask</dgm:item>
+            <dgm:item>reassignTasks</dgm:item>
+            <dgm:item>routeTask</dgm:item>
+            <dgm:item>pushBackTask</dgm:item>
+            <dgm:item>delegateTask</dgm:item>
+            <dgm:item>delegateTasks</dgm:item>
+            <dgm:item>errorTask</dgm:item>
+            <dgm:item>addComment</dgm:item>
+            <dgm:item>addCommentToTasks</dgm:item>
+            <dgm:item>addAttachment</dgm:item>
+            <dgm:item>removeAttachment</dgm:item>
+            <dgm:item>addDocument</dgm:item>
+            <dgm:item>removeDocument</dgm:item>
+            <dgm:item>renewTask</dgm:item>
+            <dgm:item>updateTaskOutcome</dgm:item>
+            <dgm:item>updateOutcomeOfTasks</dgm:item>
+            <dgm:item>updateTaskOutcomeAndRoute</dgm:item>
+            <dgm:item>requestInfoForTask</dgm:item>
+            <dgm:item>requestInfoForTaskWithReapproval</dgm:item>
+            <dgm:item>createToDoTask</dgm:item>
+            <dgm:item>deleteTask</dgm:item>
+            <dgm:item>deleteTasks</dgm:item>
+            <dgm:item>purgeTask</dgm:item>
+            <dgm:item>purgeTasks</dgm:item>
+            <dgm:item>setTaskSequenceChanges</dgm:item>
+            <dgm:item>restartRootTask</dgm:item>
+            <dgm:item>prepareForRestartRootTask</dgm:item>
+            <dgm:item>reevaluateTask</dgm:item>
+            <dgm:item>updatePriority</dgm:item>
+            <dgm:item>updatePriorityOfTasks</dgm:item>
+            <dgm:item>suspendTimers</dgm:item>
+            <dgm:item>resumeTimers</dgm:item>
+            <dgm:item>decomposeTask</dgm:item>
+            <dgm:item>updateTasksByCommands</dgm:item>
+            <dgm:item>onTaskCompleted</dgm:item>
+            <dgm:item>onTaskAssigned</dgm:item>
+            <dgm:item>onTaskUpdated</dgm:item>
+            <dgm:item>onSubTaskUpdated</dgm:item>
+            <dgm:item>onStageCompleted</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gService name="client_2">
+        <dgm:body borderWidth="2" arcRad="20" X="21" Y="375" width="137" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="11" Y="368" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="client_2" X="127" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="20" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>initiateTask</dgm:item>
+            <dgm:item>reinitiateTask</dgm:item>
+            <dgm:item>overrideRoutingSlip</dgm:item>
+            <dgm:item>skipCurrentAssignment</dgm:item>
+            <dgm:item>updateTask</dgm:item>
+            <dgm:item>mergeAndUpdateTask</dgm:item>
+            <dgm:item>submitInfoForTask</dgm:item>
+            <dgm:item>getUsersToRequestInfoForTask</dgm:item>
+            <dgm:item>getFutureParticipants</dgm:item>
+            <dgm:item>getApprovers</dgm:item>
+            <dgm:item>escalateTask</dgm:item>
+            <dgm:item>escalateTasks</dgm:item>
+            <dgm:item>withdrawTask</dgm:item>
+            <dgm:item>withdrawTasks</dgm:item>
+            <dgm:item>suspendTask</dgm:item>
+            <dgm:item>suspendTasks</dgm:item>
+            <dgm:item>resumeTask</dgm:item>
+            <dgm:item>resumeTasks</dgm:item>
+            <dgm:item>acquireTask</dgm:item>
+            <dgm:item>acquireTasks</dgm:item>
+            <dgm:item>releaseTask</dgm:item>
+            <dgm:item>releaseTasks</dgm:item>
+            <dgm:item>reassignTask</dgm:item>
+            <dgm:item>reassignTasks</dgm:item>
+            <dgm:item>routeTask</dgm:item>
+            <dgm:item>pushBackTask</dgm:item>
+            <dgm:item>delegateTask</dgm:item>
+            <dgm:item>delegateTasks</dgm:item>
+            <dgm:item>errorTask</dgm:item>
+            <dgm:item>addComment</dgm:item>
+            <dgm:item>addCommentToTasks</dgm:item>
+            <dgm:item>addAttachment</dgm:item>
+            <dgm:item>removeAttachment</dgm:item>
+            <dgm:item>addDocument</dgm:item>
+            <dgm:item>removeDocument</dgm:item>
+            <dgm:item>renewTask</dgm:item>
+            <dgm:item>updateTaskOutcome</dgm:item>
+            <dgm:item>updateOutcomeOfTasks</dgm:item>
+            <dgm:item>updateTaskOutcomeAndRoute</dgm:item>
+            <dgm:item>requestInfoForTask</dgm:item>
+            <dgm:item>requestInfoForTaskWithReapproval</dgm:item>
+            <dgm:item>createToDoTask</dgm:item>
+            <dgm:item>deleteTask</dgm:item>
+            <dgm:item>deleteTasks</dgm:item>
+            <dgm:item>purgeTask</dgm:item>
+            <dgm:item>purgeTasks</dgm:item>
+            <dgm:item>setTaskSequenceChanges</dgm:item>
+            <dgm:item>restartRootTask</dgm:item>
+            <dgm:item>prepareForRestartRootTask</dgm:item>
+            <dgm:item>reevaluateTask</dgm:item>
+            <dgm:item>updatePriority</dgm:item>
+            <dgm:item>updatePriorityOfTasks</dgm:item>
+            <dgm:item>suspendTimers</dgm:item>
+            <dgm:item>resumeTimers</dgm:item>
+            <dgm:item>decomposeTask</dgm:item>
+            <dgm:item>updateTasksByCommands</dgm:item>
+            <dgm:item>onTaskCompleted</dgm:item>
+            <dgm:item>onTaskAssigned</dgm:item>
+            <dgm:item>onTaskUpdated</dgm:item>
+            <dgm:item>onSubTaskUpdated</dgm:item>
+            <dgm:item>onStageCompleted</dgm:item>
+        </dgm:operations>
+    </dgm:gService>
+    <dgm:gReference name="BPM-NotificationService">
+        <dgm:body borderWidth="2" arcRad="20" X="836" Y="498" width="136" height="168">
+            <dgm:borderColor r="153" g="153" b="153"/>
+            <dgm:bgColor r="255" g="255" b="255"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="826" Y="491" width="156" height="182">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="BPM-NotificationService" X="-10" Y="0" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/adapters/designtime/adapter/images/soap_service_20x20.png" X="27" Y="4" width="20" height="20"/>
+        <dgm:operations>
+            <dgm:item>sendIMNotification</dgm:item>
+            <dgm:item>sendFaxNotification</dgm:item>
+            <dgm:item>sendVoiceNotification</dgm:item>
+            <dgm:item>sendSMSNotification</dgm:item>
+            <dgm:item>sendPagerNotification</dgm:item>
+            <dgm:item>sendURINotification</dgm:item>
+            <dgm:item>sendEmailNotification</dgm:item>
+            <dgm:item>sendNotificationToUser</dgm:item>
+            <dgm:item>sendNotificationToGroup</dgm:item>
+        </dgm:operations>
+    </dgm:gReference>
+    <dgm:gComponent name="EditableHumanTask">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="595" width="130" height="86">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="588" width="150" height="102">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:inputPort name="TaskService" X="-10" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="NonEditableHumantask">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="475" width="130" height="86">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="468" width="150" height="102">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="client" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:inputPort name="TaskService" X="-10" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="CreatePurchaseOrder">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="630" width="130" height="261">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="216" Y="623" width="150" height="277">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="HumanTasks.NonEditableHumantask.reference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="HumanTasks.EditableHumanTask.reference" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="NotificationService.ACT12671148595817" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12671152400795" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12672276866543" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12672287804079" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12672544571081" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12672545660835" X="120" Y="190" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="HumanTasks.InitiatorHumanTask.reference" X="120" Y="215" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/bpm/fusion/soa/msg/images/bpmncomponent20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="InitiatorHumanTask">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="830" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="823" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="InitiateContract">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="26" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="19" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="NonEditableContract">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="121" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="114" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="ContractProcess">
+        <dgm:body borderWidth="2" arcRad="20" X="226" Y="169" width="130" height="211">
+            <dgm:borderColor r="69" g="113" b="140"/>
+            <dgm:lightBgColor r="166" g="208" b="230"/>
+            <dgm:darkBgColor r="99" g="162" b="201"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="216" Y="162" width="150" height="227">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:outputPort name="HumanTasks.InitiateContract.reference" X="120" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="HumanTasks.NonEditableContract.reference" X="120" Y="40" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:outputPort name="NotificationService.ACT12828696848350" X="120" Y="65" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12828699120618" X="120" Y="90" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12828738254058" X="120" Y="115" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="NotificationService.ACT12828744822760" X="120" Y="140" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+        <dgm:outputPort name="HumanTasks.EditableContract.reference" X="120" Y="165" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/bpm/fusion/soa/msg/images/bpmncomponent20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gComponent name="EditableContract">
+        <dgm:body borderWidth="2" arcRad="20" X="454" Y="380" width="130" height="61">
+            <dgm:borderColor r="109" g="136" b="65"/>
+            <dgm:lightBgColor r="201" g="224" b="155"/>
+            <dgm:darkBgColor r="157" g="195" b="93"/>
+        </dgm:body>
+        <dgm:shadow arcRad="20" X="444" Y="373" width="150" height="77">
+            <dgm:bgColor r="196" g="228" b="240"/>
+        </dgm:shadow>
+        <dgm:inputPort name="TaskService" X="-10" Y="15" diameter="20" imageURI="oracle/tip/tools/ide/fabric/resource/image/visuals_rd1/servicereference.png" interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)" callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+        <dgm:nodeIcon URI="/oracle/tip/tools/ide/workflow/resources/images/humantask_20x20.png" X="10" Y="4" width="20" height="20"/>
+    </dgm:gComponent>
+    <dgm:gWireLink source="client" target="EditableHumanTask/client" width="2">
+        <dgm:gSegment X1="168" Y1="587" X2="405" Y2="587"/>
+        <dgm:gSegment X1="405" Y1="587" X2="405" Y2="620"/>
+        <dgm:gSegment X1="405" Y1="620" X2="444" Y2="620"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="client_2" target="NonEditableHumantask/client" width="2">
+        <dgm:gSegment X1="168" Y1="385" X2="192" Y2="385"/>
+        <dgm:gSegment X1="192" Y1="385" X2="192" Y2="500"/>
+        <dgm:gSegment X1="192" Y1="500" X2="444" Y2="500"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.NonEditableHumantask.reference" target="NonEditableHumantask/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="655" X2="390" Y2="655"/>
+        <dgm:gSegment X1="390" Y1="655" X2="390" Y2="525"/>
+        <dgm:gSegment X1="390" Y1="525" X2="444" Y2="525"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.EditableHumanTask.reference" target="EditableHumanTask/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="680" X2="405" Y2="680"/>
+        <dgm:gSegment X1="405" Y1="680" X2="405" Y2="645"/>
+        <dgm:gSegment X1="405" Y1="645" X2="444" Y2="645"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12671148595817" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="705" X2="390" Y2="705"/>
+        <dgm:gSegment X1="390" Y1="705" X2="390" Y2="707"/>
+        <dgm:gSegment X1="390" Y1="707" X2="667" Y2="707"/>
+        <dgm:gSegment X1="667" Y1="707" X2="667" Y2="508"/>
+        <dgm:gSegment X1="667" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12671152400795" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="730" X2="682" Y2="730"/>
+        <dgm:gSegment X1="682" Y1="730" X2="682" Y2="508"/>
+        <dgm:gSegment X1="682" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672276866543" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="755" X2="697" Y2="755"/>
+        <dgm:gSegment X1="697" Y1="755" X2="697" Y2="508"/>
+        <dgm:gSegment X1="697" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672287804079" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="780" X2="390" Y2="780"/>
+        <dgm:gSegment X1="390" Y1="780" X2="390" Y2="774"/>
+        <dgm:gSegment X1="390" Y1="774" X2="712" Y2="774"/>
+        <dgm:gSegment X1="712" Y1="774" X2="712" Y2="508"/>
+        <dgm:gSegment X1="712" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672544571081" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="805" X2="405" Y2="805"/>
+        <dgm:gSegment X1="405" Y1="805" X2="405" Y2="789"/>
+        <dgm:gSegment X1="405" Y1="789" X2="727" Y2="789"/>
+        <dgm:gSegment X1="727" Y1="789" X2="727" Y2="508"/>
+        <dgm:gSegment X1="727" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/NotificationService.ACT12672545660835" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="830" X2="420" Y2="830"/>
+        <dgm:gSegment X1="420" Y1="830" X2="420" Y2="804"/>
+        <dgm:gSegment X1="420" Y1="804" X2="742" Y2="804"/>
+        <dgm:gSegment X1="742" Y1="804" X2="742" Y2="508"/>
+        <dgm:gSegment X1="742" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="CreatePurchaseOrder/HumanTasks.InitiatorHumanTask.reference" target="InitiatorHumanTask/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="855" X2="444" Y2="855"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/HumanTasks.InitiateContract.reference" target="InitiateContract/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="194" X2="390" Y2="194"/>
+        <dgm:gSegment X1="390" Y1="194" X2="390" Y2="51"/>
+        <dgm:gSegment X1="390" Y1="51" X2="444" Y2="51"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/HumanTasks.NonEditableContract.reference" target="NonEditableContract/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="219" X2="405" Y2="219"/>
+        <dgm:gSegment X1="405" Y1="219" X2="405" Y2="146"/>
+        <dgm:gSegment X1="405" Y1="146" X2="444" Y2="146"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/NotificationService.ACT12828696848350" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="244" X2="802" Y2="244"/>
+        <dgm:gSegment X1="802" Y1="244" X2="802" Y2="508"/>
+        <dgm:gSegment X1="802" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/NotificationService.ACT12828699120618" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="269" X2="787" Y2="269"/>
+        <dgm:gSegment X1="787" Y1="269" X2="787" Y2="508"/>
+        <dgm:gSegment X1="787" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/NotificationService.ACT12828738254058" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="294" X2="772" Y2="294"/>
+        <dgm:gSegment X1="772" Y1="294" X2="772" Y2="508"/>
+        <dgm:gSegment X1="772" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/NotificationService.ACT12828744822760" target="BPM-NotificationService" width="2">
+        <dgm:gSegment X1="366" Y1="319" X2="757" Y2="319"/>
+        <dgm:gSegment X1="757" Y1="319" X2="757" Y2="508"/>
+        <dgm:gSegment X1="757" Y1="508" X2="826" Y2="508"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+    <dgm:gWireLink source="ContractProcess/HumanTasks.EditableContract.reference" target="EditableContract/TaskService" width="2">
+        <dgm:gSegment X1="366" Y1="344" X2="390" Y2="344"/>
+        <dgm:gSegment X1="390" Y1="344" X2="390" Y2="405"/>
+        <dgm:gSegment X1="390" Y1="405" X2="444" Y2="405"/>
+        <dgm:baseColor r="153" g="153" b="153"/>
+        <dgm:selectedColor r="49" g="106" b="196"/>
+    </dgm:gWireLink>
+</dgm:gDiagram>

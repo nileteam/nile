@@ -5,6 +5,46 @@
       <loc/>
       <line/>
       <col/>
+      <file>HumanTasks/EditableContract.task</file>
+      <name>HumanTasks/EditableContract.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/EditableContract.task</file>
+      <name>HumanTasks/EditableContract.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/NonEditableContract.task</file>
+      <name>HumanTasks/NonEditableContract.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/NonEditableContract.task</file>
+      <name>HumanTasks/NonEditableContract.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
       <file>HumanTasks/NonEditableHumantask.task</file>
       <name>HumanTasks/NonEditableHumantask.task</name>
       <fix/>
@@ -27,6 +67,26 @@
       <col/>
       <file>HumanTasks/NonEditableHumantask.task</file>
       <name>HumanTasks/NonEditableHumantask.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiateContract.task</file>
+      <name>HumanTasks/InitiateContract.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiateContract.task</file>
+      <name>HumanTasks/InitiateContract.task</name>
       <fix/>
       <msg>Error assignee not specified</msg>
    </Fault>
