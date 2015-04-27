@@ -134,10 +134,10 @@
                                                        text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
                                                        disabled="#{!bindings.SUBMIT.enabled}"
                                                        action="#{invokeActionBean.invokeOperation}"
-                                                       partialSubmit="false"
+                                                       partialSubmit="false" 
                                                        visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
                                                        id="b3"
-                                     styleClass="init">
+                                                       styleClass="init">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>    
                                             </af:button>
                         

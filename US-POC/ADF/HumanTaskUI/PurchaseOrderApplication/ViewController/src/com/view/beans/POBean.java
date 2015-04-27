@@ -2,6 +2,13 @@ package com.view.beans;
 
 import java.math.BigInteger;
 
+import java.text.DateFormat;
+
+import java.text.SimpleDateFormat;
+
+import java.util.Calendar;
+import java.util.Date;
+
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.view.rich.component.rich.data.RichTable;
@@ -9,6 +16,7 @@ import oracle.adf.view.rich.component.rich.input.RichInputDate;
 import oracle.adf.view.rich.component.rich.input.RichInputText;
 import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
 
+import oracle.adf.view.rich.component.rich.output.RichOutputText;
 import oracle.adf.view.rich.context.AdfFacesContext;
 
 import oracle.binding.OperationBinding;
@@ -25,6 +33,7 @@ public class POBean {
     private RichTable table;
 
     int totalvalue;
+    private RichOutputText requisitionBVar;
 
     public POBean() {
     }
@@ -45,6 +54,8 @@ public class POBean {
     private RichInputDate needbyBVar;
     private RichSelectOneChoice projectBVar;
     private RichSelectOneChoice taskBVar;
+    private Date minDate = new Date();
+   
 
     public void setTypeBVar(RichSelectOneChoice typeBVar) {
         this.typeBVar = typeBVar;
@@ -99,6 +110,14 @@ public class POBean {
     }
 
     public RichInputDate getNeedbyBVar() {
+//        if(this.needbyBVar == null) {
+//            oracle.jbo.domain.Date tmp = new oracle.jbo.domain.Date(oracle.jbo.domain.Date.getCurrentDate());
+//            System.out.println("------------------------"+tmp);
+//            RichInputDate r= new RichInputDate();
+//            r.setValue(new oracle.jbo.domain.Date(tmp.addJulianDays(1,0)).getValue());
+//            this.needbyBVar=r;
+//        }
+            
         return needbyBVar;
     }
 
@@ -148,8 +167,9 @@ public class POBean {
         OperationBinding createInsertOP = ADFUtils.findOperation("CreateInsert1");
         createInsertOP.execute();
         System.out.println("into onload#####");
-        OperationBinding createInsertOP1 = ADFUtils.findOperation("CreateInsert");
-        createInsertOP1.execute();
+//        OperationBinding createInsertOP1 = ADFUtils.findOperation("CreateInsert");
+//        createInsertOP1.execute();
+        
         //table.setVisible(false);
     }
 
@@ -162,8 +182,9 @@ public class POBean {
     }
 
     public String saveButton() {
-
-        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+if(rateBVar.getValue()!=null || quantityBVar.getValue()!=null )
+{
+    DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
 
         ViewObjectImpl TotalValue =
             (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
@@ -193,11 +214,30 @@ public class POBean {
             //int i =  row.getAttribute("Rate");
 
             totalvalue += rateint * qtyint;
-            // }
-           // toatlVal.setValue(totalvalue);
+            
+            ViewObjectImpl HeaderItem =
+                (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
 
+            RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
+
+            while (rit1.hasNext()) {
+                Row row1 = rit1.next();
+            row1.setAttribute("Total_value", totalvalue);
+                 //row1.getAttribute("requisition_no");
+                //System.out.println("++++++++++++++++++++++++++++++++++++++++++++++"+ row1.getAttribute("requisition_no"));
+             }
+           // toatlVal.setValue(totalvalue);
+           oracle.jbo.domain.Date tmp = new oracle.jbo.domain.Date(oracle.jbo.domain.Date.getCurrentDate());
+           System.out.println("--------------------------------------------------------------------------------"+tmp);
 
         }
+}  
+        else
+        {
+    Utilities.showMsg("Please enter Rate and Quantity","Info");
+        }
+        
+    
         System.out.println("total value is " + totalvalue);
         return null;
     }
@@ -283,4 +323,34 @@ public class POBean {
 
         return null;
     }
+
+    public void setRequisitionBVar(RichOutputText requisitionBVar) {
+        this.requisitionBVar = requisitionBVar;
+    }
+
+    public RichOutputText getRequisitionBVar() {
+        return requisitionBVar;
+    }
+    public Date getMaxDateVal() {
+         Calendar cal = Calendar.getInstance();
+         cal.setTime(new Date());
+         cal.add(Calendar.DATE, 300); 
+         return cal.getTime();
+
+     }
+    
+    public Date getMinDate() {
+     try {
+                 Calendar cal = Calendar.getInstance();
+     java.util.Date date = cal.getTime();
+     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                 String currentDate = formatter.format(date);
+     minDate = formatter.parse(currentDate);
+    
+     return formatter.parse(currentDate);
+             } catch (Exception e) {
+     return null;
+             }
+         }
+
 }

@@ -136,5 +136,10 @@
         <Item Value="Comments"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="HeaderIterator" id="Total_value">
+      <AttrNames>
+        <Item Value="Total_value"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

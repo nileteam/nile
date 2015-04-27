@@ -154,7 +154,15 @@
                  id="b1"/>
       <af:button actionListener="#{bindings.REJECT.execute}" text="REJECT" disabled="#{!bindings.REJECT.enabled}"
                  id="b2"/>-->
-    <br/>  <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
+    <br/>
+      <af:panelLabelAndMessage label="#{bindings.Total_value.hints.label}" id="plam1">
+         <af:outputText value="#{bindings.Total_value.inputValue}" shortDesc="#{bindings.Total_value.hints.tooltip}"
+                        id="ot6">
+            <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
+         </af:outputText>
+      </af:panelLabelAndMessage>
+      <br/>
+    <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
                     required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
                     maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
                     id="it13">

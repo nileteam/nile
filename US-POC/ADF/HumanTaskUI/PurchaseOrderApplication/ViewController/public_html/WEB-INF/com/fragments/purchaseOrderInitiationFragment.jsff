@@ -7,14 +7,19 @@
                            inlineStyle="font-size:small; font-weight:bolder;"/>
         </af:panelGroupLayout>
         <af:panelFormLayout id="pfl2" rows="1" inlineStyle="width:1033px; height:60px;">
-            <af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
+            <!--<af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                           required="#{bindings.Requisition_no.hints.mandatory}"
                           columns="#{bindings.Requisition_no.hints.displayWidth}"
                           maximumLength="#{bindings.Requisition_no.hints.precision}"
                           shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="it1"
                           labelStyle="font-size:15px;width:100px;" placeholder="InComplete">
                 <f:validator binding="#{bindings.Requisition_no.validator}"/>
-            </af:inputText>
+            </af:inputText>-->
+            <af:panelLabelAndMessage label="Requisition No" id="plam1">
+                <af:outputText value="#{bindings.Requisition_no.inputValue}"
+                               binding="#{pageFlowScope.POBean.requisitionBVar}"
+                               shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="ot22"/>
+            </af:panelLabelAndMessage>
             <af:inputText value="#{bindings.Requester.inputValue}" label="Requestor"
                           required="#{bindings.Requester.hints.mandatory}"
                           columns="#{bindings.Requester.hints.displayWidth}"
@@ -23,13 +28,17 @@
                           placeholder="InComplete">
                 <f:validator binding="#{bindings.Requester.validator}"/>
             </af:inputText>
-            <af:inputText value="#{bindings.Status.inputValue}" label="STATUS"
+            <af:panelLabelAndMessage label="#{bindings.Status.hints.label}" id="plam2">
+                <af:outputText value="#{bindings.Status.inputValue}" shortDesc="#{bindings.Status.hints.tooltip}"
+                               id="ot23"/>
+            </af:panelLabelAndMessage>
+            <!--<af:inputText value="#{bindings.Status.inputValue}" label="STATUS"
                           required="#{bindings.Status.hints.mandatory}" columns="#{bindings.Status.hints.displayWidth}"
                           maximumLength="#{bindings.Status.hints.precision}"
                           shortDesc="#{bindings.Status.hints.tooltip}" id="it8" labelStyle="font-size:15px;"
                           placeholder="InComplete">
                 <f:validator binding="#{bindings.Status.validator}"/>
-            </af:inputText>
+            </af:inputText>-->
         </af:panelFormLayout>
         <af:panelGroupLayout id="pgl26">
             <af:outputText value="Create/Edit ITEM DETAILS" id="ot9" inlineStyle="margin-top:10px; font-size:large;"/>
@@ -129,10 +138,12 @@
                             <af:panelGroupLayout id="pgl13">
                                 <af:outputText value="Need By:" id="ot15" inlineStyle="padding-left:5px;"/>
                                 <af:inputDate value="#{bindings.Need_by.inputValue}"
+                                   maxValue="#{pageFlowScope.POBean.maxDateVal}"
                                               required="#{bindings.Need_by.hints.mandatory}"
                                               columns="#{bindings.Need_by.hints.displayWidth}"
                                               shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1"
-                                              binding="#{pageFlowScope.POBean.needbyBVar}" styleClass="iputtxtround">
+                                              binding="#{pageFlowScope.POBean.needbyBVar}" styleClass="iputtxtround"
+                                              minValue="#{pageFlowScope.POBean.minDate}">
                                     <f:validator binding="#{bindings.Need_by.validator}"/>
                                     <af:convertDateTime pattern="#{bindings.Need_by.format}"/>
                                 </af:inputDate>
@@ -209,6 +220,7 @@
             <af:button text="CANCEL" id="b4">
                 <!--<af:clientListener method="resetValues" type="action"/>-->
             </af:button>
+          
         </af:panelGroupLayout>
         <br/>
         <br/>
