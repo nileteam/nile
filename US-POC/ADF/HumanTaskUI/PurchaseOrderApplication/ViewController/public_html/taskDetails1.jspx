@@ -130,21 +130,21 @@
                         <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
                         <!--<af:button actionListener="#{bindings.SUBMIT.execute}" text="SUBMIT"
                                    disabled="#{!bindings.SUBMIT.enabled}" id="b1"/>-->
-                          <af:button actionListener="#{invokeActionBean.setOperation}"
-                                                       text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
-                                                       disabled="#{!bindings.SUBMIT.enabled}"
-                                                       action="#{invokeActionBean.invokeOperation}"
-                                                       partialSubmit="false" 
-                                                       visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
-                                                       id="b3"
-                                                       styleClass="init">
-                                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>    
-                                            </af:button>
-                        
-                        <af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
-                                   action="#{invokeActionBean.action}" id="b2" styleClass="init">
-                            <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
-                        </af:button>
+                        <af:panelGroupLayout id="pgl2">
+                            <af:button actionListener="#{invokeActionBean.setOperation}"
+                                       text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
+                                       disabled="#{!bindings.SUBMIT.enabled}"
+                                       action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
+                                       visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
+                                       id="b3" styleClass="init" inlineStyle="margin-left:12px;">
+                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>
+                            </af:button>
+                            <af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
+                                       action="#{invokeActionBean.action}" id="b2" styleClass="init"
+                                       inlineStyle="margin-left:10px;">
+                                <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
+                            </af:button>
+                        </af:panelGroupLayout>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
                                 <af:spacer width="15" height="15" id="s4"/>

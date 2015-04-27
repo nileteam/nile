@@ -1,11 +1,11 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core" xmlns:tr="http://myfaces.apache.org/trinidad">
-    <af:panelGroupLayout id="pgl2" styleClass="testskin">
-        <af:panelGroupLayout id="pgl1" inlineStyle="width:auto;" styleClass="testskin">
+    <af:panelGroupLayout id="pgl2">
+        <af:panelGroupLayout id="pgl1" inlineStyle="width:auto; font-size:large;">
             <af:outputText value="Purchase Order Requisition" id="ot11"
-                           inlineStyle="font-size:small; font-weight:bolder;"/>
-        </af:panelGroupLayout>
+                           inlineStyle="font-size:large; font-weight:bolder;background-color: LightGray; margin-left:12px;"/>
+        </af:panelGroupLayout><br/>
         <af:panelFormLayout id="pfl2" rows="1" inlineStyle="width:1033px; height:60px;">
             <!--<af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                           required="#{bindings.Requisition_no.hints.mandatory}"
@@ -15,11 +15,13 @@
                           labelStyle="font-size:15px;width:100px;" placeholder="InComplete">
                 <f:validator binding="#{bindings.Requisition_no.validator}"/>
             </af:inputText>-->
-            <af:panelLabelAndMessage label="Requisition No" id="plam1">
+            <af:panelGroupLayout id="pgl27">
+                <af:outputText value="Requisition No" id="ot24" inlineStyle="font-size:15px;margin-left:4px;"/>
                 <af:outputText value="#{bindings.Requisition_no.inputValue}"
                                binding="#{pageFlowScope.POBean.requisitionBVar}"
-                               shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="ot22"/>
-            </af:panelLabelAndMessage>
+                               shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="ot22"
+                               inlineStyle="margin-left:15px;"/>
+            </af:panelGroupLayout>
             <af:inputText value="#{bindings.Requester.inputValue}" label="Requestor"
                           required="#{bindings.Requester.hints.mandatory}"
                           columns="#{bindings.Requester.hints.displayWidth}"
@@ -28,10 +30,11 @@
                           placeholder="InComplete">
                 <f:validator binding="#{bindings.Requester.validator}"/>
             </af:inputText>
-            <af:panelLabelAndMessage label="#{bindings.Status.hints.label}" id="plam2">
+            <af:panelGroupLayout id="pgl28" inlineStyle="margin-left:150px;">
+                <af:outputText value="Status" id="ot25" inlineStyle="font-size:15px;"/>
                 <af:outputText value="#{bindings.Status.inputValue}" shortDesc="#{bindings.Status.hints.tooltip}"
-                               id="ot23"/>
-            </af:panelLabelAndMessage>
+                               id="ot23" inlineStyle="margin-left:15px;"/>
+            </af:panelGroupLayout>
             <!--<af:inputText value="#{bindings.Status.inputValue}" label="STATUS"
                           required="#{bindings.Status.hints.mandatory}" columns="#{bindings.Status.hints.displayWidth}"
                           maximumLength="#{bindings.Status.hints.precision}"
@@ -41,10 +44,11 @@
             </af:inputText>-->
         </af:panelFormLayout>
         <af:panelGroupLayout id="pgl26">
-            <af:outputText value="Create/Edit ITEM DETAILS" id="ot9" inlineStyle="margin-top:10px; font-size:large;"/>
+            <af:outputText value="Create/Edit ITEM DETAILS" id="ot9"
+                           inlineStyle="margin-top:10px; font-size:large;background-color: LightGray; margin-left:12px;"/>
             <af:button actionListener="#{bindings.CreateInsert1.execute}" disabled="#{!bindings.CreateInsert1.enabled}"
-                       id="b3" inlineStyle="height:8px;width:30px;background-color:#20B2AA;" text="[+]"/>
-        </af:panelGroupLayout>
+                       id="b3" inlineStyle="height:8px;width:30px;background-color:#20B2AA;margin-left:3px;" text="[+]"/>
+        </af:panelGroupLayout><br/><br/>
         <af:panelGroupLayout id="pgl3">
             <af:panelFormLayout id="pfl1" rows="1" labelAlignment="top">
                 <!--<af:inputText value="#{bindings.Type.inputValue}" label="#{bindings.Type.hints.label}"
@@ -56,7 +60,7 @@
                     <af:panelGroupLayout id="pgl25">
                         <af:panelGroupLayout id="pgl20" layout="horizontal">
                             <af:panelGroupLayout id="pgl15">
-                                <af:outputText value="Type:" id="ot8" inlineStyle="padding-left:5px;"/>
+                                <af:outputText value="Type:" id="ot8" inlineStyle="padding-left:6px;"/>
                                 <af:selectOneChoice value="#{bindings.Type1.inputValue}"
                                                     binding="#{pageFlowScope.POBean.typeBVar}"
                                                     required="#{bindings.Type1.hints.mandatory}"
@@ -67,7 +71,7 @@
                                 </af:selectOneChoice>
                             </af:panelGroupLayout>
                             <af:panelGroupLayout id="pgl16">
-                                <af:outputText value="Description:" id="ot10" inlineStyle="padding-left:5px;"/>
+                                <af:outputText value="Description:" id="ot10" inlineStyle="padding-left:6px;"/>
                                 <af:inputText value="#{bindings.Description.inputValue}"
                                               required="#{bindings.Description.hints.mandatory}"
                                               columns="#{bindings.Description.hints.displayWidth}"
@@ -79,7 +83,7 @@
                                 </af:inputText>
                             </af:panelGroupLayout>
                             <af:panelGroupLayout id="pgl17">
-                                <af:outputText value="Code:" id="ot21" inlineStyle="padding-left:5px;"/>
+                                <af:outputText value="Code:" id="ot21" inlineStyle="padding-left:6px;"/>
                                 <af:inputText value="#{bindings.Code.inputValue}"
                                               required="#{bindings.Code.hints.mandatory}"
                                               columns="#{bindings.Code.hints.displayWidth}"
@@ -91,7 +95,7 @@
                                 </af:inputText>
                             </af:panelGroupLayout>
                             <af:panelGroupLayout id="pgl18">
-                                <af:outputText value="Qty:" id="ot12" inlineStyle="padding-left:5px;"/>
+                                <af:outputText value="Qty:" id="ot12" inlineStyle="padding-left:15px;"/>
                                 <af:inputText value="#{bindings.Quantity.inputValue}"
                                               binding="#{pageFlowScope.POBean.quantityBVar}"
                                               required="#{bindings.Quantity.hints.mandatory}"
@@ -105,7 +109,7 @@
                                 </af:inputText>
                             </af:panelGroupLayout>
                             <af:panelGroupLayout id="pgl19">
-                                <af:outputText value="Rate:" id="ot13" inlineStyle="padding-left:5px;"/>
+                                <af:outputText value="Rate:" id="ot13" inlineStyle="padding-left:15px;"/>
                                 <af:inputText value="#{bindings.Rate.inputValue}" showRequired="true"
                                               requiredMessageDetail="Rate is Mandatory"
                                               binding="#{pageFlowScope.POBean.rateBVar}"
@@ -123,14 +127,14 @@
                         <br/>
                     </af:panelGroupLayout>
                     <af:panelGroupLayout id="pgl11">
-                        <af:panelGroupLayout id="pgl14" layout="horizontal">
+                        <af:panelGroupLayout id="pgl14" layout="horizontal" inlineStyle="width:321px;">
                             <af:panelGroupLayout id="pgl12">
                                 <af:outputText value="Preferred Supplyer:" id="ot14" inlineStyle="padding-left:5px;"/>
                                 <af:selectOneChoice value="#{bindings.Preferred_Supplier1.inputValue}"
                                                     binding="#{pageFlowScope.POBean.preferedsuppBVar}"
                                                     required="#{bindings.Preferred_Supplier1.hints.mandatory}"
                                                     shortDesc="#{bindings.Preferred_Supplier1.hints.tooltip}" id="soc2"
-                                                    styleClass="drpdwnround">
+                                                    styleClass="drpdwnround" contentStyle="width:150px;">
                                     <f:selectItems value="#{bindings.Preferred_Supplier1.items}" id="si2"/>
                                     <!--<f:validator binding="#{bindings.Preferred_Supplier1.validator}"/>-->
                                 </af:selectOneChoice>
@@ -154,19 +158,19 @@
                     </af:panelGroupLayout>
                     <af:panelGroupLayout id="pgl24" layout="horizontal">
                         <af:panelGroupLayout id="pgl23">
-                            <af:outputText value="Operating Unit:" id="ot16" inlineStyle="padding-left:5px;"/>
+                            <af:outputText value="Operating Unit:" id="ot16" inlineStyle="padding-left:7px;"/>
                             <af:inputText value="#{bindings.Operating_unit.inputValue}"
                                           required="#{bindings.Operating_unit.hints.mandatory}"
                                           binding="#{pageFlowScope.POBean.operunitBVar}"
                                           columns="#{bindings.Operating_unit.hints.displayWidth}"
                                           maximumLength="#{bindings.Operating_unit.hints.precision}"
                                           shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it7"
-                                          styleClass="iputtxtround">
+                                          styleClass="iputtxtround" contentStyle="width:150px;">
                                 <f:validator binding="#{bindings.Operating_unit.validator}"/>
                             </af:inputText>
                         </af:panelGroupLayout>
                         <af:panelGroupLayout id="pgl22">
-                            <af:outputText value="Project:" id="ot17" inlineStyle="padding-left:5px;"/>
+                            <af:outputText value="Project:" id="ot17" inlineStyle="padding-left:7px;"/>
                             <af:selectOneChoice value="#{bindings.Project1.inputValue}"
                                                 required="#{bindings.Project1.hints.mandatory}"
                                                 shortDesc="#{bindings.Project1.hints.tooltip}" id="soc3"
@@ -176,7 +180,7 @@
                             </af:selectOneChoice>
                         </af:panelGroupLayout>
                         <af:panelGroupLayout id="pgl21">
-                            <af:outputText value=" Task:" id="ot18" inlineStyle="padding-left:5px;"/>
+                            <af:outputText value=" Task:" id="ot18" inlineStyle="padding-left:7px;"/>
                             <af:selectOneChoice value="#{bindings.Task1.inputValue}"
                                                 required="#{bindings.Task1.hints.mandatory}"
                                                 shortDesc="#{bindings.Task1.hints.tooltip}" id="soc4"
@@ -211,23 +215,33 @@
         </af:panelGroupLayout>
         <af:panelGroupLayout id="pgl4">
             <af:button actionListener="#{bindings.Commit.execute}" text="SAVE"
-                       action="#{pageFlowScope.POBean.saveButton}" id="b2" styleClass="button"/>
+                       action="#{pageFlowScope.POBean.saveButton}" id="b2" inlineStyle="margin-left:15px;"/>
             <!--<af:button text="button 1" id="b1" action="#{pageFlowScope.POBean.cancel}"/>-->
             <!--<af:button actionListener="#{bindings.Rollback.execute}" text="CANCEL"
                        disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b1" styleClass="button">
                 <af:resetActionListener/>
             </af:button>-->
-            <af:button text="CANCEL" id="b4">
+            <af:button text="CANCEL" id="b4" inlineStyle="margin-left:10px;">
                 <!--<af:clientListener method="resetValues" type="action"/>-->
             </af:button>
           
         </af:panelGroupLayout>
         <br/>
         <br/>
-        <af:panelGroupLayout id="pgl7" inlineStyle="width:auto;">
-            <af:panelFormLayout id="pfl3">
-                <af:outputText value="Review Item List" id="ot6" inlineStyle="font-size:small; font-weight:bolder;"/>
-            </af:panelFormLayout>
+        <af:panelGroupLayout id="pgl7" inlineStyle="width:1048px;" layout="horizontal">
+            <af:panelGroupLayout id="pgl9" inlineStyle="width:200px;">
+                <af:outputText value="Review Item List" id="ot6"
+                               inlineStyle="font-size:small; font-weight:bolder;margin-left:13px;"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl6" layout="horizontal" inlineStyle="width:240px; margin-left:500px;">
+                <af:outputText value="Total Value" id="ot20" inlineStyle="font-size:12px; color:black;"/>
+                <af:inputText value="#{pageFlowScope.POBean.totalvalue}"
+                              shortDesc="#{bindings.Total_value.hints.tooltip}" id="ot3" partialTriggers="b2"
+                              styleClass="iputtxtround" columns="10">
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
+                </af:inputText>
+                <af:outputText value="USD" id="ot19" inlineStyle="font-size:15px;color:black;margin-right:20px;"/>
+            </af:panelGroupLayout>
         </af:panelGroupLayout>
         <af:panelGroupLayout id="pgl8" layout="horizontal">
             <af:panelGroupLayout id="pgl5">
@@ -237,7 +251,7 @@
                           rowBandingInterval="0" selectedRowKeys="#{bindings.Item_Details.collectionModel.selectedRow}"
                           selectionListener="#{bindings.Item_Details.collectionModel.makeCurrent}" rowSelection="single"
                           fetchSize="#{bindings.Item_Details.rangeSize}" id="t1" partialTriggers="::b4 ::b3"
-                          width="634">
+                          width="634" inlineStyle="margin-left:15px;">
                     <af:column id="c11" width="27">
                         <af:selectBooleanCheckbox label="Label 1" id="sbc1"/>
                     </af:column>
@@ -291,12 +305,6 @@
                 <!--<af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
                  disabled="#{!bindings.CreateInsert.enabled}" id="b4"/>-->
             </af:panelGroupLayout>
-            <af:outputText value="Total Value" id="ot20" inlineStyle="font-size:12px; color:black;"/>
-            <af:inputText value="#{pageFlowScope.POBean.totalvalue}" shortDesc="#{bindings.Total_value.hints.tooltip}"
-                          id="ot3" partialTriggers="b2" styleClass="iputtxtround" columns="10">
-                <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
-            </af:inputText>
-            <af:outputText value="USD" id="ot19" inlineStyle="font-size:15px;color:black;"/>
-        </af:panelGroupLayout>
+        </af:panelGroupLayout><br/><br/>
     </af:panelGroupLayout>
 </jsp:root>
