@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<decisionServices xmlns="http://xmlns.oracle.com/bpel/rules" name="TotalAmountOracleRules1">
+    <ruleEngineProvider provider="Oracle_11.0.0.0.0" name="OracleRulesSDK">
+        <repository type="SCA-Archive">
+            <path>POC_US_BPM/oracle/rules/POC_US_BPM/TotalAmountOracleRules1.rules</path>
+        </repository>
+    </ruleEngineProvider>
+    <decisionService name="TotalAmountOracleRules1_DecisionService_1" ruleEngineProviderReference="OracleRulesSDK" targetNamespace="http://xmlns.oracle.com/TotalAmountOracleRules1/TotalAmountOracleRules1_DecisionService_1">
+        <catalog>TotalAmountOracleRules1</catalog>
+        <pattern name="CallFunctionStateless">
+            <arguments>
+                <call>POC_US_BPM.TotalAmountOracleRules1.DecisionService_1</call>
+            </arguments>
+        </pattern>
+        <pattern name="CallFunctionStateful">
+            <arguments>
+                <call>POC_US_BPM.TotalAmountOracleRules1.DecisionService_1</call>
+            </arguments>
+        </pattern>
+    </decisionService>
+    <schemaInformation>
+        <dictionary fqnPackage="POC_US_BPM" fqnName="TotalAmountOracleRules1" updateNumber="32">
+            <schemaBrowser>
+                <package>org.purchaseorderrequisition</package>
+                <namespace>http://www.PurchaseOrderRequisition.org</namespace>
+            </schemaBrowser>
+            <schemaBrowser>
+                <package>org.bussinessrule</package>
+                <namespace>http://www.Bussinessrule.org</namespace>
+            </schemaBrowser>
+            <schemaImport namespace="http://www.PurchaseOrderRequisition.org" localPart="PurchaseOrderRequisition.xsd" schemaLocation="Schemas/PurchaseOrderRequisition.xsd">
+                <import namespace="http://www.PurchaseOrderRequisition.org" localPart="PurchaseOrderRequisition.xsd" schemaLocation="Schemas/PurchaseOrderRequisition.xsd"/>
+            </schemaImport>
+            <schemaImport namespace="http://www.Bussinessrule.org" localPart="Bussinessrule.xsd" schemaLocation="Schemas/Bussinessrule.xsd">
+                <import namespace="http://www.Bussinessrule.org" localPart="Bussinessrule.xsd" schemaLocation="Schemas/Bussinessrule.xsd"/>
+            </schemaImport>
+        </dictionary>
+    </schemaInformation>
+</decisionServices>

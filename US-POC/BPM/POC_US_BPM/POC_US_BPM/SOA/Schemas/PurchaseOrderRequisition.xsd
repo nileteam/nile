@@ -33,8 +33,10 @@
       <xsd:sequence minOccurs="0">
         <xsd:element name="Header" type="Header_Type" minOccurs="0"/>
         <xsd:element name="Item_Details" type="Item_Details_Type" minOccurs="0" maxOccurs="unbounded"/>
+         <xsd:element name="Amount_Flag" type="xsd:string" minOccurs="0"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
+ 
 </xsd:schema>
 

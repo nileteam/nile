@@ -108,6 +108,14 @@
                <description locale="en"></description>
             </descriptions>
          </topicDocumentation>
+         <topicDocumentation name="ACT1285545450907">
+            <labels>
+               <label locale="en">TotalAmount</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
          <topicDocumentation name="EVT12670882022750">
             <labels>
                <label locale="en">Start</label>
@@ -238,6 +246,14 @@
                <description locale="en"></description>
             </descriptions>
          </topicDocumentation>
+         <topicDocumentation name="GTW12853843220742">
+            <labels>
+               <label locale="en">AmountValidation</label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
          <topicDocumentation name="sf12670882022819"/>
          <topicDocumentation name="sf12670934204023"/>
          <topicDocumentation name="sf12670944173694"/>
@@ -338,6 +354,23 @@
          <topicDocumentation name="sf1267255016729"/>
          <topicDocumentation name="sf12672550532836"/>
          <topicDocumentation name="sf12681340809252"/>
+         <topicDocumentation name="sf1285384561143">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf12853850242788">
+            <labels>
+               <label locale="en"></label>
+            </labels>
+            <descriptions>
+               <description locale="en"></description>
+            </descriptions>
+         </topicDocumentation>
+         <topicDocumentation name="sf1285545961802"/>
       </topicDocumentations>
    </component>
 </processDocumentation>
