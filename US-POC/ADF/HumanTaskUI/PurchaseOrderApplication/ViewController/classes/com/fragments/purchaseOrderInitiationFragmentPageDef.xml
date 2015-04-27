@@ -167,5 +167,10 @@
     <action IterBinding="Item_DetailsIterator" id="Delete1" RequiresUpdateModel="false" Action="removeCurrentRow"/>
     <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
             DataControl="ViewController_InitiatorHumanTask"/>
+    <attributeValues IterBinding="HeaderIterator" id="Total_value">
+      <AttrNames>
+        <Item Value="Total_value"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

@@ -95,4 +95,9 @@
       <to-activity-id>Empty1_jspx</to-activity-id>
     </control-flow-case>
   </control-flow-rule>
+  <managed-bean id="__27">
+    <managed-bean-name>POBean</managed-bean-name>
+    <managed-bean-class>com.view.beans.POBean</managed-bean-class>
+    <managed-bean-scope>pageFlow</managed-bean-scope>
+  </managed-bean>
 </adfc-config>

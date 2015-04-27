@@ -15,8 +15,34 @@ background-color: LightGray;
 
 }
 
-af|button{
+af|button {
+       background :  #20B2AA;
+ height: 20px;
 
-background-color: Black; 
+ width: 100px;
+        text-align: right;
+         font: 10pt bold Verdana, Arial, Helvetica, sans-serif ;
+         color:white;
+      
+         border-radius:15px;
+        text-align: center;
+   
 }
+.drpdwnround af|selectOneChoice::content
+{
+
+   background-color:#d6d6d6;
+   
+}
+
+
+
+.iputtxtround af|inputText::content{
+
+ background-color: #d6d6d6;
+}
+.init {
+       background-color:Black;
+}
+
 
