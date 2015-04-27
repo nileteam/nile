@@ -21,7 +21,7 @@
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('APPROVE', 'bindings.customActions')}"
                                                        disabled="#{!bindings.APPROVE.enabled}"
@@ -40,7 +40,7 @@
                                                        id="b2">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
                                             </af:button>
-                                        </af:panelGroupLayout>
+                                        </af:panelGroupLayout>-->
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -139,7 +139,7 @@
                                                        action="#{invokeActionBean.invokeOperation}"
                                                        partialSubmit="false"
                                                        visible="#{wf:isCustomActionAvailable('APPROVE', 'bindings.customActions')}"
-                                                       id="b3">
+                                                       id="b3" styleClass="init">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.APPROVE"/>
                                             </af:button>
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
@@ -148,7 +148,7 @@
                                                        action="#{invokeActionBean.invokeOperation}"
                                                        partialSubmit="false"
                                                        visible="#{wf:isCustomActionAvailable('REJECT', 'bindings.customActions')}"
-                                                       id="b4">
+                                                       id="b4" styleClass="init">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
                                             </af:button>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">

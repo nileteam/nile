@@ -6,21 +6,21 @@
   </af:panelGroupLayout>
    <af:panelGroupLayout id="pgl2" styleClass="testskin">
       <af:panelFormLayout id="pfl1" rows="1">
-         <af:inputText value="#{bindings.Requisition_no.inputValue}" label="#{bindings.Requisition_no.hints.label}"
+         <af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                        required="#{bindings.Requisition_no.hints.mandatory}" readOnly="true"
                        columns="#{bindings.Requisition_no.hints.displayWidth}"
                        maximumLength="#{bindings.Requisition_no.hints.precision}"
                        shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="it1">
             <f:validator binding="#{bindings.Requisition_no.validator}"/>
          </af:inputText>
-         <af:inputText value="#{bindings.Requester.inputValue}" label="#{bindings.Requester.hints.label}"
+         <af:inputText value="#{bindings.Requester.inputValue}" label="Requester"
                        required="#{bindings.Requester.hints.mandatory}" readOnly="true"
                        columns="#{bindings.Requester.hints.displayWidth}"
                        maximumLength="#{bindings.Requester.hints.precision}"
                        shortDesc="#{bindings.Requester.hints.tooltip}" id="it2">
             <f:validator binding="#{bindings.Requester.validator}"/>
          </af:inputText>
-         <af:inputText value="#{bindings.Status.inputValue}" label="#{bindings.Status.hints.label}"
+         <af:inputText value="#{bindings.Status.inputValue}" label="Status"
                        required="#{bindings.Status.hints.mandatory}" readOnly="true"
                        columns="#{bindings.Status.hints.displayWidth}"
                        maximumLength="#{bindings.Status.hints.precision}" shortDesc="#{bindings.Status.hints.tooltip}"
@@ -34,7 +34,7 @@
                    selectedRowKeys="#{bindings.Item_Details1.collectionModel.selectedRow}"
                 selectionListener="#{bindings.Item_Details1.collectionModel.makeCurrent}" rowSelection="single"
                    emptyText="#{bindings.Item_Details1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1">
+                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="629">
             <af:column headerText="#{bindings.Item_Details1.hints.Type.label}" id="c1">
                <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}" id="ot1"/>
             </af:column>
@@ -154,7 +154,7 @@
                  id="b1"/>
       <af:button actionListener="#{bindings.REJECT.execute}" text="REJECT" disabled="#{!bindings.REJECT.enabled}"
                  id="b2"/>-->
-      <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+    <br/>  <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
                     required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
                     maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
                     id="it13">

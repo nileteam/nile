@@ -147,6 +147,7 @@ public class POBean {
         System.out.println("into onload****************************");
         OperationBinding createInsertOP = ADFUtils.findOperation("CreateInsert1");
         createInsertOP.execute();
+        System.out.println("into onload#####");
         OperationBinding createInsertOP1 = ADFUtils.findOperation("CreateInsert");
         createInsertOP1.execute();
         //table.setVisible(false);

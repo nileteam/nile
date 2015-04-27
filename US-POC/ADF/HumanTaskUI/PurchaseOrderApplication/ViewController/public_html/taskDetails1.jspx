@@ -29,7 +29,7 @@
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
                                                        disabled="#{!bindings.SUBMIT.enabled}"
@@ -39,7 +39,7 @@
                                                        id="b1">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>    
                                             </af:button>
-                                        </af:panelGroupLayout>
+                                        </af:panelGroupLayout>-->
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -142,7 +142,7 @@
                                             </af:button>
                         
                         <af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
-                                   action="#{invokeActionBean.action}" id="b2" styleClass="buttonBlack">
+                                   action="#{invokeActionBean.action}" id="b2" styleClass="init">
                             <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
                         </af:button>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
