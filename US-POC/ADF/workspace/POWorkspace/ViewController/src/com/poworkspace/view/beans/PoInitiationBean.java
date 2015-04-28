@@ -112,12 +112,12 @@ public class PoInitiationBean {
         System.out.println("Fired................");
 
 
-        StringBuffer script = new StringBuffer();
-        ExtendedRenderKitService service =
-            (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
-                                                                   ExtendedRenderKitService.class);
-        script.append("callButtonAction()");
-        service.addScript(FacesContext.getCurrentInstance(), script.toString());
+//        StringBuffer script = new StringBuffer();
+//        ExtendedRenderKitService service =
+//            (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
+//                                                                   ExtendedRenderKitService.class);
+//        script.append("callButtonAction()");
+//        service.addScript(FacesContext.getCurrentInstance(), script.toString());
 
     }
 }

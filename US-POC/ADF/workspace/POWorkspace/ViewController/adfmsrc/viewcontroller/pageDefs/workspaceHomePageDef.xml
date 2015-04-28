@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="workspaceHomePageDef"
+                Package="viewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <taskFlow id="POWorkSpaceTF1" taskFlowId="/WEB-INF/POWorkSpaceTF.xml#POWorkSpaceTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="taskId" value="#{pageFlowScope.HomeBean.taskId}"/>
+      </parameters>
+    </taskFlow>
+    <taskFlow id="ProcessIntitiationTF1" taskFlowId="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <page path="viewcontroller.pageDefs.WorkspacePageTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+  </executables>
+  <bindings>
+    <methodAction id="getName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getName"
+                  IsViewObjectMethod="false" DataControl="TaskInitiationEventHandler"
+                  InstanceName="data.TaskInitiationEventHandler.dataProvider">
+      <NamedData NDName="payload" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+  <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+    <event name="sendTaskId">
+      <producer region="ProcessIntitiationTF1.ProcessInitiationPageDef.eventBinding">
+        <consumer region="" handler="getName">
+          <parameters>
+            <parameter name="taskId" value="${payload}"/>
+          </parameters>
+        </consumer>
+      </producer>
+    </event>
+  </eventMap>
+</pageDefinition>

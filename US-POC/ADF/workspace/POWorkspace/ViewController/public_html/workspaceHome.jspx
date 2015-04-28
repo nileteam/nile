@@ -1,0 +1,53 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:f="http://java.sun.com/jsf/core"
+          xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <f:view>
+        <af:document title="workspaceHome.jspx" id="d1">
+            <af:messages id="m1"/>
+            <af:resource type="javascript">
+        function callButtonAction() {
+                  //Method to get component using id (here button is top container)
+                  console.log("inside callButtonAction");
+                  console.log("will now fetch button component from page..");
+                  var button = AdfPage.PAGE.findComponentByAbsoluteId('cb3');
+                  console.log("printing button object..");
+                  console.log(button);
+                  console.log("button object fetched .. Now calling ActionEvent..");
+                  //Method to queue ActionEvent from component
+                  AdfActionEvent.queue(button, button.getPartialSubmit());
+                  console.log("Action event called...");
+              }
+        </af:resource>
+            <af:form id="f1">
+                <af:pageTemplate viewId="/WorkspacePageTemplate.jspx" id="pt1" value="#{bindings.ptb1}">
+                    <f:facet name="contentFacet">
+                        <af:region value="#{bindings.POWorkSpaceTF1.regionModel}" id="r1"
+                                   binding="#{pageFlowScope.HomeBean.workspaceRegion}"/>
+                    </f:facet>
+                    <f:facet name="sidebarFacet">
+                        <af:region value="#{bindings.ProcessIntitiationTF1.regionModel}" id="r2"/>
+                    </f:facet>
+                    <f:facet name="bottomHeaderFacet">
+                        <af:panelGroupLayout id="pgl1" layout="horizontal">
+                            <af:commandLink id="cl1" text="Process"/>
+                            <af:spacer width="10" height="10" id="s1"/>
+                            <af:commandLink id="cl2" text="Views"/>
+                            <af:spacer width="10" height="10" id="s2"/>
+                            <af:commandLink id="cl5" text="Preferences"/>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <!--<f:facet name="topHeaderFacet">
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:commandLink id="cl4" text="Home"/>
+                            <af:spacer width="10" height="10" id="s3"/>
+                            <af:commandLink id="cl3" text="Logout" action="#{loginBean.onLogout}"/>
+                        </af:panelGroupLayout>
+                    </f:facet>-->
+                </af:pageTemplate>
+                <!--af:button actionListener="#{bindings.getName.execute}" text="getName"
+                           disabled="#{!bindings.getName.enabled}" id="b1"/-->
+            </af:form>
+        </af:document>
+    </f:view>
+</jsp:root>

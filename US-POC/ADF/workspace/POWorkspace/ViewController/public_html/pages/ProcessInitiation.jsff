@@ -11,7 +11,7 @@
     </af:column>
   </af:table>-->
   
-  <af:panelGroupLayout id="pgl1">
+  <af:panelGroupLayout id="pgl1" layout="vertical">
     <af:iterator id="i1" value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row">
       <af:link text="#{row.ProcessName}" id="l1"
                actionListener="#{pageFlowScope.PoInitiationBean.initiateProcessActionListener}">

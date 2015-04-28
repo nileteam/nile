@@ -15,7 +15,6 @@
           });
           
           function removeTask(e) {
-              alert('Hmm..');
               $('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
               $('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
               //$('.ui-accordion-content-active').fadeOut(300, function(){ $(this).remove();})
@@ -23,7 +22,6 @@
         </af:resource>
     <af:resource type="javascript">
         function test() {
-        alert('Thats it....');
         $(function () {
           //accordion starts
           $("#accordion").accordion( {
@@ -45,7 +43,9 @@
                       else {
                           var iFrame = document.createElement("iframe");
                           iFrame.src = url;
-                          iFrame.width = '100%';
+                          iFrame.width = '99%';
+                          iFrame.height= '550px';
+                          iFrame.frameBorder= 'none';
                           $($('.ui-accordion-header-active').next()).append(iFrame);
                       }
                   }
@@ -56,7 +56,6 @@
     }
     </af:resource>
     <af:resource type="javascript">
-    alert('Hmm..');
         $(document).ready(function () {
           //accordion starts
           $("#accordion").accordion( {
@@ -78,7 +77,9 @@
                       else {
                           var iFrame = document.createElement("iframe");
                           iFrame.src = url;
-                          iFrame.width = '100%';
+                          iFrame.width = '99%';
+                          iFrame.height= '550px';
+                          iFrame.frameBorder= 'none';
                           $($('.ui-accordion-header-active').next()).append(iFrame);
                       }
                   }
@@ -89,7 +90,7 @@
     </af:resource>
     <af:resource type="css">
         #accordion .ui-accordion-content {
-            width: 100%;
+            width: 99.8%;
             
             background-color: #ffffff;
             color: #777;
@@ -182,22 +183,22 @@
                                     <img src="../resources/images/AccordionPlus.png"/>
                                 </td>
                                 <td class="column-1">
-                                    <af:outputText value="#{row.TaskID}" id="ot1" visible="true"/>
+                                    <af:outputText value="#{row.TaskID}" id="ot1" visible="false"/>
                                 </td>
                                 <td class="column-2">
                                     <af:outputText value="#{row.Title}" id="ot2"/>
                                 </td>
                                 <td class="column-3">
-                                    <af:outputText value="#{row.Process}" id="ot3"/>
+                                    <af:outputText value="#{row.Process}" id="ot3" visible="false"/>
                                 </td>
                                 <td class="column-4">
-                                    <af:outputText value="#{row.Priority}" id="ot4"/>
+                                    <af:outputText value="#{row.Priority}" id="ot4" visible="false"/>
                                 </td>
                                 <td class="column-5">
-                                    <af:outputText value="#{row.Assigned}" id="ot5"/>
+                                    <af:outputText value="#{row.Assigned}" id="ot5" visible="false"/>
                                 </td>
                                 <td class="column-6">
-                                    <af:outputText value="#{row.Assignees}" id="ot6"/>
+                                    <af:outputText value="#{row.Assignees}" id="ot6" visible="false"/>
                                 </td>
                                 <td class="column-7">
                                     <af:outputText value="#{row.TaskFlowURI}" visible="false" id="ot7"/>

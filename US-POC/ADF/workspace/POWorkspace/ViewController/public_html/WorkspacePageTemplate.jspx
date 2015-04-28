@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <div class="container">
+            <div class="topHeader">
+                <div class="left">
+                    <img src="resources/images/Logo.png" style="float: left"/>
+                </div>
+                <div class="right">&#160;</div>
+            </div>
+            <div class="contentArea">
+                <af:facetRef facetName="contentFacet"/>
+            </div>
+            <div class="rightPanel">
+                <div class="topRightPanel">
+                    <div class="column">
+                        <!--<af:facetRef facetName="topHeaderFacet"/>-->
+                        
+                            <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                <af:commandLink id="cl4" text="Home"/>
+                                <af:spacer width="10" height="10" id="s3"/>
+                                <af:link id="cl3" text="Logout" action="#{loginBean.onLogout}"/>
+                            </af:panelGroupLayout>
+                        
+                    </div>
+                    <div class="column">
+                        <af:facetRef facetName="bottomHeaderFacet"/>
+                    </div>
+                </div>
+                <div class="lowerRightPanel">
+                    <af:facetRef facetName="sidebarFacet"/>
+                </div>
+            </div>
+        </div>
+        <link type="text/css" rel="stylesheet" href="resources/css/style.css"/>
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>WorkspacePageTemplate</display-name>
+            </component>
+        </af:xmlContent>
+    </af:pageTemplateDef>
+</jsp:root>

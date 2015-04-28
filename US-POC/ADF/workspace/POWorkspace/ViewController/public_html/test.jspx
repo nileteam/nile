@@ -3,10 +3,13 @@
           xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
-        <af:document title="home" id="d1">
+        <af:document title="test.jspx" id="d1">
             <af:form id="f1">
-                <af:commandLink text="Logout" id="cl1" immediate="true"
-                                    action="#{loginBean.onLogout}"/>
+                <af:pageTemplate viewId="/WorkspacePageTemplate.jspx" value="#{bindings.ptb1}" id="pt1">
+                    <f:facet name="bottomHeaderFacet">
+                        <af:region value="#{bindings.ProcessIntitiationTF1.regionModel}" id="r1"/>
+                    </f:facet>
+                </af:pageTemplate>
             </af:form>
         </af:document>
     </f:view>

@@ -325,6 +325,12 @@
           <include>*</include>
         </includes>
       </resource>
+      <resource>
+        <directory>../../../../../../../mywork/UIFORCustomWorkspace/ViewController/public_html/resources/css/</directory>
+        <includes>
+          <include>**</include>
+        </includes>
+      </resource>
     </resources>
     <outputDirectory>classes/</outputDirectory>
     <plugins>
