@@ -16,12 +16,12 @@
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
-                        <f:facet name="toolbar">
+                        <!--<f:facet name="toolbar">
                             <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        --><!--<af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('APPROVE', 'bindings.customActions')}"
                                                        disabled="#{!bindings.APPROVE.enabled}"
@@ -40,7 +40,7 @@
                                                        id="b2">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
                                             </af:button>
-                                        </af:panelGroupLayout>-->
+                                        </af:panelGroupLayout>--><!--
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -126,7 +126,7 @@
                                          action="closeTaskFlow"
                                          visible="#{pageFlowScope.enableNavigationButton != null}" id="l3"/>
                             </af:toolbar>
-                        </f:facet>
+                        </f:facet>-->
                         <f:facet name="context"/>
                         <af:region value="#{bindings.PurchaseOrderNonEditableTF1.regionModel}" id="r1"/>
                         <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE"

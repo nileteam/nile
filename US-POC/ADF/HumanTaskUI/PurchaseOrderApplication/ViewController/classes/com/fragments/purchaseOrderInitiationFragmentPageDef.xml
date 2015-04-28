@@ -172,5 +172,10 @@
         <Item Value="Total_value"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="creatorDisplayName">
+      <AttrNames>
+        <Item Value="creatorDisplayName"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

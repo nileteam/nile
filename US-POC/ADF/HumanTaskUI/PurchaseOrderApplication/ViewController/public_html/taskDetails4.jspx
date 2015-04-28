@@ -17,11 +17,11 @@
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
                         <f:facet name="toolbar">
-                            <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
+                            <!--<af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        --><!--<af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('RESUBMIT', 'bindings.customActions')}"
                                                        disabled="#{!bindings.RESUBMIT.enabled}"
@@ -40,7 +40,7 @@
                                                        id="b2">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
                                             </af:button>
-                                        </af:panelGroupLayout>-->
+                                        </af:panelGroupLayout>--><!--
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -125,7 +125,7 @@
                                 <af:link shortDesc="#{resources.SHORT_DESC_CLOSE}" icon="/hw_images/close_ena.png"
                                          action="closeTaskFlow"
                                          visible="#{pageFlowScope.enableNavigationButton != null}" id="l3"/>
-                            </af:toolbar>
+                            </af:toolbar>-->
                         </f:facet>
                         <f:facet name="context"/>
                         <af:region value="#{bindings.PurchaseOrderEditableNewTF1.regionModel}" id="r1"/>

@@ -20,16 +20,16 @@
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
                 <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
-                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
+                    <af:panelHeader text=" " id="ph1">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
                         <f:facet name="toolbar">
-                            <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
+                            <af:toolbar visible="false" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        <af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
                                                        disabled="#{!bindings.SUBMIT.enabled}"
@@ -39,7 +39,7 @@
                                                        id="b1">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>    
                                             </af:button>
-                                        </af:panelGroupLayout>-->
+                                        </af:panelGroupLayout>
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -130,9 +130,9 @@
                         <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
                         <!--<af:button actionListener="#{bindings.SUBMIT.execute}" text="SUBMIT"
                                    disabled="#{!bindings.SUBMIT.enabled}" id="b1"/>-->
-                        <af:panelGroupLayout id="pgl2">
+                        <af:panelGroupLayout id="pgl5">
                             <af:button actionListener="#{invokeActionBean.setOperation}"
-                                       text="#{wf:getResourceValue('SUBMIT', 'bindings.customActions')}"
+                                       text="SUBMIT"
                                        disabled="#{!bindings.SUBMIT.enabled}"
                                        action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
                                        visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
