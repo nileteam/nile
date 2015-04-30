@@ -57,12 +57,15 @@
                 <f:validator binding="#{bindings.Status.validator}"/>
             </af:inputText>-->
         </af:panelFormLayout>
-        <af:panelGroupLayout id="pgl26">
+        <af:panelGroupLayout id="pgl26" layout="horizontal">
             <af:outputText value="Create/Edit ITEM DETAILS" id="ot9"
                            inlineStyle="margin-top:10px; margin-left:12px; border-bottom-style:groove; border-bottom-color:WindowText; border-bottom-width:thin;"
                            styleClass="fonteffect"/>
-            <af:button actionListener="#{bindings.CreateInsert1.execute}" disabled="#{!bindings.CreateInsert1.enabled}"
-                       id="b3" inlineStyle="height:8px;width:40px;background-color:#20B2AA;margin-left:3px;" text="[+]"/>
+            <!--<af:button actionListener="#{bindings.CreateInsert1.execute}" disabled="#{!bindings.CreateInsert1.enabled}"
+                       id="b3" inlineStyle="height:8px;width:40px;background-color:#20B2AA;margin-left:3px;" text="[+]"/>-->
+                       <af:commandImageLink id="l1" actionListener="#{bindings.CreateInsert1.execute}"
+                        disabled="#{!bindings.CreateInsert1.enabled}"
+                                            icon="#{resource['images:PlusIcon.png']}"/>
         </af:panelGroupLayout><br/><br/>
         <af:panelGroupLayout id="pgl3">
             <af:panelFormLayout id="pfl1" rows="1" labelAlignment="top">
@@ -247,18 +250,27 @@
             </af:panelFormLayout>
         </af:panelGroupLayout>
         <af:panelGroupLayout id="pgl4">
-            <af:button actionListener="#{bindings.Commit.execute}" text="SAVE"
+            <!--<af:button actionListener="#{bindings.Commit.execute}"
                        action="#{pageFlowScope.POBean.saveButton}" id="b2"
-                       inlineStyle="margin-left:15px; height:30px; width:122px;"/>
+                      
+                       inlineStyle="margin-left:15px; background-color:white;"/>-->
+            <af:commandImageLink id="l2"
+            actionListener="#{bindings.Commit.execute}"
+            action="#{pageFlowScope.POBean.saveButton}" icon="#{resource['images:SAVE-Green.png']}"
+                                 inlineStyle="margin-left:15px;"/>
+            
+            
+            
             <!--<af:button text="button 1" id="b1" action="#{pageFlowScope.POBean.cancel}"/>-->
             <!--<af:button actionListener="#{bindings.Rollback.execute}" text="CANCEL"
                        disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b1" styleClass="button">
                 <af:resetActionListener/>
             </af:button>-->
-            <af:button text="CANCEL" id="b4" inlineStyle="margin-left:10px;height:30px;width:122px;">
-                <!--<af:clientListener method="resetValues" type="action"/>-->
-            </af:button>
-          
+            <!--<af:button text="CANCEL" id="b4" inlineStyle="margin-left:10px;height:30px;width:122px;">
+                --><!--<af:clientListener method="resetValues" type="action"/>--><!--
+            </af:button>-->
+            <af:commandImageLink id="l3"
+            inlineStyle="margin-left:10px" icon="#{resource['images:CANCEL-Green.png']}"/>
         </af:panelGroupLayout>
         <br/><br/>
         <af:panelGroupLayout id="pgl7" layout="horizontal" inlineStyle="width: 668px;">
@@ -271,7 +283,7 @@
                 <af:outputText value="Total Value" id="ot20" inlineStyle=" color:black;"
                                styleClass="fonteffect"/>
                 <af:inputText value="#{pageFlowScope.POBean.totalvalue}"
-                              shortDesc="#{bindings.Total_value.hints.tooltip}" id="ot3" partialTriggers="b2"
+                              shortDesc="#{bindings.Total_value.hints.tooltip}" id="ot3" partialTriggers="l2"
                               styleClass="iputtxtround Enteredfont" columns="10" contentStyle="height:28px;">
                     <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
                 </af:inputText>
@@ -286,8 +298,8 @@
                           emptyText="#{bindings.Item_Details.viewable ? 'No data to display.' : 'Access Denied.'}"
                           rowBandingInterval="0" selectedRowKeys="#{bindings.Item_Details.collectionModel.selectedRow}"
                           selectionListener="#{bindings.Item_Details.collectionModel.makeCurrent}" rowSelection="single"
-                          fetchSize="#{bindings.Item_Details.rangeSize}" id="t1" partialTriggers="::b4 ::b3"
-                          width="636" inlineStyle="margin-left:15px;">
+                          fetchSize="#{bindings.Item_Details.rangeSize}" id="t1" partialTriggers="::l3 ::l1"
+                          width="636" inlineStyle="margin-left:15px;" autoHeightRows="10">
                     <af:column id="c11" width="27" inlineStyle="text-align:center;">
                         <af:selectBooleanCheckbox label="Label 1" id="sbc1"/>
                     </af:column>
@@ -348,4 +360,5 @@
             </af:panelGroupLayout>
         </af:panelGroupLayout><br/>
     </af:panelGroupLayout>
+    
 </jsp:root>

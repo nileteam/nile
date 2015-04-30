@@ -2,12 +2,14 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core" xmlns:tr="http://myfaces.apache.org/trinidad">
  <af:panelGroupLayout id="pgl1" inlineStyle="width:auto;">
-    <af:outputText value="Approval/Rejection for New PO" id="ot11"
-                   inlineStyle="font-size:large; font-weight:bolder;background-color: LightGray; margin-left:12px;"/>
-  </af:panelGroupLayout><br/>
+      <af:panelFormLayout id="pfl3" inlineStyle="width:720px; margin-left:10px; height:28px; background-color:#cfd0cf;">
+         <af:outputText value="Approval/Rejection for New PO" id="ot11"
+                        inlineStyle="font-size:large; font-weight:bolder; "/>
+      </af:panelFormLayout>
+   </af:panelGroupLayout><br/>
    <af:panelGroupLayout id="pgl2">
-      <af:panelFormLayout id="pfl1" rows="1">
-         <af:panelGroupLayout id="pgl3" layout="horizontal" inlineStyle="width:820px;">
+      <af:panelFormLayout id="pfl1" rows="1" inlineStyle="width:700px; height:60px;">
+         <af:panelGroupLayout id="pgl3" layout="horizontal" inlineStyle="width:700px;">
             <!--<af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                           required="#{bindings.Requisition_no.hints.mandatory}" readOnly="true"
                           columns="#{bindings.Requisition_no.hints.displayWidth}"
@@ -57,24 +59,25 @@
                    selectedRowKeys="#{bindings.Item_Details1.collectionModel.selectedRow}"
                 selectionListener="#{bindings.Item_Details1.collectionModel.makeCurrent}" rowSelection="single"
                    emptyText="#{bindings.Item_Details1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="633">
-            <af:column headerText="Type" id="c1" align="center">
+                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="729"
+                   inlineStyle="margin-left:11px;">
+            <af:column headerText="Type" id="c1" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}" id="ot1"/>
             </af:column>
-            <af:column headerText="Description" id="c2" align="center">
+            <af:column headerText="Description" id="c2" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Description}" shortDesc="#{bindings.Item_Details1.hints.Description.tooltip}"
                               id="ot2"/>
             </af:column>
-            <af:column headerText="Code" id="c3" align="center">
+            <af:column headerText="Code" id="c3" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Code}" shortDesc="#{bindings.Item_Details1.hints.Code.tooltip}" id="ot3"/>
             </af:column>
-            <af:column headerText="Quantity" id="c4" align="center">
+            <af:column headerText="Quantity" id="c4" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Quantity}" shortDesc="#{bindings.Item_Details1.hints.Quantity.tooltip}"
                               id="ot4">
                   <af:convertNumber groupingUsed="false" pattern="#{bindings.Item_Details1.hints.Quantity.format}"/>
                </af:outputText>
             </af:column>
-            <af:column headerText="Rate" id="c5" align="center">
+            <af:column headerText="Rate" id="c5" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Rate}" shortDesc="#{bindings.Item_Details1.hints.Rate.tooltip}" id="ot5">
                   <af:convertNumber groupingUsed="false" pattern="#{bindings.Item_Details1.hints.Rate.format}"/>
                </af:outputText>
@@ -83,7 +86,7 @@
                <af:outputText value="#{row.Preferred_Supplier}"
                               shortDesc="#{bindings.Item_Details1.hints.Preferred_Supplier.tooltip}" id="ot6"/>
             </af:column>-->
-            <af:column headerText="Need by" id="c7" align="center">
+            <af:column headerText="Need by" id="c7" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Need_by}" shortDesc="#{bindings.Item_Details1.hints.Need_by.tooltip}"
                               id="ot7">
                   <af:convertDateTime pattern="#{bindings.Item_Details1.hints.Need_by.format}"/>
@@ -106,7 +109,7 @@
          <af:panelGroupLayout id="pgl8">
             <af:panelGridLayout id="pgl4">
                <af:gridRow marginTop="5px" height="auto" id="gr1">
-                  <af:gridCell marginStart="5px" width="auto" id="gc1">
+                  <af:gridCell width="auto" id="gc1">
                      <af:inputText value="#{bindings.Type.inputValue}" label="Type:"
                                    required="#{bindings.Type.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Type.hints.displayWidth}"
@@ -116,7 +119,7 @@
                         <f:validator binding="#{bindings.Type.validator}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="25px" width="auto" id="gc2">
+                  <af:gridCell marginStart="75px" width="auto" id="gc2">
                      <af:inputText value="#{bindings.Description.inputValue}" label="Description:"
                                    required="#{bindings.Description.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Description.hints.displayWidth}"
@@ -125,7 +128,7 @@
                         <f:validator binding="#{bindings.Description.validator}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="25px" width="auto" id="gc3">
+                  <af:gridCell marginStart="75px" width="auto" id="gc3">
                      <af:inputText value="#{bindings.Code.inputValue}" label="Code:"
                                    required="#{bindings.Code.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Code.hints.displayWidth}"
@@ -134,7 +137,7 @@
                         <f:validator binding="#{bindings.Code.validator}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="25px" width="auto" id="gc4">
+                  <af:gridCell marginStart="75px" width="auto" id="gc4">
                      <af:inputText value="#{bindings.Quantity.inputValue}" label="Quantity:"
                                    required="#{bindings.Quantity.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Quantity.hints.displayWidth}"
@@ -144,7 +147,7 @@
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Quantity.format}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="25px" width="auto" marginEnd="5px" id="gc5">
+                  <af:gridCell marginStart="75px" width="auto" marginEnd="5px" id="gc5">
                      <af:inputText value="#{bindings.Rate.inputValue}" label="Rate:"
                                    required="#{bindings.Rate.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Rate.hints.displayWidth}"
@@ -160,7 +163,7 @@
                      <af:inputText required="#{bindings.Preferred_Supplier.hints.mandatory}" readOnly="true"
                                    maximumLength="#{bindings.Preferred_Supplier.hints.precision}"
                                    shortDesc="#{bindings.Preferred_Supplier.hints.tooltip}" id="it9"
-                                   value="#{bindings.Preferred_Supplier.inputValue}" inlineStyle="width:50px;"
+                                   value="#{bindings.Preferred_Supplier.inputValue}"
                                    label="Preferred Supplier:"
                                    columns="#{bindings.Preferred_Supplier.hints.displayWidth}" styleClass="Enteredfont">
                         <f:validator binding="#{bindings.Preferred_Supplier.validator}"/>
@@ -178,7 +181,7 @@
                   <af:gridCell marginStart="5px" width="auto" id="gc9"/>
                   <af:gridCell marginStart="5px" width="auto" marginEnd="5px" id="gc10"/>
                </af:gridRow>
-               <af:gridRow marginTop="25px" height="auto" marginBottom="5px" id="gr3">
+               <af:gridRow marginTop="25px" height="auto" id="gr3">
                   <af:gridCell marginStart="5px" width="auto" id="gc11">
                      <af:inputText value="#{bindings.Operating_unit.inputValue}" label="Operating Unit:"
                                    required="#{bindings.Operating_unit.hints.mandatory}" readOnly="true"
@@ -219,9 +222,9 @@
       <af:button actionListener="#{bindings.REJECT.execute}" text="REJECT" disabled="#{!bindings.REJECT.enabled}"
                  id="b2"/>-->
     <br/>
-      <af:panelLabelAndMessage label="Total Value" id="plam1">
+      <af:panelLabelAndMessage label="Total Value" id="plam1" styleClass="LabelEffect" inlineStyle="margin-left:12px;">
          <af:outputText value="#{bindings.Total_value.inputValue}" shortDesc="#{bindings.Total_value.hints.tooltip}"
-                        id="ot6">
+                        id="ot6" styleClass="outputfont">
             <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
          </af:outputText>
       </af:panelLabelAndMessage>
@@ -229,9 +232,9 @@
     <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
                     required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
                     maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
-                    id="it13">
+                    id="it13" styleClass="Enteredfont" inlineStyle="margin-left:12px;">
          <f:validator binding="#{bindings.Comments.validator}"/>
-      </af:inputText>
+      </af:inputText><br/><br/>
    </af:panelGroupLayout><br/><br/>
   
 </jsp:root>
