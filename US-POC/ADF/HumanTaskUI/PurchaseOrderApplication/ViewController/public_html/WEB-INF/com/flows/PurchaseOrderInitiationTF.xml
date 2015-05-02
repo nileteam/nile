@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="PurchaseOrderInitiationTF">
-    <default-activity>OnLoad</default-activity>
+    <default-activity>OnLoading</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
     <managed-bean id="__5">
-      <managed-bean-name>POBean</managed-bean-name>
-      <managed-bean-class>com.view.beans.POBean</managed-bean-class>
+      <managed-bean-name>PurchaseOrderBean</managed-bean-name>
+      <managed-bean-class>com.view.beans.PurchaseOrder</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
     <view id="purchaseOrderInitiationFragment">
       <page>/WEB-INF/com/fragments/purchaseOrderInitiationFragment.jsff</page>
     </view>
-    <method-call id="OnLoad">
-      <method>#{pageFlowScope.POBean.OnLoad}</method>
+    <method-call id="OnLoading">
+      <method>#{pageFlowScope.PurchaseOrderBean.OnLoad}</method>
       <outcome>
         <fixed-outcome>Go</fixed-outcome>
       </outcome>
     </method-call>
     <control-flow-rule id="__1">
-      <from-activity-id>OnLoad</from-activity-id>
+      <from-activity-id>OnLoading</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>Go</from-outcome>
         <to-activity-id>purchaseOrderInitiationFragment</to-activity-id>

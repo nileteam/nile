@@ -187,12 +187,21 @@
          </af:outputText>
       </af:panelLabelAndMessage>
       <br/>
-    <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
-                    required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
-                    maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
-                    id="it13">
-         <f:validator binding="#{bindings.Comments.validator}"/>
-      </af:inputText>
+     <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
+                      required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
+                      maximumLength="#{bindings.Comments.hints.precision}"
+                      shortDesc="#{bindings.Comments.hints.tooltip}" id="it13"
+                      binding="#{pageFlowScope.PurchaseOrderBean.commentBVar}">
+            <f:validator binding="#{bindings.Comments.validator}"/>
+        </af:inputText>
+        <af:button text="REJECT" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}" id="b1"/>
+        <af:popup binding="#{pageFlowScope.PurchaseOrderBean.reject_popup}" childCreation="deferred"
+                  autoCancel="disabled" id="p1" contentDelivery="immediate">
+            <af:dialog id="d1">
+                <f:facet name="buttonBar"/>
+                <af:outputText value="Please enter Comments" id="ot30"/>
+            </af:dialog>
+        </af:popup>
    </af:panelGroupLayout><br/><br/>
   
 </jsp:root>

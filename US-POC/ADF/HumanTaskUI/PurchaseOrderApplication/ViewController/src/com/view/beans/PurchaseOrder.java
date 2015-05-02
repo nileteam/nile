@@ -1,0 +1,563 @@
+package com.view.beans;
+
+import java.math.BigDecimal;
+
+import java.util.Map;
+
+import javax.faces.context.FacesContext;
+
+import java.math.BigInteger;
+
+import java.sql.Connection;
+
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+
+import java.util.Calendar;
+import java.util.Date;
+
+import javax.faces.application.FacesMessage;
+
+import javax.faces.component.UIComponent;
+import javax.faces.event.ActionEvent;
+
+import javax.faces.event.ValueChangeEvent;
+
+import javax.naming.NamingException;
+
+import javax.sql.DataSource;
+
+import oracle.adf.model.BindingContext;
+import oracle.adf.model.binding.DCBindingContainer;
+import oracle.adf.model.binding.DCIteratorBinding;
+import oracle.adf.view.rich.component.rich.RichPopup;
+import oracle.adf.view.rich.component.rich.data.RichTable;
+import oracle.adf.view.rich.component.rich.input.RichInputDate;
+import oracle.adf.view.rich.component.rich.input.RichInputText;
+import oracle.adf.view.rich.component.rich.input.RichSelectOneChoice;
+
+import oracle.adf.view.rich.component.rich.output.RichOutputText;
+import oracle.adf.view.rich.context.AdfFacesContext;
+
+import oracle.binding.OperationBinding;
+
+import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
+import oracle.jbo.ViewObject;
+import oracle.jbo.server.ViewObjectImpl;
+
+import oracle.security.xml.ws.addressing.bindings.To;
+
+import org.apache.myfaces.trinidad.event.SelectionEvent;
+import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
+import org.apache.myfaces.trinidad.util.Service;
+
+import javax.naming.Context;
+import javax.naming.InitialContext;
+import javax.naming.NamingException;
+
+public class PurchaseOrder {
+
+    private RichInputText operunitBVar;
+    private RichInputText toatlVal;
+    private RichTable table;
+    int totalvalue;
+    private RichOutputText requisitionBVar;
+    private String codename;
+    private String itemname;
+    private RichInputText commentBVar;
+    private RichPopup reject_popup;
+    private RichInputText codeBVar;
+    private RichInputText quantityBVar;
+    private RichInputText rateBVar;
+    private RichSelectOneChoice preferedsuppBVar;
+    private RichInputDate needbyBVar;
+    private RichSelectOneChoice projectBVar;
+    private RichSelectOneChoice taskBVar;
+    private Date minDate = new Date();
+    private RichSelectOneChoice typeBVar;
+    private RichOutputText requesterBVar;
+    private RichPopup save_popup;
+    private RichPopup submit_popup;
+    private RichSelectOneChoice desciptionBVar;
+    private RichOutputText item_idoutputtext;
+
+    public PurchaseOrder() {
+    }
+
+    public void OnLoad() {
+        System.out.println("into onload of new bean");
+        OperationBinding createInsertOP = ADFUtils.findOperation("CreateInsert");
+        createInsertOP.execute();
+        System.out.println("into onload#####");
+        //        OperationBinding createInsertOP1 = ADFUtils.findOperation("CreateInsert");
+        //        createInsertOP1.execute();
+
+        //table.setVisible(false);
+    }
+
+    public String saveButton() {
+        int calculateTotal = 0;
+        if (rateBVar.getValue() != null && quantityBVar.getValue() != null) {
+            DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+            ViewObjectImpl TotalValue =
+                (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+
+            RowSetIterator rit = TotalValue.createRowSetIterator(null);
+
+            while (rit.hasNext()) {
+                Row row = rit.next();
+                System.out.println("---------------------" + (Number) row.getAttribute("Rate"));
+                System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
+
+                Number quantity = (Number) row.getAttribute("Quantity");
+                Number rate = (Number) row.getAttribute("Rate");
+                int rateint = rate.intValue();
+                int qtyint = quantity.intValue();
+                calculateTotal += rateint * qtyint;
+
+                //requesterBVar.getValue();
+                System.out.println("requester is " + requesterBVar.getValue());
+
+
+                typeBVar.setDisabled(true);
+                desciptionBVar.setDisabled(true);
+                codeBVar.setDisabled(true);
+                quantityBVar.setDisabled(true);
+                rateBVar.setDisabled(true);
+                preferedsuppBVar.setDisabled(true);
+                needbyBVar.setDisabled(true);
+                operunitBVar.setDisabled(true);
+                projectBVar.setDisabled(true);
+                taskBVar.setDisabled(true);
+
+            }
+            ViewObjectImpl HeaderItem = (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
+            RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
+            ViewObjectImpl ItemVO =
+                (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+            RowSetIterator ritItemVO = ItemVO.createRowSetIterator(null);
+
+            totalvalue = calculateTotal;
+            while (rit1.hasNext()) {
+                Row row1 = rit1.next();
+                row1.setAttribute("Total_value", totalvalue);
+                row1.setAttribute("Requester", requesterBVar.getValue());
+
+            }
+            while (ritItemVO.hasNext()) {
+                Row row1 = ritItemVO.next();
+                row1.setAttribute("Type", itemname);
+                //System.out.println("*************************"+getItemname());
+                row1.setAttribute("Description", typename);
+                row1.setAttribute("Code", codename);
+            }
+
+            OperationBinding Save = ADFUtils.findOperation("Commit");
+            Save.execute();
+        }
+
+        else {
+            //Utilities.showMsg("Please enter Rate and Quantity","Info");
+            //showmesage("Please enter Rate and Quantity");        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+            DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+            ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+
+            Row currentRow = vo1.getCurrentRow();
+            System.out.println("currentRow-----" + currentRow);
+            currentRow.remove();
+            OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert1");
+            CreateInsert.execute();
+            AdfFacesContext.getCurrentInstance().addPartialTarget(table);
+            showPopup(save_popup, true);
+            return null;
+        }
+        System.out.println("total value is " + totalvalue);
+        return null;
+    }
+
+
+    private void showPopup(RichPopup pop, boolean visible) {
+        try {
+            FacesContext context = FacesContext.getCurrentInstance();
+            if (context != null && pop != null) {
+                String popupId = pop.getClientId(context);
+                if (popupId != null) {
+                    StringBuilder script = new StringBuilder();
+                    script.append("var popup = AdfPage.PAGE.findComponent('").append(popupId).append("'); ");
+                    if (visible) {
+                        script.append("if (!popup.isPopupVisible()) { ").append("popup.show();}");
+                    } else {
+                        script.append("if (popup.isPopupVisible()) { ").append("popup.hide();}");
+                    }
+                    ExtendedRenderKitService erks =
+                        Service.getService(context.getRenderKit(), ExtendedRenderKitService.class);
+                    erks.addScript(context, script.toString());
+                }
+            }
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    public Date getMaxDateVal() {
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DATE, 300);
+        return cal.getTime();
+
+    }
+
+    public Date getMinDate() {
+        try {
+            Calendar cal = Calendar.getInstance();
+            java.util.Date date = cal.getTime();
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDate = formatter.format(date);
+            minDate = formatter.parse(currentDate);
+
+            return formatter.parse(currentDate);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+
+
+    public String Submit_Initiator() {
+        System.out.println("rate is qu" + rateBVar.getValue());
+        if (rateBVar.getValue() != null && quantityBVar.getValue() != null) {
+            OperationBinding createInsertOP = ADFUtils.findOperation("SUBMIT");
+            createInsertOP.execute();
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                             ExtendedRenderKitService.class);
+            service.addScript(facesContext,
+                              "window.close();window.opener.location.href = window.opener.location.href;");
+        } else {
+            showPopup(submit_popup, true);
+        }
+        return null;
+    }
+
+    public String createinsert_button() {
+        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert1");
+        CreateInsert.execute();
+        AdfFacesContext.getCurrentInstance().addPartialTarget(table);
+        typeBVar.setDisabled(false);
+        desciptionBVar.setDisabled(false);
+        codeBVar.setDisabled(false);
+        quantityBVar.setDisabled(false);
+        rateBVar.setDisabled(false);
+        preferedsuppBVar.setDisabled(false);
+        needbyBVar.setDisabled(false);
+        operunitBVar.setDisabled(false);
+        projectBVar.setDisabled(false);
+        taskBVar.setDisabled(false);
+        return null;
+    }
+
+    public void table_selection(SelectionEvent selectionEvent) {
+        System.out.println(")))))))))))))))))))))))in selection listner");
+        ADFUtils.invokeEL("#{bindings.Item_Details.collectionModel.makeCurrent}", new Class[] { SelectionEvent.class }, new Object[] {
+                          selectionEvent });
+        // get the selected row , by this you can get any attribute of that row
+        Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsIterator.currentRow}");
+
+        typeBVar.setDisabled(false);
+        desciptionBVar.setDisabled(false);
+        codeBVar.setDisabled(false);
+        quantityBVar.setDisabled(false);
+        rateBVar.setDisabled(false);
+        preferedsuppBVar.setDisabled(false);
+        needbyBVar.setDisabled(false);
+        operunitBVar.setDisabled(false);
+        projectBVar.setDisabled(false);
+        taskBVar.setDisabled(false);
+
+        //to show popup, you can write your logic here , what you wanna do
+
+    }
+    
+    public static Connection getConnection(String dsName) throws NamingException, SQLException {
+        Connection con = null;
+        DataSource datasource = null;
+        Context initialContext = new InitialContext();
+        if (initialContext == null) {
+        } else {
+            datasource = (DataSource) initialContext.lookup(dsName);
+            if (datasource != null) {
+                con = datasource.getConnection();
+            } else {
+
+            }
+        }
+        return con;
+    }
+
+    public void Item_idSOC(ValueChangeEvent vce) {
+        String socval = typeBVar.getValue().toString();
+        System.out.println("soc bind value" + socval);
+        System.out.println("vce value" + vce.getNewValue().toString());
+        Connection conn = null;
+        PreparedStatement psTotal = null;
+        ResultSet rsTotal = null;
+
+        try {
+            conn = getConnection("jdbc/NileDBDS");
+            String Query = "select ITEM_NAME FROM ITEM I where I.ITEM_ID='" + socval + "'";
+
+            psTotal = conn.prepareStatement(Query);
+            rsTotal = psTotal.executeQuery();
+            System.out.println("query is" + Query);
+            while (rsTotal.next()) {
+                itemname = rsTotal.getString(1);
+                System.out.println("item name is" + itemname);
+
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NamingException e) {
+        }
+
+
+    }
+
+    public void typeSelectedValue(ValueChangeEvent valueChangeEvent) {
+        String socval = desciptionBVar.getValue().toString();
+        System.out.println("soc5 bind value" + socval);
+        Connection conn = null;
+        PreparedStatement psTotal = null;
+        ResultSet rsTotal = null;
+        PreparedStatement ps2 = null;
+        ResultSet rs2 = null;
+        try {
+            conn = getConnection("jdbc/NileDBDS");
+            String Query1 = "select TYPE_NAME FROM TYPE T where T.TYPE_ID='" + socval + "'";
+            String Query = "select CODE_NAME FROM CODE C where C.TYPE_ID='" + socval + "'";
+            ps2 = conn.prepareStatement(Query1);
+            rs2 = ps2.executeQuery();
+            System.out.println("query1 is" + Query1);
+            while (rs2.next()) {
+                typename = rs2.getString(1);
+                System.out.println("TYpe name is" + typename);
+            }
+            psTotal = conn.prepareStatement(Query);
+            rsTotal = psTotal.executeQuery();
+            System.out.println("query is" + Query);
+            while (rsTotal.next()) {
+                codename = rsTotal.getString(1);
+                System.out.println("item name is" + codename);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        } catch (NamingException e) {
+        }
+
+    }
+
+    public String Reject_NonEditable() {
+        System.out.println("in Reject Method");
+        if (commentBVar.getValue() != null) {
+            OperationBinding createInsertOP = ADFUtils.findOperation("REJECT");
+            createInsertOP.execute();
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                             ExtendedRenderKitService.class);
+            service.addScript(facesContext,
+                              "window.close();window.opener.location.href = window.opener.location.href;");
+        } else {
+        showPopup(reject_popup, true);       
+        }
+        return null;
+    }
+
+    public void setTotalvalue(int totalvalue) {
+        this.totalvalue = totalvalue;
+    }
+
+    public int getTotalvalue() {
+        return totalvalue;
+    }
+
+    public void setTypeBVar(RichSelectOneChoice typeBVar) {
+        this.typeBVar = typeBVar;
+    }
+
+    public RichSelectOneChoice getTypeBVar() {
+        return typeBVar;
+    }
+
+
+    public void setCodeBVar(RichInputText codeBVar) {
+        this.codeBVar = codeBVar;
+    }
+
+    public RichInputText getCodeBVar() {
+        return codeBVar;
+    }
+
+    public void setQuantityBVar(RichInputText quantityBVar) {
+        this.quantityBVar = quantityBVar;
+    }
+
+    public RichInputText getQuantityBVar() {
+        return quantityBVar;
+    }
+
+    public void setRateBVar(RichInputText rateBVar) {
+        this.rateBVar = rateBVar;
+    }
+
+    public RichInputText getRateBVar() {
+        return rateBVar;
+    }
+
+    public void setPreferedsuppBVar(RichSelectOneChoice preferedsuppBVar) {
+        this.preferedsuppBVar = preferedsuppBVar;
+    }
+
+    public RichSelectOneChoice getPreferedsuppBVar() {
+        return preferedsuppBVar;
+    }
+
+    public void setNeedbyBVar(RichInputDate needbyBVar) {
+        this.needbyBVar = needbyBVar;
+    }
+
+    public RichInputDate getNeedbyBVar() {
+        return needbyBVar;
+    }
+
+    public void setProjectBVar(RichSelectOneChoice projectBVar) {
+        this.projectBVar = projectBVar;
+    }
+
+    public RichSelectOneChoice getProjectBVar() {
+        return projectBVar;
+    }
+
+    public void setTaskBVar(RichSelectOneChoice taskBVar) {
+        this.taskBVar = taskBVar;
+    }
+
+    public RichSelectOneChoice getTaskBVar() {
+        return taskBVar;
+    }
+
+    public void setOperunitBVar(RichInputText operunitBVar) {
+        this.operunitBVar = operunitBVar;
+    }
+
+    public RichInputText getOperunitBVar() {
+        return operunitBVar;
+    }
+
+    public void setToatlVal(RichInputText toatlVal) {
+        this.toatlVal = toatlVal;
+    }
+
+    public RichInputText getToatlVal() {
+        return toatlVal;
+    }
+
+    public void setRequisitionBVar(RichOutputText requisitionBVar) {
+        this.requisitionBVar = requisitionBVar;
+    }
+
+    public RichOutputText getRequisitionBVar() {
+        return requisitionBVar;
+    }
+
+    public void setRequesterBVar(RichOutputText requesterBVar) {
+        this.requesterBVar = requesterBVar;
+    }
+
+    public RichOutputText getRequesterBVar() {
+        return requesterBVar;
+    }
+
+    public void setSave_popup(RichPopup save_popup) {
+        this.save_popup = save_popup;
+    }
+
+    public RichPopup getSave_popup() {
+        return save_popup;
+    }
+
+    public void setSubmit_popup(RichPopup submit_popup) {
+        this.submit_popup = submit_popup;
+    }
+
+    public RichPopup getSubmit_popup() {
+        return submit_popup;
+    }
+
+   
+    public void setDesciptionBVar(RichSelectOneChoice desciptionBVar) {
+        this.desciptionBVar = desciptionBVar;
+    }
+
+    public RichSelectOneChoice getDesciptionBVar() {
+        return desciptionBVar;
+    }
+
+
+    public void setItem_idoutputtext(RichOutputText item_idoutputtext) {
+        this.item_idoutputtext = item_idoutputtext;
+    }
+
+    public RichOutputText getItem_idoutputtext() {
+        return item_idoutputtext;
+    }
+
+
+
+    public void setCommentBVar(RichInputText commentBVar) {
+        this.commentBVar = commentBVar;
+    }
+
+    public RichInputText getCommentBVar() {
+        return commentBVar;
+    }
+
+    public void setReject_popup(RichPopup reject_popup) {
+        this.reject_popup = reject_popup;
+    }
+
+    public RichPopup getReject_popup() {
+        return reject_popup;
+    }
+    public void setItemname(String itemname) {
+        this.itemname = itemname;
+    }
+
+    public String getItemname() {
+        return itemname;
+    }
+    private String typename;
+
+    public void setCodename(String codename) {
+        this.codename = codename;
+    }
+
+    public String getCodename() {
+        return codename;
+    }
+    public void setTable(RichTable table) {
+        this.table = table;
+    }
+
+    public RichTable getTable() {
+        return table;
+    }
+
+    public String createinsertbutton() {
+        return null;
+    }
+}
