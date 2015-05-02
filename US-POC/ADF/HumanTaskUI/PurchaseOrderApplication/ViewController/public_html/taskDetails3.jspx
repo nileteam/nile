@@ -153,6 +153,7 @@
                             </af:commandImageLink>
                             <af:commandImageLink id="l2" actionListener="#{invokeActionBean.setOperation}"
                                                  disabled="#{!bindings.REJECT.enabled}"
+                                                 rendered="false"
                                                  action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
                                                  visible="#{wf:isCustomActionAvailable('REJECT', 'bindings.customActions')}"
                                                  icon="#{resource['images:RejectButton.png']}"
