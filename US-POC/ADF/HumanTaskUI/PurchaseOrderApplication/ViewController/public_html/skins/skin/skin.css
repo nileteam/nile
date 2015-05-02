@@ -3,35 +3,66 @@
 @namespace af "http://xmlns.oracle.com/adf/faces/rich";
 @namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
 
-.testskin{
-font-family: Arial;
+.fonteffect{
+font-family:Lucida Sans;
+font-style: normal;
+font-size: 18px;
+}
+.btnstyle
+{
+font-family:Calibri;
+font-size: 26px;
+}
+.outputfont
+{
+font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
+}
+.Enteredfont af|inputText::content
+{ 
+    font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
+}
 
-font-size: 12px;
-padding-left: 50px;
+.tt af|column::column-header-cell-content
+{
+    font-size: 15px;
+    color: Red;
+    
+  
+}
 
-text-align: left;
-color: black;
-background-color: LightGray; 
+.FontDrpdwn af|selectOneChoice::content
+{
+    font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
 
+}
+.Fontdate af|inputDate::content
+{
+font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
 }
 
 af|button {
- background :  #20B2AA;
- height: 20px;
 
- width: 100px;
-        text-align: right;
-         font: 10pt bold Verdana, Arial, Helvetica, sans-serif ;
-         color:white;
+ height: 33px;
+ width: 124px;
+ background-color: White;
+
       
-         border-radius:15px;
-        text-align: center;
+         
+       
    
 }
 .drpdwnround af|selectOneChoice::content
 {
 
-   background-color:#d6d6d6;
+   background-color:#cfd0cf;
    
 }
 
@@ -39,10 +70,42 @@ af|button {
 
 .iputtxtround af|inputText::content{
 
- background-color: #d6d6d6;
+ background-color: #cfd0cf;
 }
 .init {
        background-color:Black;
 }
 
+.head
+{
+ font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
 
+}
+af|table af|column::column-header-cell
+{
+    
+   font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
+    
+}
+af|inputText::label
+{
+font-size: 15px;
+}
+af|inputDate::label
+{
+ font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
+
+}
+
+.LabelEffect af|panelLabelAndMessage::label
+{ 
+    font-family: Lucida Sans;
+    font-size: 15px;
+    font-style: normal;
+}

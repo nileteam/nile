@@ -2,12 +2,14 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core" xmlns:tr="http://myfaces.apache.org/trinidad">
  <af:panelGroupLayout id="pgl1" inlineStyle="width:auto;">
-    <af:outputText value="Approval/Rejection for New PO" id="ot11"
-                   inlineStyle="font-size:large; font-weight:bolder;background-color: LightGray; margin-left:12px;"/>
-  </af:panelGroupLayout><br/>
+      <af:panelFormLayout id="pfl3" inlineStyle="width:720px; margin-left:10px; height:28px; background-color:#cfd0cf;">
+         <af:outputText value="Approval/Rejection for New PO" id="ot11"
+                        inlineStyle="font-size:large; font-weight:bolder; " styleClass="fonteffect"/>
+      </af:panelFormLayout>
+   </af:panelGroupLayout><br/>
    <af:panelGroupLayout id="pgl2">
-      <af:panelFormLayout id="pfl1" rows="1">
-         <af:panelGroupLayout id="pgl3" layout="horizontal" inlineStyle="width:820px;">
+      <af:panelFormLayout id="pfl1" rows="1" inlineStyle="width:700px; height:60px;">
+         <af:panelGroupLayout id="pgl3" layout="horizontal" inlineStyle="width:700px;">
             <!--<af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                           required="#{bindings.Requisition_no.hints.mandatory}" readOnly="true"
                           columns="#{bindings.Requisition_no.hints.displayWidth}"
@@ -32,12 +34,23 @@
                           labelStyle="font-size:15px;margin-left:4px;">
                <f:validator binding="#{bindings.Status.validator}"/>
             </af:inputText>-->
-            <af:outputText value="#{bindings.Requisition_no.inputValue}"
-                           shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="ot8"/>
-            <af:outputText value="#{bindings.Requester.inputValue}" shortDesc="#{bindings.Requester.hints.tooltip}"
-                           id="ot9"/>
-            <af:outputText value="#{bindings.Status.inputValue}" shortDesc="#{bindings.Status.hints.tooltip}"
-                           id="ot10"/>
+            <af:panelGroupLayout id="pgl6">
+            <af:outputText value="Requisition No:" id="ot24" inlineStyle="margin-left:4px;"
+                               styleClass="fonteffect"/>
+               <af:outputText value="#{bindings.Requisition_no.inputValue}"
+                              shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="ot8"
+                               inlineStyle="margin-left:5px;" styleClass="outputfont"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl7">
+             <af:outputText value="Requester:" id="ot29" styleClass="fonteffect"/>
+               <af:outputText value="#{bindings.Requester.inputValue}" shortDesc="#{bindings.Requester.hints.tooltip}"
+                              id="ot9" inlineStyle="margin-left:5px;" styleClass="outputfont"/>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl9">
+            <af:outputText value="Status:" id="ot25" styleClass="fonteffect"/>
+               <af:outputText value="#{bindings.Status.inputValue}" shortDesc="#{bindings.Status.hints.tooltip}"
+                              id="ot10" inlineStyle="margin-left:5px;" styleClass="outputfont"/>
+            </af:panelGroupLayout>
          </af:panelGroupLayout><br/><br/>
       </af:panelFormLayout>
        <af:panelGroupLayout id="pgl5">
@@ -46,24 +59,25 @@
                    selectedRowKeys="#{bindings.Item_Details1.collectionModel.selectedRow}"
                 selectionListener="#{bindings.Item_Details1.collectionModel.makeCurrent}" rowSelection="single"
                    emptyText="#{bindings.Item_Details1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="633">
-            <af:column headerText="#{bindings.Item_Details1.hints.Type.label}" id="c1">
+                   rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="729"
+                   inlineStyle="margin-left:11px;">
+            <af:column headerText="Type" id="c1" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}" id="ot1"/>
             </af:column>
-            <af:column headerText="#{bindings.Item_Details1.hints.Description.label}" id="c2">
+            <af:column headerText="Description" id="c2" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Description}" shortDesc="#{bindings.Item_Details1.hints.Description.tooltip}"
                               id="ot2"/>
             </af:column>
-            <af:column headerText="#{bindings.Item_Details1.hints.Code.label}" id="c3">
+            <af:column headerText="Code" id="c3" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Code}" shortDesc="#{bindings.Item_Details1.hints.Code.tooltip}" id="ot3"/>
             </af:column>
-            <af:column headerText="#{bindings.Item_Details1.hints.Quantity.label}" id="c4">
+            <af:column headerText="Quantity" id="c4" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Quantity}" shortDesc="#{bindings.Item_Details1.hints.Quantity.tooltip}"
                               id="ot4">
                   <af:convertNumber groupingUsed="false" pattern="#{bindings.Item_Details1.hints.Quantity.format}"/>
                </af:outputText>
             </af:column>
-            <af:column headerText="#{bindings.Item_Details1.hints.Rate.label}" id="c5">
+            <af:column headerText="Rate" id="c5" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Rate}" shortDesc="#{bindings.Item_Details1.hints.Rate.tooltip}" id="ot5">
                   <af:convertNumber groupingUsed="false" pattern="#{bindings.Item_Details1.hints.Rate.format}"/>
                </af:outputText>
@@ -72,7 +86,7 @@
                <af:outputText value="#{row.Preferred_Supplier}"
                               shortDesc="#{bindings.Item_Details1.hints.Preferred_Supplier.tooltip}" id="ot6"/>
             </af:column>-->
-            <af:column headerText="#{bindings.Item_Details1.hints.Need_by.label}" id="c7">
+            <af:column headerText="Need by" id="c7" align="center" styleClass="head" width="116">
                <af:outputText value="#{row.Need_by}" shortDesc="#{bindings.Item_Details1.hints.Need_by.tooltip}"
                               id="ot7">
                   <af:convertDateTime pattern="#{bindings.Item_Details1.hints.Need_by.format}"/>
@@ -91,88 +105,119 @@
             </af:column>-->
          </af:table><br/><br/>
       </af:panelGroupLayout>
-      <af:panelFormLayout id="pfl2" rows="1" labelAlignment="top">
+      <af:panelFormLayout id="pfl2" rows="1" labelAlignment="top" inlineStyle="height:217px;">
          <af:panelGroupLayout id="pgl8">
-            <af:panelGroupLayout id="pgl4" layout="horizontal" inlineStyle="width:893px;">
-               <af:inputText value="#{bindings.Type.inputValue}" label="Type:"
-                             required="#{bindings.Type.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Type.hints.displayWidth}"
-                             maximumLength="#{bindings.Type.hints.precision}" shortDesc="#{bindings.Type.hints.tooltip}"
-                             id="it4">
-                  <f:validator binding="#{bindings.Type.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Description.inputValue}" label="Description:"
-                             required="#{bindings.Description.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Description.hints.displayWidth}"
-                             maximumLength="#{bindings.Description.hints.precision}"
-                             shortDesc="#{bindings.Description.hints.tooltip}" id="it5">
-                  <f:validator binding="#{bindings.Description.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Code.inputValue}" label="Code:"
-                             required="#{bindings.Code.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Code.hints.displayWidth}"
-                             maximumLength="#{bindings.Code.hints.precision}" shortDesc="#{bindings.Code.hints.tooltip}"
-                             id="it6">
-                  <f:validator binding="#{bindings.Code.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Quantity.inputValue}" label="Quantity:"
-                             required="#{bindings.Quantity.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Quantity.hints.displayWidth}"
-                             maximumLength="#{bindings.Quantity.hints.precision}"
-                             shortDesc="#{bindings.Quantity.hints.tooltip}" id="it7">
-                  <f:validator binding="#{bindings.Quantity.validator}"/>
-                  <af:convertNumber groupingUsed="false" pattern="#{bindings.Quantity.format}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Rate.inputValue}" label="Rate:"
-                             required="#{bindings.Rate.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Rate.hints.displayWidth}"
-                             maximumLength="#{bindings.Rate.hints.precision}" shortDesc="#{bindings.Rate.hints.tooltip}"
-                             id="it8">
-                  <f:validator binding="#{bindings.Rate.validator}"/>
-                  <af:convertNumber groupingUsed="false" pattern="#{bindings.Rate.format}"/>
-               </af:inputText>
-            </af:panelGroupLayout><br/><br/>
-            <af:panelGroupLayout id="pgl6" layout="horizontal" inlineStyle="width:298px;">
-               <af:inputText
-                             required="#{bindings.Preferred_Supplier.hints.mandatory}" readOnly="true"
-                             maximumLength="#{bindings.Preferred_Supplier.hints.precision}"
-                             shortDesc="#{bindings.Preferred_Supplier.hints.tooltip}" id="it9"
-                             value="#{bindings.Preferred_Supplier.inputValue}" inlineStyle="width:50px;"
-                             label="Preferred Supplier:" columns="#{bindings.Preferred_Supplier.hints.displayWidth}">
-                  <f:validator binding="#{bindings.Preferred_Supplier.validator}"/>
-               </af:inputText>
-               <af:inputDate value="#{bindings.Need_by.inputValue}" readOnly="true"
-                             label="Need by:" required="#{bindings.Need_by.hints.mandatory}"
-                             columns="#{bindings.Need_by.hints.displayWidth}"
-                             shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1">
-                  <f:validator binding="#{bindings.Need_by.validator}"/>
-                  <af:convertDateTime pattern="#{bindings.Need_by.format}"/>
-               </af:inputDate>
-            </af:panelGroupLayout><br/><br/>
-            <af:panelGroupLayout id="pgl7" layout="horizontal" inlineStyle="width:579px;">
-               <af:inputText value="#{bindings.Operating_unit.inputValue}"
-                             label="Operating Unit:"
-                             required="#{bindings.Operating_unit.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Operating_unit.hints.displayWidth}"
-                             maximumLength="#{bindings.Operating_unit.hints.precision}"
-                             shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it10">
-                  <f:validator binding="#{bindings.Operating_unit.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Project.inputValue}" label="Project:"
-                             required="#{bindings.Project.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Project.hints.displayWidth}"
-                             maximumLength="#{bindings.Project.hints.precision}"
-                             shortDesc="#{bindings.Project.hints.tooltip}" id="it11">
-                  <f:validator binding="#{bindings.Project.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Task.inputValue}" label="Task:"
-                             required="#{bindings.Task.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Task.hints.displayWidth}"
-                             maximumLength="#{bindings.Task.hints.precision}" shortDesc="#{bindings.Task.hints.tooltip}"
-                             id="it12">
-                  <f:validator binding="#{bindings.Task.validator}"/>
-               </af:inputText>
-            </af:panelGroupLayout><br/><br/>
+            <af:panelGridLayout id="pgl4">
+               <af:gridRow marginTop="5px" height="auto" id="gr1">
+                  <af:gridCell width="auto" id="gc1">
+                     <af:inputText value="#{bindings.Type.inputValue}" label="Type:"
+                                   required="#{bindings.Type.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Type.hints.displayWidth}"
+                                   maximumLength="#{bindings.Type.hints.precision}"
+                                   shortDesc="#{bindings.Type.hints.tooltip}" id="it4"
+                                   styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Type.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="75px" width="auto" id="gc2">
+                     <af:inputText value="#{bindings.Description.inputValue}" label="Description:"
+                                   required="#{bindings.Description.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Description.hints.displayWidth}"
+                                   maximumLength="#{bindings.Description.hints.precision}"
+                                   shortDesc="#{bindings.Description.hints.tooltip}" id="it5" styleClass="Enteredfont">
+                        <f:validator binding="#{bindings.Description.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="75px" width="auto" id="gc3">
+                     <af:inputText value="#{bindings.Code.inputValue}" label="Code:"
+                                   required="#{bindings.Code.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Code.hints.displayWidth}"
+                                   maximumLength="#{bindings.Code.hints.precision}"
+                                   shortDesc="#{bindings.Code.hints.tooltip}" id="it6" styleClass="Enteredfont">
+                        <f:validator binding="#{bindings.Code.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="75px" width="auto" id="gc4">
+                     <af:inputText value="#{bindings.Quantity.inputValue}" label="Quantity:"
+                                   required="#{bindings.Quantity.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Quantity.hints.displayWidth}"
+                                   maximumLength="#{bindings.Quantity.hints.precision}"
+                                   shortDesc="#{bindings.Quantity.hints.tooltip}" id="it7" styleClass="Enteredfont">
+                        <f:validator binding="#{bindings.Quantity.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Quantity.format}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="75px" width="auto" marginEnd="5px" id="gc5"/>
+               </af:gridRow>
+               <af:gridRow marginTop="25px" height="auto" id="gr2">
+                  <af:gridCell marginStart="5px" width="auto" id="gc6">
+                     <af:inputText value="#{bindings.Rate.inputValue}" label="Rate:"
+                                   required="#{bindings.Rate.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Rate.hints.displayWidth}"
+                                   maximumLength="#{bindings.Rate.hints.precision}"
+                                   shortDesc="#{bindings.Rate.hints.tooltip}" id="it8" styleClass="Enteredfont">
+                        <f:validator binding="#{bindings.Rate.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Rate.format}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="auto" id="gc7" styleClass="fonteffect">
+                     <af:inputText required="#{bindings.Preferred_Supplier.hints.mandatory}" readOnly="true"
+                                   maximumLength="#{bindings.Preferred_Supplier.hints.precision}"
+                                   shortDesc="#{bindings.Preferred_Supplier.hints.tooltip}" id="it9"
+                                   value="#{bindings.Preferred_Supplier.inputValue}" label="Preferred Supplier:"
+                                   columns="#{bindings.Preferred_Supplier.hints.displayWidth}"
+                                   styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Preferred_Supplier.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="auto" id="gc9">
+                     <af:inputDate value="#{bindings.Need_by.inputValue}" readOnly="true" label="Need by:"
+                                   required="#{bindings.Need_by.hints.mandatory}"
+                                   columns="#{bindings.Need_by.hints.displayWidth}"
+                                   shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1"
+                                   styleClass="Enteredfont Fontdate">
+                        <f:validator binding="#{bindings.Need_by.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.Need_by.format}"/>
+                     </af:inputDate>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="auto" marginEnd="5px" id="gc10"/>
+               </af:gridRow>
+               <af:gridRow marginTop="25px" height="auto" id="gr3">
+                  <af:gridCell marginStart="5px" width="auto" id="gc11">
+                     <af:inputText value="#{bindings.Operating_unit.inputValue}" label="Operating Unit:"
+                                   required="#{bindings.Operating_unit.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Operating_unit.hints.displayWidth}"
+                                   maximumLength="#{bindings.Operating_unit.hints.precision}"
+                                   shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it10"
+                                   styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Operating_unit.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="auto" id="gc12">
+                     <af:inputText value="#{bindings.Project.inputValue}" label="Project:"
+                                   required="#{bindings.Project.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Project.hints.displayWidth}"
+                                   maximumLength="#{bindings.Project.hints.precision}"
+                                   shortDesc="#{bindings.Project.hints.tooltip}" id="it11"
+                                   styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Project.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+                  <af:gridCell marginStart="5px" width="auto" id="gc13">
+                     <af:inputText value="#{bindings.Task.inputValue}" label="Task:"
+                                   required="#{bindings.Task.hints.mandatory}" readOnly="true"
+                                   columns="#{bindings.Task.hints.displayWidth}"
+                                   maximumLength="#{bindings.Task.hints.precision}"
+                                   shortDesc="#{bindings.Task.hints.tooltip}" id="it12"
+                                   styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Task.validator}"/>
+                     </af:inputText>
+                  </af:gridCell>
+               </af:gridRow>
+            </af:panelGridLayout>
+                <br/><br/>
+           <br/><br/>
+          <br/><br/>
          </af:panelGroupLayout>
       </af:panelFormLayout>
       <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" disabled="#{!bindings.APPROVE.enabled}"
@@ -180,9 +225,9 @@
       <af:button actionListener="#{bindings.REJECT.execute}" text="REJECT" disabled="#{!bindings.REJECT.enabled}"
                  id="b2"/>-->
     <br/>
-      <af:panelLabelAndMessage label="Total Value" id="plam1">
+      <af:panelLabelAndMessage label="Total Value" id="plam1" styleClass="LabelEffect fonteffect" inlineStyle="margin-left:12px;">
          <af:outputText value="#{bindings.Total_value.inputValue}" shortDesc="#{bindings.Total_value.hints.tooltip}"
-                        id="ot6">
+                        id="ot6" styleClass="outputfont">
             <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
          </af:outputText>
       </af:panelLabelAndMessage>
@@ -190,11 +235,16 @@
      <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
                       required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
                       maximumLength="#{bindings.Comments.hints.precision}"
+                      styleClass="Enteredfont fonteffect" inlineStyle="margin-left:12px;"
                       shortDesc="#{bindings.Comments.hints.tooltip}" id="it13"
                       binding="#{pageFlowScope.PurchaseOrderBean.commentBVar}">
             <f:validator binding="#{bindings.Comments.validator}"/>
-        </af:inputText>
-        <af:button text="REJECT" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}" id="b1"/>
+        </af:inputText><br/><br/>
+
+            <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}" 
+                      icon="#{resource['images:RejectButton.png']}"
+                      inlineStyle="margin-left:10px;">
+                            </af:commandImageLink>
         <af:popup binding="#{pageFlowScope.PurchaseOrderBean.reject_popup}" childCreation="deferred"
                   autoCancel="disabled" id="p1" contentDelivery="immediate">
             <af:dialog id="d1">

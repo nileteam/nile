@@ -131,19 +131,44 @@
                         <!--<af:button actionListener="#{bindings.SUBMIT.execute}" text="SUBMIT"
                                    disabled="#{!bindings.SUBMIT.enabled}" id="b1"/>-->
                         <af:panelGroupLayout id="pgl5">
+
                             <af:button actionListener="#{invokeActionBean.setOperation}"
-                                       text="SUBMIT" rendered="false"
+                                       text="SUBMIT" rendered="false"/>
+
+                            <!--<af:button actionListener="#{invokeActionBean.setOperation}"
+                                       text="SUBMIT"
+>>>>>>> origin/master
                                        disabled="#{!bindings.SUBMIT.enabled}"
                                        action="#{pageFlowScope.PurchaseOrderBean.Submit_Initiator}" partialSubmit="false"
                                        visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
                                        id="b3" styleClass="init" inlineStyle="margin-left:12px;">
                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>
-                            </af:button>
-                            <af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
+                            </af:button>-->
+                            
+                             <af:commandImageLink id="l4"
+                             rendered="false"
+                            actionListener="#{invokeActionBean.setOperation}"
+                            disabled="#{!bindings.SUBMIT.enabled}" 
+                             action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
+                             visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
+                                 inlineStyle="margin-left:12px;" icon="#{resource['images:SUBMIT-Black.png']}">
+                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT" />
+                                </af:commandImageLink>
+                                
+                            
+                            <!--<af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
                                        action="#{invokeActionBean.action}" id="b2" styleClass="init"
                                        inlineStyle="margin-left:10px;">
                                 <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
-                            </af:button>
+                            </af:button>-->
+                            
+                            <af:commandImageLink  id="l5"
+                                actionListener="#{invokeActionBean.setAction}"
+                                action="#{invokeActionBean.action}"
+                                inlineStyle="margin-left:10px;" icon="#{resource['images:SAVE-Black.png']}">
+                                 <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
+                                 </af:commandImageLink>
+                            
                         </af:panelGroupLayout>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
