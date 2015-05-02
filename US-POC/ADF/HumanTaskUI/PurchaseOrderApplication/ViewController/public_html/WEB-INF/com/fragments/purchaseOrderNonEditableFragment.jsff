@@ -4,7 +4,7 @@
  <af:panelGroupLayout id="pgl1" inlineStyle="width:auto;">
       <af:panelFormLayout id="pfl3" inlineStyle="width:720px; margin-left:10px; height:28px; background-color:#cfd0cf;">
          <af:outputText value="Approval/Rejection for New PO" id="ot11"
-                        inlineStyle="font-size:large; font-weight:bolder; "/>
+                        inlineStyle="font-size:large; font-weight:bolder; " styleClass="fonteffect"/>
       </af:panelFormLayout>
    </af:panelGroupLayout><br/>
    <af:panelGroupLayout id="pgl2">
@@ -115,7 +115,7 @@
                                    columns="#{bindings.Type.hints.displayWidth}"
                                    maximumLength="#{bindings.Type.hints.precision}"
                                    shortDesc="#{bindings.Type.hints.tooltip}" id="it4"
-                                   styleClass="Enteredfont">
+                                   styleClass="Enteredfont fonteffect">
                         <f:validator binding="#{bindings.Type.validator}"/>
                      </af:inputText>
                   </af:gridCell>
@@ -147,7 +147,10 @@
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Quantity.format}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="75px" width="auto" marginEnd="5px" id="gc5">
+                  <af:gridCell marginStart="75px" width="auto" marginEnd="5px" id="gc5"/>
+               </af:gridRow>
+               <af:gridRow marginTop="25px" height="auto" id="gr2">
+                  <af:gridCell marginStart="5px" width="auto" id="gc6">
                      <af:inputText value="#{bindings.Rate.inputValue}" label="Rate:"
                                    required="#{bindings.Rate.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Rate.hints.displayWidth}"
@@ -157,28 +160,26 @@
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Rate.format}"/>
                      </af:inputText>
                   </af:gridCell>
-               </af:gridRow>
-               <af:gridRow marginTop="25px" height="auto" id="gr2">
-                  <af:gridCell marginStart="5px" width="auto" id="gc6">
+                  <af:gridCell marginStart="5px" width="auto" id="gc7" styleClass="fonteffect">
                      <af:inputText required="#{bindings.Preferred_Supplier.hints.mandatory}" readOnly="true"
                                    maximumLength="#{bindings.Preferred_Supplier.hints.precision}"
                                    shortDesc="#{bindings.Preferred_Supplier.hints.tooltip}" id="it9"
-                                   value="#{bindings.Preferred_Supplier.inputValue}"
-                                   label="Preferred Supplier:"
-                                   columns="#{bindings.Preferred_Supplier.hints.displayWidth}" styleClass="Enteredfont">
+                                   value="#{bindings.Preferred_Supplier.inputValue}" label="Preferred Supplier:"
+                                   columns="#{bindings.Preferred_Supplier.hints.displayWidth}"
+                                   styleClass="Enteredfont fonteffect">
                         <f:validator binding="#{bindings.Preferred_Supplier.validator}"/>
                      </af:inputText>
                   </af:gridCell>
-                  <af:gridCell marginStart="5px" width="auto" id="gc7">
+                  <af:gridCell marginStart="5px" width="auto" id="gc9">
                      <af:inputDate value="#{bindings.Need_by.inputValue}" readOnly="true" label="Need by:"
                                    required="#{bindings.Need_by.hints.mandatory}"
                                    columns="#{bindings.Need_by.hints.displayWidth}"
-                                   shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1" styleClass="Enteredfont">
+                                   shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1"
+                                   styleClass="Enteredfont Fontdate">
                         <f:validator binding="#{bindings.Need_by.validator}"/>
                         <af:convertDateTime pattern="#{bindings.Need_by.format}"/>
                      </af:inputDate>
                   </af:gridCell>
-                  <af:gridCell marginStart="5px" width="auto" id="gc9"/>
                   <af:gridCell marginStart="5px" width="auto" marginEnd="5px" id="gc10"/>
                </af:gridRow>
                <af:gridRow marginTop="25px" height="auto" id="gr3">
@@ -188,7 +189,7 @@
                                    columns="#{bindings.Operating_unit.hints.displayWidth}"
                                    maximumLength="#{bindings.Operating_unit.hints.precision}"
                                    shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it10"
-                                   styleClass="Enteredfont">
+                                   styleClass="Enteredfont fonteffect">
                         <f:validator binding="#{bindings.Operating_unit.validator}"/>
                      </af:inputText>
                   </af:gridCell>
@@ -197,7 +198,8 @@
                                    required="#{bindings.Project.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Project.hints.displayWidth}"
                                    maximumLength="#{bindings.Project.hints.precision}"
-                                   shortDesc="#{bindings.Project.hints.tooltip}" id="it11" styleClass="Enteredfont">
+                                   shortDesc="#{bindings.Project.hints.tooltip}" id="it11"
+                                   styleClass="Enteredfont fonteffect">
                         <f:validator binding="#{bindings.Project.validator}"/>
                      </af:inputText>
                   </af:gridCell>
@@ -206,7 +208,8 @@
                                    required="#{bindings.Task.hints.mandatory}" readOnly="true"
                                    columns="#{bindings.Task.hints.displayWidth}"
                                    maximumLength="#{bindings.Task.hints.precision}"
-                                   shortDesc="#{bindings.Task.hints.tooltip}" id="it12" styleClass="Enteredfont">
+                                   shortDesc="#{bindings.Task.hints.tooltip}" id="it12"
+                                   styleClass="Enteredfont fonteffect">
                         <f:validator binding="#{bindings.Task.validator}"/>
                      </af:inputText>
                   </af:gridCell>
@@ -222,7 +225,7 @@
       <af:button actionListener="#{bindings.REJECT.execute}" text="REJECT" disabled="#{!bindings.REJECT.enabled}"
                  id="b2"/>-->
     <br/>
-      <af:panelLabelAndMessage label="Total Value" id="plam1" styleClass="LabelEffect" inlineStyle="margin-left:12px;">
+      <af:panelLabelAndMessage label="Total Value" id="plam1" styleClass="LabelEffect fonteffect" inlineStyle="margin-left:12px;">
          <af:outputText value="#{bindings.Total_value.inputValue}" shortDesc="#{bindings.Total_value.hints.tooltip}"
                         id="ot6" styleClass="outputfont">
             <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
@@ -232,7 +235,7 @@
     <af:inputText value="#{bindings.Comments.inputValue}" label="Comments"
                     required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
                     maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
-                    id="it13" styleClass="Enteredfont" inlineStyle="margin-left:12px;">
+                    id="it13" styleClass="Enteredfont fonteffect" inlineStyle="margin-left:12px;">
          <f:validator binding="#{bindings.Comments.validator}"/>
       </af:inputText><br/><br/>
    </af:panelGroupLayout><br/><br/>

@@ -8,10 +8,11 @@
                                 inlineStyle="width:638px; margin-left:10px; height:28px; background-color:#cfd0cf;">
                
                 <af:outputText value="Purchase Order Requisition" id="ot11"
-                               inlineStyle="font-size:large; font-weight:bolder; margin-left:12px;"/>
+                               inlineStyle="font-size:large; font-weight:bolder; margin-left:12px;"
+                               styleClass="fonteffect"/>
             </af:panelFormLayout>
         </af:panelGroupLayout><br/>
-        <af:panelFormLayout id="pfl2" rows="1" inlineStyle="width:700px; height:60px;">
+        <af:panelFormLayout id="pfl2" rows="1" inlineStyle="width:691px; height:60px;">
             <!--<af:inputText value="#{bindings.Requisition_no.inputValue}" label="Requisition No"
                           required="#{bindings.Requisition_no.hints.mandatory}"
                           columns="#{bindings.Requisition_no.hints.displayWidth}"
@@ -299,7 +300,7 @@
                           rowBandingInterval="0" selectedRowKeys="#{bindings.Item_Details.collectionModel.selectedRow}"
                           selectionListener="#{bindings.Item_Details.collectionModel.makeCurrent}" rowSelection="single"
                           fetchSize="#{bindings.Item_Details.rangeSize}" id="t1" partialTriggers="::l3 ::l1"
-                          width="636" inlineStyle="margin-left:15px;" autoHeightRows="10">
+                          width="633" inlineStyle="margin-left:15px;" autoHeightRows="10">
                     <af:column id="c11" width="27" inlineStyle="text-align:center;">
                         <af:selectBooleanCheckbox label="Label 1" id="sbc1"/>
                     </af:column>
