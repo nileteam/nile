@@ -162,12 +162,12 @@
                                 <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
                             </af:button>-->
                             
-                            <af:commandImageLink  id="l5"
+                            <!--<af:commandImageLink  id="l5"
                                 actionListener="#{invokeActionBean.setAction}"
                                 action="#{invokeActionBean.action}"
                                 inlineStyle="margin-left:10px;" icon="#{resource['images:SAVE-Black.png']}">
                                  <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
-                                 </af:commandImageLink>
+                                 </af:commandImageLink>-->
                             
                         </af:panelGroupLayout>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">

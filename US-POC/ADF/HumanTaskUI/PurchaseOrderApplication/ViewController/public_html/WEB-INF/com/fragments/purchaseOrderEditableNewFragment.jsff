@@ -20,7 +20,7 @@
                           columns="#{bindings.Requisition_no.hints.displayWidth}"
                           maximumLength="#{bindings.Requisition_no.hints.precision}"
                           shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="it1"
-                          labelStyle="font-size:15px;margin-left:4px;" styleClass="Enteredfont" readOnly="true">
+                          labelStyle="font-size:15px;margin-left:4px;" styleClass="Enteredfont">
               <f:validator binding="#{bindings.Requisition_no.validator}"/>
             </af:inputText>
           </af:panelGroupLayout>
@@ -30,7 +30,7 @@
                           columns="#{bindings.Requester.hints.displayWidth}"
                           maximumLength="#{bindings.Requester.hints.precision}"
                           shortDesc="#{bindings.Requester.hints.tooltip}" id="it2"
-                          labelStyle="font-size:15px;margin-left:4px;" styleClass="Enteredfont" readOnly="true">
+                          labelStyle="font-size:15px;margin-left:4px;" styleClass="Enteredfont" >
               <f:validator binding="#{bindings.Requester.validator}"/>
             </af:inputText>
           </af:panelGroupLayout>
@@ -40,7 +40,7 @@
                           columns="#{bindings.Status.hints.displayWidth}"
                           maximumLength="#{bindings.Status.hints.precision}"
                           shortDesc="#{bindings.Status.hints.tooltip}" id="it3"
-                          labelStyle="font-size:15px;margin-left:4px;" readOnly="true" styleClass="Enteredfont">
+                          labelStyle="font-size:15px;margin-left:4px;" styleClass="Enteredfont">
               <f:validator binding="#{bindings.Status.validator}"/>
             </af:inputText>
           </af:panelGroupLayout>
