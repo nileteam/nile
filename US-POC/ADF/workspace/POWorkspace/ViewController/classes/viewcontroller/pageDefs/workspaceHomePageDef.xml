@@ -8,25 +8,44 @@
               xmlns="http://xmlns.oracle.com/adf/controller/binding">
       <parameters>
         <parameter id="taskId" value="#{pageFlowScope.HomeBean.taskId}"/>
+        <parameter id="viewType" value="#{pageFlowScope.HomeBean.viewType}"/>
       </parameters>
     </taskFlow>
     <taskFlow id="ProcessIntitiationTF1" taskFlowId="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF"
-              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding">
+      <parameters>
+        <parameter id="RenderView" value="#{pageFlowScope.HomeBean.renderView}"/>
+      </parameters>
+    </taskFlow>
     <page path="viewcontroller.pageDefs.WorkspacePageTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
   </executables>
   <bindings>
-    <methodAction id="getName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getName"
-                  IsViewObjectMethod="false" DataControl="TaskInitiationEventHandler"
+    <methodAction id="getViewTypeHandler" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getViewTypeHandler" IsViewObjectMethod="false" DataControl="TaskInitiationEventHandler"
+                  InstanceName="data.TaskInitiationEventHandler.dataProvider">
+      <NamedData NDName="payload" NDType="java.lang.String"/>
+    </methodAction>
+    <methodAction id="getGeneratedTaskId" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="getGeneratedTaskId" IsViewObjectMethod="false" DataControl="TaskInitiationEventHandler"
                   InstanceName="data.TaskInitiationEventHandler.dataProvider">
       <NamedData NDName="payload" NDType="java.lang.String"/>
     </methodAction>
   </bindings>
   <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
-    <event name="sendTaskId">
-      <producer region="ProcessIntitiationTF1.ProcessInitiationPageDef.eventBinding">
-        <consumer region="" handler="getName">
+    <event name="sendGeneratedTaskId">
+      <producer region="ProcessIntitiationTF1.ProcessInitiationPageDef.sendGeneratedTaskIdEventBinding">
+        <consumer region="" handler="getGeneratedTaskId">
           <parameters>
-            <parameter name="taskId" value="${payload}"/>
+            <parameter name="payload" value="${payLoad}"/>
+          </parameters>
+        </consumer>
+      </producer>
+    </event>
+    <event name="sendViewType">
+      <producer region="ProcessIntitiationTF1.ProcessInitiationPageDef.sendViewTypeEventBinding">
+        <consumer region="" handler="getViewTypeHandler">
+          <parameters>
+            <parameter name="payload" value="${payLoad}"/>
           </parameters>
         </consumer>
       </producer>

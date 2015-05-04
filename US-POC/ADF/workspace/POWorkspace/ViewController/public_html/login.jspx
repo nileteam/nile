@@ -19,18 +19,21 @@
             <af:form id="f1">
                 <af:pageTemplate viewId="/LoginPageTemplate.jspx" id="pt1">
                     <f:facet name="LoginFacet">
-                        <af:panelGroupLayout id="pgl1">
-                            <af:panelFormLayout id="pfl1">
-                                <af:inputText id="it1" value="#{loginBean.username}"
-                                              clientComponent="true"/>
-                                <af:inputText id="it2" secret="true" value="#{loginBean.password}">
+                        <af:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="top:65px;">
+                            <af:panelGroupLayout id="pfl1" layout="vertical">
+                                <af:inputText id="it1" value="#{loginBean.username}" clientComponent="true"
+                                              inlineStyle="margin-top:-7px; margin-bottom:10px;  margin-left: -15px;"
+                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;"/>
+                                <af:inputText id="it2" secret="true" value="#{loginBean.password}"
+                                              inlineStyle="margin-bottom:10px;  margin-left: -15px;"
+                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;">
                                     <af:clientListener type="keyPress" method="callButtonAction"/>
                                 </af:inputText>
-                                <f:facet name="footer">
-                                    <af:commandButton id="cb1" action="#{loginBean.doLogin}"
-                                                      inlineStyle='background-image:url("resources/images/GoButton.png"); width:31px; height:30px;'/>
-                                </f:facet>
-                            </af:panelFormLayout>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl2" layout="vertical">
+                                <af:commandButton id="cb1" action="#{loginBean.doLogin}"
+                                                  inlineStyle='background-image:url("resources/images/GoButton.png"); width:31px; height:30px; margin-top: 8px;margin-left: -8px;'/>
+                            </af:panelGroupLayout>
                         </af:panelGroupLayout>
                     </f:facet>
                 </af:pageTemplate>

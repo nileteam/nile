@@ -6,19 +6,20 @@
         <af:document title="workspaceHome.jspx" id="d1">
             <af:messages id="m1"/>
             <af:resource type="javascript">
-        function callButtonAction() {
-                  //Method to get component using id (here button is top container)
-                  console.log("inside callButtonAction");
-                  console.log("will now fetch button component from page..");
-                  var button = AdfPage.PAGE.findComponentByAbsoluteId('cb3');
-                  console.log("printing button object..");
-                  console.log(button);
-                  console.log("button object fetched .. Now calling ActionEvent..");
-                  //Method to queue ActionEvent from component
-                  AdfActionEvent.queue(button, button.getPartialSubmit());
-                  console.log("Action event called...");
-              }
-        </af:resource>
+              $(document).ready(function () {
+                  resizeDiv();
+              });
+              window.onresize = function (event) {
+                  resizeDiv();
+              };
+
+              function resizeDiv() {
+                  vph = $(window).height() - 94;
+                  $('.sidebar').css( {
+                      'height' : vph + 'px'
+                  });
+              };
+            </af:resource>
             <af:form id="f1">
                 <af:pageTemplate viewId="/WorkspacePageTemplate.jspx" id="pt1" value="#{bindings.ptb1}">
                     <f:facet name="contentFacet">
@@ -26,15 +27,29 @@
                                    binding="#{pageFlowScope.HomeBean.workspaceRegion}"/>
                     </f:facet>
                     <f:facet name="sidebarFacet">
-                        <af:region value="#{bindings.ProcessIntitiationTF1.regionModel}" id="r2"/>
+                        <af:region value="#{bindings.ProcessIntitiationTF1.regionModel}" id="r2"
+                                   binding="#{pageFlowScope.HomeBean.processInitiationRegion}"
+                                   inlineStyle="padding-left:0px; padding:0px 0px 0px 0px;"/>
                     </f:facet>
                     <f:facet name="bottomHeaderFacet">
                         <af:panelGroupLayout id="pgl1" layout="horizontal">
-                            <af:commandLink id="cl1" text="Process"/>
+                            <af:commandLink id="cl1" text="Process"
+                                            actionListener="#{pageFlowScope.HomeBean.setInitiatorView}"
+                                            partialSubmit="true" partialTriggers="cl1 cl2 cl5"
+                                            inlineStyle="color: #ffffff;   font-size: 11pt;   font-family: Calibri;   font-weight: bold;"/>
                             <af:spacer width="10" height="10" id="s1"/>
-                            <af:commandLink id="cl2" text="Views"/>
+                            <af:outputText value="|" id="ot1"
+                                           inlineStyle="color: #ffffff;   font-size: 11pt;   font-family: Calibri;   font-weight: bold;"/>
+                            <af:spacer width="10" height="10" id="s4"/>
+                            <af:commandLink id="cl2" text="Views" actionListener="#{pageFlowScope.HomeBean.setView}"
+                                            partialSubmit="true"
+                                            inlineStyle="color: #ffffff;   font-size: 11pt;   font-family: Calibri;   font-weight: bold;"/>
                             <af:spacer width="10" height="10" id="s2"/>
-                            <af:commandLink id="cl5" text="Preferences"/>
+                            <af:outputText value="|" id="ot2"
+                                           inlineStyle="color: #ffffff;   font-size: 11pt;   font-family: Calibri;   font-weight: bold;"/>
+                            <af:spacer width="10" height="10" id="s5"/>
+                            <af:commandLink id="cl5" text="Preferences"
+                                            inlineStyle="color: #ffffff;   font-size: 11pt;   font-family: Calibri;   font-weight: bold;"/>
                         </af:panelGroupLayout>
                     </f:facet>
                     <!--<f:facet name="topHeaderFacet">
@@ -47,6 +62,10 @@
                 </af:pageTemplate>
                 <!--af:button actionListener="#{bindings.getName.execute}" text="getName"
                            disabled="#{!bindings.getName.enabled}" id="b1"/-->
+                <!--<af:button actionListener="#{bindings.getViewTypeHandler.execute}" text="getViewTypeHandler"
+                           disabled="#{!bindings.getViewTypeHandler.enabled}" id="b1"/>-->
+                <!--af:button actionListener="#{bindings.getGeneratedTaskId.execute}" text="getGeneratedTaskId"
+                           disabled="#{!bindings.getGeneratedTaskId.enabled}" id="b1"/-->
             </af:form>
         </af:document>
     </f:view>

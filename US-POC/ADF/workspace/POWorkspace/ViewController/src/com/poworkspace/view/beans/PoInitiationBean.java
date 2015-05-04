@@ -1,8 +1,13 @@
 package com.poworkspace.view.beans;
 
+import com.poworkspace.view.utils.JSFUtils;
 import com.poworkspace.view.utils.WorkflowContextUtils;
 
 import java.util.List;
+
+import javax.el.ELContext;
+import javax.el.ExpressionFactory;
+import javax.el.ValueExpression;
 
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -12,6 +17,8 @@ import javax.faces.event.ActionListener;
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
 import oracle.adf.model.binding.DCIteratorBinding;
+
+import oracle.adf.model.events.EventDispatcher;
 
 import oracle.binding.BindingContainer;
 
@@ -35,6 +42,42 @@ public class PoInitiationBean {
     public String contextString = "";
 
     private String taskId;
+    private String viewType;
+    private boolean processView = true;
+    private boolean taskTypeView = false;
+    private String generatedTaskId;
+
+    public void setGeneratedTaskId(String generatedTaskId) {
+        this.generatedTaskId = generatedTaskId;
+    }
+
+    public String getGeneratedTaskId() {
+        return generatedTaskId;
+    }
+
+    public void setProcessView(boolean processView) {
+        this.processView = processView;
+    }
+
+    public boolean isProcessView() {
+        return processView;
+    }
+
+    public void setTaskTypeView(boolean taskTypeView) {
+        this.taskTypeView = taskTypeView;
+    }
+
+    public boolean isTaskTypeView() {
+        return taskTypeView;
+    }
+
+    public void setViewType(String viewType) {
+        this.viewType = viewType;
+    }
+
+    public String getViewType() {
+        return viewType;
+    }
 
     public void setTaskId(String taskId) {
         this.taskId = taskId;
@@ -56,6 +99,25 @@ public class PoInitiationBean {
     public String fetchInitiatableProcessList() {
         // Add event code here...
         System.out.println(" inside fetchInitiatableProcessList");
+
+        FacesContext fctx = FacesContext.getCurrentInstance();
+        ELContext elctx = fctx.getELContext();
+        ExpressionFactory exprFactory = fctx.getApplication().getExpressionFactory();
+
+        ValueExpression ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.RenderView}", Object.class);
+        String viewReceived = (String) ve1.getValue(elctx);
+        System.out.println("View Received : " + viewReceived);
+
+
+        if (viewReceived != null) {
+            if (viewReceived.equalsIgnoreCase("InitiatorProcessView")) {
+                setProcessView(true);
+                setTaskTypeView(false);
+            } else if (viewReceived.equalsIgnoreCase("TaskTypeView")) {
+                setTaskTypeView(true);
+                setProcessView(false);
+            }
+        }
 
         try {
             BindingContext bctx = BindingContext.getCurrent();
@@ -103,21 +165,31 @@ public class PoInitiationBean {
         System.out.println("Initiated Task Id: " + taskid);
 
         //Setting TaskId for contextual event and fire the event eventBinding
-        setTaskId(taskId);
+        setGeneratedTaskId(taskid);
+        //JSFUtils.setManagedBeanValue("sessionScope.initiatedTaskId", taskId);
         BindingContainer bindingContainer = BindingContext.getCurrent().getCurrentBindingsEntry();
-        JUEventBinding eventBinding = (JUEventBinding) bindingContainer.get("eventBinding");
+        JUEventBinding eventBinding = (JUEventBinding) bindingContainer.get("sendGeneratedTaskIdEventBinding");
 
         ActionListener actionListener = (ActionListener) eventBinding.getListener();
         actionListener.processAction(actionEvent);
+
         System.out.println("Fired................");
 
+    }
 
-//        StringBuffer script = new StringBuffer();
-//        ExtendedRenderKitService service =
-//            (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
-//                                                                   ExtendedRenderKitService.class);
-//        script.append("callButtonAction()");
-//        service.addScript(FacesContext.getCurrentInstance(), script.toString());
+    public void applyViewActionListener(ActionEvent actionEvent) {
+        String viewType = (String) actionEvent.getComponent().getAttributes().get("viewType");
+        System.out.println("View Type: " + viewType);
 
+        //Setting TaskId for contextual event and fire the event eventBinding
+        setViewType(viewType);
+        //JSFUtils.setManagedBeanValue("sessionScope.initiatedTaskId", taskId);
+        BindingContainer bindingContainer = BindingContext.getCurrent().getCurrentBindingsEntry();
+        JUEventBinding eventBinding = (JUEventBinding) bindingContainer.get("sendViewTypeEventBinding");
+
+        ActionListener actionListener = (ActionListener) eventBinding.getListener();
+        actionListener.processAction(actionEvent);
+
+        System.out.println("Fired................");
     }
 }

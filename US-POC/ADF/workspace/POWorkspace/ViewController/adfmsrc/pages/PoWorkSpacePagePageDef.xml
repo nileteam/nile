@@ -5,11 +5,25 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="TaskListVO1" RangeSize="25" DataControl="POWorkspaceAppModuleDataControl"
-              id="TaskListVO1Iterator"/>
+              id="TaskListVO1Iterator" Refresh="always"/>
   </executables>
   <bindings>
     <tree IterBinding="TaskListVO1Iterator" id="TaskListVO1">
       <nodeDefinition DefName="com.poworkspace.view.TaskListVO" Name="TaskListVO10">
+        <AttrNames>
+          <Item Value="TaskID"/>
+          <Item Value="TaskFlowURI"/>
+          <Item Value="TaskflowID"/>
+          <Item Value="Process"/>
+          <Item Value="Title"/>
+          <Item Value="Priority"/>
+          <Item Value="Assigned"/>
+          <Item Value="Assignees"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="TaskListVO1Iterator" id="TaskListVO11">
+      <nodeDefinition DefName="com.poworkspace.view.TaskListVO" Name="TaskListVO110">
         <AttrNames>
           <Item Value="TaskID"/>
           <Item Value="TaskFlowURI"/>

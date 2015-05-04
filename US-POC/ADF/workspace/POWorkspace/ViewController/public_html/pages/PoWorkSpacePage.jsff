@@ -4,28 +4,65 @@
     <af:resource type="css" source="/resources/css/jquery-ui.css"/>
     <af:resource type="javascript" source="http://code.jquery.com/jquery-1.10.2.js"/>
     <af:resource type="javascript" source="http://code.jquery.com/ui/1.10.4/jquery-ui.js"/>
-    
     <af:resource type="javascript">
-          $(document).bind('yourproject.namespace.successfulSignIn', function (e) {
-              //alert('Got it');
-              //$('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
-              //$('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
-              $('.ui-accordion-header-active').slideUp('slow','linear');
-              $('.ui-accordion-content-active').slideUp('slow','linear');
+      $(document).bind('yourproject.namespace.successfulSignIn', function (e) {
+          //alert('Got it');
+          //$('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
+          //$('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
+          $('.ui-accordion-header-active').slideUp('slow', 'linear');
+          $('.ui-accordion-content-active').slideUp('slow', 'linear');
+      });
+
+      function removeTask(e) {
+          $('.ui-accordion-header-active').slideUp('slow', 'linear', function () {
+              $(this).remove();
+          })
+          $('.ui-accordion-content-active').slideUp('slow', 'linear', function () {
+              $(this).remove();
+          })
+          //$('.ui-accordion-content-active').fadeOut(300, function(){ $(this).remove();})
+      }
+    </af:resource>
+    <af:resource type="javascript">
+      function test() {
+          //alert('Called........................');
+          $(function () {
+              //accordion starts
+              $("#accordion").accordion( {
+                  collapsible : true, heightStyle : "content", autoHeight : false, active : false, animate :  {
+                      duration : 1000
+                  },
+                  header : "h3", activate : function (event, ui) {
+                      var header = $('.ui-accordion-header-active');
+                      var taskId = header.find("td.column-1 &gt; span").text();
+                      var uri = header.find("td.column-7 &gt; span").text();
+                      var ctx = $(".abxzmy").text();
+                      console.log(taskId);
+                      if (taskId !== '' || taskId === null || taskId === undefined) {
+                          var url = uri + "&amp;bpmWorklistTaskId=" + taskId + "&amp;bpmWorklistContext=" + ctx;
+                          console.log(url);
+                          if ($('.ui-accordion-header-active').next().children().length &gt; 0) {
+                              console.log('iFrameContainer already contains the iframe you noob!!!');
+                          }
+                          else {
+                              var iFrame = document.createElement("iframe");
+                              iFrame.src = url;
+                              iFrame.width = '99%';
+                              iFrame.height = '550px';
+                              iFrame.frameBorder = 'none';
+                              $($('.ui-accordion-header-active').next()).append(iFrame);
+                          }
+                      }
+                  }
+              });//accordion ends
           });
-          
-          function removeTask(e) {
-              $('.ui-accordion-header-active').slideUp('slow','linear',function(){ $(this).remove();})
-              $('.ui-accordion-content-active').slideUp('slow','linear',function(){ $(this).remove();})
-              //$('.ui-accordion-content-active').fadeOut(300, function(){ $(this).remove();})
-          }
-        </af:resource>
+      }
+    </af:resource>
     <af:resource type="javascript">
-        function test() {
-        $(function () {
+      $(document).ready(function () {
           //accordion starts
           $("#accordion").accordion( {
-              collapsible : true, heightStyle : "content", autoHeight: false, active : false, animate :  {
+              collapsible : true, heightStyle : "content", autoHeight : false, active : false, animate :  {
                   duration : 1000
               },
               header : "h3", activate : function (event, ui) {
@@ -44,120 +81,157 @@
                           var iFrame = document.createElement("iframe");
                           iFrame.src = url;
                           iFrame.width = '99%';
-                          iFrame.height= '550px';
-                          iFrame.frameBorder= 'none';
+                          iFrame.height = '550px';
+                          iFrame.frameBorder = 'none';
                           $($('.ui-accordion-header-active').next()).append(iFrame);
                       }
                   }
               }
           });//accordion ends
       });
-        
-    }
-    </af:resource>
-    <af:resource type="javascript">
-        $(document).ready(function () {
-          //accordion starts
-          $("#accordion").accordion( {
-              collapsible : true, heightStyle : "content", autoHeight: false, active : false, animate :  {
-                  duration : 1000
-              },
-              header : "h3", activate : function (event, ui) {
-                  var header = $('.ui-accordion-header-active');
-                  var taskId = header.find("td.column-1 &gt; span").text();
-                  var uri = header.find("td.column-7 &gt; span").text();
-                  var ctx = $(".abxzmy").text();
-                  console.log(taskId);
-                  if (taskId !== '' || taskId === null || taskId === undefined) {
-                      var url = uri + "&amp;bpmWorklistTaskId=" + taskId + "&amp;bpmWorklistContext=" + ctx;
-                      console.log(url);
-                      if ($('.ui-accordion-header-active').next().children().length &gt; 0) {
-                          console.log('iFrameContainer already contains the iframe you noob!!!');
-                      }
-                      else {
-                          var iFrame = document.createElement("iframe");
-                          iFrame.src = url;
-                          iFrame.width = '99%';
-                          iFrame.height= '550px';
-                          iFrame.frameBorder= 'none';
-                          $($('.ui-accordion-header-active').next()).append(iFrame);
-                      }
-                  }
-              }
-          });//accordion ends
-      });   
-      
     </af:resource>
     <af:resource type="css">
         #accordion .ui-accordion-content {
             width: 99.8%;
-            
             background-color: #ffffff;
             color: #777;
             font-size: 10pt;
             line-height: 16pt;
             padding: 0px;
         }
-
         .headerTable, .accTable {
             width: 100%;
         }
-
-        th.column-1 {
-            display: none;
+        td.column-0{
+            width:25px;
         }
-
-        th.column-2, th.column-6 {
-            width: 30%;
+        td.column-2{
+            width:80%;
+            font-size: 11pt;
+            font-family: Calibri;
+            margin-left: -40px;
+            font-weight: normal;
         }
-
-        th.column-3, th.column-4, th.column-5 {
-            width: 10%
-        }
-
-        td.column-1 {
-            
-        }
-
-        td.column-2, td.column-6 {
-            width: 30%;
-            text-align: center;
-        }
-        td.column-0 {
-            width : 30px;
-        }
-        td.column-3, td.column-4, td.column-5 {
-            width: 10%;
-            text-align: center;
+        td.column-1,td.column-3,td.column-4,td.column-5,td.column-6,td.column-7{
+            width:0%;
         }
     </af:resource>
-    
-    
     <af:panelGroupLayout id="pgl1">
-    <!--<af:button text="button 1" id="b1" action="#{pageFlowScope.PoWorkSpaceBean.b1_action}" partialSubmit="true"/>-->
-    <af:panelGroupLayout layout="horizontal" id="pgl3">
-        <af:outputText value="SORT BY: " id="ot8" inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;"/>
-            <af:spacer width="10" height="10" id="s1"/>
-            <af:commandLink text="Process | " id="cl4" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
-                        inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
-            <f:attribute name="param" value="Process"/>
-        </af:commandLink>
-            <af:spacer width="10" height="10" id="s2"/>
-            <af:commandLink text="Tittle | " id="cl1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
-                        inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
-            <f:attribute name="param" value="Title"/>
-        </af:commandLink>
-            <af:spacer width="10" height="10" id="s3"/>
-            <af:commandLink text="Priority | " id="cl2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
-                        inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
-            <f:attribute name="param" value="Priority"/>
-        </af:commandLink>
-            <af:spacer width="10" height="10" id="s4"/>
-            <af:commandLink text="Assigned On" id="cl3" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
-                        inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
-            <f:attribute name="param" value="Assigned"/>
-        </af:commandLink>
-    </af:panelGroupLayout>   
+        <!--<af:button text="button 1" id="b1" action="#{pageFlowScope.PoWorkSpaceBean.b1_action}" partialSubmit="true"/>-->
+        <af:panelGroupLayout layout="horizontal" id="pgl3" styleClass="AFStretchWidth">
+            <af:panelGroupLayout id="pgl9" layout="horizontal">
+                <af:outputText value="SORT BY: " id="ot8"
+                               inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;"/>
+                <af:spacer width="10" height="10" id="s1"/>
+                <af:commandLink text="Process" id="cl4" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
+                                inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
+                    <f:attribute name="param" value="Process"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s2"/>
+                <af:panelGroupLayout id="pgl4" layout="vertical">
+                    <af:link id="l1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/upArrow.png" id="i1"/>
+                        <f:attribute name="param" value="Process asc"/>
+                    </af:link>
+                    <af:link id="l2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/downarrow.png" id="i3"/>
+                        <f:attribute name="param" value="Process desc"/>
+                    </af:link>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s5"/>
+                <af:commandLink text="Tittle" id="cl1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
+                                inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
+                    <f:attribute name="param" value="Title"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s6"/>
+                <af:panelGroupLayout id="pgl7" layout="vertical">
+                    <af:link id="l7" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/upArrow.png" id="i8"/>
+                        <f:attribute name="param" value="Title asc"/>
+                    </af:link>
+                    <af:link id="l8" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/downarrow.png" id="i9"/>
+                        <f:attribute name="param" value="Title desc"/>
+                    </af:link>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s3"/>
+                <af:commandLink text="Priority" id="cl2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
+                                inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
+                    <f:attribute name="param" value="Priority"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s7"/>
+                <af:panelGroupLayout id="pgl5" layout="vertical">
+                    <af:link id="l3" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/upArrow.png" id="i4"/>
+                        <f:attribute name="param" value="Priority asc"/>
+                    </af:link>
+                    <af:link id="l4" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/downarrow.png" id="i5"/>
+                        <f:attribute name="param" value="Priority desc"/>
+                    </af:link>
+                </af:panelGroupLayout>
+                <af:spacer width="10" height="10" id="s4"/>
+                <af:commandLink text="Assigned On" id="cl3"
+                                actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
+                                inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
+                    <f:attribute name="param" value="Assigned"/>
+                </af:commandLink>
+                <af:spacer width="10" height="10" id="s8"/>
+                <af:panelGroupLayout id="pgl6" layout="vertical">
+                    <af:link id="l5" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/upArrow.png" id="i6"/>
+                        <f:attribute name="param" value="Assigned asc"/>
+                    </af:link>
+                    <af:link id="l6" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                        <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                        <af:image source="/resources/images/downarrow.png" id="i7"/>
+                        <f:attribute name="param" value="Assigned desc"/>
+                    </af:link>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <af:panelGroupLayout layout="horizontal" id="pgl8" inlineStyle="float:right;">
+            
+            <af:selectOneChoice id="soc2" autoSubmit="true"
+                                    value="#{pageFlowScope.PoWorkSpaceBean.groupFilter}"
+                                rendered="#{pageFlowScope.PoWorkSpaceBean.viewTypeReceived eq null or pageFlowScope.PoWorkSpaceBean.viewTypeReceived eq 'Me_My_Group_All'}"
+                                contentStyle="height:20px; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
+                    <af:selectItem label="Me" value="Me" id="si11"/>
+                    <af:selectItem label="My Group" value="My_Group" id="si12"/>
+                    <af:selectItem label="Me &amp; My Group" value="Me_My_Group" id="si13"/>
+                    <af:selectItem label="Me &amp; My Group All" value="Me_My_Group_All" id="si14"/>
+                    <af:selectItem label="Me (Previously)" value="Me_Previously" id="si15"/>
+                    <af:selectItem label="Me Review Only" value="Me_Review_Only" id="si16"/>
+                </af:selectOneChoice>
+                <af:spacer width="10" height="10" id="s10"/>
+                <af:selectOneChoice  id="soc1" autoSubmit="true"
+                                    value="#{pageFlowScope.PoWorkSpaceBean.filter}"
+                                    contentStyle="height:20px; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
+                    <af:selectItem label="Any" value="Any" id="si1"/>
+                    <af:selectItem label="Assigned" value="Assigned" id="si2"/>
+                    <af:selectItem label="Completed" value="Completed" id="si3"/>
+                    <af:selectItem label="Suspended" value="Suspended" id="si4"/>
+                    <af:selectItem label="Withdrawn" value="Withdrawn" id="si5"/>
+                    <af:selectItem label="Expired" value="Expired" id="si6"/>
+                    <af:selectItem label="Errored" value="Errored" id="si7"/>
+                    <af:selectItem label="Alerted" value="Alerted" id="si8"/>
+                    <af:selectItem label="Information Requested" value="Information Requested" id="si9"/>
+                </af:selectOneChoice>
+                <af:spacer width="10" height="10" id="s9"/>
+                <af:link id="l9" actionListener="#{pageFlowScope.PoWorkSpaceBean.filterActionListener}"
+                         inlineStyle="width:5px; height:5px;">
+                    <?audit suppress oracle.jdeveloper.jsp.validate-children?>
+                    <af:image source="/resources/images/GoButton.png" id="i15" inlineStyle="height:20px;"/>
+                    <f:attribute name="param" value="Assigned asc"/>
+                </af:link>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>
         <!--<div>
             <table id="t1" class="headerTable">
                 <tr>
@@ -173,21 +247,25 @@
                 </tr>
             </table>
         </div>-->
-        <af:panelGroupLayout id="pgl2" >
+        <af:panelGroupLayout id="pgl2" partialTriggers="l9">
             <div id="accordion">
                 <af:iterator id="i2" value="#{bindings.TaskListVO1.collectionModel}" var="row">
                     <h3 id="accHead">
                         <table class="accTable">
                             <?audit suppress oracle.ide.xml.validation-error?><tr>
                                 <td class="column-0">
-                                    <img src="../resources/images/AccordionPlus.png"/>
-                                </td>
-                                <td class="column-1">
-                                    <af:outputText value="#{row.TaskID}" id="ot1" visible="false"/>
+                                    <img src="../resources/images/AccordionPlus.png"
+                                         style=" height: 70%; margin-top: 2px;"/>
                                 </td>
                                 <td class="column-2">
                                     <af:outputText value="#{row.Title}" id="ot2"/>
                                 </td>
+                                <td class="column-1">
+                                    <af:outputText value="#{row.TaskID}" id="ot1" visible="false"/>
+                                </td>
+                                <!--<td class="column-2">
+                                    <af:outputText value="#{row.Title}" id="ot2"/>
+                                </td>-->
                                 <td class="column-3">
                                     <af:outputText value="#{row.Process}" id="ot3" visible="false"/>
                                 </td>
@@ -207,12 +285,98 @@
                         </table>
                     </h3>
                     <div id="iFrameContainer">
-                        
+                        &#160;
                     </div>
                 </af:iterator>
             </div>
+            <af:table visible="false" value="#{bindings.TaskListVO11.collectionModel}" var="row"
+                      rows="#{bindings.TaskListVO11.rangeSize}"
+                      emptyText="#{bindings.TaskListVO11.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" fetchSize="#{bindings.TaskListVO11.rangeSize}" id="t1">
+                <af:column headerText="#{bindings.TaskListVO11.hints.TaskID.label}" id="c1">
+                    <af:inputText value="#{row.bindings.TaskID.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.TaskID.label}"
+                                  required="#{bindings.TaskListVO11.hints.TaskID.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.TaskID.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.TaskID.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.TaskID.tooltip}" id="it1">
+                        <f:validator binding="#{row.bindings.TaskID.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.TaskFlowURI.label}" id="c2">
+                    <af:inputText value="#{row.bindings.TaskFlowURI.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.TaskFlowURI.label}"
+                                  required="#{bindings.TaskListVO11.hints.TaskFlowURI.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.TaskFlowURI.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.TaskFlowURI.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.TaskFlowURI.tooltip}" id="it2">
+                        <f:validator binding="#{row.bindings.TaskFlowURI.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.TaskflowID.label}" id="c3">
+                    <af:inputText value="#{row.bindings.TaskflowID.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.TaskflowID.label}"
+                                  required="#{bindings.TaskListVO11.hints.TaskflowID.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.TaskflowID.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.TaskflowID.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.TaskflowID.tooltip}" id="it3">
+                        <f:validator binding="#{row.bindings.TaskflowID.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.Process.label}" id="c4">
+                    <af:inputText value="#{row.bindings.Process.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.Process.label}"
+                                  required="#{bindings.TaskListVO11.hints.Process.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.Process.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.Process.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.Process.tooltip}" id="it4">
+                        <f:validator binding="#{row.bindings.Process.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.Title.label}" id="c5">
+                    <af:inputText value="#{row.bindings.Title.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.Title.label}"
+                                  required="#{bindings.TaskListVO11.hints.Title.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.Title.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.Title.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.Title.tooltip}" id="it5">
+                        <f:validator binding="#{row.bindings.Title.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.Priority.label}" id="c6">
+                    <af:inputText value="#{row.bindings.Priority.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.Priority.label}"
+                                  required="#{bindings.TaskListVO11.hints.Priority.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.Priority.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.Priority.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.Priority.tooltip}" id="it6">
+                        <f:validator binding="#{row.bindings.Priority.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.TaskListVO11.hints.Priority.format}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.Assigned.label}" id="c7">
+                    <af:inputDate value="#{row.bindings.Assigned.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.Assigned.label}"
+                                  required="#{bindings.TaskListVO11.hints.Assigned.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.Assigned.displayWidth}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.Assigned.tooltip}" id="id1">
+                        <f:validator binding="#{row.bindings.Assigned.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.TaskListVO11.hints.Assigned.format}"/>
+                    </af:inputDate>
+                </af:column>
+                <af:column headerText="#{bindings.TaskListVO11.hints.Assignees.label}" id="c8">
+                    <af:inputText value="#{row.bindings.Assignees.inputValue}"
+                                  label="#{bindings.TaskListVO11.hints.Assignees.label}"
+                                  required="#{bindings.TaskListVO11.hints.Assignees.mandatory}"
+                                  columns="#{bindings.TaskListVO11.hints.Assignees.displayWidth}"
+                                  maximumLength="#{bindings.TaskListVO11.hints.Assignees.precision}"
+                                  shortDesc="#{bindings.TaskListVO11.hints.Assignees.tooltip}" id="it7">
+                        <f:validator binding="#{row.bindings.Assignees.validator}"/>
+                    </af:inputText>
+                </af:column>
+            </af:table>
         </af:panelGroupLayout>
-        
         <af:outputText value="#{pageFlowScope.PoWorkSpaceBean.contextString}" id="bpmcontext" visible="false"
                        styleClass="abxzmy"/>
     </af:panelGroupLayout>

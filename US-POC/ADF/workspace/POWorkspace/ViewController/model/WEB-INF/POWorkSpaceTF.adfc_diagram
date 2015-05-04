@@ -30,9 +30,9 @@
       <property
          name="y">122.79297</property>
       <property
-         name="pageFragment">true</property>
-      <property
          name="x">391.0</property>
+      <property
+         name="pageFragment">true</property>
    </View>
    <ControlFlowCase
       islink="true"
@@ -42,6 +42,6 @@
       <property
          name="fromOutcome">go</property>
       <property
-         name="sdm:polyPoints">R50,170.31291,121.5459,348.6871,122.44238,L50</property>
+         name="sdm:polyPoints">R50,169.0,121.5459,350.0,122.44238,L50</property>
    </ControlFlowCase>
 </SDM>
