@@ -23,6 +23,8 @@
           usageId="viewcontroller_purchaseOrderEditableNewFragmentPageDef"/>
     <page path="/WEB-INF/com/flows/PurchaseOrderInitiationTF.xml#PurchaseOrderInitiationTF@OnLoading"
           usageId="viewcontroller_PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef"/>
+    <page path="/WEB-INF/com/flows/PurchaseOrderEditableNewTF.xml#PurchaseOrderEditableNewTF@Load"
+          usageId="viewcontroller_PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_taskDetails1PageDef" path="viewcontroller.pageDefs.taskDetails1PageDef"/>
@@ -41,6 +43,8 @@
           path="viewcontroller.pageDefs.purchaseOrderEditableNewFragmentPageDef"/>
     <page id="viewcontroller_PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef"
           path="com.flows.PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef"/>
+    <page id="viewcontroller_PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"
+          path="com.flows.PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ViewController_NonEditableHumantask" path="viewcontroller.ViewController_NonEditableHumantask"/>

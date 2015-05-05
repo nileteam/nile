@@ -129,7 +129,7 @@
                         </f:facet>
                         <f:facet name="context"/>
                         <af:region value="#{bindings.PurchaseOrderEditableNewTF1.regionModel}" id="r1"/>
-                        <af:button actionListener="#{invokeActionBean.setOperation}"
+                        <af:button rendered="false" actionListener="#{invokeActionBean.setOperation}"
                                    text="#{wf:getResourceValue('RESUBMIT', 'bindings.customActions')}"
                                    disabled="#{!bindings.RESUBMIT.enabled}" action="#{invokeActionBean.invokeOperation}"
                                    partialSubmit="false"
@@ -137,7 +137,7 @@
                                    id="b3">
                             <f:attribute name="DC_OPERATION_BINDING" value="bindings.RESUBMIT"/>
                         </af:button>
-                        <af:button text="SAVE" id="b4" actionListener="#{invokeActionBean.setAction}"
+                        <af:button rendered="false" text="SAVE" id="b4" actionListener="#{invokeActionBean.setAction}"
                                    action="#{invokeActionBean.action}">
                             <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
                         </af:button>

@@ -21,6 +21,7 @@
     <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
                       DataControl="ViewController_EditableHumanTask"
                       BeanClass="ViewController_EditableHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
+    <iterator Binds="ViewObj1" RangeSize="25" DataControl="AppModuleDataControl" id="ViewObj1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -172,5 +173,12 @@
         <Item Value="comments"/>
       </AttrNames>
     </attributeValues>
+    <methodAction IterBinding="taskIterator" id="RESUBMIT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="RESUBMIT" IsViewObjectMethod="false" DataControl="ViewController_EditableHumanTask"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_ItemId" id="ItemId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_TypeId" id="TypeId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
   </bindings>
 </pageDefinition>

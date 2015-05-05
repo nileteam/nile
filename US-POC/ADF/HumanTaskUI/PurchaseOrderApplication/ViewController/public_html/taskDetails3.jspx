@@ -16,6 +16,7 @@
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
+                        
                         <!--<f:facet name="toolbar">
                             <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
                                 <af:switcher id="customActionButtons"
@@ -144,7 +145,7 @@
                                             </af:button>-->
                         <af:panelGroupLayout id="pgl2">
                             <af:commandImageLink id="l1" actionListener="#{invokeActionBean.setOperation}"
-                                                 disabled="#{!bindings.APPROVE.enabled}"
+                                                 disabled="#{!bindings.APPROVE.enabled}" rendered="false"
                                                  action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
                                                  visible="#{wf:isCustomActionAvailable('APPROVE', 'bindings.customActions')}"
                                                  icon="#{resource['images:ApproveButton.png']}"

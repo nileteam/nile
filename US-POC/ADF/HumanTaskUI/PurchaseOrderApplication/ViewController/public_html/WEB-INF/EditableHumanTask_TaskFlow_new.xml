@@ -147,7 +147,7 @@
     </input-parameter-definition>
     <managed-bean id="__39">
       <managed-bean-name>docMgmtBean</managed-bean-name>
-      <managed-bean-class>oracle.bpel.services.workflow.worklist.adf.DocMgmtBean</managed-bean-class>
+      <managed-bean-class>com.view.beans.PurchaseOrder</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
     <managed-bean id="__40">
@@ -227,6 +227,11 @@
       <managed-bean-name>userPreferencesBean</managed-bean-name>
       <managed-bean-class>oracle.bpel.worklistapp.userprefs.UserPreferencesBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
+    <managed-bean id="__56">
+      <managed-bean-name>PurchaseOrderBean</managed-bean-name>
+      <managed-bean-class>com.view.beans.PurchaseOrder</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <finalizer>#{invokeActionBean.invokeScript}</finalizer>
     <view id="taskDetails4_jspx">

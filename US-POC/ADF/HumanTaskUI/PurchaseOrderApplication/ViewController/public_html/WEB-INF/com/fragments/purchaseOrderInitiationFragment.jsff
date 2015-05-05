@@ -66,7 +66,8 @@
                                       columns="#{bindings.creatorDisplayName.hints.displayWidth}"
                                       maximumLength="#{bindings.creatorDisplayName.hints.precision}"
                                       shortDesc="#{bindings.creatorDisplayName.hints.tooltip}" id="it3" disabled="true"
-                                      inlineStyle="margin-left:5px;" styleClass="iputtxtround Enteredfont">
+                                      inlineStyle="margin-left:5px;" styleClass="iputtxtround Enteredfont"
+                                      binding="#{pageFlowScope.PurchaseOrderBean.requestBVar}">
                             <f:validator binding="#{bindings.creatorDisplayName.validator}"/>
                         </af:inputText>
                     </af:panelGroupLayout>
@@ -126,9 +127,11 @@
                         <af:panelGroupLayout id="pgl25">
                             <af:panelGroupLayout id="pgl20" layout="horizontal">
                                 <af:panelGroupLayout id="pgl15">
+                                 <af:outputText value="*" id="ot26" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Item:" id="ot10"
                                                    inlineStyle="padding-left:6px;"
                                                    styleClass="fonteffect"/>
+                                                    
                                     <af:selectOneChoice value="#{bindings.ItemId1.inputValue}"
                                                         valueChangeListener="#{pageFlowScope.PurchaseOrderBean.Item_idSOC}"
                                                         binding="#{pageFlowScope.PurchaseOrderBean.typeBVar}"
@@ -143,6 +146,7 @@
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl16">
+                                  <af:outputText value="*" id="ot11" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Type:" id="ot8" styleClass="fonteffect"
                                                    inlineStyle="padding-left:6px;"/>
                                     <af:selectOneChoice value="#{bindings.TypeId.inputValue}"
@@ -159,6 +163,7 @@
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl17">
+                                  <af:outputText value="*" id="ot22" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Code:" id="ot21" styleClass="fonteffect"
                                                    inlineStyle="padding-left:6px;"/>
                                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.codename}" id="ot3"
@@ -168,7 +173,7 @@
                                                   inlineStyle="margin-top:15px;"/>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl18">
-                                    <af:outputText value="*" id="ot26" inlineStyle="color:Red;padding-left:8px;"/>
+                                    <af:outputText value="*" id="ot23" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Qty:" id="ot12" styleClass="fonteffect"/>
                                     <af:inputText value="#{bindings.Quantity.inputValue}" partialTriggers="t1"
                                                   binding="#{pageFlowScope.PurchaseOrderBean.quantityBVar}"
@@ -199,6 +204,7 @@
                             </af:panelGroupLayout><br/><br/>
                           <af:panelGroupLayout id="pgl14" layout="horizontal" inlineStyle="width:398px;">
                         <af:panelGroupLayout id="pgl12">
+                          <af:outputText value="*" id="ot28" inlineStyle="color:Red;padding-left:8px;"/>
                             <af:outputText value="Preferred Supplier:" id="ot14" inlineStyle="padding-left:5px;"
                                            styleClass="fonteffect"/>
                             <af:selectOneChoice value="#{bindings.Preferred_Supplier1.inputValue}" partialTriggers="t1"
@@ -212,6 +218,7 @@
                             </af:selectOneChoice>
                         </af:panelGroupLayout>
                         <af:panelGroupLayout id="pgl13">
+                          <af:outputText value="*" id="ot32" inlineStyle="color:Red;padding-left:8px;"/>
                             <af:outputText styleClass="fonteffect" value="Need By:" id="ot15"
                                            inlineStyle="padding-left:5px;"/>
                             <af:inputDate value="#{bindings.Need_by.inputValue}" partialTriggers="t1"
@@ -230,6 +237,7 @@
                     </af:panelGroupLayout><br/><br/>
                             <af:panelGroupLayout id="pgl24" layout="horizontal">
                                 <af:panelGroupLayout id="pgl23">
+                                  <af:outputText value="*" id="ot35" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Operating Unit:" id="ot16" inlineStyle="padding-left:7px;"
                                                    styleClass="fonteffect"/>
                                     <af:inputText value="#{bindings.Operating_unit.inputValue}" partialTriggers="t1"
@@ -245,8 +253,10 @@
                                     </af:inputText>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl22">
+                                  <af:outputText value="*" id="ot34" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Project:" id="ot17" inlineStyle="padding-left:7px;"
                                                    styleClass="fonteffect"/>
+                                                   
                                     <af:selectOneChoice value="#{bindings.Project1.inputValue}" partialTriggers="t1"
                                                         required="#{bindings.Project1.hints.mandatory}"
                                                         shortDesc="#{bindings.Project1.hints.tooltip}" id="soc3"
@@ -259,8 +269,10 @@
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl21">
+                                  <af:outputText value="*" id="ot33" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value=" Task:" id="ot18" inlineStyle="padding-left:7px;"
                                                    styleClass="fonteffect"/>
+                                                   
                                     <af:selectOneChoice value="#{bindings.Task1.inputValue}" partialTriggers="t1"
                                                         required="#{bindings.Task1.hints.mandatory}"
                                                         shortDesc="#{bindings.Task1.hints.tooltip}" id="soc4"
@@ -281,8 +293,8 @@
                 <af:popup binding="#{pageFlowScope.PurchaseOrderBean.save_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p1" contentDelivery="immediate">
                     <af:dialog id="d1">
-                        <f:facet name="buttonBar"/>
-                        <af:outputText value="Please enter Rate and Quantity" id="ot30"/>
+                       
+                        <af:outputText value="Please enter all details" id="ot30"/>
                     </af:dialog>
                 </af:popup>
                 <af:popup binding="#{pageFlowScope.PurchaseOrderBean.submit_popup}" childCreation="deferred"
@@ -314,6 +326,7 @@
                 <af:panelGroupLayout id="pgl6" layout="horizontal" inlineStyle="float:right;">
                     <af:outputText value="Total Value" id="ot20" inlineStyle="color:black;" styleClass="fonteffect"/>
                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.totalvalue}"
+                    binding="#{pageFlowScope.PurchaseOrderBean.totalBVar}"
                                   shortDesc="#{bindings.Total_value.hints.tooltip}" id="it1" partialTriggers="b2"
                                   styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;" columns="10"
                                   inlineStyle="margin-right:5px;">
@@ -337,7 +350,9 @@
                               selectionListener="#{pageFlowScope.PurchaseOrderBean.table_selection}"
                               styleClass="tablecss">
                         <af:column id="c11" width="27" styleClass="head tablecss" align="center">
-                            <af:selectBooleanCheckbox label="Label 1" inlineStyle="text-align:center;" id="sbc1"/>
+                            <af:selectBooleanCheckbox label="Label 1" inlineStyle="text-align:center;" id="sbc1"
+                                                      valueChangeListener="#{pageFlowScope.PurchaseOrderBean.scb_1}"
+                                                      autoSubmit="true"/>
                         </af:column>
                         <af:column headerText="Item" id="c1" width="193" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
