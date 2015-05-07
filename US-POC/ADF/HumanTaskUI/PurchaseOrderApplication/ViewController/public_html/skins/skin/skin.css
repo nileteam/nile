@@ -48,17 +48,12 @@ font-family: Lucida Sans;
     font-style: normal;
 }
 
-af|button {
+/*af|button {
 
  height: 33px;
  width: 124px;
- background-color: White;
-
-      
-         
-       
-   
-}
+ background-color: White;   
+}*/
 .drpdwnround af|selectOneChoice::content
 {
 
@@ -101,7 +96,12 @@ af|inputDate::label
  font-family: Lucida Sans;
     font-size: 11pt;
     font-style: normal;
+    
 
+}
+af|inputDate::content
+{
+background-color:#cfd0cf;
 }
 
 .LabelEffect af|panelLabelAndMessage::label

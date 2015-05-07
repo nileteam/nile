@@ -63,14 +63,15 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
-  <SQLQuery><![CDATA[SELECT  
-    ITEM.ITEM_ID ITEM_ID,  
-    TYPE.TYPE_ID TYPE_ID  
-FROM  
-    ITEM,  
-    TYPE  
-WHERE  
-    ITEM.ITEM_ID = TYPE.ITEM_ID]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT      
+    ITEM.ITEM_ID ITEM_ID,      
+    TYPE.TYPE_ID TYPE_ID      
+FROM      
+    ITEM,      
+    TYPE      
+WHERE      
+    ITEM.ITEM_ID = TYPE.ITEM_ID 
+    Order by ITEM_ID ASC]]></SQLQuery>
   <ViewAttribute
     Name="ItemId"
     IsPersistent="false"
@@ -113,4 +114,8 @@ WHERE
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

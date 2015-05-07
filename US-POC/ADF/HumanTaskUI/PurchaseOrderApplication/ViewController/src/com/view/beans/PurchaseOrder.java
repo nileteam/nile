@@ -25,6 +25,7 @@ import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.event.ActionEvent;
 
+import javax.faces.event.PhaseEvent;
 import javax.faces.event.ValueChangeEvent;
 
 import javax.naming.NamingException;
@@ -106,6 +107,9 @@ public class PurchaseOrder {
     private RichInputText ecode;
     private RichInputDate eneedby;
     private RichInputText totalBVar;
+    private RichPopup resubmit_popup;
+    private RichCommandImageLink createinsertbutton;
+    private RichCommandImageLink e_createinsertbutton;
 
     public PurchaseOrder() {
     }
@@ -122,31 +126,26 @@ public class PurchaseOrder {
     }
 
     public String saveButton() {
+        
         int calculateTotal = 0;
         if (typeBVar.getValue()!=null && desciptionBVar.getValue()!=null && codeBVar.getValue()!=null && rateBVar.getValue() != null && quantityBVar.getValue() != null
         && preferedsuppBVar.getValue()!=null && needbyBVar.getValue()!=null && operunitBVar.getValue()!=null&& projectBVar.getValue()!=null && taskBVar.getValue()!=null) {
             DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
             ViewObjectImpl TotalValue =
                 (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
-            
-            
-            
-            
-
-            RowSetIterator rit = TotalValue.createRowSetIterator(null);
-      
-            Row currentRow = TotalValue.getCurrentRow();
-            
+         RowSetIterator rit = TotalValue.createRowSetIterator(null);
+         Row currentRow = TotalValue.getCurrentRow();
             currentRow.setAttribute("Type", itemname);
             currentRow.setAttribute("Description", typename);
             currentRow.setAttribute("Code", codename);
-
+            System.out.println("-------------------------------"+currentRow.getAttribute("Rate"));
             while (rit.hasNext()) {
                 Row row = rit.next();
                 System.out.println("---------------------" + (Number) row.getAttribute("Rate"));
                 System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
 
                 Number quantity = (Number) row.getAttribute("Quantity");
+                
                 Number rate = (Number) row.getAttribute("Rate");
                 int rateint = rate.intValue();
                 int qtyint = quantity.intValue();
@@ -155,6 +154,7 @@ public class PurchaseOrder {
                 typeBVar.setDisabled(true);
                 desciptionBVar.setDisabled(true);
                 codeBVar.setDisabled(true);
+            
                 quantityBVar.setDisabled(true);
                 rateBVar.setDisabled(true);
                 preferedsuppBVar.setDisabled(true);
@@ -163,14 +163,13 @@ public class PurchaseOrder {
                 projectBVar.setDisabled(true);
                 taskBVar.setDisabled(true);
                 totalBVar.setDisabled(true);
-
-            }
+          }
             ViewObjectImpl HeaderItem = (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
             RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
             ViewObjectImpl ItemVO =
                 (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
             RowSetIterator ritItemVO = ItemVO.createRowSetIterator(null);
-
+            
             totalvalue = calculateTotal;
             while (rit1.hasNext()) {
                 Row row1 = rit1.next();
@@ -189,6 +188,7 @@ public class PurchaseOrder {
 
             OperationBinding Save = ADFUtils.findOperation("Commit");
             Save.execute();
+            createinsertbutton.setDisabled(false);
         }
 
         else {
@@ -258,8 +258,11 @@ public class PurchaseOrder {
 
 
     public String Submit_Initiator() {
+        
         System.out.println("rate is qu" + rateBVar.getValue());
-        if (rateBVar.getValue() != null && quantityBVar.getValue() != null) {
+       
+        if (typeBVar.getValue()!=null && desciptionBVar.getValue()!=null && codeBVar.getValue()!=null && rateBVar.getValue() != null && quantityBVar.getValue() != null
+        && preferedsuppBVar.getValue()!=null && needbyBVar.getValue()!=null && operunitBVar.getValue()!=null&& projectBVar.getValue()!=null && taskBVar.getValue()!=null) {
             OperationBinding createInsertOP = ADFUtils.findOperation("SUBMIT");
             createInsertOP.execute();
             FacesContext facesContext = FacesContext.getCurrentInstance();
@@ -268,6 +271,8 @@ public class PurchaseOrder {
                                                                              ExtendedRenderKitService.class);
             service.addScript(facesContext,
                               "window.close();window.opener.location.href = window.opener.location.href;");
+            service.addScript(facesContext, "closeMe()");
+            
         } else {
             showPopup(submit_popup, true);
         }
@@ -288,6 +293,9 @@ public class PurchaseOrder {
         operunitBVar.setDisabled(false);
         projectBVar.setDisabled(false);
         taskBVar.setDisabled(false);
+        typeBVar.setValue("");
+        desciptionBVar.setValue("");
+        codeBVar.setValue("");
         return null;
     }
 
@@ -297,7 +305,14 @@ public class PurchaseOrder {
                           selectionEvent });
         // get the selected row , by this you can get any attribute of that row
         Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsIterator.currentRow}");
-
+//        String Type=selectedRow.getAttribute("Type").toString();
+//        System.out.println("value is"+ selectedRow.getAttribute("Type"));
+//        typeBVar.setValue(Type);
+//        String Description=selectedRow.getAttribute("Description").toString();
+//        desciptionBVar.setValue(Description);
+//        AdfFacesContext.getCurrentInstance().addPartialTarget(typeBVar);
+//        AdfFacesContext.getCurrentInstance().addPartialTarget(desciptionBVar);
+//      
         typeBVar.setDisabled(false);
         desciptionBVar.setDisabled(false);
         codeBVar.setDisabled(false);
@@ -336,7 +351,7 @@ public class PurchaseOrder {
         Connection conn = null;
         PreparedStatement psTotal = null;
         ResultSet rsTotal = null;
-
+        codeBVar.setValue("");
         try {
             conn = getConnection("jdbc/NileDBDS");
             String Query = "select ITEM_NAME FROM ITEM I where I.ITEM_ID='" + socval + "'";
@@ -347,13 +362,33 @@ public class PurchaseOrder {
             while (rsTotal.next()) {
                 itemname = rsTotal.getString(1);
                 System.out.println("item name is" + itemname);
-
+                
             }
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (NamingException e) {
         }
-
+        finally{
+            try
+        {
+        if(psTotal!=null) {
+        psTotal.close();  
+        }
+        if(rsTotal!=null) {
+        rsTotal.close();  
+        }
+        if(conn!=null) {
+        conn.close();  
+        }
+        }
+        catch(Exception e)
+        {
+        // TODO: Add catch code
+        e.printStackTrace();
+        }
+          
+           
+           }
 
     }
 
@@ -387,6 +422,27 @@ public class PurchaseOrder {
             e.printStackTrace();
         } catch (NamingException e) {
         }
+        finally{
+            try
+        {
+        if(psTotal!=null) {
+        psTotal.close();  
+        }
+        if(rsTotal!=null) {
+        rsTotal.close();  
+        }
+        if(conn!=null) {
+        conn.close();  
+        }
+        }
+        catch(Exception e)
+        {
+        // TODO: Add catch code
+        e.printStackTrace();
+        }
+          
+           
+           }
 
     }
 
@@ -401,6 +457,7 @@ public class PurchaseOrder {
                                                                              ExtendedRenderKitService.class);
             service.addScript(facesContext,
                               "window.close();window.opener.location.href = window.opener.location.href;");
+            service.addScript(facesContext, "closeMe()");
         } else {
         showPopup(reject_popup, true);       
         }
@@ -615,7 +672,11 @@ public class PurchaseOrder {
 
     public String Save_Editable() {
         int calculateTotal = 0;
-        if (erate.getValue() != null && equantity.getValue() != null) {
+        
+        
+        if (eitem.getValue()!=null && etype.getValue()!=null && ecode.getValue()!=null && erate.getValue() != null 
+            && equantity.getValue() != null && epreferedsupplier.getValue()!=null && eneedby.getValue()!=null && eoperatingUnit.getValue()!=null 
+            && eproject.getValue()!=null && etask.getValue()!=null){
             DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
             ViewObjectImpl TotalValue =
                 (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
@@ -672,19 +733,20 @@ public class PurchaseOrder {
 
             OperationBinding Save = ADFUtils.findOperation("Commit");
             Save.execute();
+           e_createinsertbutton.setDisabled(false);
         }
 
         else {
             //Utilities.showMsg("Please enter Rate and Quantity","Info");
             //showmesage("Please enter Rate and Quantity");        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
-            DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
-            ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
-
-            Row currentRow = vo1.getCurrentRow();
-            System.out.println("currentRow-----" + currentRow);
-            currentRow.remove();
-            OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert");
-            CreateInsert.execute();
+//            DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+//            ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+//
+//            Row currentRow = vo1.getCurrentRow();
+//            System.out.println("currentRow-----" + currentRow);
+//            currentRow.remove();
+//            OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert");
+//            CreateInsert.execute();
             //AdfFacesContext.getCurrentInstance().addPartialTarget(table);
             showPopup(saveeditable_popup, true);
             return null;
@@ -718,31 +780,37 @@ public class PurchaseOrder {
     }
 
     public String Resubmit_Editable() {
-        OperationBinding createInsertOP = ADFUtils.findOperation("RESUBMIT");
-        createInsertOP.execute();
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
-            org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
-                                                                         ExtendedRenderKitService.class);
-        service.addScript(facesContext,
-                          "window.close();window.opener.location.href = window.opener.location.href;");
-        return null;
+        if (eitem.getValue()!=null && etype.getValue()!=null && ecode.getValue()!=null && erate.getValue() != null && equantity.getValue() != null && epreferedsupplier.getValue()!=null && eneedby.getValue()!=null && eoperatingUnit.getValue()!=null&& eproject.getValue()!=null && etask.getValue()!=null) {
+                   OperationBinding createInsertOP = ADFUtils.findOperation("SUBMIT");
+                   createInsertOP.execute();
+                   FacesContext facesContext = FacesContext.getCurrentInstance();
+                   org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                       org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                                    ExtendedRenderKitService.class);
+                   service.addScript(facesContext,
+                                     "window.close();window.opener.location.href = window.opener.location.href;");
+                   service.addScript(facesContext, "closeMe()");
+               } else {
+                   showPopup(resubmit_popup, true);
+               }
+               return null;
     }
 
     public String Ecreate_insertButton() {
         OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert");
         CreateInsert.execute();
         AdfFacesContext.getCurrentInstance().addPartialTarget(etable);
-        //typeBVar.setDisabled(false);
-        //desciptionBVar.setDisabled(false);
-        //codeBVar.setDisabled(false);
+        eitem.setDisabled(false);
+        etype.setDisabled(false);
+        ecode.setDisabled(false);
         equantity.setDisabled(false);
         erate.setDisabled(false);
         epreferedsupplier.setDisabled(false);
-        //needbyBVar.setDisabled(false);
+        eneedby.setDisabled(false);
         eoperatingUnit.setDisabled(false);
         eproject.setDisabled(false);
         etask.setDisabled(false);
+       
         return null;
     }
 
@@ -839,8 +907,29 @@ public class PurchaseOrder {
             e.printStackTrace();
         } catch (NamingException e) {
         }
-
- }
+        
+        finally{
+            try
+{	
+    if(psTotal!=null) {
+        psTotal.close();  
+    }	
+    if(rsTotal!=null) {
+        rsTotal.close();  
+    }
+    if(conn!=null) {
+        conn.close();  
+    }
+}
+catch(Exception e)
+{
+// TODO: Add catch code
+e.printStackTrace();
+}
+          
+           
+           }
+        }
 
     public void e_type_vcl(ValueChangeEvent valueChangeEvent) {
         String socval = etype.getValue().toString();
@@ -871,7 +960,28 @@ public class PurchaseOrder {
         } catch (SQLException e) {
             e.printStackTrace();
         } catch (NamingException e) {
-        }    
+        } 
+        finally{
+            try
+        {
+        if(psTotal!=null) {
+        psTotal.close();  
+        }
+        if(rsTotal!=null) {
+        rsTotal.close();  
+        }
+        if(conn!=null) {
+        conn.close();  
+        }
+        }
+        catch(Exception e)
+        {
+        // TODO: Add catch code
+        e.printStackTrace();
+        }
+          
+           
+           }
     }
 
     public void setEcode(RichInputText ecode) {
@@ -937,5 +1047,149 @@ public class PurchaseOrder {
 
     public RichInputText getTotalBVar() {
         return totalBVar;
+    }
+
+    public String delete_button() {
+        int calculateTotal = 0;
+        System.out.println("in delete method");
+        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+        ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+        RowSetIterator rit = vo1.createRowSetIterator(null);
+        Row currentRow = vo1.getCurrentRow();
+        System.out.println("currentRow-----" + currentRow);
+        
+        currentRow.remove();
+        AdfFacesContext.getCurrentInstance().addPartialTarget(table);
+        while (rit.hasNext()) {
+            Row row = rit.next();
+            System.out.println("---------------------" + (Number) row.getAttribute("Rate"));
+            System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
+
+            Number quantity = (Number) row.getAttribute("Quantity");
+            
+            Number rate = (Number) row.getAttribute("Rate");
+            int rateint = rate.intValue();
+            int qtyint = quantity.intValue();
+            calculateTotal += rateint * qtyint;
+            System.out.println("total value after deletion is"+calculateTotal );
+            totalBVar.setValue(calculateTotal);
+            AdfFacesContext.getCurrentInstance().addPartialTarget(totalBVar);
+        }
+       
+        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert1");
+        CreateInsert.execute();
+        createinsertbutton.setDisabled(true);
+        typeBVar.setDisabled(false);
+        desciptionBVar.setDisabled(false);
+        codeBVar.setDisabled(false);
+        quantityBVar.setDisabled(false);
+        rateBVar.setDisabled(false);
+        preferedsuppBVar.setDisabled(false);
+        needbyBVar.setDisabled(false);
+        operunitBVar.setDisabled(false);
+        projectBVar.setDisabled(false);
+        taskBVar.setDisabled(false);
+        return null;
+    }
+
+    public void setResubmit_popup(RichPopup resubmit_popup) {
+        this.resubmit_popup = resubmit_popup;
+    }
+
+    public RichPopup getResubmit_popup() {
+        return resubmit_popup;
+    }
+
+    public void setCreateinsertbutton(RichCommandImageLink createinsertbutton) {
+        this.createinsertbutton = createinsertbutton;
+    }
+
+    public RichCommandImageLink getCreateinsertbutton() {
+        return createinsertbutton;
+    }
+
+    public String e_deletebutton() {
+        int calculateTotal = 0;
+        System.out.println("in edelete method");
+        DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+        ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+        RowSetIterator rit = vo1.createRowSetIterator(null);
+        Row currentRow = vo1.getCurrentRow();
+        //System.out.println("currentRow-----" + currentRow);
+        
+        currentRow.remove();
+        AdfFacesContext.getCurrentInstance().addPartialTarget(etable);
+        while (rit.hasNext()) {
+            Row row = rit.next();
+            System.out.println("---------------------" + (Number) row.getAttribute("Rate"));
+            System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
+
+            Number quantity = (Number) row.getAttribute("Quantity");
+            
+            Number rate = (Number) row.getAttribute("Rate");
+            int rateint = rate.intValue();
+            int qtyint = quantity.intValue();
+            calculateTotal += rateint * qtyint;
+            System.out.println("total value after deletion is"+calculateTotal );
+            etotalvalue.setValue(calculateTotal);
+            AdfFacesContext.getCurrentInstance().addPartialTarget(etotalvalue);
+        }
+        
+        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert");
+        CreateInsert.execute();
+        e_createinsertbutton.setDisabled(true);
+        eitem.setDisabled(false);
+        etype.setDisabled(false);
+        ecode.setDisabled(false);
+        equantity.setDisabled(false);
+        erate.setDisabled(false);
+        epreferedsupplier.setDisabled(false);
+        eneedby.setDisabled(false);
+        eoperatingUnit.setDisabled(false);
+        eproject.setDisabled(false);
+        etask.setDisabled(false);
+        return null;
+    }
+
+    public void setE_createinsertbutton(RichCommandImageLink e_createinsertbutton) {
+        this.e_createinsertbutton = e_createinsertbutton;
+    }
+
+    public RichCommandImageLink getE_createinsertbutton() {
+        return e_createinsertbutton;
+    }
+
+    public void e_tableselectionlistner(SelectionEvent selectionEvent) {
+        System.out.println(")))))))))))))))))))))))in selection listner");
+        ADFUtils.invokeEL("#{bindings.Item_Details.collectionModel.makeCurrent}", new Class[] { SelectionEvent.class }, new Object[] {
+                          selectionEvent });
+        // get the selected row , by this you can get any attribute of that row
+        Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsIterator.currentRow}");
+        //        String Type=selectedRow.getAttribute("Type").toString();
+        //        System.out.println("value is"+ selectedRow.getAttribute("Type"));
+        //        typeBVar.setValue(Type);
+        //        String Description=selectedRow.getAttribute("Description").toString();
+        //        desciptionBVar.setValue(Description);
+        //        AdfFacesContext.getCurrentInstance().addPartialTarget(typeBVar);
+        //        AdfFacesContext.getCurrentInstance().addPartialTarget(desciptionBVar);
+        //
+        eitem.setDisabled(false);
+        etype.setDisabled(false);
+        ecode.setDisabled(false);
+        equantity.setDisabled(false);
+        erate.setDisabled(false);
+        epreferedsupplier.setDisabled(false);
+        eneedby.setDisabled(false);
+        eoperatingUnit.setDisabled(false);
+        eproject.setDisabled(false);
+        etask.setDisabled(false);
+
+        //to show popup, you can write your logic here , what you wanna do
+
+    }
+
+    public void load_method(PhaseEvent phaseEvent) {
+      System.out.println("in load methoid"); 
+        System.out.println("************************"+erate.getValue());
     }
 }

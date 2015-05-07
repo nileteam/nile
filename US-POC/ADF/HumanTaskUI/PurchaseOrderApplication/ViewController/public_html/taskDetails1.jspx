@@ -19,7 +19,7 @@
             <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
-                <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
+                <af:panelGroupLayout layout="vertical" id="pgl1" inlineStyle="padding: 5px;">
                     <af:panelHeader text=" " id="ph1">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
@@ -127,7 +127,9 @@
                             </af:toolbar>
                         </f:facet>
                         <f:facet name="context"/>
+                       
                         <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
+                       
                         <!--<af:button actionListener="#{bindings.SUBMIT.execute}" text="SUBMIT"
                                    disabled="#{!bindings.SUBMIT.enabled}" id="b1"/>-->
                         <af:panelGroupLayout id="pgl5">

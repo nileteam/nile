@@ -188,5 +188,6 @@
           SelectItemValueMode="ListObject"/>
     <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_TypeId" id="TypeId" DTSupportsMRU="false"
           SelectItemValueMode="ListObject"/>
+    <action IterBinding="payloadIterator" id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow"/>
   </bindings>
 </pageDefinition>

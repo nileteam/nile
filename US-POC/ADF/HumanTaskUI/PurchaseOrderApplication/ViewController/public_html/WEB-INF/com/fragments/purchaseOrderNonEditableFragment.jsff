@@ -32,7 +32,8 @@
                                   required="#{bindings.Requester.hints.mandatory}" disabled="true"
                                   columns="#{bindings.Requester.hints.displayWidth}"
                                   maximumLength="#{bindings.Requester.hints.precision}"
-                                  shortDesc="#{bindings.Requester.hints.tooltip}" id="it2" contentStyle="height:20pt;"
+                                  shortDesc="#{bindings.Requester.hints.tooltip}" id="it2"
+                                  contentStyle="height:20pt;"
                                   styleClass="iputtxtround Enteredfont">
                         <f:validator binding="#{bindings.Requester.validator}"/>
                     </af:inputText>
@@ -46,7 +47,7 @@
                                   columns="#{bindings.Status.hints.displayWidth}"
                                   maximumLength="#{bindings.Status.hints.precision}"
                                   shortDesc="#{bindings.Status.hints.tooltip}" id="it3"
-                                  styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;">
+                                  styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;width:236px;">
                         <f:validator binding="#{bindings.Status.validator}"/>
                     </af:inputText>
                 </af:panelGroupLayout>
@@ -62,7 +63,7 @@
                       selectedRowKeys="#{bindings.Item_Details1.collectionModel.selectedRow}"
                       selectionListener="#{bindings.Item_Details1.collectionModel.makeCurrent}" rowSelection="single"
                       emptyText="#{bindings.Item_Details1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                      rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="840"
+                      rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="855"
                       inlineStyle="margin-left:11px;" styleClass="tablecss" autoHeightRows="10">
                 <af:column headerText="Item" id="c1" align="center" styleClass="head" width="193">
                     <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}"
@@ -83,7 +84,7 @@
                                           pattern="#{bindings.Item_Details1.hints.Quantity.format}"/>
                     </af:outputText>
                 </af:column>
-                <af:column headerText="Rate" id="c5" align="center" styleClass="head" width="155">
+                <af:column headerText="Rate" id="c5" align="center" styleClass="head" width="160">
                     <af:outputText value="#{row.Rate}" shortDesc="#{bindings.Item_Details1.hints.Rate.tooltip}"
                                    id="ot5">
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Item_Details1.hints.Rate.format}"/>
@@ -93,7 +94,7 @@
                <af:outputText value="#{row.Preferred_Supplier}"
                               shortDesc="#{bindings.Item_Details1.hints.Preferred_Supplier.tooltip}" id="ot6"/>
             </af:column>-->
-                <af:column headerText="Need by" id="c7" align="center" styleClass="head" width="157">
+                <af:column headerText="Need by" id="c7" align="center" styleClass="head" width="167">
                     <af:outputText value="#{row.Need_by}" shortDesc="#{bindings.Item_Details1.hints.Need_by.tooltip}"
                                    id="ot7">
                         <af:convertDateTime pattern="#{bindings.Item_Details1.hints.Need_by.format}"/>
@@ -239,11 +240,6 @@
                  id="b2"/>-->
         <af:panelGroupLayout id="pgl3">
             <af:panelFormLayout id="pfl1" rows="1" labelAlignment="top">
-                <!--<af:inputText value="#{bindings.Type.inputValue}" label="#{bindings.Type.hints.label}"
-                  required="#{bindings.Type.hints.mandatory}" columns="#{bindings.Type.hints.displayWidth}"
-                  maximumLength="#{bindings.Type.hints.precision}" shortDesc="#{bindings.Type.hints.tooltip}" id="it1">
-      <f:validator binding="#{bindings.Type.validator}"/>
-    </af:inputText>-->
                 <af:panelGroupLayout id="pgl11">
                     <af:panelGroupLayout id="pgl10" layout="vertical">
                         <af:panelGroupLayout id="pgl25">
@@ -347,6 +343,7 @@
                                     </af:inputDate>-->
                                     <af:inputText value="#{bindings.Need_by.inputValue}"
                                     inlineStyle="margin-top:15px;"
+                                    disabled="true"
                                      styleClass="Enteredfont Fontdate" contentStyle="height:20pt;"
                                                   required="#{bindings.Need_by.hints.mandatory}"
                                                   columns="#{bindings.Need_by.hints.displayWidth}"
@@ -359,7 +356,7 @@
                             </af:panelGroupLayout>
                             <br/>
                             <br/>
-                            <af:panelGroupLayout id="pgl24" layout="horizontal">
+                            <af:panelGroupLayout id="pgl24" layout="horizontal" inlineStyle="width:605px;">
                                 <af:panelGroupLayout id="pgl23">
                                     <af:outputText value="Operating Unit:" id="ot16" inlineStyle="padding-left:7px;"
                                                    styleClass="fonteffect"/>
@@ -373,7 +370,7 @@
                                         <f:validator binding="#{bindings.Operating_unit.validator}"/>
                                     </af:inputText>
                                 </af:panelGroupLayout>
-                                <af:panelGroupLayout id="pgl22" inlineStyle="margin-left:10px;">
+                                <af:panelGroupLayout id="pgl22">
                                     <af:outputText value="Project:" id="ot17" inlineStyle="padding-left:7px;"
                                                    styleClass="fonteffect"/>
                                     <af:inputText value="#{bindings.Project.inputValue}"
@@ -408,7 +405,7 @@
             </af:panelFormLayout>
         </af:panelGroupLayout>
         <br/>
-        <af:panelGroupLayout id="pgl4" layout="horizontal">
+        <af:panelGroupLayout id="pgl4" layout="horizontal" inlineStyle="margin-left:10px; width:374px;">
             <af:panelGroupLayout id="pgl8">
                 <af:outputText value="Total Value:" id="ot3" styleClass="fonteffect" inlineStyle="margin-left:8px;"/>
                 <af:inputText value="#{bindings.Total_value.inputValue}"
@@ -437,17 +434,18 @@
         </af:panelGroupLayout>
         <br/>
         <br/>
+         <br/>
         <af:commandImageLink id="b2" action="#{pageFlowScope.PurchaseOrderBean.Approve_NonEditable}"
                              icon="#{resource['images:ApproveButton.png']}" inlineStyle="margin-left:12px;">
             <af:clientListener method="closeMe" type="action"/>
         </af:commandImageLink>
         <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}"
                              icon="#{resource['images:RejectButton.png']}" inlineStyle="margin-left:10px;">
-            <af:clientListener method="closeMe" type="action"/>
+            <!--<af:clientListener method="closeMe" type="action"/>-->
         </af:commandImageLink>
         <af:popup binding="#{pageFlowScope.PurchaseOrderBean.reject_popup}" childCreation="deferred"
                   autoCancel="disabled" id="p1" contentDelivery="immediate">
-            <af:dialog id="d1">
+            <af:dialog id="d1" type="ok">
                 <f:facet name="buttonBar"/>
                 <af:outputText value="Please enter Comments" id="ot30"/>
             </af:dialog>

@@ -3,7 +3,7 @@
           xmlns:f="http://java.sun.com/jsf/core">
     <af:resource type="javascript">
       function resetValues(event) {
-          alert("Hi")
+          //alert("Hi")
           event.cancel();
           document.getElementById("r1:0:it4::content").value = "";
           document.getElementById("r1:0:it5::content").value = "";
@@ -16,7 +16,7 @@
           document.getElementById("r1:0:soc3::content").options.length = 0;
           document.getElementById("r1:0:soc4::content").options.length = 0;
 
-          alert("Hello, world!")
+          //alert("Hello, world!")
       }
 
       function closeMe(e) {
@@ -107,7 +107,7 @@
             <af:outputText value="Create/Edit ITEM DETAILS" id="ot9"
                            inlineStyle="margin-top:10px; margin-left:12px; border-bottom-style:groove; border-bottom-color:WindowText; border-bottom-width:thin;"
                            styleClass="fonteffect"/>
-            <af:commandImageLink id="l1" disabled="#{!bindings.CreateInsert1.enabled}"
+            <af:commandImageLink id="l1" disabled="true" binding="#{pageFlowScope.PurchaseOrderBean.createinsertbutton}"
                                  action="#{pageFlowScope.PurchaseOrderBean.createinsert_button}"
                                  icon="#{resource['images:PlusIcon.png']}"/>
         </af:panelGroupLayout>
@@ -142,7 +142,7 @@
                                                         styleClass="drpdwnround FontDrpdwn"
                                                         inlineStyle="margin-top:15px;">
                                         <f:selectItems value="#{bindings.ItemId1.items}" id="si1"/>
-                                        <f:validator binding="#{bindings.ItemId1.validator}"/>
+                                        <!--<f:validator binding="#{bindings.ItemId1.validator}"/>-->
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl16">
@@ -159,7 +159,7 @@
                                                         binding="#{pageFlowScope.PurchaseOrderBean.desciptionBVar}"
                                                         inlineStyle="margin-top:15px;">
                                         <f:selectItems value="#{bindings.TypeId.items}" id="si5"/>
-                                        <f:validator binding="#{bindings.TypeId.validator}"/>
+                                        <!--<f:validator binding="#{bindings.TypeId.validator}"/>-->
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl17">
@@ -167,10 +167,11 @@
                                     <af:outputText value="Code:" id="ot21" styleClass="fonteffect"
                                                    inlineStyle="padding-left:6px;"/>
                                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.codename}" id="ot3"
-                                                  partialTriggers="soc5 t1" contentStyle="width:164px;height:20pt;"
+                                                  partialTriggers="soc5 t1"
+                                                  contentStyle="width:164px;height:20pt;"
                                                   binding="#{pageFlowScope.PurchaseOrderBean.codeBVar}"
-                                                  styleClass="iputtxtround Enteredfont" columns="10"
-                                                  inlineStyle="margin-top:15px;"/>
+                                                  styleClass="Enteredfont iputtxtround" columns="10"
+                                                  inlineStyle="margin-top:15px;" disabled="true"/>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl18">
                                     <af:outputText value="*" id="ot23" inlineStyle="color:Red;padding-left:8px;"/>
@@ -212,7 +213,8 @@
                                                 required="#{bindings.Preferred_Supplier1.hints.mandatory}"
                                                 shortDesc="#{bindings.Preferred_Supplier1.hints.tooltip}" id="soc2"
                                                 styleClass="drpdwnround FontDrpdwn"
-                                                contentStyle="width:247px;height:22pt;" inlineStyle="margin-top:15px;">
+                                                contentStyle="width:247px;height:22pt;" inlineStyle="margin-top:15px;"
+                                                unselectedLabel="Please Select">
                                 <f:selectItems value="#{bindings.Preferred_Supplier1.items}" id="si2"/>
                                 <!--<f:validator binding="#{bindings.Preferred_Supplier1.validator}"/>-->
                             </af:selectOneChoice>
@@ -228,7 +230,7 @@
                                           shortDesc="#{bindings.Need_by.hints.tooltip}" id="id1"
                                           binding="#{pageFlowScope.PurchaseOrderBean.needbyBVar}"
                                           maxValue="#{pageFlowScope.PurchaseOrderBean.maxDateVal}"
-                                          contentStyle="background-color:#d6d6d6;height:20pt;" styleClass="Fontdate"
+                                          contentStyle="height:20pt;" styleClass="Fontdate"
                                           inlineStyle="margin-top:15px;">
                                 <f:validator binding="#{bindings.Need_by.validator}"/>
                                 <af:convertDateTime pattern="#{bindings.Need_by.format}"/>
@@ -263,7 +265,7 @@
                                                         binding="#{pageFlowScope.PurchaseOrderBean.projectBVar}"
                                                         styleClass="drpdwnround FontDrpdwn"
                                                         contentStyle="height:22pt;width:211px;"
-                                                        inlineStyle="margin-top:15px;">
+                                                        inlineStyle="margin-top:15px;" unselectedLabel="Please Select">
                                         <f:selectItems value="#{bindings.Project1.items}" id="si3"/>
                                         <!--<f:validator binding="#{bindings.Project1.validator}"/>-->
                                     </af:selectOneChoice>
@@ -279,7 +281,7 @@
                                                         binding="#{pageFlowScope.PurchaseOrderBean.taskBVar}"
                                                         styleClass="drpdwnround FontDrpdwn"
                                                         contentStyle="height:22pt;width:211px;"
-                                                        inlineStyle="margin-top:15px;">
+                                                        inlineStyle="margin-top:15px;" unselectedLabel="Please Select">
                                         <f:selectItems value="#{bindings.Task1.items}" id="si4"/>
                                         <!--<f:validator binding="#{bindings.Task1.validator}"/>-->
                                     </af:selectOneChoice>
@@ -299,9 +301,9 @@
                 </af:popup>
                 <af:popup binding="#{pageFlowScope.PurchaseOrderBean.submit_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p2" contentDelivery="immediate">
-                    <af:dialog id="d2">
+                    <af:dialog id="d2" type="ok">
                         <f:facet name="buttonBar"/>
-                        <af:outputText value="Please Enter Details" id="ot31"/>
+                        <af:outputText value="Please enter all details" id="ot31"/>
                     </af:dialog>
                 </af:popup>
             </af:panelFormLayout>
@@ -324,15 +326,15 @@
                                    styleClass="fonteffect"/>
                 </af:panelGroupLayout>
                 <af:panelGroupLayout id="pgl6" layout="horizontal" inlineStyle="float:right;">
-                    <af:outputText value="Total Value" id="ot20" inlineStyle="color:black;" styleClass="fonteffect"/>
+                    <af:outputText value="Total Value" id="ot20" styleClass="fonteffect"/>
                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.totalvalue}"
                     binding="#{pageFlowScope.PurchaseOrderBean.totalBVar}"
                                   shortDesc="#{bindings.Total_value.hints.tooltip}" id="it1" partialTriggers="b2"
                                   styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;" columns="10"
-                                  inlineStyle="margin-right:5px;">
+                                  inlineStyle="margin-right:5px;" disabled="true">
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
                     </af:inputText>
-                    <af:outputText value="USD" id="ot19" inlineStyle="color:black;margin-right:20px;"
+                    <af:outputText value="USD" id="ot19" inlineStyle="margin-right:20px;"
                                    styleClass="fonteffect"/>
                 </af:panelGroupLayout>
             </af:panelGroupLayout>
@@ -349,10 +351,10 @@
                               autoHeightRows="10"
                               selectionListener="#{pageFlowScope.PurchaseOrderBean.table_selection}"
                               styleClass="tablecss">
-                        <af:column id="c11" width="27" styleClass="head tablecss" align="center">
-                            <af:selectBooleanCheckbox label="Label 1" inlineStyle="text-align:center;" id="sbc1"
-                                                      valueChangeListener="#{pageFlowScope.PurchaseOrderBean.scb_1}"
-                                                      autoSubmit="true"/>
+                           <af:column id="c3" width="27" styleClass="head tablecss" align="center">
+                            
+                             <af:commandImageLink id="l2" icon="#{resource['images:Recycle-Bin-Full-icon.png']}"
+                                             action="#{pageFlowScope.PurchaseOrderBean.delete_button}"/>
                         </af:column>
                         <af:column headerText="Item" id="c1" width="193" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
@@ -392,7 +394,7 @@
             <af:panelGroupLayout id="pgl30" layout="horizontal">
                 <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Submit_Initiator}"
                                      inlineStyle="margin-left:12px;" icon="#{resource['images:SUBMIT-Black.png']}">
-                    <af:clientListener method="closeMe" type="action"/>
+                    <!--<af:clientListener method="closeMe" type="action"/>-->
                 </af:commandImageLink>
                 <af:commandImageLink id="l5" inlineStyle="margin-left:10px;"
                                      icon="#{resource['images:SAVE-Black.png']}"/>

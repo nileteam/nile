@@ -11,8 +11,8 @@
             <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
-                <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
-                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
+                <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;height:700px;" id="pgl1">
+                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1" visible="false">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
@@ -128,7 +128,7 @@
                             </af:toolbar>-->
                         </f:facet>
                         <f:facet name="context"/>
-                        <af:region value="#{bindings.PurchaseOrderEditableNewTF1.regionModel}" id="r1"/>
+                        
                         <af:button rendered="false" actionListener="#{invokeActionBean.setOperation}"
                                    text="#{wf:getResourceValue('RESUBMIT', 'bindings.customActions')}"
                                    disabled="#{!bindings.RESUBMIT.enabled}" action="#{invokeActionBean.invokeOperation}"
@@ -959,7 +959,8 @@
                             </af:popup>
                         </af:panelGroupLayout>-->
                     </af:panelHeader>
-                    <f:facet name="separator"/>
+                    <af:region value="#{bindings.PurchaseOrderEditableNewTF1.regionModel}" id="r1"/>
+                    
                 </af:panelGroupLayout>
             </af:form>
         </af:document>
