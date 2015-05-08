@@ -25,6 +25,7 @@ public class EventHandler {
         System.out.println("Main Bean: " + homeBean);
         
         homeBean.setViewType(payload);
+        homeBean.setTaskId(null);
         
         homeBean.getWorkspaceRegion().refresh(fctx);
         AdfFacesContext.getCurrentInstance().addPartialTarget(homeBean.getWorkspaceRegion());

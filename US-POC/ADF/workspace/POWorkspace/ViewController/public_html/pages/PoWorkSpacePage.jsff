@@ -26,6 +26,12 @@
     <af:resource type="javascript">
       function test() {
           //alert('Called........................');
+          
+         var taskIdnew = $(".CreatedTaskIdClass").text();
+          //alert(taskIdnew);
+          var headerClass = "header-" + taskIdnew;
+          var contentClass = ".content-" + taskIdnew;
+          
           $(function () {
               //accordion starts
               $("#accordion").accordion( {
@@ -48,7 +54,7 @@
                               var iFrame = document.createElement("iframe");
                               iFrame.src = url;
                               iFrame.width = '99%';
-                              iFrame.height = '550px';
+                              iFrame.height = '660px';
                               iFrame.frameBorder = 'none';
                               $($('.ui-accordion-header-active').next()).append(iFrame);
                           }
@@ -56,6 +62,22 @@
                   }
               });//accordion ends
           });
+          
+          //alert('1 >> ' + contentClass);
+          //alert($(contentClass));
+          //alert($(contentClass).attr('id'));
+          
+          
+          var obj = $(contentClass).parent();
+          //alert(obj);
+          //alert(obj.text());
+          //alert($(contentClass).parent().text());
+          //$(contentClass).parent().show();
+          //alert('2');
+          $(contentClass).parent().prev().click();
+          //$(contentClass).parent().prev().addClass('ui-accordion-header-active');
+          //alert('3');
+          
       }
     </af:resource>
     <af:resource type="javascript">
@@ -81,7 +103,7 @@
                           var iFrame = document.createElement("iframe");
                           iFrame.src = url;
                           iFrame.width = '99%';
-                          iFrame.height = '550px';
+                          iFrame.height = '660px';
                           iFrame.frameBorder = 'none';
                           $($('.ui-accordion-header-active').next()).append(iFrame);
                       }
@@ -129,16 +151,16 @@
                 </af:commandLink>
                 <af:spacer width="10" height="10" id="s2"/>
                 <af:panelGroupLayout id="pgl4" layout="vertical">
-                    <af:link id="l1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <af:link id="l1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                        <af:image source="/resources/images/upArrow.png" id="i1"/>
-                        <f:attribute name="param" value="Process asc"/>
+                        <af:image source="#{pageFlowScope.PoWorkSpaceBean.processIsAsc ? '/resources/images/upArrow.png' : '/resources/images/downarrow.png'}" id="i1"/>
+                        <f:attribute name="param" value="Process"/>
                     </af:link>
-                    <af:link id="l2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <!--<af:link id="l2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:image source="/resources/images/downarrow.png" id="i3"/>
                         <f:attribute name="param" value="Process desc"/>
-                    </af:link>
+                    </af:link>-->
                 </af:panelGroupLayout>
                 <af:spacer width="10" height="10" id="s5"/>
                 <af:commandLink text="Tittle" id="cl1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
@@ -147,16 +169,16 @@
                 </af:commandLink>
                 <af:spacer width="10" height="10" id="s6"/>
                 <af:panelGroupLayout id="pgl7" layout="vertical">
-                    <af:link id="l7" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <af:link id="l7" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                        <af:image source="/resources/images/upArrow.png" id="i8"/>
-                        <f:attribute name="param" value="Title asc"/>
+                        <af:image source="#{pageFlowScope.PoWorkSpaceBean.tittleIsAsc ? '/resources/images/upArrow.png' : '/resources/images/downarrow.png'}" id="i8"/>
+                        <f:attribute name="param" value="Title"/>
                     </af:link>
-                    <af:link id="l8" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <!--<af:link id="l8" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:image source="/resources/images/downarrow.png" id="i9"/>
                         <f:attribute name="param" value="Title desc"/>
-                    </af:link>
+                    </af:link>-->
                 </af:panelGroupLayout>
                 <af:spacer width="10" height="10" id="s3"/>
                 <af:commandLink text="Priority" id="cl2" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
@@ -165,16 +187,16 @@
                 </af:commandLink>
                 <af:spacer width="10" height="10" id="s7"/>
                 <af:panelGroupLayout id="pgl5" layout="vertical">
-                    <af:link id="l3" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <af:link id="l3" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                        <af:image source="/resources/images/upArrow.png" id="i4"/>
-                        <f:attribute name="param" value="Priority asc"/>
+                        <af:image source="#{pageFlowScope.PoWorkSpaceBean.priorityIsAsc ? '/resources/images/upArrow.png' : '/resources/images/downarrow.png'}" id="i4"/>
+                        <f:attribute name="param" value="Priority"/>
                     </af:link>
-                    <af:link id="l4" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <!--<af:link id="l4" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:image source="/resources/images/downarrow.png" id="i5"/>
                         <f:attribute name="param" value="Priority desc"/>
-                    </af:link>
+                    </af:link>-->
                 </af:panelGroupLayout>
                 <af:spacer width="10" height="10" id="s4"/>
                 <af:commandLink text="Assigned On" id="cl3"
@@ -184,16 +206,16 @@
                 </af:commandLink>
                 <af:spacer width="10" height="10" id="s8"/>
                 <af:panelGroupLayout id="pgl6" layout="vertical">
-                    <af:link id="l5" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <af:link id="l5" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                        <af:image source="/resources/images/upArrow.png" id="i6"/>
-                        <f:attribute name="param" value="Assigned asc"/>
+                        <af:image source="#{pageFlowScope.PoWorkSpaceBean.assignedIsAsc ? '/resources/images/upArrow.png' : '/resources/images/downarrow.png'}" id="i6"/>
+                        <f:attribute name="param" value="Assigned"/>
                     </af:link>
-                    <af:link id="l6" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
+                    <!--<af:link id="l6" actionListener="#{pageFlowScope.PoWorkSpaceBean.sorting}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
                         <af:image source="/resources/images/downarrow.png" id="i7"/>
                         <f:attribute name="param" value="Assigned desc"/>
-                    </af:link>
+                    </af:link>-->
                 </af:panelGroupLayout>
             </af:panelGroupLayout>
             <af:panelGroupLayout layout="horizontal" id="pgl8" inlineStyle="float:right;">
@@ -281,11 +303,24 @@
                                 <td class="column-7">
                                     <af:outputText value="#{row.TaskFlowURI}" visible="false" id="ot7"/>
                                 </td>
+                                <td class="column-8">
+                                    <af:outputText value="#{row.isNewTask}" visible="false" id="ot18"/>
+                                </td>
                             </tr>
                         </table>
                     </h3>
                     <div id="iFrameContainer">
                         &#160;
+                        <af:panelGroupLayout rendered="#{row.isNewTask}" id="pgl10">
+                            <!--<iframe width="99%" height="650" src="${row.TaskFlowURI}"></iframe>-->
+                            <af:inlineFrame shortDesc="Task Form"
+                                            source="#{row.TaskFlowURI}&amp;bpmWorklistTaskId=#{row.TaskID}&amp;bpmWorklistContext=#{pageFlowScope.PoWorkSpaceBean.contextString}"
+                                            id="if1" 
+                                            inlineStyle="width: 99%; height: 660px; frame-border"/>
+                            <af:outputText value="#{row.TaskID}" id="TaskOpenId" visible="false"
+                                           styleClass="CreatedTaskIdClass"/>
+                        </af:panelGroupLayout>
+                        <af:outputText value="dummy" id="ot30" visible="false" styleClass="content-#{row.TaskID}" rendered="#{row.isNewTask}"/>
                     </div>
                 </af:iterator>
             </div>

@@ -9,6 +9,7 @@ import java.text.SimpleDateFormat;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Map;
 import java.util.logging.Logger;
 
 import javax.el.ELContext;
@@ -36,8 +37,10 @@ import oracle.bpel.services.workflow.task.model.Task;
 import oracle.bpel.services.workflow.verification.IWorkflowContext;
 
 import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
 import oracle.jbo.ViewObject;
 
+import org.apache.myfaces.trinidad.context.RequestContext;
 import org.apache.myfaces.trinidad.event.AttributeChangeEvent;
 import org.apache.myfaces.trinidad.event.DisclosureEvent;
 import org.apache.myfaces.trinidad.render.ExtendedRenderKitService;
@@ -50,10 +53,43 @@ public class PoWorkSpaceBean {
     public IWorkflowContext workflowContext = null;
     public String contextString = "";
 
-    private boolean processIsAsc = true;
-    private boolean tittleIsAsc = true;
-    private boolean priorityIsAsc = true;
-    private boolean assignedIsAsc = true;
+    private boolean processIsAsc = false;
+
+    public void setProcessIsAsc(boolean processIsAsc) {
+        this.processIsAsc = processIsAsc;
+    }
+
+    public boolean isProcessIsAsc() {
+        return processIsAsc;
+    }
+
+    public void setPriorityIsAsc(boolean priorityIsAsc) {
+        this.priorityIsAsc = priorityIsAsc;
+    }
+
+    public boolean isPriorityIsAsc() {
+        return priorityIsAsc;
+    }
+
+    public void setAssignedIsAsc(boolean assignedIsAsc) {
+        this.assignedIsAsc = assignedIsAsc;
+    }
+
+    public boolean isAssignedIsAsc() {
+        return assignedIsAsc;
+    }
+    private boolean tittleIsAsc = false;
+    private boolean priorityIsAsc = false;
+    private boolean assignedIsAsc = false;
+
+    public void setTittleIsAsc(boolean tittleIsAsc) {
+        this.tittleIsAsc = tittleIsAsc;
+    }
+
+    public boolean isTittleIsAsc() {
+        return tittleIsAsc;
+    }
+
 
     private String filter = "Assigned";
     private String groupFilter = "Me_My_Group_All";
@@ -110,7 +146,7 @@ public class PoWorkSpaceBean {
         System.out.println(" inside fetchTaskOnLoad");
 
         System.out.println("Onload Called................");
-        
+
         FacesContext fctx = FacesContext.getCurrentInstance();
         ELContext elctx = fctx.getELContext();
         ExpressionFactory exprFactory = fctx.getApplication().getExpressionFactory();
@@ -119,7 +155,25 @@ public class PoWorkSpaceBean {
         String taskIdReceived = (String) ve1.getValue(elctx);
         System.out.println("Workspace Task Id Received : " + taskIdReceived);
         setTaskId(taskIdReceived);
-        
+
+        ve1.setValue(elctx, null);
+
+        ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.taskId}", Object.class);
+        System.out.println("PPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPPP : " + (String) ve1.getValue(elctx));
+
+        Map paramMap = RequestContext.getCurrentInstance().getPageFlowScope();
+        paramMap.put("taskId", null);
+
+        ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.taskId}", Object.class);
+        System.out.println("QQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQQ : " + (String) ve1.getValue(elctx));
+
+        paramMap = AdfFacesContext.getCurrentInstance().getPageFlowScope();
+        paramMap.put("taskId", null);
+
+        ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.taskId}", Object.class);
+        System.out.println("RRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRRR : " + (String) ve1.getValue(elctx));
+
+
         ValueExpression ve = exprFactory.createValueExpression(elctx, "#{pageFlowScope.viewTypw}", Object.class);
         String viewTypeReceived = (String) ve.getValue(elctx);
         System.out.println("Workspace View Type Received : " + viewTypeReceived);
@@ -146,16 +200,16 @@ public class PoWorkSpaceBean {
             //            List list = BPMTaskHelper.getTaskdetails("initiatortest", "welcome1");
 
             //List list = BPMTaskHelper.getTaskdetails(workflowContext, viewTypeReceived);
-            
-            if(viewTypeReceived != null) {
+
+            if (viewTypeReceived != null) {
                 setGroupFilter(viewTypeReceived);
                 setViewTypeReceived(viewTypeReceived);
             }
-            
-            
+
+
             List list = BPMTaskHelper.getTasksForStatus(workflowContext, getFilter(), getGroupFilter());
-            
-            populateTaskVO(list, vo);
+
+            populateTaskVO(list, vo, taskIdReceived);
 
         } catch (Exception we) {
             // TODO: Add catch code
@@ -172,16 +226,20 @@ public class PoWorkSpaceBean {
         return "go";
     }
 
-    public void populateTaskVO(List list, ViewObject vo) {
+    public void populateTaskVO(List list, ViewObject vo, String taskIdNew) {
 
-        vo.executeEmptyRowSet();
+        //vo.executeEmptyRowSet();
+        clearVO(vo);
+
+        System.out.println("populateTaskVO start >> ************************************************************** VO Size: " +
+                           vo.getAllRowsInRange().length);
+
         String uri = "";
         if (list != null && list.size() > 0) {
             for (int i = 0; i < list.size(); i++) {
                 Row row = vo.createRow();
 
                 Task task = (Task) list.get(i);
-
                 String title = task.getTitle();
                 String taskId = task.getSystemAttributes().getTaskId();
 
@@ -227,8 +285,27 @@ public class PoWorkSpaceBean {
                 }
                 System.out.println(names);
                 row.setAttribute("Assignees", names);
+
+                if (taskIdNew != null && taskIdNew.equalsIgnoreCase(taskId)) {
+                    row.setAttribute("isNewTask", true);
+                } else {
+                    row.setAttribute("isNewTask", false);
+                }
+
                 vo.insertRow(row);
             }
+        }
+        System.out.println("populateTaskVO end >> ************************************************************** VO Size: " +
+                           vo.getAllRowsInRange().length);
+
+    }
+
+    public void clearVO(ViewObject vo) {
+        RowSetIterator rowSetIterator = vo.createRowSetIterator(null);
+        while (rowSetIterator.hasNext()) {
+            Row r = rowSetIterator.next();
+            r.remove();
+
         }
 
     }
@@ -261,31 +338,61 @@ public class PoWorkSpaceBean {
         System.out.println(param);
 
         if (param != null && param.equalsIgnoreCase("Title")) {
-            if (tittleIsAsc) {
-                param = param + " asc";
-                tittleIsAsc = false;
-            } else {
-                param = param + " desc";
+            if (!tittleIsAsc) {
                 tittleIsAsc = true;
+                param = param + " asc";
+
+            } else {
+                tittleIsAsc = false;
+                param = param + " desc";
             }
         } else if (param != null && param.equalsIgnoreCase("Process")) {
-            if (processIsAsc) {
+            if (!processIsAsc) {
+                processIsAsc = true;
                 param = param + " asc";
-                processIsAsc = false;
             } else {
                 param = param + " desc";
-                processIsAsc = true;
+                processIsAsc = false;
+            }
+        } else if (param != null && param.equalsIgnoreCase("Assigned")) {
+            if (!assignedIsAsc) {
+                assignedIsAsc = true;
+                param = param + " asc";
+
+            } else {
+                param = param + " desc";
+                assignedIsAsc = false;
+            }
+        } else if (param != null && param.equalsIgnoreCase("Priority")) {
+            if (!priorityIsAsc) {
+                priorityIsAsc = true;
+                param = param + " asc";
+            } else {
+                priorityIsAsc = false;
+                param = param + " desc";
             }
         }
 
 
         DCIteratorBinding dcIter = ADFUtils.findIterator("TaskListVO1Iterator");
         ViewObject vo = dcIter.getViewObject();
+        
+        //Remove any new task entry flag
+        
+        Row[] rows = vo.getFilteredRows("isNewTask", true);
+        for(Row row : rows) {
+            row.setAttribute("isNewTask", false);
+        }
+        //End
+        
+        
+        
+        
         vo.setSortBy(param);
 
-        //vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_VIEW_ROWS);
-        //vo.executeQuery();
-        vo.executeEmptyRowSet();
+        vo.setQueryMode(ViewObject.QUERY_MODE_SCAN_VIEW_ROWS);
+        vo.executeQuery();
+        //vo.executeEmptyRowSet();
 
         StringBuffer script = new StringBuffer();
         ExtendedRenderKitService service =
@@ -315,31 +422,31 @@ public class PoWorkSpaceBean {
         service.addScript(FacesContext.getCurrentInstance(), script.toString());
     }
 
-//    public void statusChangeListener(ValueChangeEvent valueChangeEvent) {
-//        // Add event code here...
-//        System.out.println("Status selected in dropdown >>>>>>>>>>>>>>>>>>>> " + valueChangeEvent.getNewValue());
-//        System.out.println(" Workflow context token ======================= " + workflowContext.getToken());
-//        String status = (String) valueChangeEvent.getNewValue();
-//        try {
-//            DCIteratorBinding dcIter = ADFUtils.findIterator("TaskListVO1Iterator");
-//            ViewObject vo = dcIter.getViewObject();
-//            List list = BPMTaskHelper.getTasksForStatus(workflowContext, status );
-//            vo.executeEmptyRowSet();
-//            //populateTaskVO(list, vo);
-//
-//        } catch (Exception e) {
-//            // TODO: Add catch code
-//            e.printStackTrace();
-//        }
-//
-//        StringBuffer script = new StringBuffer();
-//        ExtendedRenderKitService service =
-//            (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
-//                                                                   ExtendedRenderKitService.class);
-//        script.append("test()");
-//        service.addScript(FacesContext.getCurrentInstance(), script.toString());
-//        System.out.println("Called>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
-//    }
+    //    public void statusChangeListener(ValueChangeEvent valueChangeEvent) {
+    //        // Add event code here...
+    //        System.out.println("Status selected in dropdown >>>>>>>>>>>>>>>>>>>> " + valueChangeEvent.getNewValue());
+    //        System.out.println(" Workflow context token ======================= " + workflowContext.getToken());
+    //        String status = (String) valueChangeEvent.getNewValue();
+    //        try {
+    //            DCIteratorBinding dcIter = ADFUtils.findIterator("TaskListVO1Iterator");
+    //            ViewObject vo = dcIter.getViewObject();
+    //            List list = BPMTaskHelper.getTasksForStatus(workflowContext, status );
+    //            vo.executeEmptyRowSet();
+    //            //populateTaskVO(list, vo);
+    //
+    //        } catch (Exception e) {
+    //            // TODO: Add catch code
+    //            e.printStackTrace();
+    //        }
+    //
+    //        StringBuffer script = new StringBuffer();
+    //        ExtendedRenderKitService service =
+    //            (ExtendedRenderKitService) Service.getRenderKitService(FacesContext.getCurrentInstance(),
+    //                                                                   ExtendedRenderKitService.class);
+    //        script.append("test()");
+    //        service.addScript(FacesContext.getCurrentInstance(), script.toString());
+    //        System.out.println("Called>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>");
+    //    }
 
     public void filterActionListener(ActionEvent actionEvent) {
         System.out.println("Filter------------> " + getFilter());
@@ -347,21 +454,28 @@ public class PoWorkSpaceBean {
         try {
             DCIteratorBinding dcIter = ADFUtils.findIterator("TaskListVO1Iterator");
             ViewObject vo = dcIter.getViewObject();
-            
+
             List list = null;
-            if(getGroupFilter() != null) {
+            if (getGroupFilter() != null) {
                 list = BPMTaskHelper.getTasksForStatus(workflowContext, getFilter(), getGroupFilter());
             } else {
                 list = BPMTaskHelper.getTasksForStatus(workflowContext, getFilter(), getViewTypeReceived());
             }
-            
-            
-            
-            System.out.println("Task Count >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " + list.size());
-            
-            vo.executeEmptyRowSet();
-            populateTaskVO(list, vo);
-            System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@VO Size : " + vo.getAllRowsInRange().length);
+
+            System.out.println("Task Count >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> " +
+                               list.size());
+
+            //vo.executeEmptyRowSet();
+
+            vo.executeQuery();
+
+            System.out.println("start ************************************************************** VO Size: " +
+                               vo.getAllRowsInRange().length);
+
+
+            populateTaskVO(list, vo, null);
+            System.out.println("end @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@VO Size : " +
+                               vo.getAllRowsInRange().length);
 
         } catch (Exception e) {
             // TODO: Add catch code
