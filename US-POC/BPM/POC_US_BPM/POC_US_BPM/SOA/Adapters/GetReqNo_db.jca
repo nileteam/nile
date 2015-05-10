@@ -1,0 +1,11 @@
+<adapter-config name="GetReqNo" adapter="db" wsdlLocation="../WSDLs/GetReqNo.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="149" location="eis/DB/US_POC"/>
+  <endpoint-interaction portType="GetReqNo_ptt" operation="GetReqNo">
+    <interaction-spec className="oracle.tip.adapter.db.DBPureSQLInteractionSpec">
+      <property name="SqlString" value="select REQSEQ_SEQ.nextval from dual"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

@@ -1,0 +1,16 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<!DOCTYPE properties SYSTEM "http://java.sun.com/dtd/properties.dtd">
+<properties>
+   <entry key="REQSEQ:db_table_type">TABLE</entry>
+   <entry key="REQSEQ.INSTANCE:db_column_not_null">true</entry>
+   <entry key="REQSEQ.SEQ:db_column_not_null">true</entry>
+   <entry key="REQSEQ.SEQ:db_column_type">NUMBER</entry>
+   <entry key="REQSEQ.INSTANCE:db_column_precision">38</entry>
+   <entry key="REQSEQ:db_column_1">INSTANCE</entry>
+   <entry key="REQSEQ:db_column_0">SEQ</entry>
+   <entry key="REQSEQ.SEQ:db_column_scale">0</entry>
+   <entry key="root_descriptor_alias">REQSEQ</entry>
+   <entry key="REQSEQ.SEQ:db_column_precision">38</entry>
+   <entry key="REQSEQ.INSTANCE:db_column_scale">0</entry>
+   <entry key="REQSEQ.INSTANCE:db_column_type">NUMBER</entry>
+</properties>

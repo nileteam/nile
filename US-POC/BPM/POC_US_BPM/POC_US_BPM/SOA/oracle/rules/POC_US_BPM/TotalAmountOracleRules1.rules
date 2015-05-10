@@ -1419,14 +1419,14 @@
       <RuleFiringLimitError>true</RuleFiringLimitError>
       <UniqueRulesets>false</UniqueRulesets>
     </DecisionFunction>
-    <UpdateNumber>23</UpdateNumber>
-    <ValidationUpdateNumber>23</ValidationUpdateNumber>
+    <UpdateNumber>39</UpdateNumber>
+    <ValidationUpdateNumber>39</ValidationUpdateNumber>
     <UpdateTime>0</UpdateTime>
   </DataModel>
   <RuleSet id="G}625c7845:14cfb5ead4f:-7c1e">
     <Name>Ruleset1</Name>
     <Alias>Ruleset1</Alias>
-    <ValidationUpdateNumber>32</ValidationUpdateNumber>
+    <ValidationUpdateNumber>41</ValidationUpdateNumber>
     <Active>true</Active>
     <CalendarForm>DateTime</CalendarForm>
     <RuleSheet id="G}625c7845:14cfb5ead4f:-7c18">
@@ -1566,8 +1566,8 @@
     <VisibilityFilterEnabled>false</VisibilityFilterEnabled>
     <CreationUpdateNumber>4</CreationUpdateNumber>
   </RuleSet>
-  <ValidationUpdateNumber>32</ValidationUpdateNumber>
-  <UpdateNumber>32</UpdateNumber>
+  <ValidationUpdateNumber>41</ValidationUpdateNumber>
+  <UpdateNumber>41</UpdateNumber>
   <ResourceBundle>TotalAmountOracleRules1Translations</ResourceBundle>
   <TestModel id="L}3">
     <ValidationUpdateNumber>1</ValidationUpdateNumber>

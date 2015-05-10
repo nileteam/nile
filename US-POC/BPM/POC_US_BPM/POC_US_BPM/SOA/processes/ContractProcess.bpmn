@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<bpmn:definitions fileRevision="20120601" version="12.1.3.0.0.00.00" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns4="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:ns3="http://www.omg.org/spec/DD/20100524/DC" xmlns:bpmnext="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL">
+<bpmn:definitions fileRevision="20120601" version="12.1.3.0.0.00.00" xmlns:ns2="http://www.omg.org/spec/DD/20100524/DC" xmlns="http://www.omg.org/spec/DD/20100524/DI" xmlns:ns3="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:bpmnext="http://xmlns.oracle.com/bpm/OracleExtensions" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL">
     <bpmn:process processType="Public" isExecutable="true" name="ContractProcess" id="ContractProcess">
         <bpmn:extensionElements>
             <bpmnext:OracleExtensions>
@@ -19,6 +19,13 @@
                     <bpmnext:StringFeature value="REGULAR" name="sealType"/>
                 </bpmnext:FeatureSet>
                 <bpmnext:Localization/>
+                <bpmnext:Conversations>
+                    <bpmnext:Conversation id="CONVERSATION128792529630" type="service_call">
+                        <bpmnext:ServiceCallConversationDefinition>
+                            <bpmnext:serviceRef refType="namespaced" name="GetReqNo" namespace="http://xmlns.oracle.com/bpm/interfaceObject/Services/Externals/GetReqNo.Interface" elementType="TYPE" implementationType="interfaceObject"/>
+                        </bpmnext:ServiceCallConversationDefinition>
+                    </bpmnext:Conversation>
+                </bpmnext:Conversations>
                 <bpmnext:ApplicationInfo>
                     <bpmnext:AppLinkName/>
                     <bpmnext:Description/>
@@ -91,7 +98,15 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="INITIATOR" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
+                        <bpmnext:AttributeExpression name="subjectExpressionFeature">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('Submit Contract For Purchase Requisition No','[',string(bpmn:getDataObject('input')/ns:Header/ns:Purchase_Requisition_No),']')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:AttributeExpression>
                     </bpmnext:FeatureSet>
                     <bpmnext:HumanTask>
                         <bpmnext:humanTaskRef refType="namespaced" name="InitiateContract" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/InitiateContract" elementType="TYPE" implementationType="humanTask"/>
@@ -260,7 +275,15 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
+                        <bpmnext:AttributeExpression name="subjectExpressionFeature">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('Approval Required For Purchase Requisition No ','[',string(bpmn:getDataObject('input')/ns:Header/ns:Purchase_Requisition_No),']')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:AttributeExpression>
                     </bpmnext:FeatureSet>
                     <bpmnext:HumanTask>
                         <bpmnext:humanTaskRef refType="namespaced" name="NonEditableContract" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/NonEditableContract" elementType="TYPE" implementationType="humanTask"/>
@@ -472,7 +495,15 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
+                        <bpmnext:AttributeExpression name="subjectExpressionFeature">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('Approval Required For Purchase Requisition No ','[',string(bpmn:getDataObject('input')/ns:Header/ns:Purchase_Requisition_No),']')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:AttributeExpression>
                     </bpmnext:FeatureSet>
                     <bpmnext:HumanTask>
                         <bpmnext:humanTaskRef refType="namespaced" name="NonEditableContract" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/NonEditableContract" elementType="TYPE" implementationType="humanTask"/>
@@ -684,6 +715,15 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
+                        <bpmnext:AttributeExpression name="subjectExpressionFeature">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('Resubmit Conntract for Purchase Requisition No ','[',string(bpmn:getDataObject('input')/ns:Header/ns:Purchase_Requisition_No),']')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:AttributeExpression>
                     </bpmnext:FeatureSet>
                     <bpmnext:HumanTask>
                         <bpmnext:humanTaskRef refType="namespaced" name="EditableContract" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/EditableContract" elementType="TYPE" implementationType="humanTask"/>
@@ -904,7 +944,7 @@
             </bpmn:dataOutputAssociation>
             <bpmn:resourceRole name="PurchaseTeam" id="lane1"/>
         </bpmn:userTask>
-        <bpmn:serviceTask implementation="NotificationService.ACT12828696848350" operationRef="sendEmailNotification" isForCompensation="false" name="user notification" id="ACT12828696848350" xmlns="">
+        <bpmn:serviceTask implementation="NotificationService.ACT12828696848350" operationRef="sendEmailNotification" isForCompensation="false" name="user notification" id="ACT12828696848350" xmlns="" xmlns:ns6="http://www.omg.org/spec/DD/20100524/DI">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:GraphicsAttributes>
@@ -1118,7 +1158,7 @@
                 </bpmn:assignment>
             </bpmn:dataInputAssociation>
         </bpmn:serviceTask>
-        <bpmn:serviceTask implementation="NotificationService.ACT12828699120618" operationRef="sendEmailNotification" isForCompensation="false" name="supervisor notification" id="ACT12828699120618" xmlns="">
+        <bpmn:serviceTask implementation="NotificationService.ACT12828699120618" operationRef="sendEmailNotification" isForCompensation="false" name="supervisor notification" id="ACT12828699120618" xmlns="" xmlns:ns6="http://www.omg.org/spec/DD/20100524/DI">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:GraphicsAttributes>
@@ -1332,7 +1372,7 @@
                 </bpmn:assignment>
             </bpmn:dataInputAssociation>
         </bpmn:serviceTask>
-        <bpmn:serviceTask implementation="NotificationService.ACT12828738254058" operationRef="sendEmailNotification" isForCompensation="false" name="user notification" id="ACT12828738254058" xmlns="">
+        <bpmn:serviceTask implementation="NotificationService.ACT12828738254058" operationRef="sendEmailNotification" isForCompensation="false" name="user notification" id="ACT12828738254058" xmlns="" xmlns:ns6="http://www.omg.org/spec/DD/20100524/DI">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:GraphicsAttributes>
@@ -1546,7 +1586,7 @@
                 </bpmn:assignment>
             </bpmn:dataInputAssociation>
         </bpmn:serviceTask>
-        <bpmn:serviceTask implementation="NotificationService.ACT12828744822760" operationRef="sendEmailNotification" isForCompensation="false" name="supervisor notification" id="ACT12828744822760" xmlns="">
+        <bpmn:serviceTask implementation="NotificationService.ACT12828744822760" operationRef="sendEmailNotification" isForCompensation="false" name="supervisor notification" id="ACT12828744822760" xmlns="" xmlns:ns6="http://www.omg.org/spec/DD/20100524/DI">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:GraphicsAttributes>
@@ -1760,11 +1800,94 @@
                 </bpmn:assignment>
             </bpmn:dataInputAssociation>
         </bpmn:serviceTask>
+        <bpmn:serviceTask implementation="Services.Externals.GetReqNo" operationRef="bpmn:getReqNo" isForCompensation="false" name="GetP" id="ACT12879239205010">
+            <bpmn:extensionElements>
+                <bpmnext:OracleExtensions>
+                    <bpmnext:GraphicsAttributes>
+                        <bpmnext:Position x="114" y="95"/>
+                    </bpmnext:GraphicsAttributes>
+                    <bpmnext:FeatureSet>
+                        <bpmnext:BooleanFeature value="false" name="hasCheckpoint"/>
+                        <bpmnext:BooleanFeature value="false" name="isDraft"/>
+                        <bpmnext:BooleanFeature value="false" name="inputValidation"/>
+                        <bpmnext:BooleanFeature value="false" name="outputValidation"/>
+                        <bpmnext:StringFeature value="[]" name="TagFeature"/>
+                        <bpmnext:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <bpmnext:StringFeature value="" name="lane"/>
+                        <bpmnext:StringFeature value="Begin Level" name="level"/>
+                        <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </bpmnext:FeatureSet>
+                    <bpmnext:Localization>
+                        <bpmnext:Label>
+                            <bpmnext:LocalizedContent language="en">GetP</bpmnext:LocalizedContent>
+                        </bpmnext:Label>
+                        <bpmnext:Description>
+                            <bpmnext:LocalizedContent language="en"></bpmnext:LocalizedContent>
+                        </bpmnext:Description>
+                    </bpmnext:Localization>
+                    <bpmnext:Conversational conversation="CONVERSATION128792529630">
+                        <bpmnext:ServiceCallConversationalDefinition operation="getReqNo"/>
+                    </bpmnext:Conversational>
+                    <bpmnext:FlowNodeProperties/>
+                    <bpmnext:LogHandlers/>
+                </bpmnext:OracleExtensions>
+            </bpmn:extensionElements>
+            <bpmn:ioSpecification>
+                <bpmn:dataInput name="getReqNoInput" id="getReqNoInput">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="namespaced" name="GetReqNoInput" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" elementType="ELEMENT" implementationType="businessObject"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataInput>
+                <bpmn:dataOutput name="reqNoOutputCollection" id="reqNoOutputCollection">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="namespaced" name="GetReqNoOutputCollection" namespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" elementType="ELEMENT" implementationType="businessObject"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataOutput>
+                <bpmn:inputSet id="ACT12879239205010_uniqueInputSet">
+                    <bpmn:dataInputRefs>getReqNoInput</bpmn:dataInputRefs>
+                </bpmn:inputSet>
+                <bpmn:outputSet id="ACT12879239205010_uniqueOutputSet">
+                    <bpmn:dataOutputRefs>reqNoOutputCollection</bpmn:dataOutputRefs>
+                </bpmn:outputSet>
+            </bpmn:ioSpecification>
+            <bpmn:dataOutputAssociation>
+                <bpmn:extensionElements>
+                    <bpmnext:OracleExtensions/>
+                </bpmn:extensionElements>
+                <bpmn:sourceRef>reqNoOutputCollection</bpmn:sourceRef>
+                <bpmn:targetRef>input</bpmn:targetRef>
+                <bpmn:assignment>
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:DataAssignment operation="copy" ignoreMissingData="false"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">number(bpmn:getDataOutput('reqNoOutputCollection')/ns:GetReqNoOutput[1]/ns:NEXTVAL)
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:from>
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('input')/ns:Header/ns:Purchase_Requisition_No
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="simple"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:to>
+                </bpmn:assignment>
+            </bpmn:dataOutputAssociation>
+        </bpmn:serviceTask>
         <bpmn:startEvent isInterrupting="false" name="Start" id="EVT12827908675645">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:GraphicsAttributes>
-                        <bpmnext:Position x="100" y="100"/>
+                        <bpmnext:Position x="43" y="103"/>
                     </bpmnext:GraphicsAttributes>
                     <bpmnext:FeatureSet>
                         <bpmnext:BooleanFeature value="false" name="hasCheckpoint"/>
@@ -2220,7 +2343,7 @@
                 </bpmnext:OracleExtensions>
             </bpmn:extensionElements>
         </bpmn:exclusiveGateway>
-        <bpmn:sequenceFlow sourceRef="EVT12827908675645" targetRef="ACT12827908675786" name="sf12827908675755" id="sf12827908675755">
+        <bpmn:sequenceFlow sourceRef="EVT12827908675645" targetRef="ACT12879239205010" name="sf12827908675755" id="sf12827908675755">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:SequenceFlowAttributes/>
@@ -2486,6 +2609,18 @@
             </bpmn:extensionElements>
         </bpmn:sequenceFlow>
         <bpmn:sequenceFlow sourceRef="ACT12828738254058" targetRef="EVT12828753206244" name="sf12828756171095" id="sf12828756171095">
+            <bpmn:extensionElements>
+                <bpmnext:OracleExtensions>
+                    <bpmnext:SequenceFlowAttributes/>
+                    <bpmnext:FeatureSet>
+                        <bpmnext:BooleanFeature value="false" name="collapseMessage"/>
+                        <bpmnext:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <bpmnext:StringFeature value="STRAIGHT" name="routing"/>
+                    </bpmnext:FeatureSet>
+                </bpmnext:OracleExtensions>
+            </bpmn:extensionElements>
+        </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow sourceRef="ACT12879239205010" targetRef="ACT12827908675786" name="sf12879240862946" id="sf12879240862946">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:SequenceFlowAttributes/>
