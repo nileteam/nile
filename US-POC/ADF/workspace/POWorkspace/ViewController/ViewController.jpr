@@ -1,5 +1,7 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <jpr:project xmlns:jpr="http://xmlns.oracle.com/ide/project">
+   <value n="ADFComponentWizard.LAST_TAG_NS_PREF" v="component"/>
+   <value n="ADFComponentWizard.LAST_TAGLIB_URI_PREF"/>
    <hash n="component-versions">
       <value n="oracle.adfdt.controller.adfc.source.migration.AdfControllerSchemaMigrator" v="11.1.1.1.0"/>
       <value n="oracle.adfdt.controller.common.migrator.ProjectMigrator" v="11.1.1.1.0"/>
@@ -87,6 +89,23 @@
          </hash>
       </list>
    </hash>
+   <hash n="oracle.ide.model.ResourcePaths">
+      <hash n="resourcesContentSet">
+         <list n="constituent-sets">
+            <hash>
+               <list n="url-path">
+                  <url protocol="file" path="/mywork/UIFORCustomWorkspace/ViewController/public_html/resources/css/"/>
+               </list>
+            </hash>
+         </list>
+         <list n="pattern-filters">
+            <string v="+*"/>
+         </list>
+         <list n="url-path">
+            <url path="."/>
+         </list>
+      </hash>
+   </hash>
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADF_FACES"/>
@@ -120,7 +139,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="contextRoot" v="CustomWorkspace"/>
+            <value n="contextRoot" v="/custom/workspaceNew"/>
             <value n="enterpriseAppName" v="POWorkspace_ViewController_webapp"/>
             <hash n="fileGroups">
                <list n="groups">
@@ -180,7 +199,7 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/POWorkspace_ViewController_webapp.war"/>
+            <url n="jarURL" path="deploy/POWorkspace_ViewController_webappNew.war"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
             <value n="profileName" v="POWorkspace_ViewController_webapp"/>
          </hash>
@@ -323,15 +342,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Oracle.bpm.client.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="BC4J Security"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
             <value n="id" v="Oracle Page Templates"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ADF Model Generic Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -355,15 +378,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="BC4J Oracle Domains"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="ADF Model Generic Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -385,19 +400,19 @@
             </hash>
             <hash>
                <list n="classPath">
+                  <url protocol="jar" path="file:/Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar!/"/>
+               </list>
+               <value n="description" v="Library3"/>
+               <value n="id" v="Library3"/>
+            </hash>
+            <hash>
+               <list n="classPath">
                   <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Oracle.bpm.client.jar"/>
                <value n="id" v="Oracle.bpm.client.jar"/>
                <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.soa.worklist_11.1.1/adflibWorklistComponents.jar" jar-entry=""/>
-               </list>
-               <value n="description" v="Library3"/>
-               <value n="id" v="Library3"/>
             </hash>
          </list>
       </hash>
@@ -531,15 +546,19 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Oracle.bpm.client.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="BC4J Security"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
             <value n="id" v="Oracle Page Templates"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="ADF Model Generic Runtime"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -563,15 +582,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="BC4J Oracle Domains"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="ADF Model Generic Runtime"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Oracle XML Parser v2"/>
+            <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

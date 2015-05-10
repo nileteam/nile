@@ -16,9 +16,14 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <eventBinding id="eventBinding" Listener="javax.faces.event.ActionListener">
+    <eventBinding id="sendViewTypeEventBinding" Listener="javax.faces.event.ActionListener">
       <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
-        <event name="sendTaskId" customPayLoad="#{pageFlowScope.PoInitiationBean.taskId}" eventType="Action Event"/>
+        <event name="sendViewType" customPayLoad="#{pageFlowScope.PoInitiationBean.viewType}" eventType="Action Event"/>
+      </events>
+    </eventBinding>
+    <eventBinding id="sendGeneratedTaskIdEventBinding" Listener="javax.faces.event.ActionListener">
+      <events xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
+        <event name="sendGeneratedTaskId" customPayLoad="#{pageFlowScope.PoInitiationBean.generatedTaskId}" eventType="Action Event"/>
       </events>
     </eventBinding>
   </bindings>

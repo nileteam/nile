@@ -34,6 +34,7 @@ public class POBean {
 
     int totalvalue;
     private RichOutputText requisitionBVar;
+    private RichOutputText requesterBVar;
 
     public POBean() {
     }
@@ -219,10 +220,13 @@ if(rateBVar.getValue()!=null || quantityBVar.getValue()!=null )
                 (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
 
             RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
-
+            //requesterBVar.getValue();
+            System.out.println("requester is "+ requesterBVar.getValue());
+            
             while (rit1.hasNext()) {
                 Row row1 = rit1.next();
-            row1.setAttribute("Total_value", totalvalue);
+                 row1.setAttribute("Total_value", totalvalue);
+                 row1.setAttribute("Requester",requesterBVar.getValue());    
                  //row1.getAttribute("requisition_no");
                 //System.out.println("++++++++++++++++++++++++++++++++++++++++++++++"+ row1.getAttribute("requisition_no"));
              }
@@ -353,4 +357,11 @@ if(rateBVar.getValue()!=null || quantityBVar.getValue()!=null )
              }
          }
 
+    public void setRequesterBVar(RichOutputText requesterBVar) {
+        this.requesterBVar = requesterBVar;
+    }
+
+    public RichOutputText getRequesterBVar() {
+        return requesterBVar;
+    }
 }

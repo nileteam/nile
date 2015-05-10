@@ -15,39 +15,35 @@ public class EventHandler {
         super();
     }
     
-    public void getName(String payload) {
-        System.out.println("Payload: " + payload);
-        
-    //        AdfFacesContext adfFacesContext = AdfFacesContext.getCurrentInstance();
-    //        Map pageFlowScope = adfFacesContext.getPageFlowScope();
-    //        pageFlowScope.put("name", payload);
-        
+    public void getViewTypeHandler(String payload){
+        System.out.println("--+++++++++++++++++-->"+ payload);
         FacesContext fctx = FacesContext.getCurrentInstance();
         ELContext elctx = fctx.getELContext();
         ExpressionFactory exprFactory = fctx.getApplication().getExpressionFactory();
-        
-        
         ValueExpression ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.HomeBean}", Object.class);
         HomeBean homeBean = (HomeBean)ve1.getValue(elctx);
         System.out.println("Main Bean: " + homeBean);
         
-        System.out.println("TaskId received: " + payload);
-        homeBean.setTaskId(payload);
+        homeBean.setViewType(payload);
+        homeBean.setTaskId(null);
         
         homeBean.getWorkspaceRegion().refresh(fctx);
         AdfFacesContext.getCurrentInstance().addPartialTarget(homeBean.getWorkspaceRegion());
         
+    }
+    
+    public void getGeneratedTaskId(String payload) {
+        System.out.println("--***************************************+++++++++++++++++-->"+ payload);
+        FacesContext fctx = FacesContext.getCurrentInstance();
+        ELContext elctx = fctx.getELContext();
+        ExpressionFactory exprFactory = fctx.getApplication().getExpressionFactory();
+        ValueExpression ve1 = exprFactory.createValueExpression(elctx, "#{pageFlowScope.HomeBean}", Object.class);
+        HomeBean homeBean = (HomeBean)ve1.getValue(elctx);
+        System.out.println("Main Bean: " + homeBean);
         
-        //mainBean.setName(payload.toString());
+        homeBean.setTaskId(payload);
         
-        //mainBean.getConsumerRegion().refresh(fctx);
-        //AdfFacesContext.getCurrentInstance().addPartialTarget(mainBean.getConsumerRegion());
-        
-    /*
-        ValueExpression ve = exprFactory.createValueExpression(elctx, "#{pageFlowScope.ConsumerBean}", Object.class);
-        ConsumerBean pageBean = (ConsumerBean) ve.getValue(elctx);
-        pageBean.setName(payload.toString());*/
-        System.out.println("Got it");
-
+        homeBean.getWorkspaceRegion().refresh(fctx);
+        AdfFacesContext.getCurrentInstance().addPartialTarget(homeBean.getWorkspaceRegion());
     }
 }

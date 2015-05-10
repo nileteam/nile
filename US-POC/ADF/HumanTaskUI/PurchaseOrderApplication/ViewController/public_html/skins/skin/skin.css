@@ -3,35 +3,61 @@
 @namespace af "http://xmlns.oracle.com/adf/faces/rich";
 @namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
 
-.testskin{
-font-family: Arial;
-
-font-size: 12px;
-padding-left: 50px;
-
-text-align: left;
-color: black;
-background-color: LightGray; 
-
+.fonteffect{
+font-family:Lucida Sans;
+font-style: normal;
+font-size: 11pt;
+}
+.btnstyle
+{
+font-family:Calibri;
+font-size: 26px;
+}
+.outputfont
+{
+font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+.Enteredfont af|inputText::content
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
 }
 
-af|button {
- background :  #20B2AA;
- height: 20px;
+/*.tt af|column::column-header-cell-content
+{
+    font-size: 15px;
+    color: Red;
+    
+  
+}*/
 
- width: 100px;
-        text-align: right;
-         font: 10pt bold Verdana, Arial, Helvetica, sans-serif ;
-         color:white;
-      
-         border-radius:15px;
-        text-align: center;
-   
+.FontDrpdwn af|selectOneChoice::content
+{
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+
 }
+.Fontdate af|inputDate::content
+{
+font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+
+/*af|button {
+
+ height: 33px;
+ width: 124px;
+ background-color: White;   
+}*/
 .drpdwnround af|selectOneChoice::content
 {
 
-   background-color:#d6d6d6;
+   background-color:#cfd0cf;
    
 }
 
@@ -39,10 +65,73 @@ af|button {
 
 .iputtxtround af|inputText::content{
 
- background-color: #d6d6d6;
+ background-color: #cfd0cf;
 }
 .init {
        background-color:Black;
 }
 
+.head
+{
+ font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    background-color:      #d7dad9;
 
+}
+ af|table af|column::column-header-cell
+{
+    
+   font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    
+} 
+af|inputText::label
+{
+font-size: 11pt;
+}
+af|inputDate::label
+{
+ font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    
+
+}
+af|inputDate::content
+{
+background-color:#cfd0cf;
+}
+
+.LabelEffect af|panelLabelAndMessage::label
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+
+ .tablecss af|column::column-header-cell {
+ 
+  background-color:      #d7dad9;
+  font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+  
+  
+} 
+
+select {
+  -webkit-appearance: listbox;
+    background-position: center right;
+  background-repeat: no-repeat;
+    background-image: url("../../Images/drop-down.png"); 
+  }
+ 
+  
+af|inputDate::launch-icon  
+{
+
+  
+    content: url("../../Images/calendar.png"); 
+}

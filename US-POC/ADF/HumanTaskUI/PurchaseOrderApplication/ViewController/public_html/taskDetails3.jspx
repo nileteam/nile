@@ -11,17 +11,18 @@
             <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
-                <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
-                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
+                <af:panelGroupLayout layout="vertical" inlineStyle="padding:5px;" id="pgl1">
+                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1" visible="false">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
-                        <f:facet name="toolbar">
+                        
+                        <!--<f:facet name="toolbar">
                             <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
-                                        <!--<af:panelGroupLayout layout="horizontal" id="pgl2">
+                                        --><!--<af:panelGroupLayout layout="horizontal" id="pgl2">
                                             <af:button actionListener="#{invokeActionBean.setOperation}"
                                                        text="#{wf:getResourceValue('APPROVE', 'bindings.customActions')}"
                                                        disabled="#{!bindings.APPROVE.enabled}"
@@ -40,7 +41,7 @@
                                                        id="b2">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
                                             </af:button>
-                                        </af:panelGroupLayout>-->
+                                        </af:panelGroupLayout>--><!--
                                     </f:facet>
                                 </af:switcher>
                                 <af:button actionListener="#{invokeActionBean.setOperation}" text="#{resources.CLAIM}"
@@ -126,31 +127,50 @@
                                          action="closeTaskFlow"
                                          visible="#{pageFlowScope.enableNavigationButton != null}" id="l3"/>
                             </af:toolbar>
-                        </f:facet>
+                        </f:facet>-->
                         <f:facet name="context"/>
-                        <af:region value="#{bindings.PurchaseOrderNonEditableTF1.regionModel}" id="r1"/>
+                       
                         <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE"
                                    disabled="#{!bindings.APPROVE.enabled}" id="b3"/>-->
                         <!--<af:button actionListener="#{bindings.REJECT.execute}" text="REJECT"
                                    disabled="#{!bindings.REJECT.enabled}" id="b4"/>-->
-                                   <af:button actionListener="#{invokeActionBean.setOperation}"
-                                                       text="#{wf:getResourceValue('APPROVE', 'bindings.customActions')}"
+                                   <!--<af:button actionListener="#{invokeActionBean.setOperation}"
+                                                       text="APPROVE"
                                                        disabled="#{!bindings.APPROVE.enabled}"
                                                        action="#{invokeActionBean.invokeOperation}"
                                                        partialSubmit="false"
                                                        visible="#{wf:isCustomActionAvailable('APPROVE', 'bindings.customActions')}"
                                                        id="b3" styleClass="init">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.APPROVE"/>
-                                            </af:button>
-                                            <af:button actionListener="#{invokeActionBean.setOperation}"
-                                                       text="#{wf:getResourceValue('REJECT', 'bindings.customActions')}"
+                                            </af:button>-->
+                        <af:panelGroupLayout id="pgl2">
+                            <af:commandImageLink id="l1" actionListener="#{invokeActionBean.setOperation}"
+                                                 disabled="#{!bindings.APPROVE.enabled}" rendered="false"
+                                                 action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
+                                                 visible="#{wf:isCustomActionAvailable('APPROVE', 'bindings.customActions')}"
+                                                 icon="#{resource['images:ApproveButton.png']}"
+                                                 inlineStyle="margin-left:12px;">
+                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.APPROVE"/>
+                            </af:commandImageLink>
+                            <af:commandImageLink id="l2" actionListener="#{invokeActionBean.setOperation}"
+                                                 disabled="#{!bindings.REJECT.enabled}"
+                                                 rendered="false"
+                                                 action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
+                                                 visible="#{wf:isCustomActionAvailable('REJECT', 'bindings.customActions')}"
+                                                 icon="#{resource['images:RejectButton.png']}"
+                                                 inlineStyle="margin-left:10px;">
+                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
+                            </af:commandImageLink>
+                        </af:panelGroupLayout>
+                        <!--<af:button actionListener="#{invokeActionBean.setOperation}"
+                                                       text="REJECT"
                                                        disabled="#{!bindings.REJECT.enabled}"
                                                        action="#{invokeActionBean.invokeOperation}"
                                                        partialSubmit="false"
                                                        visible="#{wf:isCustomActionAvailable('REJECT', 'bindings.customActions')}"
                                                        id="b4" styleClass="init">
                                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.REJECT"/>
-                                            </af:button>
+                                            </af:button>-->
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
                                 <af:spacer width="15" height="15" id="s4"/>
@@ -965,7 +985,8 @@
                             </af:popup>
                         </af:panelGroupLayout>-->
                     </af:panelHeader>
-                    <f:facet name="separator"/>
+                     <af:region value="#{bindings.PurchaseOrderNonEditableTF1.regionModel}" id="r1"/>
+                  
                 </af:panelGroupLayout>
             </af:form>
         </af:document>

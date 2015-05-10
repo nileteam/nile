@@ -65,7 +65,7 @@ public class Login {
             IBPMContext ibpmContext = BPMContextUtils.getIBPMContext(_username, _password);
             JSFUtils.setManagedBeanValue("sessionScope.ibpmContext", ibpmContext);
 
-            String loginUrl = "/adfAuthentication?success_url=/faces/TestHome.jspx";
+            String loginUrl = "/adfAuthentication?success_url=/faces/workspaceHome.jspx";
             HttpServletResponse response = (HttpServletResponse) ctx.getExternalContext().getResponse();
             sendForward(request, response, loginUrl);
         } catch (FailedLoginException fle) {
@@ -105,6 +105,7 @@ public class Login {
     }
 
     public String onLogout() {
+        System.out.println("Logging Out");
         FacesContext fctx = FacesContext.getCurrentInstance();
         ExternalContext ectx = fctx.getExternalContext();
         IBPMContext ibpmContext = (IBPMContext) JSFUtils.getManagedBeanValue("sessionScope.ibpmContext");

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="AppModule"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ClearCacheOnRollback="true">
+  <ViewUsage
+    Name="TypeVO1"
+    ViewObjectName="model.VO.TypeVO"/>
+  <ViewUsage
+    Name="TypeView1"
+    ViewObjectName="model.VO.TypeView"/>
+</AppModule>

@@ -5,6 +5,11 @@
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <input-parameter-definition id="__4">
+      <name>RenderView</name>
+      <value>#{pageFlowScope.RenderView}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
     <managed-bean id="__1">
       <managed-bean-name>PoInitiationBean</managed-bean-name>
       <managed-bean-class>com.poworkspace.view.beans.PoInitiationBean</managed-bean-class>

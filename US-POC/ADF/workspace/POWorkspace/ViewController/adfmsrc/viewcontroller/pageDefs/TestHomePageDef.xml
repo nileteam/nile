@@ -13,22 +13,5 @@
     <taskFlow id="ProcessIntitiationTF1" taskFlowId="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF"
               activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
-  <bindings>
-    <methodAction id="getName" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getName"
-                  IsViewObjectMethod="false" DataControl="TaskInitiationEventHandler"
-                  InstanceName="data.TaskInitiationEventHandler.dataProvider">
-      <NamedData NDName="payload" NDType="java.lang.String"/>
-    </methodAction>
-  </bindings>
-  <eventMap xmlns="http://xmlns.oracle.com/adfm/contextualEvent">
-    <event name="sendTaskId">
-      <producer region="ProcessIntitiationTF1.ProcessInitiationPageDef.eventBinding">
-        <consumer region="" handler="getName">
-          <parameters>
-            <parameter name="taskId" value="${payLoad}"/>
-          </parameters>
-        </consumer>
-      </producer>
-    </event>
-  </eventMap>
+  <bindings/>
 </pageDefinition>

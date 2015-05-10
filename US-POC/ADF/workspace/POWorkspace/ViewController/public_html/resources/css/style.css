@@ -1,0 +1,107 @@
+/* 
+    Created on : 25 Apr, 2015, 12:56:09 AM
+    Author     : Nishant
+*/
+body {
+    margin: 0px;
+}
+
+img.bg {
+    /* Set rules to fill background */
+    min-height: 100%;
+    min-width: 1024px;
+    
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+    
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+
+.topHeader {
+    position: relative;
+    background-color: white;
+}
+
+.left {
+    max-width: 100%;
+    overflow: hidden;
+    float: left;
+    background-color: white;
+}
+
+.right {
+    /* For Safari 5.1 to 6.0 */
+
+    background: rgb(115, 115, 115) -webkit-linear-gradient(left, rgb(255, 255, 255), rgb(115, 115, 115));
+    /* For Opera 11.1 to 12.0 */
+
+    background: rgb(115, 115, 115) -o-linear-gradient(left, rgb(255, 255, 255), rgb(115, 115, 115));
+    /* For Firefox 3.6 to 15 */
+
+    background: rgb(115, 115, 115) -moz-linear-gradient(left, rgb(255, 255, 255), rgb(115, 115, 115));
+    /* Standard syntax */
+
+    background: rgb(115, 115, 115) linear-gradient(left, rgb(255, 255, 255), rgb(115, 115, 115));
+    overflow: hidden;
+    height: 84px;
+}
+
+.banner {
+    position: absolute;
+    top: 250px;
+    float: left;
+    height: 242px;
+}
+
+.rightPanel {
+    position: absolute;
+    right: 0px;
+    top: 0px;
+    float: right;
+    background: rgba(139, 139, 139, 0.3);
+    height: 100%;
+    width: 21%;
+}
+
+.topRightPanel {
+    position: relative;
+    top: 50px;
+    height: 34px;
+    background: rgb(0, 176, 133);
+    padding-left: 3px;
+    color: white;
+}
+
+div.topRightPanel > span {
+    font-size: x-large;
+    padding-left: 10px;
+    font-family: Calibri;
+}
+
+.lowerRightPanel {
+    position: relative;
+    top: 65px;
+    margin-left: 20px;
+}
+
+.inputText {
+    margin-bottom: 20px;
+    background-color: rgb(183, 183, 183);
+    width: 180px;
+    height: 20px;
+    border: 0px;
+    padding-left: 1px;
+    color: rgb(114, 114, 114);
+    font-style: italic;
+}
+
+.contentArea {
+    width: 70%;
+    margin-left: 35px;
+    margin-top: 10px;
+    margin-bottom: 35px;
+}

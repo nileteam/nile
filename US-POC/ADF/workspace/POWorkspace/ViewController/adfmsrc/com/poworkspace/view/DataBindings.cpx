@@ -17,6 +17,9 @@
     <page path="/pages/ProcessInitiation.jsff" usageId="com_poworkspace_view_ProcessInitiationPageDef"/>
     <page path="/TestHome.jspx" usageId="com_poworkspace_view_TestHomePageDef"/>
     <page path="/testPI.jspx" usageId="com_poworkspace_view_testPIPageDef"/>
+    <page path="/workspaceHome.jspx" usageId="com_poworkspace_view_workspaceHomePageDef"/>
+    <page path="/WorkspacePageTemplate.jspx" usageId="com_poworkspace_view_WorkspacePageTemplatePageDef"/>
+    <page path="/test.jspx" usageId="com_poworkspace_view_testPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_poworkspace_view_loginPageDef" path="com.poworkspace.view.pageDefs.loginPageDef"/>
@@ -29,6 +32,10 @@
     <page id="com_poworkspace_view_ProcessInitiationPageDef" path="pages.ProcessInitiationPageDef"/>
     <page id="com_poworkspace_view_TestHomePageDef" path="viewcontroller.pageDefs.TestHomePageDef"/>
     <page id="com_poworkspace_view_testPIPageDef" path="viewcontroller.pageDefs.testPIPageDef"/>
+    <page id="com_poworkspace_view_workspaceHomePageDef" path="viewcontroller.pageDefs.workspaceHomePageDef"/>
+    <page id="com_poworkspace_view_WorkspacePageTemplatePageDef"
+          path="viewcontroller.pageDefs.WorkspacePageTemplatePageDef"/>
+    <page id="com_poworkspace_view_testPageDef" path="viewcontroller.pageDefs.testPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="TaskInitiationEventHandler" path="viewcontroller.TaskInitiationEventHandler"/>

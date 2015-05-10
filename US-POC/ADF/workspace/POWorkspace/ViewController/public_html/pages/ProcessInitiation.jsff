@@ -1,7 +1,7 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-  <!--<af:table value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row"
+    <!--<af:table value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row"
             rows="#{bindings.InitiatableProcessVO1.rangeSize}"
             emptyText="#{bindings.InitiatableProcessVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
             rowBandingInterval="0" fetchSize="#{bindings.InitiatableProcessVO1.rangeSize}" id="t1">
@@ -10,16 +10,52 @@
                      id="ot1"/>
     </af:column>
   </af:table>-->
-  
-  <af:panelGroupLayout id="pgl1">
-    <af:iterator id="i1" value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row">
-      <af:link text="#{row.ProcessName}" id="l1"
-               actionListener="#{pageFlowScope.PoInitiationBean.initiateProcessActionListener}">
-        <f:attribute name="procParam" value="#{row.ProcessName}"/>
-        <f:attribute name="compositeDNParam" value="#{row.CompositeDN}"/>
-        <af:clientListener method="callButtonAction" type="click"/>
-      </af:link>
-    </af:iterator>
-    <af:button visible="false" text="button 1" id="b1" actionListener="#{bindings.eventBinding.listener.processAction}"/>
-  </af:panelGroupLayout>
+    <af:resource type="css" source="/resources/css/jquery-ui.css"/>
+    <af:resource type="javascript" source="http://code.jquery.com/jquery-1.10.2.js"/>
+    <af:resource type="javascript" source="http://code.jquery.com/ui/1.10.4/jquery-ui.js"/>
+    <af:resource type="javascript">
+      $(document).ready(function () {
+          resizeDiv();
+      });
+      window.onresize = function (event) {
+          resizeDiv();
+      };
+
+      function resizeDiv() {
+          vph = $(window).height() - 94;
+          $('.sidebar').css( {
+              'height' : vph + 'px'
+          });
+      };
+    </af:resource>
+    <af:panelGroupLayout id="pgl1" layout="vertical" rendered="#{pageFlowScope.PoInitiationBean.processView}"
+                         inlineStyle="padding-left:10px; padding-top:10px; padding-right:5px;">
+        <af:iterator id="i1" value="#{bindings.InitiatableProcessVO1.collectionModel}" var="row">
+            <af:link text="#{row.ProcessName}" id="l1"
+                     actionListener="#{pageFlowScope.PoInitiationBean.initiateProcessActionListener}"
+                     inlineStyle="color:#3f3f3f; font-size:medium;font-family:Calibri;">
+                <f:attribute name="procParam" value="#{row.ProcessName}"/>
+                <f:attribute name="compositeDNParam" value="#{row.CompositeDN}"/>
+            </af:link>
+        </af:iterator>
+        <!--<af:button visible="false" text="button 1" id="b1"
+                   actionListener="#{bindings.eventBinding.listener.processAction}"/>-->
+    </af:panelGroupLayout>
+    <af:panelGroupLayout layout="vertical" id="pgl2" rendered="#{pageFlowScope.PoInitiationBean.taskTypeView}"
+                         inlineStyle="padding-left:10px; padding-top:10px; padding-right:5px;">
+        <af:link id="l2" text="My Tasks" actionListener="#{pageFlowScope.PoInitiationBean.applyViewActionListener}"
+                 inlineStyle="color:#3f3f3f; font-size:medium;font-family:Calibri;">
+            <f:attribute name="viewType" value="Me_My_Group_All"/>
+        </af:link>
+        <af:link id="l3" text="Initiated Tasks"
+                 actionListener="#{pageFlowScope.PoInitiationBean.applyViewActionListener}"
+                 inlineStyle="color:#3f3f3f; font-size:medium;font-family:Calibri;">
+            <f:attribute name="viewType" value="Initiated"/>
+        </af:link>
+        <af:link id="l4" text="Administrative Tasks"
+                 actionListener="#{pageFlowScope.PoInitiationBean.applyViewActionListener}"
+                 inlineStyle="color:#3f3f3f; font-size:medium;font-family:Calibri;">
+            <f:attribute name="viewType" value="Admin"/>
+        </af:link>
+    </af:panelGroupLayout>
 </jsp:root>

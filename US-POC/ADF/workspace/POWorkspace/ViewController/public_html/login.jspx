@@ -4,20 +4,40 @@
     <jsp:directive.page contentType="text/html;charset=UTF-8"/>
     <f:view>
         <af:document title="login" id="d1">
-        <af:resource type="javascript">
-        function callButtonAction(evt) {
-        var _keyCode = evt.getKeyCode();
-        if (_keyCode == AdfKeyStroke.ENTER_KEY ){
-            console.log("Enter key pressed")
-                  //Method to get component using id (here button is top container)
-                  var button = AdfPage.PAGE.findComponentByAbsoluteId('cb1');
-                  //Method to queue ActionEvent from component
-                  AdfActionEvent.queue(button, button.getPartialSubmit());
-            }
-        }
-        </af:resource>
-            <af:form id="f1">
-                <af:panelBox text="Login Form" id="pb1">
+            <af:resource type="javascript">
+              function callButtonAction(evt) {
+                  var _keyCode = evt.getKeyCode();
+                  if (_keyCode == AdfKeyStroke.ENTER_KEY) {
+                      console.log("Enter key pressed")
+                      //Method to get component using id (here button is top container)
+                      var button = AdfPage.PAGE.findComponentByAbsoluteId('cb1');
+                      //Method to queue ActionEvent from component
+                      AdfActionEvent.queue(button, button.getPartialSubmit());
+                  }
+              }
+            </af:resource>
+            <af:form id="f1" defaultCommand="pt1:cb1">
+                <af:pageTemplate viewId="/LoginPageTemplate.jspx" id="pt1">
+                    <f:facet name="LoginFacet">
+                        <af:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="top:65px;">
+                            <af:panelGroupLayout id="pfl1" layout="vertical">
+                                <af:inputText id="it1" value="#{loginBean.username}" clientComponent="true"
+                                              inlineStyle="margin-top:-7px; margin-bottom:10px;  margin-left: -15px;"
+                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;"/>
+                                <af:inputText id="it2" secret="true" value="#{loginBean.password}"
+                                              inlineStyle="margin-bottom:10px;  margin-left: -15px;"
+                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;">
+                                    <af:clientListener type="keyPress" method="callButtonAction"/>
+                                </af:inputText>
+                            </af:panelGroupLayout>
+                            <af:panelGroupLayout id="pgl2" layout="vertical">
+                                <af:commandButton id="cb1" action="#{loginBean.doLogin}"
+                                                  inlineStyle='background-image:url("resources/images/GoButton.png"); width:31px; height:30px; margin-top: 8px;margin-left: -8px;'/>
+                            </af:panelGroupLayout>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                </af:pageTemplate>
+                <!--<af:panelBox text="Login Form" id="pb1">
                     <f:facet name="toolbar"/>
                     <af:panelFormLayout id="pfl1">
                         <f:facet name="footer">
@@ -28,7 +48,7 @@
                             <af:clientListener type="keyPress" method="callButtonAction"/>
                         </af:inputText>
                     </af:panelFormLayout>
-                </af:panelBox>
+                </af:panelBox>-->
             </af:form>
         </af:document>
     </f:view>

@@ -21,6 +21,8 @@
     <accessorIterator MasterBinding="InputIterator" Binds="Header" RangeSize="25"
                       DataControl="ViewController_InitiatorHumanTask"
                       BeanClass="ViewController_InitiatorHumanTask.Header_Type" id="HeaderIterator"/>
+    <iterator Binds="ItemView1" RangeSize="25" DataControl="AppModuleDataControl2" id="ItemView1Iterator"/>
+    <iterator Binds="ViewObj1" RangeSize="25" DataControl="AppModuleDataControl" id="ViewObj1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -172,5 +174,20 @@
         <Item Value="Total_value"/>
       </AttrNames>
     </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="creatorDisplayName">
+      <AttrNames>
+        <Item Value="creatorDisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="taskIterator" id="SUBMIT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="SUBMIT" IsViewObjectMethod="false" DataControl="ViewController_InitiatorHumanTask"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <list IterBinding="ItemView1Iterator" StaticList="false" Uses="LOV_ItemId" id="ItemId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_ItemId" id="ItemId1" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_TypeId" id="TypeId" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <action IterBinding="payloadIterator" id="Delete2" RequiresUpdateModel="false" Action="removeCurrentRow"/>
   </bindings>
 </pageDefinition>

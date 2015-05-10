@@ -228,6 +228,11 @@
       <managed-bean-class>oracle.bpel.worklistapp.userprefs.UserPreferencesBean</managed-bean-class>
       <managed-bean-scope>pageFlow</managed-bean-scope>
     </managed-bean>
+    <managed-bean id="__57">
+      <managed-bean-name>PurchaseOrderBean</managed-bean-name>
+      <managed-bean-class>com.view.beans.PurchaseOrder</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <finalizer>#{invokeActionBean.invokeScript}</finalizer>
     <view id="taskDetails1_jspx">
       <page>/taskDetails1.jspx</page>

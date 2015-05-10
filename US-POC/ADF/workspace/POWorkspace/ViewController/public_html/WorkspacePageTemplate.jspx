@@ -1,0 +1,68 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+    <jsp:directive.page contentType="text/html;charset=UTF-8"/>
+    <af:pageTemplateDef var="attrs" definition="private">
+        <link type="text/css" rel="stylesheet" href="resources/css/style3.css"/>
+        <div class="container">
+            <div class="topHeader">
+                <div class="left">
+                    <img src="resources/images/Logo.png" style="float: left;width: 80%;"/>
+                </div>
+                <div class="right">
+                    <div class="upper">
+                        <div class="logoutSection" style="float: right;margin-top: 8px;margin-right: 8px;">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal" inlineStyle="margin-right:10px;">
+                                <af:commandLink id="cl4" text="HOME"
+                                                inlineStyle="color: #ffffff; font-size: 11pt; font-family: Calibri;"/>
+                                <af:spacer width="10" height="10" id="s3"/>
+                                <af:outputText value="|" id="pt_ot1"
+                                               inlineStyle="color: #ffffff; font-size: 11pt; font-family: Calibri;"/>
+                                <af:spacer width="10" height="10" id="pt_s1"/>
+                                <af:link id="cl3" text="LOGOUT" action="#{loginBean.onLogout}"
+                                         inlineStyle="color: #ffffff; font-size: 11pt; font-family: Calibri;"/>
+                            </af:panelGroupLayout>
+                        </div>
+                        <div class="viewsSection">
+                            <af:facetRef facetName="bottomHeaderFacet"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="contentWrapper">
+                <div class="contentArea">
+                    <af:facetRef facetName="contentFacet"/>
+                </div>
+                <div class="sidebar">
+                    <af:facetRef facetName="sidebarFacet"/>
+                </div>
+            </div>
+            <!--<div class="rightPanel">
+                <div class="topRightPanel">
+                    <div class="column">
+                        
+            <af:facetRef facetName="topHeaderFacet"/>
+            
+                        <af:panelGroupLayout id="pgl2" layout="horizontal">
+                            <af:commandLink id="cl4" text="Home"/>
+                            <af:spacer width="10" height="10" id="s3"/>
+                            <af:link id="cl3" text="Logout" action="#{loginBean.onLogout}"/>
+                        </af:panelGroupLayout>
+                    </div>
+                    <div class="column">
+                        <af:facetRef facetName="bottomHeaderFacet"/>
+                    </div>
+                </div>
+                <div class="lowerRightPanel">
+                    <af:facetRef facetName="sidebarFacet"/>
+                </div>
+            </div>-->
+        </div>
+        <af:xmlContent>
+            <component xmlns="http://xmlns.oracle.com/adf/faces/rich/component">
+                <description/>
+                <display-name>WorkspacePageTemplate</display-name>
+            </component>
+        </af:xmlContent>
+    </af:pageTemplateDef>
+</jsp:root>

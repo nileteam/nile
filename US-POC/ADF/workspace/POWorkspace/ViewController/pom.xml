@@ -239,13 +239,6 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.oracle.adf</groupId>
-      <artifactId>client</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>jar</type>
-      <scope>compile</scope>
-    </dependency>
-    <dependency>
       <groupId>com.oracle.adf.library</groupId>
       <artifactId>BC4J-Security</artifactId>
       <version>12.1.3-0-0</version>
@@ -258,6 +251,20 @@
       <version>12.1.3-0-0</version>
       <type>pom</type>
       <scope>compile</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>ADF-Model-Generic-Runtime</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>Oracle-XML-Parser-v2</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
@@ -295,25 +302,11 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>BC4J-Oracle-Domains</artifactId>
+      <groupId>com.oracle.adf</groupId>
+      <artifactId>client</artifactId>
       <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>ADF-Model-Generic-Runtime</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>Oracle-XML-Parser-v2</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
+      <type>jar</type>
+      <scope>compile</scope>
     </dependency>
   </dependencies>
   <build>
@@ -323,6 +316,12 @@
         <directory>${basedir}</directory>
         <includes>
           <include>*</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/mywork/UIFORCustomWorkspace/ViewController/public_html/resources/css/</directory>
+        <includes>
+          <include>**</include>
         </includes>
       </resource>
     </resources>
