@@ -1,0 +1,21 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/GetSeq" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/GetSeq" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ReqseqCollection" type="ReqseqCollection"/>
+   <xs:complexType name="ReqseqCollection">
+      <xs:sequence>
+         <xs:element name="Reqseq" type="Reqseq" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Reqseq">
+      <xs:sequence>
+         <xs:element name="seq" type="xs:decimal" minOccurs="0"/>
+         <xs:element name="instance" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:element name="ReqseqPrimaryKey" type="ReqseqPrimaryKey"/>
+   <xs:complexType name="ReqseqPrimaryKey">
+      <xs:sequence>
+         <xs:element name="instance" type="xs:decimal" minOccurs="1" maxOccurs="1"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

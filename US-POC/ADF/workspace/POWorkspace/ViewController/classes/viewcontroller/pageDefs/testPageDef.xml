@@ -4,9 +4,6 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <page path="viewcontroller.pageDefs.WorkspacePageTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
-    <taskFlow id="ProcessIntitiationTF1" taskFlowId="/WEB-INF/ProcessIntitiationTF.xml#ProcessIntitiationTF"
-              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
   <bindings/>
 </pageDefinition>

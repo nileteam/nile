@@ -35,11 +35,7 @@
     Precision="500"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    SQLType="VARCHAR">
-    <Properties>
-      <SchemaBasedProperties/>
-    </Properties>
-  </ViewAttribute>
+    SQLType="VARCHAR"/>
   <ViewAttribute
     Name="TaskflowID"
     IsSelected="false"
@@ -92,6 +88,15 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="isNewTask"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Boolean"
+    ColumnType="NUMBER"
+    AliasName="VIEW_ATTR"
+    SQLType="BIT"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="TaskID"/>
   </AttrArray>

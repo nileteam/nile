@@ -1,14 +1,14 @@
-2015-04-27 20:50:54.171/2.314 Oracle Coherence 12.1.3.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/jdevhome12c/coherence/lib/coherence.jar!/tangosol-coherence.xml"
-2015-04-27 20:50:54.237/2.380 Oracle Coherence 12.1.3.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/jdevhome12c/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
-2015-04-27 20:50:54.348/2.491 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
-2015-04-27 20:50:54.359/2.502 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
-2015-04-27 20:50:54.370/2.513 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
-2015-04-27 20:50:54.379/2.522 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
+2015-05-09 17:27:10.296/2.104 Oracle Coherence 12.1.3.0.0 <Info> (thread=main, member=n/a): Loaded operational configuration from "jar:file:/D:/jdevhome12c/coherence/lib/coherence.jar!/tangosol-coherence.xml"
+2015-05-09 17:27:10.360/2.168 Oracle Coherence 12.1.3.0.0 <Info> (thread=main, member=n/a): Loaded operational overrides from "jar:file:/D:/jdevhome12c/coherence/lib/coherence.jar!/tangosol-coherence-override-dev.xml"
+2015-05-09 17:27:10.370/2.178 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/tangosol-coherence-override.xml" is not specified
+2015-05-09 17:27:10.382/2.190 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-config.xml" is not specified
+2015-05-09 17:27:10.392/2.200 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "cache-factory-builder-config.xml" is not specified
+2015-05-09 17:27:10.402/2.210 Oracle Coherence 12.1.3.0.0 <D5> (thread=main, member=n/a): Optional configuration override "/custom-mbeans.xml" is not specified
 
 Oracle Coherence Version 12.1.3.0.0 Build 52031
  Grid Edition: Development mode
 Copyright (c) 2000, 2014, Oracle and/or its affiliates. All rights reserved.
 
-2015-04-27 20:50:54.482/2.625 Oracle Coherence GE 12.1.3.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
-Apr 27, 2015 8:50:55 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
+2015-05-09 17:27:10.582/2.390 Oracle Coherence GE 12.1.3.0.0 <Info> (thread=main, member=n/a): Created cache factory com.tangosol.net.DefaultConfigurableCacheFactory
+May 09, 2015 5:27:11 PM oracle.fabric.common.wsdl.SchemaManager isIncrementalBuildSupported
 INFO: XMLSchema incremental build enabled.

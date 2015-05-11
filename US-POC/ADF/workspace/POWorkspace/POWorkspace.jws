@@ -45,8 +45,8 @@
                   </hash>
                </list>
             </hash>
-            <url n="earURL" path="deploy/POWorkspace_Project1_POWorkspace.ear"/>
-            <value n="enterpriseAppName" v="POWorkspace_Project1_POWorkspace"/>
+            <url n="earURL" path="deploy/Custom_WorkspaceNew.ear"/>
+            <value n="enterpriseAppName" v="custom_workspaceNew"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>

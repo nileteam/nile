@@ -16,7 +16,7 @@
                   }
               }
             </af:resource>
-            <af:form id="f1">
+            <af:form id="f1" defaultCommand="pt1:cb1">
                 <af:pageTemplate viewId="/LoginPageTemplate.jspx" id="pt1">
                     <f:facet name="LoginFacet">
                         <af:panelGroupLayout id="pgl1" layout="vertical" inlineStyle="top:65px;">

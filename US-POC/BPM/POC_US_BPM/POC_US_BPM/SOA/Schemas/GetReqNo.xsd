@@ -1,0 +1,18 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="GetReqNoInput" type="GetReqNoInput"/>
+   <xs:complexType name="GetReqNoInput">
+      <xs:sequence/>
+   </xs:complexType>
+   <xs:element name="GetReqNoOutputCollection" type="GetReqNoOutputCollection"/>
+   <xs:complexType name="GetReqNoOutputCollection">
+      <xs:sequence>
+         <xs:element name="GetReqNoOutput" type="GetReqNoOutput" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="GetReqNoOutput">
+      <xs:sequence>
+         <xs:element name="NEXTVAL" type="xs:decimal" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

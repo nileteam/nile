@@ -139,7 +139,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="contextRoot" v="CustomWorkspace"/>
+            <value n="contextRoot" v="/custom/workspaceNew"/>
             <value n="enterpriseAppName" v="POWorkspace_ViewController_webapp"/>
             <hash n="fileGroups">
                <list n="groups">
@@ -199,7 +199,7 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/POWorkspace_ViewController_webapp.war"/>
+            <url n="jarURL" path="deploy/POWorkspace_ViewController_webappNew.war"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
             <value n="profileName" v="POWorkspace_ViewController_webapp"/>
          </hash>
@@ -354,10 +354,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Oracle.bpm.client.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -379,6 +375,10 @@
          </hash>
          <hash>
             <value n="id" v="Connection Manager"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -407,7 +407,7 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
+                  <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Oracle.bpm.client.jar"/>
@@ -558,10 +558,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Oracle.bpm.client.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Oracle XML Parser v2"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -583,6 +579,10 @@
          </hash>
          <hash>
             <value n="id" v="Connection Manager"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle.bpm.client.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

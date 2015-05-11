@@ -19,7 +19,7 @@
         </pattern>
     </decisionService>
     <schemaInformation>
-        <dictionary fqnPackage="POC_US_BPM" fqnName="TotalAmountOracleRules1" updateNumber="32">
+        <dictionary fqnPackage="POC_US_BPM" fqnName="TotalAmountOracleRules1" updateNumber="41">
             <schemaBrowser>
                 <package>org.purchaseorderrequisition</package>
                 <namespace>http://www.PurchaseOrderRequisition.org</namespace>
