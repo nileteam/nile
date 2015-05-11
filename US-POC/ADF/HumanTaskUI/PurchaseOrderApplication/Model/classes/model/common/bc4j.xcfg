@@ -1,15 +1,15 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
-   <AppModuleConfigBag ApplicationName="model.AppModule">
-      <AppModuleConfig name="AppModuleLocal" jbo.project="model.Model" ApplicationName="model.AppModule" DeployPlatform="LOCAL">
+   <AppModuleConfigBag ApplicationName="model.POReqAppModule">
+      <AppModuleConfig name="POReqAppModuleLocal" jbo.project="model.Model" ApplicationName="model.POReqAppModule" DeployPlatform="LOCAL">
          <Database jbo.TypeMapEntries="OracleApps"/>
-         <Security AppModuleJndiName="model.AppModule"/>
+         <Security AppModuleJndiName="model.POReqAppModule"/>
          <Custom ns0:JDBCDataSource="java:comp/env/jdbc/149DBDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
       </AppModuleConfig>
-      <AppModuleConfig name="AppModuleShared" jbo.project="model.Model" ApplicationName="model.AppModule" DeployPlatform="LOCAL">
+      <AppModuleConfig name="POReqAppModuleShared" jbo.project="model.Model" ApplicationName="model.POReqAppModule" DeployPlatform="LOCAL">
          <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
          <Database jbo.TypeMapEntries="OracleApps"/>
-         <Security AppModuleJndiName="model.AppModule"/>
+         <Security AppModuleJndiName="model.POReqAppModule"/>
          <Custom ns0:JDBCDataSource="java:comp/env/jdbc/149DBDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
       </AppModuleConfig>
    </AppModuleConfigBag>

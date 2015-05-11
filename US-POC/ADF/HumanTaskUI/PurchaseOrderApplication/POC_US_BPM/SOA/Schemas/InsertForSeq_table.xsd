@@ -1,0 +1,15 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertForSeq" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertForSeq" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ReqseqCollection" type="ReqseqCollection"/>
+   <xs:complexType name="ReqseqCollection">
+      <xs:sequence>
+         <xs:element name="Reqseq" type="Reqseq" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="Reqseq">
+      <xs:sequence>
+         <xs:element name="seq" type="xs:decimal"/>
+         <xs:element name="instance" type="xs:decimal" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+</xs:schema>

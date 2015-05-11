@@ -25,6 +25,7 @@
           usageId="viewcontroller_PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef"/>
     <page path="/WEB-INF/com/flows/PurchaseOrderEditableNewTF.xml#PurchaseOrderEditableNewTF@Load"
           usageId="viewcontroller_PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"/>
+    <page path="/test.jspx" usageId="viewcontroller_testPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_taskDetails1PageDef" path="viewcontroller.pageDefs.taskDetails1PageDef"/>
@@ -45,25 +46,31 @@
           path="com.flows.PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef"/>
     <page id="viewcontroller_PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"
           path="com.flows.PurchaseOrderEditableNewTF_PurchaseOrderEditableNewTF_LoadPageDef"/>
+    <page id="viewcontroller_testPageDef" path="viewcontroller.pageDefs.testPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ViewController_NonEditableHumantask" path="viewcontroller.ViewController_NonEditableHumantask"/>
     <dc id="ViewController_EditableHumanTask" path="viewcontroller.ViewController_EditableHumanTask"/>
     <dc id="ViewController_InitiatorHumanTask" path="viewcontroller.ViewController_InitiatorHumanTask"/>
-    <BC4JDataControl id="AppModuleDataControl" Package="model.AM"
+    <!--<BC4JDataControl id="AppModuleDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="POReqAppModuleLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>-->
+    <!--BC4JDataControl id="AppModuleDataControl1" Package="model.AM"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
                      SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
-                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
-    <BC4JDataControl id="AppModuleDataControl1" Package="model.VO"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/-->
+    <!--BC4JDataControl id="AppModuleDataControl2" Package="model"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
                      SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
-                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
-    <BC4JDataControl id="AppModuleDataControl2" Package="model"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/-->
+    <BC4JDataControl id="POReqAppModuleDataControl" Package="model"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
-                     SupportsSortCollection="true" Configuration="AppModuleLocal" syncMode="Immediate"
+                     SupportsSortCollection="true" Configuration="POReqAppModuleLocal" syncMode="Immediate"
                      xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
   </dataControlUsages>
 </Application>

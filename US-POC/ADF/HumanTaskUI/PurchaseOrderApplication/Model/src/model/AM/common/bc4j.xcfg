@@ -1,16 +1,5 @@
-<?xml version = '1.0' encoding = 'UTF-8'?>
+<?xml version="1.0" encoding='windows-1252'?>
 <BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
-   <AppModuleConfigBag ApplicationName="model.AM.AppModule">
-      <AppModuleConfig DeployPlatform="LOCAL" name="AppModuleLocal" ApplicationName="model.AM.AppModule" jbo.project="model.Model">
-         <Database jbo.TypeMapEntries="OracleApps"/>
-         <Security AppModuleJndiName="model.AM.AppModule"/>
-         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="jdbc/NileDBDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
-      </AppModuleConfig>
-      <AppModuleConfig jbo.project="model.Model" ApplicationName="model.AM.AppModule" DeployPlatform="LOCAL" name="AppModuleShared">
-         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
-         <Database jbo.TypeMapEntries="OracleApps"/>
-         <Security AppModuleJndiName="model.AM.AppModule"/>
-         <Custom ns0:JDBCDataSource="jdbc/NileDBDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
-      </AppModuleConfig>
-   </AppModuleConfigBag>
+<AppModuleConfigBag>
+</AppModuleConfigBag>
 </BC4JConfig>

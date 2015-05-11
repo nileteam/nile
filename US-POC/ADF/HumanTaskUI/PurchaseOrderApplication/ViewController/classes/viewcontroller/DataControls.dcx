@@ -9,10 +9,10 @@
                       BeanClass="ViewController_InitiatorHumanTask" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
       <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
-                      SchemaLocation="file:/C:/Users/nile/Downloads/Purchase_Order_Request_Shared/Purchase Order Request/PurchaseOrderRequest/SOA/Schemas/InitiatorHumanTaskWorkflowTask.xsd"
+                      SchemaLocation="file:/D:/Nishant/sunday/nile/US-POC/ADF/HumanTaskUI/PurchaseOrderApplication/POC_US_BPM/SOA/Schemas/InitiatorHumanTaskWorkflowTask.xsd"
                       RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
-                      taskLoc="../../../../Users/nile/Downloads/Purchase_Order_Request_Shared/Purchase Order Request/PurchaseOrderRequest/SOA/HumanTasks/InitiatorHumanTask.task"
-                      InitiationTask="true" DocumentStoreConfiguration="false"/>
+                      taskLoc="SOA/HumanTasks/InitiatorHumanTask.task" InitiationTask="true"
+                      DocumentStoreConfiguration="false"/>
     </Source>
   </AdapterDataControl>
   <AdapterDataControl id="ViewController_EditableHumanTask"

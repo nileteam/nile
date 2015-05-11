@@ -2,6 +2,20 @@
 <JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.10.8" id="Input"
           Package="ViewController_InitiatorHumanTask" BeanClass="ViewController_InitiatorHumanTask.Input"
           isJavaBased="false">
+  <Attribute Name="Amount_Flag" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Amount Flag"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Amount_Flag"/>
+        <Property Name="targetNamespace" Value="http://www.PurchaseOrderRequisition.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
   <AccessorAttribute id="Header" IsCollection="true" BeanClass="ViewController_InitiatorHumanTask.Header_Type"
                      CollectionBeanClass="ViewController_InitiatorHumanTask.Header_Type_Header_Operations">
     <Properties>

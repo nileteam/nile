@@ -21,7 +21,7 @@
     <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
                       DataControl="ViewController_EditableHumanTask"
                       BeanClass="ViewController_EditableHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
-    <iterator Binds="ViewObj1" RangeSize="25" DataControl="AppModuleDataControl" id="ViewObj1Iterator"/>
+    <iterator Binds="ViewObj1" RangeSize="25" DataControl="POReqAppModuleDataControl" id="ViewObj1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -137,11 +137,10 @@
         <Item Value="Preferred_Supplier"/>
       </AttrNames>
       <ValueList>
-        <Item Value="FlipKart"/>
-        <Item Value="Jabong"/>
-        <Item Value="eBay"/>
-        <Item Value="Amazon"/>
-        <Item Value="Snapdeal"/>
+        <Item Value="Mobile Store"/>
+        <Item Value="City Computers"/>
+        <Item Value="Hardware Point"/>
+        <Item Value="Delhi Communications"/>
       </ValueList>
     </list>
     <list IterBinding="Item_DetailsIterator" id="Task1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -150,10 +149,11 @@
         <Item Value="Task"/>
       </AttrNames>
       <ValueList>
-        <Item Value="Task1"/>
-        <Item Value="Task2"/>
-        <Item Value="Task3"/>
-        <Item Value="Task4"/>
+        <Item Value="Requirement Gathering"/>
+        <Item Value="Design"/>
+        <Item Value="Development"/>
+        <Item Value="Documentation"/>
+        <Item Value="Testing"/>
       </ValueList>
     </list>
     <list IterBinding="Item_DetailsIterator" id="Project1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -162,10 +162,11 @@
         <Item Value="Project"/>
       </AttrNames>
       <ValueList>
-        <Item Value="Project 1"/>
-        <Item Value="Project 2"/>
-        <Item Value="Project 3"/>
-        <Item Value="Project 4"/>
+        <Item Value="Global Dispatch system"/>
+        <Item Value="Hpseb"/>
+        <Item Value="Ap Invoice Automation"/>
+        <Item Value="Invoice Lifecycle Management System"/>
+        <Item Value="GenTrac"/>
       </ValueList>
     </list>
     <attributeValues IterBinding="payloadIterator" id="comments">
@@ -180,5 +181,8 @@
           SelectItemValueMode="ListObject"/>
     <list IterBinding="ViewObj1Iterator" StaticList="false" Uses="LOV_TypeId" id="TypeId" DTSupportsMRU="false"
           SelectItemValueMode="ListObject"/>
+    <methodAction IterBinding="taskIterator" id="update" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="update" IsViewObjectMethod="false" DataControl="ViewController_EditableHumanTask"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
   </bindings>
 </pageDefinition>

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.contractmanagement.org"
+            targetNamespace="http://www.contractmanagement.org" elementFormDefault="qualified">
+  
+  <xsd:complexType name="Header_type">
+    <xsd:sequence>
+      <xsd:element name="Purchase_Requisition_No" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="Item_Description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Value_of_Item" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="Need_By_Date" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="Cost_Centre" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Name_of_Supplier" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Payment_Terms" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Other_Special_TermsConditions" type="xsd:string" minOccurs="0"/>
+      </xsd:sequence>
+  </xsd:complexType>
+  <xsd:element name="Input">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0">
+        <xsd:element name="Header" type="Header_type" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
+</xsd:schema>

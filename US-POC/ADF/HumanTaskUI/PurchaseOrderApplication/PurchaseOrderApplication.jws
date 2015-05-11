@@ -27,6 +27,7 @@
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="Model/Model.jpr"/></hash>
+      <hash><url n="URL" path="POC_US_BPM/POC_US_BPM.jpr"/></hash>
       <hash><url n="URL" path="ViewController/ViewController.jpr"/></hash>
    </list>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
@@ -44,8 +45,8 @@
                   </hash>
                </list>
             </hash>
-            <url n="earURL" path="deploy/PurchaseOrderApplication_Project1_PurchaseOrderApplication.ear"/>
-            <value n="enterpriseAppName" v="PurchaseOrderApplication_Project1_PurchaseOrderApplication"/>
+            <url n="earURL" path="deploy/PurchaseOrderApplication_Project1_PurchaseOrderApplicationNew.ear"/>
+            <value n="enterpriseAppName" v="PurchaseOrderApplication_Project1_PurchaseOrderApplicationNew"/>
             <hash n="fileGroups">
                <list n="groups">
                   <hash>
@@ -144,5 +145,15 @@
          <string v="PurchaseOrderApplication_Project1_PurchaseOrderApplication"/>
          <string v="ViewController"/>
       </list>
+   </hash>
+   <hash n="oracle.jdeveloper.model.PathsConfiguration">
+      <hash n="ApplicationSrcContentSet">
+         <list n="pattern-filters">
+            <string v="+**"/>
+         </list>
+         <list n="url-path">
+            <url path="src/"/>
+         </list>
+      </hash>
    </hash>
 </jws:workspace>

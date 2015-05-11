@@ -47,7 +47,7 @@
                                   columns="#{bindings.Status.hints.displayWidth}"
                                   maximumLength="#{bindings.Status.hints.precision}"
                                   shortDesc="#{bindings.Status.hints.tooltip}" id="it3"
-                                  styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;width:236px;">
+                                  styleClass="iputtxtround Enteredfont" contentStyle="height:20pt;width:220px;">
                         <f:validator binding="#{bindings.Status.validator}"/>
                     </af:inputText>
                 </af:panelGroupLayout>
@@ -115,6 +115,49 @@
             <br/>
             <br/>
         </af:panelGroupLayout>
+        
+        
+        <af:panelGroupLayout id="pgl4" layout="horizontal" inlineStyle="width: 890px;margin-bottom:20px;">
+               
+                <af:panelGroupLayout id="pgl8" layout="horizontal" inlineStyle="float:right; width:223px;">
+                    <af:outputText value="Total Value" id="ot20" styleClass="fonteffect"/>
+                  
+                  <af:inputText value="#{bindings.Total_value.inputValue}"
+                                  required="#{bindings.Total_value.hints.mandatory}"
+                                  columns="#{bindings.Total_value.hints.displayWidth}"
+                                  maximumLength="#{bindings.Total_value.hints.precision}"
+                                  shortDesc="#{bindings.Total_value.hints.tooltip}" disabled="true" id="it14"
+                                  contentStyle="height:20pt;width:60px;" styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.Total_value.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
+                    </af:inputText>
+                  
+                  
+                    <af:outputText value="USD" id="ot19" inlineStyle="margin-right:20px;" styleClass="fonteffect"/>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout><br/><br/>
+        
+        
+        
+        
+        
+        
+        
+        <!--<af:panelGroupLayout id="pgl27" inlineStyle="width:833px;" halign="right">
+            <af:panelGroupLayout id="pgl4" inlineStyle="width:213px;" layout="horizontal">
+                 <af:outputText value="Total Value" id="ot20" styleClass="fonteffect"/>
+                <af:inputText value="#{bindings.Total_value.inputValue}"
+                                  required="#{bindings.Total_value.hints.mandatory}"
+                                  columns="#{bindings.Total_value.hints.displayWidth}"
+                                  maximumLength="#{bindings.Total_value.hints.precision}"
+                                  shortDesc="#{bindings.Total_value.hints.tooltip}" disabled="true" id="it14"
+                                  contentStyle="height:20pt;width:60px;" styleClass="Enteredfont fonteffect"
+                              inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Total_value.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
+                    </af:inputText>
+            </af:panelGroupLayout>
+        </af:panelGroupLayout>-->
         <!--<af:panelFormLayout id="pfl2" rows="1" labelAlignment="top" inlineStyle="height:217px;">
             <af:panelGroupLayout id="pgl8">
                 <af:panelGridLayout id="pgl4">
@@ -396,7 +439,23 @@
                                         <f:validator binding="#{bindings.Task.validator}"/>
                                     </af:inputText>
                                 </af:panelGroupLayout>
-                            </af:panelGroupLayout>
+                            </af:panelGroupLayout><br/><br/>
+                            
+                            
+                            <af:panelGroupLayout id="pgl26" inlineStyle="margin-top:10px;">
+                <af:outputText value="Comments:" id="ot6" styleClass="fonteffect" inlineStyle="padding-left:7px;"/>
+                <af:inputText value="#{bindings.Comments.inputValue}"
+                              required="#{bindings.Comments.hints.mandatory}"
+                              columns="#{bindings.Comments.hints.displayWidth}"
+                              maximumLength="#{bindings.Comments.hints.precision}" styleClass="Enteredfont iputtxtround"
+                              shortDesc="#{bindings.Comments.hints.tooltip}" id="it13"
+                              binding="#{pageFlowScope.PurchaseOrderBean.commentBVar}"
+                              contentStyle="height:60pt;width:250px;"
+                              rows="5" inlineStyle="margin-top:15px;">
+                    <f:validator binding="#{bindings.Comments.validator}"/>
+                </af:inputText>
+            </af:panelGroupLayout>
+                            
                         </af:panelGroupLayout>
                         <br/>
                     </af:panelGroupLayout>
@@ -405,38 +464,9 @@
             </af:panelFormLayout>
         </af:panelGroupLayout>
         <br/>
-        <af:panelGroupLayout id="pgl4" layout="horizontal" inlineStyle="margin-left:10px; width:374px;">
-            <af:panelGroupLayout id="pgl8">
-                <af:outputText value="Total Value:" id="ot3" styleClass="fonteffect" inlineStyle="margin-left:8px;"/>
-                <af:inputText value="#{bindings.Total_value.inputValue}"
-                                  required="#{bindings.Total_value.hints.mandatory}"
-                                  columns="#{bindings.Total_value.hints.displayWidth}"
-                                  maximumLength="#{bindings.Total_value.hints.precision}"
-                                  shortDesc="#{bindings.Total_value.hints.tooltip}" disabled="true" id="it14"
-                                  contentStyle="height:20pt;" styleClass="Enteredfont fonteffect"
-                              inlineStyle="margin-top:15px;">
-                        <f:validator binding="#{bindings.Total_value.validator}"/>
-                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Total_value.format}"/>
-                    </af:inputText>
-            </af:panelGroupLayout>
-            <af:panelGroupLayout id="pgl26">
-                <af:outputText value="Comments:" id="ot6" styleClass="fonteffect" inlineStyle="margin-left:35px;"/>
-                <af:inputText value="#{bindings.Comments.inputValue}"
-                              required="#{bindings.Comments.hints.mandatory}"
-                              columns="#{bindings.Comments.hints.displayWidth}"
-                              maximumLength="#{bindings.Comments.hints.precision}" styleClass="Enteredfont iputtxtround"
-                              inlineStyle="margin-left:12px;padding-left:20px;margin-top:15px;"
-                              shortDesc="#{bindings.Comments.hints.tooltip}" id="it13"
-                              binding="#{pageFlowScope.PurchaseOrderBean.commentBVar}" contentStyle="height:20pt;">
-                    <f:validator binding="#{bindings.Comments.validator}"/>
-                </af:inputText>
-            </af:panelGroupLayout>
-        </af:panelGroupLayout>
         <br/>
-        <br/>
-         <br/>
-        <af:commandImageLink id="b2" action="#{pageFlowScope.PurchaseOrderBean.Approve_NonEditable}"
-                             icon="#{resource['images:ApproveButton.png']}" inlineStyle="margin-left:12px;">
+        <af:commandImageLink id="b2" action="#{pageFlowScope.PurchaseOrderBean.Approve_NonEditable}" inlineStyle="margin-left:12px;"
+                             icon="#{resource['images:ApproveButton.png']}">
             <af:clientListener method="closeMe" type="action"/>
         </af:commandImageLink>
         <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}"

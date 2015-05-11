@@ -3,34 +3,44 @@
                 id="PurchaseOrderInitiationTF_PurchaseOrderInitiationTF_OnLoadingPageDef" Package="com.flows"
                 SkipValidation="true">
   <parameters/>
-  <executables>
-    <variableIterator id="variables"/>
-    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_InitiatorHumanTask" RangeSize="25"
-                    BeanClass="ViewController_InitiatorHumanTask.getTaskDetails" id="getTaskDetailsIterator"/>
-    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
-                      DataControl="ViewController_InitiatorHumanTask" BeanClass="ViewController_InitiatorHumanTask.task"
-                      id="taskIterator"/>
-    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
-                      DataControl="ViewController_InitiatorHumanTask"
-                      BeanClass="ViewController_InitiatorHumanTask.InitiatorHumanTaskPayloadType" id="payloadIterator"/>
-    <accessorIterator MasterBinding="payloadIterator" Binds="Input" RangeSize="25"
-                      DataControl="ViewController_InitiatorHumanTask"
-                      BeanClass="ViewController_InitiatorHumanTask.Input" id="InputIterator"/>
-    <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="10"
-                      DataControl="ViewController_InitiatorHumanTask"
-                      BeanClass="ViewController_InitiatorHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
-  </executables>
+ <executables>
+      <iterator id="Item_DetailsVO1Iterator" Binds="Item_DetailsVO1" DataControl="POReqAppModuleDataControl" RangeSize="25"/>
+      <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_InitiatorHumanTask" RangeSize="25"
+                      BeanClass="ViewController_InitiatorHumanTask.getTaskDetails" id="getTaskDetailsIterator"/>
+      <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                        DataControl="ViewController_InitiatorHumanTask"
+                        BeanClass="ViewController_InitiatorHumanTask.task" id="taskIterator"/>
+      <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                        DataControl="ViewController_InitiatorHumanTask"
+                        BeanClass="ViewController_InitiatorHumanTask.InitiatorHumanTaskPayloadType"
+                        id="payloadIterator"/>
+      <accessorIterator MasterBinding="payloadIterator" Binds="Input" RangeSize="25"
+                        DataControl="ViewController_InitiatorHumanTask"
+                        BeanClass="ViewController_InitiatorHumanTask.Input" id="InputIterator"/>
+      <accessorIterator id="HeaderIterator" MasterBinding="InputIterator" Binds="Header" RangeSize="25"
+                        DataControl="ViewController_InitiatorHumanTask"
+                        BeanClass="ViewController_InitiatorHumanTask.Header_Type"/>
+      <accessorIterator id="Item_DetailsIterator" MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
+                        DataControl="ViewController_InitiatorHumanTask"
+                        BeanClass="ViewController_InitiatorHumanTask.Item_Details_Type"/>
+      <iterator Binds="Item_DetailsVO1" RangeSize="10" DataControl="POReqAppModuleDataControl"
+                id="Item_DetailsVO1Iterator1"/>
+      <iterator Binds="Item_DetailsVO1" RangeSize="10" DataControl="POReqAppModuleDataControl"
+                id="Item_DetailsVO1Iterator2"/>
+      <iterator Binds="Item_DetailsVO1" RangeSize="10" DataControl="POReqAppModuleDataControl"
+                id="Item_DetailsVO1Iterator3"/>
+   </executables>
   <bindings>
-    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
-                  IsViewObjectMethod="false" DataControl="ViewController_InitiatorHumanTask"
-                  InstanceName="data.ViewController_InitiatorHumanTask"
-                  ReturnName="data.ViewController_InitiatorHumanTask.methodResults.getTaskDetails_ViewController_InitiatorHumanTask_getTaskDetails_result">
-      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
-      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
-      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
-    </methodAction>
-    <action IterBinding="Item_DetailsIterator" id="CreateInsert"
-            InstanceName="ViewController_InitiatorHumanTask.Input.Item_Details"
-            DataControl="ViewController_InitiatorHumanTask" RequiresUpdateModel="true" Action="createInsertRow"/>
-  </bindings>
+      <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                    IsViewObjectMethod="false" DataControl="ViewController_InitiatorHumanTask"
+                    InstanceName="data.ViewController_InitiatorHumanTask"
+                    ReturnName="data.ViewController_InitiatorHumanTask.methodResults.getTaskDetails_ViewController_InitiatorHumanTask_getTaskDetails_result">
+         <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+         <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+         <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+      </methodAction>
+      <action IterBinding="Item_DetailsVO1Iterator3" id="CreateInsert"
+              InstanceName="POReqAppModuleDataControl.Item_DetailsVO1" DataControl="POReqAppModuleDataControl"
+              RequiresUpdateModel="true" Action="createInsertRow"/>
+   </bindings>
 </pageDefinition>

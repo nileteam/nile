@@ -25,6 +25,13 @@ font-family: Lucida Sans;
     font-size: 11pt;
     font-style: normal;
 }
+.lightGrayText af|inputText::content
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    color: gray;
+}
 
 /*.tt af|column::column-header-cell-content
 {
@@ -39,6 +46,7 @@ font-family: Lucida Sans;
     font-family: Lucida Sans;
     font-size: 11pt;
     font-style: normal;
+   
 
 }
 .Fontdate af|inputDate::content
