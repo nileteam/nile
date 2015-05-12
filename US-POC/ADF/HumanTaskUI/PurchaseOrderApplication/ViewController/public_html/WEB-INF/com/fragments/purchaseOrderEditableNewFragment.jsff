@@ -37,7 +37,7 @@
                                       columns="#{bindings.Requisition_no.hints.displayWidth}"
                                       maximumLength="#{bindings.Requisition_no.hints.precision}"
                                       shortDesc="#{bindings.Requisition_no.hints.tooltip}" id="it1"
-                                      labelStyle="font-size:15px;margin-left:4px;">
+                                      labelStyle="font-size:15px;margin-left:4px;" contentStyle="height:20px;">
                             <f:validator binding="#{bindings.Requisition_no.validator}"/>
                         </af:inputText>
                     </af:panelGroupLayout>
@@ -50,7 +50,8 @@
                                       columns="#{bindings.Requester.hints.displayWidth}" disabled="true"
                                       maximumLength="#{bindings.Requester.hints.precision}"
                                       shortDesc="#{bindings.Requester.hints.tooltip}" id="it2"
-                                      inlineStyle="margin-left:5px;" styleClass="iputtxtround Enteredfont">
+                                      inlineStyle="margin-left:5px;" styleClass="iputtxtround Enteredfont"
+                                      contentStyle="height:20px;">
                             <f:validator binding="#{bindings.Requester.validator}"/>
                         </af:inputText>
                     </af:panelGroupLayout>
@@ -63,7 +64,7 @@
                                       columns="#{bindings.Status.hints.displayWidth}" disabled="true"
                                       maximumLength="#{bindings.Status.hints.precision}"
                                       shortDesc="#{bindings.Status.hints.tooltip}" id="it3"
-                                      styleClass="iputtxtround Enteredfont">
+                                      styleClass="iputtxtround Enteredfont" contentStyle="height:20px;">
                             <f:validator binding="#{bindings.Status.validator}"/>
                         </af:inputText>
                     </af:panelGroupLayout>
@@ -75,8 +76,8 @@
         <af:inputText value="#{bindings.comments.inputValue}" label="Comments from Approver"
                       required="#{bindings.comments.hints.mandatory}" columns="#{bindings.comments.hints.displayWidth}"
                       maximumLength="#{bindings.comments.hints.precision}" disabled="true"
-                      shortDesc="#{bindings.comments.hints.tooltip}" id="it4" inlineStyle="margin-left:10px;"
-                      styleClass="iputtxtround Enteredfont" contentStyle="height:30pt;width:235px;" rows="5">
+                      shortDesc="#{bindings.comments.hints.tooltip}" id="it4" inlineStyle="margin-left:10px;" contentStyle="height:30pt;width:235px;" rows="5"
+                      labelStyle=" font-family:Lucida Sans;" styleClass="Enteredfont">
             <f:validator binding="#{bindings.comments.validator}"/>
         </af:inputText>
         <br/>
@@ -224,7 +225,7 @@
                             </af:selectOneChoice>
                         </af:panelGroupLayout>
                         <af:panelGroupLayout id="pgl14">
-                            <af:outputText value="Code:" id="ot21" inlineStyle="padding-left:6px;"
+                            <af:outputText value="Code:" id="ot21" inlineStyle="padding-left:8px;"
                                            styleClass="fonteffect"/>
                             <af:inputText value="#{bindings.Code.inputValue}"
                                           required="#{bindings.Code.hints.mandatory}"
@@ -339,7 +340,7 @@
                                           columns="#{bindings.Operating_unit.hints.displayWidth}"
                                           maximumLength="#{bindings.Operating_unit.hints.precision}"
                                           shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it10"
-                                          styleClass="iputtxtround Enteredfont" contentStyle="width:211px;height:20pt;"
+                                          styleClass="iputtxtround Enteredfont" contentStyle="width:200px;height:20pt;"
                                           inlineStyle="margin-top:15px;"
                                           binding="#{pageFlowScope.PurchaseOrderBean.eoperatingUnit}">
                                 <f:validator binding="#{bindings.Operating_unit.validator}"/>

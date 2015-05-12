@@ -279,5 +279,7 @@
     <methodAction IterBinding="taskIterator" id="update" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="update" IsViewObjectMethod="false" DataControl="ViewController_InitiatorHumanTask"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <action IterBinding="Item_DetailsVO1Iterator" id="Execute" InstanceName="POReqAppModuleDataControl.Item_DetailsVO1"
+            DataControl="POReqAppModuleDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
   </bindings>
 </pageDefinition>

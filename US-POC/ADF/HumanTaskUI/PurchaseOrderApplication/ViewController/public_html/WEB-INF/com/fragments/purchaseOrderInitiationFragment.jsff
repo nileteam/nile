@@ -109,7 +109,7 @@
             <af:outputText value="Create/Edit ITEM DETAILS" id="ot9"
                            inlineStyle="margin-top:10px; margin-left:12px; border-bottom-style:groove; border-bottom-color:WindowText; border-bottom-width:thin;"
                            styleClass="fonteffect"/>
-            <af:commandImageLink id="l1" disabled="false" binding="#{pageFlowScope.PurchaseOrderBean.createinsertbutton}"
+            <af:commandImageLink id="l1" disabled="#{pageFlowScope.PurchaseOrderBean.flagForPlus eq 'disable'}" binding="#{pageFlowScope.PurchaseOrderBean.createinsertbutton}"
                                  action="#{pageFlowScope.PurchaseOrderBean.createinsert_button}"
                                  icon="#{resource['images:PlusIcon.png']}"/>
         </af:panelGroupLayout>
