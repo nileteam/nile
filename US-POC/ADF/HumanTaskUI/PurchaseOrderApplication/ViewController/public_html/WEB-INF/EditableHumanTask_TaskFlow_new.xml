@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="EditableHumanTask_TaskFlow">
-    <default-activity>taskDetails4_jspx</default-activity>
+    <default-activity>OnLoad</default-activity>
     <data-control-scope>
       <isolated/>
     </data-control-scope>
@@ -262,6 +262,12 @@
         <name>new</name>
       </outcome>
     </task-flow-return>
+    <method-call id="OnLoad">
+      <method>#{bindings.OnLoad.execute}</method>
+      <outcome>
+        <fixed-outcome>OnLoad</fixed-outcome>
+      </outcome>
+    </method-call>
     <control-flow-rule id="__29">
       <from-activity-id>*</from-activity-id>
       <control-flow-case id="__30">
@@ -295,6 +301,13 @@
       <control-flow-case id="__38">
         <from-outcome>fetchNewTask</from-outcome>
         <to-activity-id>taskFlowCompleted</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__57">
+      <from-activity-id>OnLoad</from-activity-id>
+      <control-flow-case id="__58">
+        <from-outcome>OnLoad</from-outcome>
+        <to-activity-id>taskDetails4_jspx</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <visibility>

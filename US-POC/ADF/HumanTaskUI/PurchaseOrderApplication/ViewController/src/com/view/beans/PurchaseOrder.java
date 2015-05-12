@@ -1066,7 +1066,7 @@ public class PurchaseOrder {
     }
 
     public String Ecreate_insertButton() {
-        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert");
+        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert1");
         CreateInsert.execute();
         AdfFacesContext.getCurrentInstance().addPartialTarget(etable);
         eitem.setDisabled(false);
@@ -1415,7 +1415,7 @@ public class PurchaseOrder {
         int calculateTotal = 0;
         System.out.println("in edelete method");
         DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
-        ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsIterator").getViewObject();
+        ViewObjectImpl vo1 = (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsVO1Iterator").getViewObject();
         //RowSetIterator rit = vo1.createRowSetIterator(null);
         Row currentRow = vo1.getCurrentRow();
         System.out.println("currentRow--Rate is---" + currentRow.getAttribute("Rate"));
@@ -1467,10 +1467,10 @@ public class PurchaseOrder {
 
     public void e_tableselectionlistner(SelectionEvent selectionEvent) {
         System.out.println("In Editable listner");
-        ADFUtils.invokeEL("#{bindings.Item_Details.collectionModel.makeCurrent}", new Class[] { SelectionEvent.class }, new Object[] {
+        ADFUtils.invokeEL("#{bindings.Item_DetailsVO1.collectionModel.makeCurrent}", new Class[] { SelectionEvent.class }, new Object[] {
                           selectionEvent });
         // get the selected row , by this you can get any attribute of that row
-        Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsIterator.currentRow}");
+        Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsVO1Iterator.currentRow}");
         //        String Type=selectedRow.getAttribute("Type").toString();
         //        System.out.println("value is"+ selectedRow.getAttribute("Type"));
         //        typeBVar.setValue(Type);

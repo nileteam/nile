@@ -22,6 +22,8 @@
                       DataControl="ViewController_EditableHumanTask"
                       BeanClass="ViewController_EditableHumanTask.Item_Details_Type" id="Item_DetailsIterator"/>
     <iterator Binds="ViewObj1" RangeSize="25" DataControl="POReqAppModuleDataControl" id="ViewObj1Iterator"/>
+    <iterator Binds="Item_DetailsVO1" RangeSize="25" DataControl="POReqAppModuleDataControl"
+              id="Item_DetailsVO1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -184,5 +186,80 @@
     <methodAction IterBinding="taskIterator" id="update" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="update" IsViewObjectMethod="false" DataControl="ViewController_EditableHumanTask"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <tree IterBinding="Item_DetailsVO1Iterator" id="Item_DetailsVO1">
+      <nodeDefinition DefName="model.VO.Item_DetailsVO" Name="Item_DetailsVO10">
+        <AttrNames>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="NeedBy"/>
+          <Item Value="Operating_unit"/>
+          <Item Value="Preferred_Supplier"/>
+          <Item Value="Project"/>
+          <Item Value="Quantity"/>
+          <Item Value="Rate"/>
+          <Item Value="Task"/>
+          <Item Value="Type"/>
+          <Item Value="TypeString"/>
+          <Item Value="DescString"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Code1">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Item_DetailsVO1Iterator" StaticList="false" Uses="LOV_Description" id="Description1"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="NeedBy">
+      <AttrNames>
+        <Item Value="NeedBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Operating_unit1">
+      <AttrNames>
+        <Item Value="Operating_unit"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Preferred_Supplier2">
+      <AttrNames>
+        <Item Value="Preferred_Supplier"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Project2">
+      <AttrNames>
+        <Item Value="Project"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Quantity1">
+      <AttrNames>
+        <Item Value="Quantity"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Rate1">
+      <AttrNames>
+        <Item Value="Rate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Task2">
+      <AttrNames>
+        <Item Value="Task"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Item_DetailsVO1Iterator" StaticList="false" Uses="LOV_Type" id="Type2" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="TypeString">
+      <AttrNames>
+        <Item Value="TypeString"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="DescString">
+      <AttrNames>
+        <Item Value="DescString"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Item_DetailsVO1Iterator" id="CreateInsert1"
+            InstanceName="POReqAppModuleDataControl.Item_DetailsVO1" DataControl="POReqAppModuleDataControl"
+            RequiresUpdateModel="true" Action="createInsertRow"/>
   </bindings>
 </pageDefinition>
