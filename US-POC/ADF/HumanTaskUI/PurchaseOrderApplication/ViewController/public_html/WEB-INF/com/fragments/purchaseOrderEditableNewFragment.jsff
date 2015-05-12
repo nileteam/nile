@@ -335,22 +335,13 @@
                         <af:panelGroupLayout id="pgl19">
                            <af:outputText value="*" id="ot35" inlineStyle="color:Red;padding-left:8px;"/>
                             <af:outputText value="Operating Unit:" id="ot16"
-                                           styleClass="fonteffect"/>
-<<<<<<< HEAD
+                                          styleClass="fonteffect"/>
                             <af:inputText value="#{bindings.Operating_unit1.inputValue}"
                                           required="#{bindings.Operating_unit1.hints.mandatory}"
                                           columns="#{bindings.Operating_unit1.hints.displayWidth}"
                                           maximumLength="#{bindings.Operating_unit1.hints.precision}"
                                           shortDesc="#{bindings.Operating_unit1.hints.tooltip}" id="it10"
                                           styleClass="iputtxtround Enteredfont" contentStyle="width:211px;height:20pt;"
-=======
-                            <af:inputText value="#{bindings.Operating_unit.inputValue}"
-                                          required="#{bindings.Operating_unit.hints.mandatory}"
-                                          columns="#{bindings.Operating_unit.hints.displayWidth}"
-                                          maximumLength="#{bindings.Operating_unit.hints.precision}"
-                                          shortDesc="#{bindings.Operating_unit.hints.tooltip}" id="it10"
-                                          styleClass="iputtxtround Enteredfont" contentStyle="width:200px;height:20pt;"
->>>>>>> 42be23b9118ee364950a8a04a81826c3b9974116
                                           inlineStyle="margin-top:15px;"
                                           binding="#{pageFlowScope.PurchaseOrderBean.eoperatingUnit}">
                                 <f:validator binding="#{bindings.Operating_unit1.validator}"/>
