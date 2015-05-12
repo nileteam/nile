@@ -270,14 +270,14 @@ public class Item_DetailsVORowImpl extends ViewRowImpl {
     public String getDescString() {
         
         if (getDescription() != null) {
-            ViewObject typeViewObject = this.getApplicationModule().findViewObject("TypeView1");
+            ViewObject typeViewObject = this.getApplicationModule().findViewObject("TypeMasterViewObj1");
             
             
 
             Row[] rows = typeViewObject.getFilteredRows("TypeId", getDescription() );
 
             if (rows.length > 0) {
-                setAttributeInternal(TYPESTRING, rows[0].getAttribute("TypeName"));
+                setAttributeInternal(DESCSTRING, rows[0].getAttribute("TypeName"));
             }
         }
         

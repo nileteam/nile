@@ -22,6 +22,9 @@
     <accessorIterator MasterBinding="InputIterator" Binds="Item_Details" RangeSize="25"
                       DataControl="ViewController_NonEditableHumantask"
                       BeanClass="ViewController_NonEditableHumantask.Item_Details_Type" id="Item_DetailsIterator"/>
+    <iterator id="ItemView1Iterator" Binds="ItemView1" DataControl="POReqAppModuleDataControl" RangeSize="25"/>
+    <iterator id="TypeMasterViewObj1Iterator" Binds="TypeMasterViewObj1" DataControl="POReqAppModuleDataControl"
+              RangeSize="25"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"

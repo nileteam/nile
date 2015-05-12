@@ -66,12 +66,16 @@
                       rowBandingInterval="0" fetchSize="#{bindings.Item_Details1.rangeSize}" id="t1" width="855"
                       inlineStyle="margin-left:11px;" styleClass="tablecss" autoHeightRows="10">
                 <af:column headerText="Item" id="c1" align="center" styleClass="head" width="193">
-                    <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}"
-                                   id="ot1"/>
+                    <!--<af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}"
+                                   id="ot1"/>-->
+                    <af:outputText value="#{pageFlowScope.PurchaseOrderBean.itemEditableScreen}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}"
+                                   id="ot110"/>
                 </af:column>
                 <af:column headerText="Type" id="c2" align="center" styleClass="head" width="155">
-                    <af:outputText value="#{row.Description}"
-                                   shortDesc="#{bindings.Item_Details1.hints.Description.tooltip}" id="ot2"/>
+                    <!--<af:outputText value="#{row.Description}"
+                                   shortDesc="#{bindings.Item_Details1.hints.Description.tooltip}" id="ot2"/>-->
+                    <af:outputText value="#{pageFlowScope.PurchaseOrderBean.descEditableScreen}" shortDesc="#{bindings.Item_Details1.hints.Type.tooltip}"
+                                   id="ot111"/>
                 </af:column>
                 <!--<af:column headerText="Code" id="c3" align="center" styleClass="head" width="116">
                     <af:outputText value="#{row.Code}" shortDesc="#{bindings.Item_Details1.hints.Code.tooltip}"
@@ -290,27 +294,29 @@
                                 <af:panelGroupLayout id="pgl15">
                                     <af:outputText value="Item:" id="ot10" inlineStyle="padding-left:6px;"
                                                    styleClass="fonteffect"/>
-                                    <af:inputText value="#{bindings.Type.inputValue}"
+                                    <af:inputText
                                                   required="#{bindings.Type.hints.mandatory}" disabled="true"
                                                   columns="#{bindings.Type.hints.displayWidth}"
                                                   maximumLength="#{bindings.Type.hints.precision}"
                                                   shortDesc="#{bindings.Type.hints.tooltip}" id="it4"
                                                   styleClass="Enteredfont fonteffect"
                                                   contentStyle="height:20pt;width:182px;"
-                                                  inlineStyle="margin-top:15px;">
+                                                  inlineStyle="margin-top:15px;"
+                                                  value="#{pageFlowScope.PurchaseOrderBean.itemFormEditable}">
                                         <f:validator binding="#{bindings.Type.validator}"/>
                                     </af:inputText>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl16">
                                     <af:outputText value="Type:" id="ot8" styleClass="fonteffect"
                                                    inlineStyle="padding-left:6px;"/>
-                                    <af:inputText value="#{bindings.Description.inputValue}"
+                                    <af:inputText
                                                   required="#{bindings.Description.hints.mandatory}" disabled="true"
                                                   columns="#{bindings.Description.hints.displayWidth}"
                                                   maximumLength="#{bindings.Description.hints.precision}"
                                                   shortDesc="#{bindings.Description.hints.tooltip}" id="it5"
                                                   styleClass="Enteredfont" contentStyle="height:20pt;width:236px;"
-                                                  inlineStyle="margin-top:15px;">
+                                                  inlineStyle="margin-top:15px;"
+                                                  value="#{pageFlowScope.PurchaseOrderBean.descFormEditable}">
                                         <f:validator binding="#{bindings.Description.validator}"/>
                                     </af:inputText>
                                 </af:panelGroupLayout>

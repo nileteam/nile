@@ -380,7 +380,9 @@
                         <af:column headerText="Type" id="c2" width="213" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
                             <af:outputText value="#{row.DescString}"
-                                           shortDesc="#{bindings.Item_DetailsVO1.hints.Description.tooltip}" id="ot2"/>
+                                           shortDesc="#{bindings.Item_DetailsVO1.hints.Description.tooltip}" id="ot132"/>
+                            <!--<af:outputText value="#{row.Description}"
+                                           shortDesc="#{bindings.Item_DetailsVO1.hints.Description.tooltip}" id="ot2"/>-->
                         </af:column>
                         <af:column headerText="Quantity" id="c4" width="97" align="center" styleClass="head tablecss">
                             <af:outputText value="#{row.Quantity}"

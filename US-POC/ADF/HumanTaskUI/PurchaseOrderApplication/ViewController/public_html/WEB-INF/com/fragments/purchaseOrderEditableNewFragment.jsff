@@ -90,6 +90,7 @@
                 <af:panelGroupLayout id="pgl25" layout="horizontal" inlineStyle="float:right;">
                     <af:outputText value="Total Value" id="ot20" inlineStyle="color:black;" styleClass="fonteffect"/>
                     <af:inputText value="#{bindings.Total_value.inputValue}"
+                    
                                   required="#{bindings.Total_value.hints.mandatory}"
                                   columns="#{bindings.Total_value.hints.displayWidth}"
                                   binding="#{pageFlowScope.PurchaseOrderBean.etotalvalue}"
@@ -120,12 +121,12 @@
                     </af:column>
                     <af:column headerText="Item" id="c1" width="213" inlineStyle="text-align:center;" align="center"
                                styleClass="head tablecss">
-                        <af:outputText value="#{row.Type}" shortDesc="#{bindings.Item_DetailsVO1.hints.Type.tooltip}"
+                        <af:outputText value="#{row.TypeString}" shortDesc="#{bindings.Item_DetailsVO1.hints.Type.tooltip}"
                                        id="ot1"/>
                     </af:column>
                     <af:column headerText="Type" id="c2" width="213" inlineStyle="text-align:center;" align="center"
                                styleClass="head tablecss">
-                        <af:outputText value="#{row.Description}"
+                        <af:outputText value="#{row.DescString}"
                                        shortDesc="#{bindings.Item_DetailsVO1.hints.Description.tooltip}" id="ot2"/>
                     </af:column>
                     <af:column headerText="Quantity" id="c4" width="97" align="center" styleClass="head tablecss">
