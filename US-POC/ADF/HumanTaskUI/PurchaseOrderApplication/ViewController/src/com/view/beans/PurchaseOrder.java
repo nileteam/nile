@@ -122,7 +122,7 @@ public class PurchaseOrder {
 
     private String itemEditableScreen;
     private String descEditableScreen;
-    
+
     private String itemFormEditable;
     private String descFormEditable;
 
@@ -220,7 +220,7 @@ public class PurchaseOrder {
     private RichCommandImageLink createinsertbutton;
     private RichCommandImageLink e_createinsertbutton;
     private String flagForPlus;
-    
+
 
     public void setFlagForPlus(String flagForPlus) {
         this.flagForPlus = flagForPlus;
@@ -267,6 +267,7 @@ public class PurchaseOrder {
         RowSetIterator rit1 = vo1.createRowSetIterator(null);
 
         if (!rit1.hasNext()) {
+            
             System.out.println("into onload of new bean");
             OperationBinding createInsertOP = ADFUtils.findOperation("CreateInsert");
             createInsertOP.execute();
@@ -367,12 +368,13 @@ public class PurchaseOrder {
     }
 
     public String saveButton() {
-        flagForPlus = "enable";
+       
         int calculateTotal = 0;
         if (typeBVar.getValue() != null && desciptionBVar.getValue() != null && codeBVar.getValue() != null &&
             rateBVar.getValue() != null && quantityBVar.getValue() != null && preferedsuppBVar.getValue() != null &&
             needbyBVar.getValue() != null && operunitBVar.getValue() != null && projectBVar.getValue() != null &&
             taskBVar.getValue() != null) {
+            flagForPlus = "enable";
             DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
             ViewObjectImpl TotalValue =
                 (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsVO1Iterator").getViewObject();
@@ -390,49 +392,78 @@ public class PurchaseOrder {
             //System.out.println("-------------------------------" + currentRow.getAttribute("Rate"));
             RowSetIterator rit = TotalValue.createRowSetIterator(null);
             while (rit.hasNext()) {
-                Row row = rit.next();
-                System.out.println("-------++++++++--" + (Number) row.getAttribute("Rate"));
-                System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
 
-                Number quantity = (Number) row.getAttribute("Quantity");
+                Row[] allRowsInRange = TotalValue.getAllRowsInRange();
+                System.out.println("allrowsin rage"+allRowsInRange);
+                
+                for(int i=0;i<allRowsInRange.length;i++) {
+                    
+               if(allRowsInRange[i].getAttribute("TypeString")!=null && allRowsInRange[i].getAttribute("DescString")!=null && allRowsInRange[i].getAttribute("NeedBy")!=null&&allRowsInRange[i].getAttribute("Operating_unit")!=null
+                   &&allRowsInRange[i].getAttribute("Preferred_Supplier")!=null&&allRowsInRange[i].getAttribute("Project")!=null&&allRowsInRange[i].getAttribute("Quantity")!=null
+                   &&allRowsInRange[i].getAttribute("Rate")!=null&&allRowsInRange[i].getAttribute("Task")!=null&&allRowsInRange[i].getAttribute("Code")!=null)     
+                 {
+                   
+                   Row row = rit.next();
+                   System.out.println("-------++++++++--" + (Number) row.getAttribute("Rate"));
+                   System.out.println("---------------------" + (Number) row.getAttribute("Quantity"));
 
-                Number rate = (Number) row.getAttribute("Rate");
-                int rateint = rate.intValue();
-                int qtyint = quantity.intValue();
-                calculateTotal += rateint * qtyint;
-                System.out.println("requester is " + requestBVar.getValue());
-                typeBVar.setDisabled(true);
-                desciptionBVar.setDisabled(true);
-                codeBVar.setDisabled(true);
-                quantityBVar.setDisabled(true);
-                rateBVar.setDisabled(true);
-                preferedsuppBVar.setDisabled(true);
-                needbyBVar.setDisabled(true);
-                operunitBVar.setDisabled(true);
-                projectBVar.setDisabled(true);
-                taskBVar.setDisabled(true);
-                totalBVar.setDisabled(true);
+                   Number quantity = (Number) row.getAttribute("Quantity");
+
+                   Number rate = (Number) row.getAttribute("Rate");
+                   int rateint = rate.intValue();
+                   int qtyint = quantity.intValue();
+                   calculateTotal += rateint * qtyint;
+                   System.out.println("requester is " + requestBVar.getValue());
+                   typeBVar.setDisabled(true);
+                   desciptionBVar.setDisabled(true);
+                   codeBVar.setDisabled(true);
+                   quantityBVar.setDisabled(true);
+                   rateBVar.setDisabled(true);
+                   preferedsuppBVar.setDisabled(true);
+                   needbyBVar.setDisabled(true);
+                   operunitBVar.setDisabled(true);
+                   projectBVar.setDisabled(true);
+                   taskBVar.setDisabled(true);
+                   totalBVar.setDisabled(true);
+                
+                
+                ViewObjectImpl HeaderItem = (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
+                RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
+
+                ViewObjectImpl ItemVO =
+                    (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsVO1Iterator").getViewObject();
+                RowSetIterator ritItemVO = ItemVO.createRowSetIterator(null);
+
+                totalvalue = calculateTotal;
+                while (rit1.hasNext()) {
+                    Row row1 = rit1.next();
+                    row1.setAttribute("Total_value", totalvalue);
+                    row1.setAttribute("Requester", requestBVar.getValue());
+                    Requester = row1.getAttribute("Requester").toString();
+                    RequisitionNo = row1.getAttribute("Requisition_no").toString();
+                    System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + RequisitionNo);
+                    System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + requisnoBVar.getValue());
+                }
+                //OperationBinding Save = ADFUtils.findOperation("Commit");
+                //Save.execute();
+                createinsertbutton.setDisabled(false);
+                
+                   
+               }
+                    
+             else {
+                   
+                   showPopup(save_popup,true);
+                   
+               }
+                    
+                    
+                }
+
+
+              
             }
-            ViewObjectImpl HeaderItem = (ViewObjectImpl) bindings.findIteratorBinding("HeaderIterator").getViewObject();
-            RowSetIterator rit1 = HeaderItem.createRowSetIterator(null);
-
-            ViewObjectImpl ItemVO =
-                (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsVO1Iterator").getViewObject();
-            RowSetIterator ritItemVO = ItemVO.createRowSetIterator(null);
-
-            totalvalue = calculateTotal;
-            while (rit1.hasNext()) {
-                Row row1 = rit1.next();
-                row1.setAttribute("Total_value", totalvalue);
-                row1.setAttribute("Requester", requestBVar.getValue());
-                Requester = row1.getAttribute("Requester").toString();
-                RequisitionNo = row1.getAttribute("Requisition_no").toString();
-                System.out.println("^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^" + RequisitionNo);
-                System.out.println("@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" + requisnoBVar.getValue());
-            }
-            //OperationBinding Save = ADFUtils.findOperation("Commit");
-            //Save.execute();
-            createinsertbutton.setDisabled(false);
+   
         }
 
         else {
@@ -447,7 +478,7 @@ public class PurchaseOrder {
             //            OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert2");
             //            CreateInsert.execute();
             //            AdfFacesContext.getCurrentInstance().addPartialTarget(table);
-            
+
             System.out.println("going  to open pop up on clicking save");
             showPopup(save_popup, true);
             return null;
@@ -566,22 +597,37 @@ public class PurchaseOrder {
     }
 
     public String Submit_Initiator() {
+        
+            if (typeBVar.getValue() != null && desciptionBVar.getValue() != null && codeBVar.getValue() != null &&
+                rateBVar.getValue() != null && quantityBVar.getValue() != null && preferedsuppBVar.getValue() != null &&
+                needbyBVar.getValue() != null && operunitBVar.getValue() != null && projectBVar.getValue() != null &&
+                taskBVar.getValue() != null) {
+                
+                System.out.println("rate is qu" + rateBVar.getValue());
 
-        System.out.println("rate is qu" + rateBVar.getValue());
+                saveInPayload();
 
-        saveInPayload();
+                OperationBinding saveOP = ADFUtils.findOperation("update");
+                saveOP.execute();
 
-        OperationBinding saveOP = ADFUtils.findOperation("update");
-        saveOP.execute();
+                OperationBinding SubmitOP = ADFUtils.findOperation("SUBMIT");
+                SubmitOP.execute();
 
-        OperationBinding SubmitOP = ADFUtils.findOperation("SUBMIT");
-        SubmitOP.execute();
-
-        FacesContext facesContext = FacesContext.getCurrentInstance();
-        org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
-            org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext, ExtendedRenderKitService.class);
-        service.addScript(facesContext, "window.close();window.opener.location.href = window.opener.location.href;");
-        service.addScript(facesContext, "closeMe()");
+                FacesContext facesContext = FacesContext.getCurrentInstance();
+                org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                    org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext, ExtendedRenderKitService.class);
+                service.addScript(facesContext, "window.close();window.opener.location.href = window.opener.location.href;");
+                service.addScript(facesContext, "closeMe()");
+                
+                
+            }
+            
+            else {
+                
+                showPopup(submit_popup, true);
+                System.out.println("popup created ");
+                
+            }
 
         return null;
     }
@@ -596,25 +642,33 @@ public class PurchaseOrder {
         //OperationBinding deleteOp = ADFUtils.findOperation(operationName);
         //deleteOp.execute();
     }
+   
+   
 
     public String createinsert_button() {
-        OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert2");
-        CreateInsert.execute();
-        AdfFacesContext.getCurrentInstance().addPartialTarget(table);
-        typeBVar.setDisabled(false);
-        desciptionBVar.setDisabled(false);
-        codeBVar.setDisabled(true);
-        quantityBVar.setDisabled(false);
-        rateBVar.setDisabled(true);
-        preferedsuppBVar.setDisabled(false);
-        needbyBVar.setDisabled(false);
-        operunitBVar.setDisabled(false);
-        projectBVar.setDisabled(false);
-        taskBVar.setDisabled(false);
-        typeBVar.setValue("");
-        desciptionBVar.setValue("");
-        codeBVar.setValue("");
-        rateBVar.setValue("");
+    
+       if(flagForPlus!=null&& flagForPlus.trim().equalsIgnoreCase("enable")) {
+           OperationBinding CreateInsert = ADFUtils.findOperation("CreateInsert2");
+           CreateInsert.execute();
+           AdfFacesContext.getCurrentInstance().addPartialTarget(table);
+           typeBVar.setDisabled(false);
+           desciptionBVar.setDisabled(false);
+           codeBVar.setDisabled(true);
+           quantityBVar.setDisabled(false);
+           rateBVar.setDisabled(true);
+           preferedsuppBVar.setDisabled(false);
+           needbyBVar.setDisabled(false);
+           operunitBVar.setDisabled(false);
+           projectBVar.setDisabled(false);
+           taskBVar.setDisabled(false);
+           typeBVar.setValue("");
+           desciptionBVar.setValue("");
+           codeBVar.setValue("");
+           rateBVar.setValue("");
+           flagForPlus="disable";  
+       }
+    
+    
         return null;
     }
 
@@ -632,22 +686,28 @@ public class PurchaseOrder {
         //        AdfFacesContext.getCurrentInstance().addPartialTarget(typeBVar);
         //        AdfFacesContext.getCurrentInstance().addPartialTarget(desciptionBVar);
         //
-
         Row selectedRow = (Row) ADFUtils.evaluateEL("#{bindings.Item_DetailsVO1.currentRow}");
-        codename = (String) selectedRow.getAttribute("Code");
-        System.out.println("Code from payload is ---->" + codename);
-        rate = ((Number) selectedRow.getAttribute("Rate")).intValue();
+       if(selectedRow.getAttribute("Rate")!=null && selectedRow.getAttribute("Code")!=null) {
+      
+         
+           codename = (String) selectedRow.getAttribute("Code");
+           System.out.println("Code from payload is ---->" + codename);
+           rate = ((Number) selectedRow.getAttribute("Rate")).intValue();
 
-        typeBVar.setDisabled(false);
-        desciptionBVar.setDisabled(false);
-        codeBVar.setDisabled(false);
-        quantityBVar.setDisabled(false);
-        rateBVar.setDisabled(false);
-        preferedsuppBVar.setDisabled(false);
-        needbyBVar.setDisabled(false);
-        operunitBVar.setDisabled(false);
-        projectBVar.setDisabled(false);
-        taskBVar.setDisabled(false);
+           typeBVar.setDisabled(false);
+           desciptionBVar.setDisabled(false);
+           codeBVar.setDisabled(false);
+           quantityBVar.setDisabled(false);
+           rateBVar.setDisabled(false);
+           preferedsuppBVar.setDisabled(false);
+           needbyBVar.setDisabled(false);
+           operunitBVar.setDisabled(false);
+           projectBVar.setDisabled(false);
+           taskBVar.setDisabled(false);
+           
+       }
+       
+    
 
         //to show popup, you can write your logic here , what you wanna do
 
@@ -672,45 +732,47 @@ public class PurchaseOrder {
     public void Item_idSOC(ValueChangeEvent vce) {
         String socval = typeBVar.getValue().toString();
         System.out.println("soc bind value" + socval);
-        System.out.println("vce value" + vce.getNewValue().toString());
-        Connection conn = null;
-        PreparedStatement psTotal = null;
-        ResultSet rsTotal = null;
-        codeBVar.setValue("");
-        try {
-            conn = getConnection("jdbc/NileDBDS");
-            String Query = "select ITEM_NAME FROM ITEM I where I.ITEM_ID='" + socval + "'";
+        System.out.println("vce value" + vce.getNewValue());
+        if (vce.getNewValue() != null) {
 
-            psTotal = conn.prepareStatement(Query);
-            rsTotal = psTotal.executeQuery();
-            System.out.println("query is" + Query);
-            while (rsTotal.next()) {
-                itemname = rsTotal.getString(1);
-                System.out.println("item name is" + itemname);
-
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        } catch (NamingException e) {
-        } finally {
+            Connection conn = null;
+            PreparedStatement psTotal = null;
+            ResultSet rsTotal = null;
+            codeBVar.setValue("");
             try {
-                if (psTotal != null) {
-                    psTotal.close();
+                conn = getConnection("jdbc/NileDBDS");
+                String Query = "select ITEM_NAME FROM ITEM I where I.ITEM_ID='" + socval + "'";
+
+                psTotal = conn.prepareStatement(Query);
+                rsTotal = psTotal.executeQuery();
+                System.out.println("query is" + Query);
+                while (rsTotal.next()) {
+                    itemname = rsTotal.getString(1);
+                    System.out.println("item name is" + itemname);
+
                 }
-                if (rsTotal != null) {
-                    rsTotal.close();
-                }
-                if (conn != null) {
-                    conn.close();
-                }
-            } catch (Exception e) {
-                // TODO: Add catch code
+            } catch (SQLException e) {
                 e.printStackTrace();
+            } catch (NamingException e) {
+            } finally {
+                try {
+                    if (psTotal != null) {
+                        psTotal.close();
+                    }
+                    if (rsTotal != null) {
+                        rsTotal.close();
+                    }
+                    if (conn != null) {
+                        conn.close();
+                    }
+                } catch (Exception e) {
+                    // TODO: Add catch code
+                    e.printStackTrace();
+                }
+
+
             }
-
-
         }
-
     }
 
     public void typeSelectedValue(ValueChangeEvent valueChangeEvent) {
@@ -1358,6 +1420,25 @@ public class PurchaseOrder {
             while (rsTotal.next()) {
                 codename = rsTotal.getString(1);
                 rate = rsTotal.getInt(2);
+                
+                DCBindingContainer bindings =
+                    (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+                
+                ViewObjectImpl ItemVO =
+                    (ViewObjectImpl) bindings.findIteratorBinding("Item_DetailsVO1Iterator").getViewObject();
+
+                Row currentRow = ItemVO.getCurrentRow();
+                
+                currentRow.setAttribute("Rate", rate);
+                System.out.println("rate is set-------");
+                currentRow.setAttribute("Code",codename);
+                
+
+                RowSetIterator ritItemVO = ItemVO.createRowSetIterator(null);
+
+                
+                
+                
                 System.out.println("item name is" + codename);
                 System.out.println("rATE is" + rate);
             }
@@ -1548,6 +1629,9 @@ public class PurchaseOrder {
         operunitBVar.setDisabled(false);
         projectBVar.setDisabled(false);
         taskBVar.setDisabled(false);
+        codeBVar.setValue("");
+        rateBVar.setValue("");
+      //  totalBVar.setValue("");
         return null;
     }
 
@@ -1744,6 +1828,8 @@ public class PurchaseOrder {
     public String SaveInPayloadButton() {
 
         System.out.println("Saving in payload");
+     
+     
 
         saveInPayload();
 
@@ -1843,5 +1929,25 @@ public class PurchaseOrder {
         service.addScript(facesContext, "window.close();window.opener.location.href = window.opener.location.href;");
         //service.addScript(facesContext, "closeMe()");
         return null;
+    }
+    
+    public void closePopup(ActionEvent actionEvent)
+      {
+          save_popup.cancel();
+//          submit_popup.cancel();
+//          reject_popup.cancel();
+      }
+
+    public void closePopupWindow(ActionEvent actionEvent) 
+    {
+        reject_popup.cancel();
+    }
+
+    public void closeSaveEditablePopup(ActionEvent actionEvent) {
+        saveeditable_popup.cancel();
+    }
+
+    public void closeResubmitPopup(ActionEvent actionEvent) {
+        resubmit_popup.cancel();
     }
 }

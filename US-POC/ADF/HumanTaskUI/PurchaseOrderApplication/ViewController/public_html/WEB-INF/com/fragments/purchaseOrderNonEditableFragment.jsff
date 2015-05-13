@@ -139,7 +139,7 @@
                   
                     <af:outputText value="USD" id="ot19" inlineStyle="margin-right:20px;" styleClass="fonteffect"/>
                 </af:panelGroupLayout>
-            </af:panelGroupLayout><br/><br/>
+            </af:panelGroupLayout><br/>
         
         
         
@@ -472,20 +472,33 @@
         <br/>
         <br/>
         <af:commandImageLink id="b2" action="#{pageFlowScope.PurchaseOrderBean.Approve_NonEditable}" inlineStyle="margin-left:12px;"
-                             icon="#{resource['images:ApproveButton.png']}">
+                             icon="#{resource['images:APPROVE-Black.png']}">
             <af:clientListener method="closeMe" type="action"/>
         </af:commandImageLink>
-        <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}"
-                             icon="#{resource['images:RejectButton.png']}" inlineStyle="margin-left:10px;">
+        <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Reject_NonEditable}" inlineStyle="margin-left:10px;"
+                             icon="#{resource['images:REJECT-Black.png']}">
             <!--<af:clientListener method="closeMe" type="action"/>-->
         </af:commandImageLink>
+        
+        
+        
         <af:popup binding="#{pageFlowScope.PurchaseOrderBean.reject_popup}" childCreation="deferred"
                   autoCancel="disabled" id="p1" contentDelivery="immediate">
-            <af:dialog id="d1" type="ok">
+            <af:dialog id="d1" type="none" inlineStyle="background-color:#e9f2f0;height:145px;width:350px;">
                 <f:facet name="buttonBar"/>
-                <af:outputText value="Please enter Comments" id="ot30"/>
+                 <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
+                <af:outputText value="  Please provide the reason(s) for rejecting the PO Requisition, in the Comment field." id="ot30"
+                inlineStyle="font-size:11pt;color:black;"/>
+                <af:button text="Ok"
+                           inlineStyle="margin-top:45px;margin-left:280px;background-color:#e9f2f0;font-size:11pt;"
+                            id="b5" actionListener="#{pageFlowScope.PurchaseOrderBean.closePopupWindow}"/>
+                </af:panelFormLayout>
             </af:dialog>
         </af:popup>
+        
+        
+        
+        
     </af:panelGroupLayout>
     <br/>
     <br/>

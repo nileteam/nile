@@ -111,7 +111,7 @@
                            styleClass="fonteffect"/>
             <af:commandImageLink id="l1" disabled="#{pageFlowScope.PurchaseOrderBean.flagForPlus eq 'disable'}" binding="#{pageFlowScope.PurchaseOrderBean.createinsertbutton}"
                                  action="#{pageFlowScope.PurchaseOrderBean.createinsert_button}"
-                                 icon="#{resource['images:PlusIcon.png']}"/>
+                                 icon="#{resource['images:PLUS-black.png']}" inlineStyle="margin-left:5px;"/>
         </af:panelGroupLayout>
         <br/>
         <br/>
@@ -160,6 +160,8 @@
                                     <!--<f:validator binding="#{bindings.TypeId.validator}"/>-->
                                     <!--
                                     </af:selectOneChoice>-->
+                                   
+                                   
                                     <af:selectOneChoice value="#{bindings.Description2.inputValue}"
                                                         partialTriggers="soc1" autoSubmit="true"
                                                         styleClass="drpdwnround FontDrpdwn"
@@ -171,14 +173,14 @@
                                                         shortDesc="#{bindings.Description2.hints.tooltip}" id="soc5"
                                                         unselectedLabel="Select Type">
                                         <f:selectItems value="#{bindings.Description2.items}" id="si5"/>
-                                        <f:validator binding="#{bindings.Description2.validator}"/>
+                                        <!--<f:validator binding="#{bindings.Description2.validator}"/>-->
                                     </af:selectOneChoice>
                                 </af:panelGroupLayout>
                                 <af:panelGroupLayout id="pgl17">
                                   
                                     <af:outputText value="Code:" id="ot21" inlineStyle="padding-left:8px;" styleClass="fonteffect"/>
                                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.codename}" id="ot3"
-                                                  partialTriggers="soc5 t1" contentStyle="width:164px;height:20pt;"
+                                                  partialTriggers="soc5 t1 b2" contentStyle="width:164px;height:20pt;"
                                                   binding="#{pageFlowScope.PurchaseOrderBean.codeBVar}"
                                                   styleClass="Enteredfont iputtxtround" columns="10"
                                                   inlineStyle="margin-top:15px;" disabled="true" autoSubmit="true"/>
@@ -204,7 +206,7 @@
                                     
                                     <af:outputText value="Rate:" id="ot13" styleClass="fonteffect" inlineStyle="padding-left:8px;"/>
                                     <af:inputText value="#{pageFlowScope.PurchaseOrderBean.rate}"
-                                                  partialTriggers="t1 soc5" 
+                                                  partialTriggers="t1 soc5 b2" 
                                                   requiredMessageDetail="Rate is Mandatory"
                                                   binding="#{pageFlowScope.PurchaseOrderBean.rateBVar}" id="it5"
                                                   styleClass="iputtxtround Enteredfont"
@@ -307,27 +309,40 @@
                     </af:panelGroupLayout>
                 </af:panelGroupLayout>
                 <br/>
-                <af:popup binding="#{pageFlowScope.PurchaseOrderBean.save_popup}" childCreation="deferred"
+                 <af:popup binding="#{pageFlowScope.PurchaseOrderBean.save_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p1" contentDelivery="immediate">
-                    <af:dialog id="d1" title="abc" resize="off" inlineStyle="background-color:transparent;">
-                        <af:outputText value="Please enter all details" id="ot30"/>
+                    <af:dialog id="d1" resize="off" inlineStyle="background-color:#e9f2f0;height:145px;width:350px;"
+                               type="none">
+                        <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
+                            <af:outputText value="Please fill in all mandatory information to proceed" id="ot30"
+                                           inlineStyle="font-size:11pt;color:black;"/>
+                           <af:button text="Ok"
+                                      inlineStyle="margin-top:50px;margin-left:280px;background-color:#e9f2f0;font-size:11pt;"
+                            id="b5" actionListener="#{pageFlowScope.PurchaseOrderBean.closePopup}"/>
+                        </af:panelFormLayout>
                     </af:dialog>
                 </af:popup>
                 <af:popup binding="#{pageFlowScope.PurchaseOrderBean.submit_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p2" contentDelivery="immediate">
-                    <af:dialog id="d2" type="ok">
+                    <af:dialog id="d2" type="none" inlineStyle="background-color:#e9f2f0;height:145px;width:350px;">
                         <f:facet name="buttonBar"/>
-                        <af:outputText value="Please enter all details" id="ot31"/>
+                        <af:panelFormLayout id="pfl5" inlineStyle="background-color:white; height:107px;">
+                            <af:outputText value="Please fill in all mandatory information to proceed." id="ot31"
+                                           inlineStyle="font-size:11pt; margin-top:150px; text-align:right;"/>
+                         
+                            <af:button text="ok" inlineStyle="margin-top:50px;margin-left:280px;background-color:#e9f2f0;"
+                            id="b3" actionListener="#{pageFlowScope.PurchaseOrderBean.closePopup}"/>
+                        </af:panelFormLayout>
                     </af:dialog>
                 </af:popup>
             </af:panelFormLayout>
         </af:panelGroupLayout>
         <af:panelGroupLayout id="pgl4">
             <af:commandImageLink id="b2" action="#{pageFlowScope.PurchaseOrderBean.saveButton}"
-                                 inlineStyle="margin-left:15px;" icon="#{resource['images:SAVE-GreenNew.png']}"/>
+                                 inlineStyle="margin-left:15px;" icon="#{resource['images:SAVE-Green (1).png']}"/>
              <!--<af:button text="Save" id="b4"/>-->
             <af:commandImageLink id="l3" action="#{pageFlowScope.PurchaseOrderBean.cancel}"
-                                 inlineStyle="margin-left:10px" icon="#{resource['images:CANCEL-GreenNew.png']}">
+                                 inlineStyle="margin-left:10px" icon="#{resource['images:CANCEL-Green (1).png']}">
                 <af:clientListener method="resetValues" type="action"/>
             </af:commandImageLink>
         </af:panelGroupLayout>
@@ -367,8 +382,8 @@
                               styleClass="tablecss">
                         <af:column id="c3" width="27" styleClass="head tablecss" align="center">
                             <af:commandImageLink id="l2"
-                            action="#{pageFlowScope.PurchaseOrderBean.delete_button}"
-                                                 icon="#{resource['images:delete-icon.png']}" partialTriggers="::t1"/>
+                            action="#{pageFlowScope.PurchaseOrderBean.delete_button}" partialTriggers="::t1"
+                                                 icon="#{resource['images:delete-icon (2).png']}"/>
                         </af:column>
                         <af:column headerText="Item" id="c1" width="213" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
@@ -413,12 +428,12 @@
             <br/>
             <af:panelGroupLayout id="pgl30" layout="horizontal">
                 <af:commandImageLink id="b1" action="#{pageFlowScope.PurchaseOrderBean.Submit_Initiator}"
-                                     inlineStyle="margin-left:12px;" icon="#{resource['images:SUBMIT-BlackNew.png']}">
+                                     inlineStyle="margin-left:12px;" icon="#{resource['images:SUBMIT-Black (1).png']}">
                     <!--<af:clientListener method="closeMe" type="action"/>-->
                 </af:commandImageLink>
                 <af:commandImageLink id="l5" inlineStyle="margin-left:10px;"
                                      action="#{pageFlowScope.PurchaseOrderBean.SaveInPayloadButton}"
-                                     icon="#{resource['images:SAVE-BlackNew.png']}"/>
+                                     icon="#{resource['images:SAVE-Black (1).png']}"/>
             </af:panelGroupLayout>
              <af:panelGroupLayout id="pgl31">
                 <af:spacer width="10" height="30" id="s1"/>

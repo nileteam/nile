@@ -204,11 +204,6 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
-    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Code1">
-      <AttrNames>
-        <Item Value="Code"/>
-      </AttrNames>
-    </attributeValues>
     <list IterBinding="Item_DetailsVO1Iterator" StaticList="false" Uses="LOV_Description" id="Description1"
           DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
     <attributeValues IterBinding="Item_DetailsVO1Iterator" id="NeedBy">
