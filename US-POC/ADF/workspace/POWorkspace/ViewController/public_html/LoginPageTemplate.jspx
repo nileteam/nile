@@ -11,24 +11,24 @@
                 </div>
                 <div class="right">&#160;</div>
             </div>
-            <div class="banner">
+            <div class="banner"><br/>
                 <!--<img src="resources/images/BrandingImage1.png"/>-->
                 <af:panelGroupLayout id="pt_pgl1" layout="vertical"
-                                     inlineStyle="width:700px;height:150px;background-color:rgba(0,176,133,0.6)">
-                    <div style="padding-top:35px;">
+                                     inlineStyle="width:1000px; height:250px; background-color:rgba(0, 176, 133, 0.6); margin-top:20px;">
+                    <div style="padding-top:35px; height:31px;">
                         <af:panelGroupLayout>
                             <af:spacer width="30" height="10" id="pt_s1"/>
                             <af:outputText value="COLLABORATIVE." id="pt_ot1"
-                                           inlineStyle="font-family:Impact; font-size:xx-large; color:white;"/>
+                                           inlineStyle="font-family:Impact; font-size:40pt; color:white;"/>
                             <af:outputText value="  CLOSE-KNIT CULTURE" id="pt_ot3"
-                                           inlineStyle="font-family:Impact; font-size:x-large; color:white;"/>
+                                           inlineStyle="font-family:Impact; font-size:30pt; color:white;"/>
                         </af:panelGroupLayout>
                     </div>
                     <af:spacer width="10px" height="10px;"/>
                     <af:panelGroupLayout id="pt_pgl2">
                         <af:spacer width="30" height="10" id="pt_s2"/>
                         <af:outputText value="WITH AN ENTREPRENEURIAL ENVIRONMENT" id="pt_ot2"
-                                       inlineStyle="font-size:large; color:white;"/>
+                                       inlineStyle="font-size:22pt; color:white;" styleClass="fonteff"/>
                     </af:panelGroupLayout>
                 </af:panelGroupLayout>
             </div>

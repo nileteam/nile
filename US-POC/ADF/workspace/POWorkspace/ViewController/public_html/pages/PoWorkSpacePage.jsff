@@ -54,7 +54,7 @@
                               var iFrame = document.createElement("iframe");
                               iFrame.src = url;
                               iFrame.width = '99%';
-                              iFrame.height = '660px';
+                              iFrame.height = '740px';
                               iFrame.frameBorder = 'none';
                               $($('.ui-accordion-header-active').next()).append(iFrame);
                           }
@@ -103,7 +103,7 @@
                           var iFrame = document.createElement("iframe");
                           iFrame.src = url;
                           iFrame.width = '99%';
-                          iFrame.height = '660px';
+                          iFrame.height = '740px';
                           iFrame.frameBorder = 'none';
                           $($('.ui-accordion-header-active').next()).append(iFrame);
                       }
@@ -149,7 +149,6 @@
                                 inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
                     <f:attribute name="param" value="Process"/>
                 </af:commandLink>
-                <af:spacer width="10" height="10" id="s2"/>
                 <af:panelGroupLayout id="pgl4" layout="vertical">
                     <af:link id="l1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
@@ -163,11 +162,10 @@
                     </af:link>-->
                 </af:panelGroupLayout>
                 <af:spacer width="10" height="10" id="s5"/>
-                <af:commandLink text="Tittle" id="cl1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
+                <af:commandLink text="Title" id="cl1" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}"
                                 inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
                     <f:attribute name="param" value="Title"/>
                 </af:commandLink>
-                <af:spacer width="10" height="10" id="s6"/>
                 <af:panelGroupLayout id="pgl7" layout="vertical">
                     <af:link id="l7" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
@@ -185,7 +183,6 @@
                                 inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
                     <f:attribute name="param" value="Priority"/>
                 </af:commandLink>
-                <af:spacer width="10" height="10" id="s7"/>
                 <af:panelGroupLayout id="pgl5" layout="vertical">
                     <af:link id="l3" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
@@ -204,7 +201,6 @@
                                 inlineStyle="color:#2c2c2c; font-size:medium;font-family:Calibri;">
                     <f:attribute name="param" value="Assigned"/>
                 </af:commandLink>
-                <af:spacer width="10" height="10" id="s8"/>
                 <af:panelGroupLayout id="pgl6" layout="vertical">
                     <af:link id="l5" actionListener="#{pageFlowScope.PoWorkSpaceBean.sortTaskList}">
                         <?audit suppress oracle.jdeveloper.jsp.validate-children?>
@@ -223,7 +219,7 @@
             <af:selectOneChoice id="soc2" autoSubmit="true"
                                     value="#{pageFlowScope.PoWorkSpaceBean.groupFilter}"
                                 rendered="#{pageFlowScope.PoWorkSpaceBean.viewTypeReceived eq null or pageFlowScope.PoWorkSpaceBean.viewTypeReceived eq 'Me_My_Group_All'}"
-                                contentStyle="height:20px; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
+                                contentStyle="height:20pt; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
                     <af:selectItem label="Me" value="Me" id="si11"/>
                     <af:selectItem label="My Group" value="My_Group" id="si12"/>
                     <af:selectItem label="Me &amp; My Group" value="Me_My_Group" id="si13"/>
@@ -234,7 +230,7 @@
                 <af:spacer width="10" height="10" id="s10"/>
                 <af:selectOneChoice  id="soc1" autoSubmit="true"
                                     value="#{pageFlowScope.PoWorkSpaceBean.filter}"
-                                    contentStyle="height:20px; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
+                                    contentStyle="height:20pt; background-color:#cfd0cf; font-size: 11pt; font-family: Calibri;">
                     <af:selectItem label="Any" value="Any" id="si1"/>
                     <af:selectItem label="Assigned" value="Assigned" id="si2"/>
                     <af:selectItem label="Completed" value="Completed" id="si3"/>
@@ -249,11 +245,11 @@
                 <af:link id="l9" actionListener="#{pageFlowScope.PoWorkSpaceBean.filterActionListener}"
                          inlineStyle="width:5px; height:5px;">
                     <?audit suppress oracle.jdeveloper.jsp.validate-children?>
-                    <af:image source="/resources/images/GoButton.png" id="i15" inlineStyle="height:20px;"/>
+                    <af:image id="i15" inlineStyle="height:20px;" source="#{resource['images:Go-White.png']}"/>
                     <f:attribute name="param" value="Assigned asc"/>
                 </af:link>
             </af:panelGroupLayout>
-        </af:panelGroupLayout>
+        </af:panelGroupLayout><br/>
         <!--<div>
             <table id="t1" class="headerTable">
                 <tr>
@@ -316,7 +312,7 @@
                             <af:inlineFrame shortDesc="Task Form"
                                             source="#{row.TaskFlowURI}&amp;bpmWorklistTaskId=#{row.TaskID}&amp;bpmWorklistContext=#{pageFlowScope.PoWorkSpaceBean.contextString}"
                                             id="if1" 
-                                            inlineStyle="width: 99%; height: 660px; frame-border"/>
+                                            inlineStyle="width: 99%; height: 740px; frame-border"/>
                             <af:outputText value="#{row.TaskID}" id="TaskOpenId" visible="false"
                                            styleClass="CreatedTaskIdClass"/>
                         </af:panelGroupLayout>

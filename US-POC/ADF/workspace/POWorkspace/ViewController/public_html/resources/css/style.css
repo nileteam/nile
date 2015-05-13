@@ -25,6 +25,10 @@ img.bg {
     position: relative;
     background-color: white;
 }
+.fonteff
+{
+font-family: Lucida Sans;
+}
 
 .left {
     max-width: 100%;

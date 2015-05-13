@@ -23,16 +23,21 @@
                             <af:panelGroupLayout id="pfl1" layout="vertical">
                                 <af:inputText id="it1" value="#{loginBean.username}" clientComponent="true"
                                               inlineStyle="margin-top:-7px; margin-bottom:10px;  margin-left: -15px;"
-                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;"/>
+                                              contentStyle="background-color: #b8b8b8; height: 20pt; border: none;font-size: 11pt; font-family: Calibri;"
+                                              placeholder="Login Id"/>
                                 <af:inputText id="it2" secret="true" value="#{loginBean.password}"
                                               inlineStyle="margin-bottom:10px;  margin-left: -15px;"
-                                              contentStyle="background-color: #b8b8b8; height: 20px; border: none;font-size: 11pt; font-family: Calibri;">
+                                              contentStyle="background-color: #b8b8b8; height: 20pt; border: none;font-size: 11pt; font-family: Calibri;"
+                                              placeholder="Password">
                                     <af:clientListener type="keyPress" method="callButtonAction"/>
                                 </af:inputText>
                             </af:panelGroupLayout>
-                            <af:panelGroupLayout id="pgl2" layout="vertical">
+                            <af:panelGroupLayout id="pgl2" layout="horizontal">
                                 <af:commandButton id="cb1" action="#{loginBean.doLogin}"
-                                                  inlineStyle='background-image:url("resources/images/GoButton.png"); width:31px; height:30px; margin-top: 8px;margin-left: -8px;'/>
+                                                  inlineStyle='background-image:url("resources/images/Go-Green.png"); width:31px; height:30px; margin-top: 8px;margin-left: -8px;'/>
+                                <af:outputText value="Trouble Signing-In" id="ot1"
+                                               inlineStyle="font-size:11pt; margin-left:10px; border-bottom-width:thin; border-bottom-style:ridge; border-bottom-color:ThreeDDarkShadow; font-family:Calibri;"/>
+                                <af:outputText value="?" id="ot2" inlineStyle="font-size:11pt;"/>
                             </af:panelGroupLayout>
                         </af:panelGroupLayout>
                     </f:facet>

@@ -139,7 +139,7 @@
             <hash n="archiveOptions">
                <value n="hasManifest" v="false"/>
             </hash>
-            <value n="contextRoot" v="/custom/workspaceNew"/>
+            <value n="contextRoot" v="/custom/workspace"/>
             <value n="enterpriseAppName" v="POWorkspace_ViewController_webapp"/>
             <hash n="fileGroups">
                <list n="groups">
@@ -199,7 +199,7 @@
                   </hash>
                </list>
             </hash>
-            <url n="jarURL" path="deploy/POWorkspace_ViewController_webappNew.war"/>
+            <url n="jarURL" path="deploy/POWorkspace_ViewController_webappNewShekhar.war"/>
             <value n="profileClass" v="oracle.jdeveloper.deploy.war.WarProfile"/>
             <value n="profileName" v="POWorkspace_ViewController_webapp"/>
          </hash>
@@ -378,7 +378,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="Oracle.bpm.client.jar"/>
+            <value n="id" v="Oracle.bpm.client.jar1"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -407,11 +407,20 @@
             </hash>
             <hash>
                <list n="classPath">
-                  <url path="../../../../../../../../Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar" jar-entry=""/>
+                  <url protocol="jar" path="file:/Oracle/Middleware12c/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar!/"/>
                </list>
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Oracle.bpm.client.jar"/>
                <value n="id" v="Oracle.bpm.client.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+            <hash>
+               <list n="classPath">
+                  <url protocol="jar" path="file:/C:/Oracle/Middleware12c/Oracle_Home/soa/soa/modules/oracle.bpm.client_11.1.1/oracle.bpm.client.jar!/"/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="Oracle.bpm.client.jar1"/>
+               <value n="id" v="Oracle.bpm.client.jar1"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -583,6 +592,10 @@
          </hash>
          <hash>
             <value n="id" v="Oracle.bpm.client.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Oracle.bpm.client.jar1"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
