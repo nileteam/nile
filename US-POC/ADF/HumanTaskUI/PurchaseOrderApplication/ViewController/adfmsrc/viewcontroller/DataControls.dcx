@@ -9,10 +9,10 @@
                       BeanClass="ViewController_InitiatorHumanTask" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
     <Source>
       <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
-                      SchemaLocation="file:/C:/Users/nile/Downloads/Purchase_Order_Request_Shared/Purchase Order Request/PurchaseOrderRequest/SOA/Schemas/InitiatorHumanTaskWorkflowTask.xsd"
+                      SchemaLocation="file:/D:/Nishant/sunday/nile/US-POC/ADF/HumanTaskUI/PurchaseOrderApplication/POC_US_BPM/SOA/Schemas/InitiatorHumanTaskWorkflowTask.xsd"
                       RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
-                      taskLoc="../../../../Users/nile/Downloads/Purchase_Order_Request_Shared/Purchase Order Request/PurchaseOrderRequest/SOA/HumanTasks/InitiatorHumanTask.task"
-                      InitiationTask="true" DocumentStoreConfiguration="false"/>
+                      taskLoc="SOA/HumanTasks/InitiatorHumanTask.task" InitiationTask="true"
+                      DocumentStoreConfiguration="false"/>
     </Source>
   </AdapterDataControl>
   <AdapterDataControl id="ViewController_EditableHumanTask"
@@ -41,6 +41,17 @@
                       RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
                       taskLoc="/E:/git_app_checkout/nile/US-POC/BPM/PurchaseOrderRequest/PurchaseOrderRequest/SOA/HumanTasks/NonEditableHumantask.task"
                       InitiationTask="false" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="EditableBeanDC" FactoryClass="oracle.adf.model.adapter.bean.BeanDCFactoryImpl"
+                      ImplDef="oracle.adf.model.adapter.bean.BeanDCDefinition" SupportsTransactions="false"
+                      SupportsSortCollection="true" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="true" Definition="com.view.beans.EditableBeanDC"
+                      BeanClass="com.view.beans.EditableBeanDC" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <bean-definition BeanClass="com.view.beans.EditableBeanDC"
+                       DataControlHandler="oracle.adf.model.adapter.bean.DataFilterHandler" AccessMode="scrollable"
+                       EagerPersist="false" xmlns="http://xmlns.oracle.com/adfm/adapter/bean"/>
     </Source>
   </AdapterDataControl>
 </DataControlConfigs>

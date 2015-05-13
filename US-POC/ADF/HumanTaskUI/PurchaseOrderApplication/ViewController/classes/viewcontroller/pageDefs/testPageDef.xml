@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="testPageDef"
+                Package="viewcontroller.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Item_DetailsVO1" RangeSize="25" DataControl="AppModuleDataControl" id="Item_DetailsVO1Iterator"/>
+    <iterator Binds="ItemView1" RangeSize="25" DataControl="POReqAppModuleDataControl" id="ItemView1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Item_DetailsVO1Iterator" id="Item_DetailsVO1">
+      <nodeDefinition DefName="model.VO.Item_DetailsVO" Name="Item_DetailsVO10">
+        <AttrNames>
+          <Item Value="Code"/>
+          <Item Value="Description"/>
+          <Item Value="NeedBy"/>
+          <Item Value="Operating_unit"/>
+          <Item Value="Preferred_Supplier"/>
+          <Item Value="Project"/>
+          <Item Value="Quantity"/>
+          <Item Value="Rate"/>
+          <Item Value="Task"/>
+          <Item Value="Type"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="ItemView1Iterator" id="ItemId">
+      <AttrNames>
+        <Item Value="ItemId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ItemView1Iterator" id="ItemName">
+      <AttrNames>
+        <Item Value="ItemName"/>
+      </AttrNames>
+    </attributeValues>
+  </bindings>
+</pageDefinition>

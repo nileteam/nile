@@ -11,8 +11,9 @@
     <Attr Name="_jprName" Value="../../Model.jpr"/>
     <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
     <Attr Name="_NamedConnection" Value="149DB"/>
-    <Attr Name="_appModuleNames0" Value="model.AppModule"/>
-    <Attr Name="_appModuleNames1" Value="model.AM.AppModule"/>
+    <!--<Attr Name="_appModuleNames0" Value="model.AppModule"/>
+    <Attr Name="_appModuleNames1" Value="model.AM.AppModule"/>-->
+    <Attr Name="_appModuleNames0" Value="model.POReqAppModule"/>
   </DesignTime>
   <Containee
     Name="AM"

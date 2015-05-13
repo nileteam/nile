@@ -8,6 +8,11 @@
     <f:view>
         <af:document title="taskDetails1.jspx" id="d1">
             <af:resource type="javascript">
+            
+            
+            
+            
+            
               function test(e) {
                   alert('Ok');
                   //alert(parent);
@@ -15,10 +20,16 @@
                   //alert("Done");
               }
             </af:resource>
+           
             <af:messages id="m1"/>
             <af:resource type="javascript" source="/jsLibs/taskDetails.js"/>
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
+            
+            
+             <!--<af:panelGroupLayout id="pgl4">
+                <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
+            </af:panelGroupLayout>-->
                 <af:panelGroupLayout layout="vertical" id="pgl1" inlineStyle="padding: 5px;">
                     <af:panelHeader text=" " id="ph1">
                         <f:facet name="info"/>
@@ -37,7 +48,7 @@
                                                        partialSubmit="false"
                                                        visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
                                                        id="b1">
-                                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>    
+                                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>
                                             </af:button>
                                         </af:panelGroupLayout>
                                     </f:facet>
@@ -127,16 +138,14 @@
                             </af:toolbar>
                         </f:facet>
                         <f:facet name="context"/>
-                       
-                        <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
-                       
+                        <af:panelGroupLayout id="pgl4">
+                            <af:region value="#{bindings.PurchaseOrderInitiationTF1.regionModel}" id="r1"/>
+                        </af:panelGroupLayout>
                         <!--<af:button actionListener="#{bindings.SUBMIT.execute}" text="SUBMIT"
                                    disabled="#{!bindings.SUBMIT.enabled}" id="b1"/>-->
                         <af:panelGroupLayout id="pgl5">
-
-                            <af:button actionListener="#{invokeActionBean.setOperation}"
-                                       text="SUBMIT" rendered="false"/>
-
+                            <af:button actionListener="#{invokeActionBean.setOperation}" text="SUBMIT"
+                                       rendered="false"/>
                             <!--<af:button actionListener="#{invokeActionBean.setOperation}"
                                        text="SUBMIT"
 >>>>>>> origin/master
@@ -146,31 +155,26 @@
                                        id="b3" styleClass="init" inlineStyle="margin-left:12px;">
                                 <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>
                             </af:button>-->
-                            
-                             <af:commandImageLink id="l4"
-                             rendered="false"
-                            actionListener="#{invokeActionBean.setOperation}"
-                            disabled="#{!bindings.SUBMIT.enabled}" 
-                             action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
-                             visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
-                                 inlineStyle="margin-left:12px;" icon="#{resource['images:SUBMIT-Black.png']}">
-                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT" />
-                                </af:commandImageLink>
-                                
-                            
+                            <af:commandImageLink id="l4" rendered="false"
+                                                 actionListener="#{invokeActionBean.setOperation}"
+                                                 disabled="#{!bindings.SUBMIT.enabled}"
+                                                 action="#{invokeActionBean.invokeOperation}" partialSubmit="false"
+                                                 visible="#{wf:isCustomActionAvailable('SUBMIT', 'bindings.customActions')}"
+                                                 inlineStyle="margin-left:12px;"
+                                                 icon="#{resource['images:SUBMIT-Black.png']}">
+                                <f:attribute name="DC_OPERATION_BINDING" value="bindings.SUBMIT"/>
+                            </af:commandImageLink>
                             <!--<af:button text="SAVE" actionListener="#{invokeActionBean.setAction}"
                                        action="#{invokeActionBean.action}" id="b2" styleClass="init"
                                        inlineStyle="margin-left:10px;">
                                 <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
                             </af:button>-->
-                            
                             <!--<af:commandImageLink  id="l5"
                                 actionListener="#{invokeActionBean.setAction}"
                                 action="#{invokeActionBean.action}"
                                 inlineStyle="margin-left:10px;" icon="#{resource['images:SAVE-Black.png']}">
                                  <f:attribute name="ACTION_MENU_ITEM" value="bindings.update"/>
                                  </af:commandImageLink>-->
-                            
                         </af:panelGroupLayout>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">

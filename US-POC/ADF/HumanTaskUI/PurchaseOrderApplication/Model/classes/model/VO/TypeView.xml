@@ -38,6 +38,43 @@
     EntityAttrName="ItemId"
     EntityUsage="Type"
     AliasName="ITEM_ID"/>
+  <ViewCriteria
+    Name="TypeViewCriteria"
+    ViewObjectName="model.VO.TypeView"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="TypeViewCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="TypeViewCriteria_TypeViewCriteria_row_0_ItemId"
+        ViewAttribute="ItemId"
+        Operator="="
+        Conjunction="AND"
+        Value=":itemIDBind"
+        GenerateIsNullClauseForBindVars="false"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <DeclarativeWhereClause
     Name="DeclarativeWhereClause">
     <ViewCriteria

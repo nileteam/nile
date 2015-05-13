@@ -25,15 +25,15 @@
       <property
          name="page">/taskDetails4.jspx</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>taskDetails4_jspx&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>taskDetails4_jspx&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">781.8506</property>
+         name="y">684.1494</property>
       <property
-         name="x">91.5</property>
+         name="x">530.5</property>
    </View>
    <WildcardControlFlowRule
       id="WildcardControlFlowRule4">
@@ -223,5 +223,30 @@
          name="fromsrcid">__29</property>
       <property
          name="sdm:polyPoints">B50,91.5,510.29883,275.6875,796.44824,T50</property>
+   </ControlFlowCase>
+   <MethodCall
+      id="MethodCall18">
+      <property
+         name="activityId">OnLoad</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>OnLoad&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">683.44824</property>
+      <property
+         name="x">801.5</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase19"
+      from="MethodCall18"
+      to="View3">
+      <property
+         name="fromOutcome">OnLoad</property>
+      <property
+         name="sdm:polyPoints">L50,760.5,683.09766,571.5,683.7988,R50</property>
    </ControlFlowCase>
 </SDM>

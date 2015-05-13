@@ -16,4 +16,7 @@
   <ViewUsage
     Name="ViewObj1"
     ViewObjectName="model.VO.ViewObj"/>
+  <ViewUsage
+    Name="Item_DetailsVO1"
+    ViewObjectName="model.VO.Item_DetailsVO"/>
 </AppModule>
