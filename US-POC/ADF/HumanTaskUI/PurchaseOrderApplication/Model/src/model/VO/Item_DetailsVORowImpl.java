@@ -29,6 +29,7 @@ public class Item_DetailsVORowImpl extends ViewRowImpl {
         Type,
         TypeString,
         DescString,
+        TotalValue,
         ItemView1,
         TypeView1;
         private static AttributesEnum[] vals = null;
@@ -67,6 +68,7 @@ public class Item_DetailsVORowImpl extends ViewRowImpl {
     public static final int TYPE = AttributesEnum.Type.index();
     public static final int TYPESTRING = AttributesEnum.TypeString.index();
     public static final int DESCSTRING = AttributesEnum.DescString.index();
+    public static final int TOTALVALUE = AttributesEnum.TotalValue.index();
     public static final int ITEMVIEW1 = AttributesEnum.ItemView1.index();
     public static final int TYPEVIEW1 = AttributesEnum.TypeView1.index();
 
@@ -292,6 +294,30 @@ public class Item_DetailsVORowImpl extends ViewRowImpl {
      */
     public void setDescString(String value) {
         setAttributeInternal(DESCSTRING, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute TotalValue.
+     * @return the TotalValue
+     */
+    public Number getTotalValue() {
+        if(this.getQuantity()!=null && this.getRate()!=null) {
+            return   this.getQuantity().multiply(this.getRate());         
+        }
+        else {
+            System.out.println("Bingoooo");
+            
+        }
+        
+        return (Number) getAttributeInternal(TOTALVALUE);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute TotalValue.
+     * @param value value to set the  TotalValue
+     */
+    public void setTotalValue(Number value) {
+        setAttributeInternal(TOTALVALUE, value);
     }
 
     /**

@@ -142,7 +142,7 @@
         <Item Value="Mobile Store"/>
         <Item Value="City Computers"/>
         <Item Value="Hardware Point"/>
-        <Item Value="Delhi Communications"/>
+        <Item Value="Ralph Communications"/>
       </ValueList>
     </list>
     <list IterBinding="Item_DetailsIterator" id="Task1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
@@ -165,10 +165,9 @@
       </AttrNames>
       <ValueList>
         <Item Value="Global Dispatch system"/>
-        <Item Value="Hpseb"/>
+        <Item Value="HPSEB"/>
         <Item Value="Ap Invoice Automation"/>
         <Item Value="Invoice Lifecycle Management System"/>
-        <Item Value="GenTrac"/>
       </ValueList>
     </list>
     <attributeValues IterBinding="payloadIterator" id="comments">
@@ -256,5 +255,10 @@
     <action IterBinding="Item_DetailsVO1Iterator" id="CreateInsert1"
             InstanceName="POReqAppModuleDataControl.Item_DetailsVO1" DataControl="POReqAppModuleDataControl"
             RequiresUpdateModel="true" Action="createInsertRow"/>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="Code1">
+      <AttrNames>
+        <Item Value="Code"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

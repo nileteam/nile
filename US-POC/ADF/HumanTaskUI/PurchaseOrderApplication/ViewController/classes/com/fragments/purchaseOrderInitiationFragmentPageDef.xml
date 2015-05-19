@@ -203,6 +203,7 @@
           <Item Value="Type"/>
           <Item Value="TypeString"/>
           <Item Value="DescString"/>
+          <Item Value="TotalValue"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -280,5 +281,10 @@
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
     <action IterBinding="Item_DetailsVO1Iterator" id="Execute" InstanceName="POReqAppModuleDataControl.Item_DetailsVO1"
             DataControl="POReqAppModuleDataControl" RequiresUpdateModel="true" Action="iteratorExecute"/>
+    <attributeValues IterBinding="Item_DetailsVO1Iterator" id="TotalValue">
+      <AttrNames>
+        <Item Value="TotalValue"/>
+      </AttrNames>
+    </attributeValues>
   </bindings>
 </pageDefinition>

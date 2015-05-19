@@ -128,6 +128,10 @@
                         <af:panelGroupLayout id="pgl25">
                             <af:panelGroupLayout id="pgl20" layout="horizontal">
                                 <af:panelGroupLayout id="pgl15">
+                                    <!--<af:outputText value="#{bindings.TotalValue.inputValue}"
+                                                   shortDesc="#{bindings.TotalValue.hints.tooltip}" id="ot2">
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.TotalValue.format}"/>
+                                    </af:outputText>-->
                                     <af:outputText value="*" id="ot26" inlineStyle="color:Red;padding-left:8px;"/>
                                     <af:outputText value="Item:" id="ot10"
                                                    styleClass="fonteffect"/>
@@ -311,27 +315,28 @@
                 <br/>
                  <af:popup binding="#{pageFlowScope.PurchaseOrderBean.save_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p1" contentDelivery="immediate">
-                    <af:dialog id="d1" resize="off" inlineStyle="background-color:#e9f2f0;height:145px;width:350px;"
+                    <af:dialog id="d1" resize="off" inlineStyle="background-color:#ccf2ee;height:145px;width:350px;"
                                type="none">
                         <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
                             <af:outputText value="Please fill in all mandatory information to proceed" id="ot30"
-                                           inlineStyle="font-size:11pt;color:black;"/>
-                           <af:button text="Ok"
-                                      inlineStyle="margin-top:50px;margin-left:280px;background-color:#e9f2f0;font-size:11pt;"
+                                           inlineStyle="font-size:10pt;color:black;"/>
+                           <af:button text="OK"
+                                      inlineStyle="margin-top:55px;margin-left:140px;background-color:#e9f2f0;font-size:11pt;"
                             id="b5" actionListener="#{pageFlowScope.PurchaseOrderBean.closePopup}"/>
                         </af:panelFormLayout>
                     </af:dialog>
                 </af:popup>
-                <af:popup binding="#{pageFlowScope.PurchaseOrderBean.submit_popup}" childCreation="deferred"
+              <af:popup binding="#{pageFlowScope.PurchaseOrderBean.submit_popup}" childCreation="deferred"
                           autoCancel="disabled" id="p2" contentDelivery="immediate">
-                    <af:dialog id="d2" type="none" inlineStyle="background-color:#e9f2f0;height:145px;width:350px;">
+                    <af:dialog id="d2" type="none" inlineStyle="background-color:#ccf2ee;height:145px;width:350px;">
                         <f:facet name="buttonBar"/>
                         <af:panelFormLayout id="pfl5" inlineStyle="background-color:white; height:107px;">
                             <af:outputText value="Please fill in all mandatory information to proceed." id="ot31"
-                                           inlineStyle="font-size:11pt; margin-top:150px; text-align:right;"/>
+                                           inlineStyle="font-size:10pt; margin-top:150px; text-align:right;"/>
                          
-                            <af:button text="ok" inlineStyle="margin-top:50px;margin-left:280px;background-color:#e9f2f0;"
-                            id="b3" actionListener="#{pageFlowScope.PurchaseOrderBean.closePopup}"/>
+                            <af:button text="OK"
+                                       inlineStyle="margin-top:45px;margin-left:140px;background-color:#e9f2f0;"
+                            id="b3" actionListener="#{pageFlowScope.PurchaseOrderBean.closeSubmitPopup}"/>
                         </af:panelFormLayout>
                     </af:dialog>
                 </af:popup>
@@ -385,14 +390,14 @@
                             action="#{pageFlowScope.PurchaseOrderBean.delete_button}" partialTriggers="::t1"
                                                  icon="#{resource['images:delete-icon (2).png']}"/>
                         </af:column>
-                        <af:column headerText="Item" id="c1" width="213" inlineStyle="text-align:center;" align="center"
+                        <af:column headerText="Item" id="c1" width="180" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
                             <!--<af:outputText value="#{row.Type}"
                                            shortDesc="#{bindings.Item_DetailsVO1.hints.Type.tooltip}" id="ot1"/>-->
                             <af:outputText value="#{row.TypeString}"
                                            shortDesc="#{bindings.Item_DetailsVO1.hints.Type.tooltip}" id="ot100"/>
                         </af:column>
-                        <af:column headerText="Type" id="c2" width="213" inlineStyle="text-align:center;" align="center"
+                        <af:column headerText="Type" id="c2" width="200" inlineStyle="text-align:center;" align="center"
                                    styleClass="head tablecss">
                             <af:outputText value="#{row.DescString}"
                                            shortDesc="#{bindings.Item_DetailsVO1.hints.Description.tooltip}" id="ot132"/>
@@ -419,6 +424,13 @@
                                 <af:convertDateTime pattern="#{bindings.Item_DetailsVO1.hints.NeedBy.format}"/>
                             </af:outputText>
                         </af:column>
+                        <!--<af:column headerText="Net Value" id="c6" width="100" align="center" styleClass="head tablecss">
+                            <af:outputText value="#{row.TotalValue}"
+                                           shortDesc="#{bindings.Item_DetailsVO1.hints.TotalValue.tooltip}" id="ot1">
+                                <af:convertNumber groupingUsed="false"
+                                                  pattern="#{bindings.Item_DetailsVO1.hints.TotalValue.format}"/>
+                            </af:outputText>
+                        </af:column>-->
                     </af:table>
                     <!--<af:button actionListener="#{bindings.CreateInsert.execute}" text="CreateInsert"
                  disabled="#{!bindings.CreateInsert.enabled}" id="b4"/>-->
