@@ -21,4 +21,18 @@
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
+  <xsd:complexType name="Quote_type">
+    <xsd:sequence>
+      <xsd:element name="Director" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Quote" type="xsd:integer" minOccurs="0"/>
+      <xsd:element name="Office" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Description" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Lob" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ContractStartDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="ContractEndDate" type="xsd:date" minOccurs="0"/>
+      <xsd:element name="Client" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="QuoteID" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="ContractTerm" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
+  </xsd:complexType>
 </xsd:schema>

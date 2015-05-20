@@ -51,6 +51,10 @@
          <ns2:name>POC_US_BPM.LegalTeam</ns2:name>
          <ns0:processRole id="LegalTeam" name="LegalTeam"/>
       </ns0:applicationRole>
+      <ns0:applicationRole id="POC_US_BPM.Director" isProcessRole="true">
+         <ns2:name>POC_US_BPM.Director</ns2:name>
+         <ns0:processRole id="Director" name="Director"/>
+      </ns0:applicationRole>
    </ns0:applicationRoles>
    <ns0:applicationRoleOrgUnitCalendarAssociations/>
    <ns0:participantPropertiesList/>

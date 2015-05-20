@@ -95,56 +95,6 @@
       </service>
     </componentType>
   </component>
-  <component name="ContractProcess">
-    <implementation.bpmn src="processes/ContractProcess.bpmn"/>
-    <componentType>
-      <reference name="HumanTasks.InitiateContract.reference"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </reference>
-      <reference name="HumanTasks.NonEditableContract.reference"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </reference>
-      <reference name="NotificationService.ACT12828696848350"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
-      </reference>
-      <reference name="NotificationService.ACT12828699120618"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
-      </reference>
-      <reference name="NotificationService.ACT12828738254058"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
-      </reference>
-      <reference name="NotificationService.ACT12828744822760"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
-      </reference>
-      <reference name="HumanTasks.EditableContract.reference"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </reference>
-      <reference name="Services.Externals.GetReqNo.reference" ui:wsdlLocation="WSDLs/GetReqNo.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo#wsdl.interface(GetReqNo_ptt)"/>
-      </reference>
-    </componentType>
-    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
-    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
-  </component>
-  <component name="EditableContract">
-    <implementation.workflow src="HumanTasks/EditableContract.task"/>
-    <componentType>
-      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </service>
-    </componentType>
-  </component>
   <component name="TotalAmountOracleRules1">
     <implementation.decision src="TotalAmountOracleRules1.decs"/>
     <componentType>
@@ -207,13 +157,48 @@
                  ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
       </reference>
-      <reference name="NotificationService.ACT12941884296554"
-                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
-      </reference>
       <reference name="NotificationService.ACT12946768341790"
                  ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12975213039630"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12985118709054"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12985204801259"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12985278791122"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12985319050065"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT12985366016812"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+    </componentType>
+    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
+    <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+  </component>
+  <component name="ContractProcess">
+    <implementation.bpmn src="processes/ContractProcess.bpmn"/>
+    <componentType>
+      <reference name="Services.Externals.GetReqNo.reference" ui:wsdlLocation="WSDLs/GetReqNo.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo#wsdl.interface(GetReqNo_ptt)"/>
+      </reference>
+      <reference name="HumanTasks.InitiateContract.reference"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
       </reference>
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
@@ -241,40 +226,8 @@
     <target.uri>NonEditableHumantask/client</target.uri>
   </wire>
   <wire>
-    <source.uri>ContractProcess/HumanTasks.InitiateContract.reference</source.uri>
-    <target.uri>InitiateContract/TaskService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/HumanTasks.NonEditableContract.reference</source.uri>
-    <target.uri>NonEditableContract/TaskService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/NotificationService.ACT12828696848350</source.uri>
-    <target.uri>BPM-NotificationService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/NotificationService.ACT12828699120618</source.uri>
-    <target.uri>BPM-NotificationService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/NotificationService.ACT12828738254058</source.uri>
-    <target.uri>BPM-NotificationService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/NotificationService.ACT12828744822760</source.uri>
-    <target.uri>BPM-NotificationService</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/HumanTasks.EditableContract.reference</source.uri>
-    <target.uri>EditableContract/TaskService</target.uri>
-  </wire>
-  <wire>
     <source.uri>TotalAmountOracleRules1_DecisionService_1_ep</source.uri>
     <target.uri>TotalAmountOracleRules1/TotalAmountOracleRules1_DecisionService_1</target.uri>
-  </wire>
-  <wire>
-    <source.uri>ContractProcess/Services.Externals.GetReqNo.reference</source.uri>
-    <target.uri>GetReqNo</target.uri>
   </wire>
   <wire>
     <source.uri>CreatePurchaseOrder/Services.Externals.GetReqNo.reference</source.uri>
@@ -325,11 +278,39 @@
     <target.uri>BPM-NotificationService</target.uri>
   </wire>
   <wire>
-    <source.uri>CreatePurchaseOrder/NotificationService.ACT12941884296554</source.uri>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12946768341790</source.uri>
     <target.uri>BPM-NotificationService</target.uri>
   </wire>
   <wire>
-    <source.uri>CreatePurchaseOrder/NotificationService.ACT12946768341790</source.uri>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12975213039630</source.uri>
     <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12985118709054</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12985204801259</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12985278791122</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12985319050065</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>CreatePurchaseOrder/NotificationService.ACT12985366016812</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/Services.Externals.GetReqNo.reference</source.uri>
+    <target.uri>GetReqNo</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/HumanTasks.InitiateContract.reference</source.uri>
+    <target.uri>InitiateContract/TaskService</target.uri>
   </wire>
 </composite>

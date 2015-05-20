@@ -2,23 +2,53 @@
 <Faults>
    <Fault>
       <severity>warning</severity>
-      <loc/>
+      <loc>/ns:composite/ns:component[@name='NonEditableContract/TaskService']</loc>
       <line/>
       <col/>
-      <file>HumanTasks/EditableContract.task</file>
-      <name>HumanTasks/EditableContract.task</name>
+      <file>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\composite.xml</file>
+      <name>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\composite.xml</name>
       <fix/>
-      <msg>Task title not specified</msg>
+      <msg>The service "TaskService" exposed by component "NonEditableContract" is not wired to/used by any other component.</msg>
    </Fault>
    <Fault>
       <severity>warning</severity>
       <loc/>
       <line/>
       <col/>
-      <file>HumanTasks/EditableContract.task</file>
-      <name>HumanTasks/EditableContract.task</name>
+      <file>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
       <fix/>
-      <msg>Error assignee not specified</msg>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>C:\Users\dell\Desktop\git_nileteam_nile\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in User Notification</msg>
    </Fault>
    <Fault>
       <severity>warning</severity>
