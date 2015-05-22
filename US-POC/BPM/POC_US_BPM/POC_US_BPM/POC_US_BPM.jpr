@@ -351,5 +351,6 @@
       </hash>
    </hash>
    <value n="SCA_WORKFLOW_FOLDER_PROPERTY_NAME" v="HumanTasks/"/>
+   <value n="SOA_TRANSFORMATION_FOLDER_NAME" v="xsl/"/>
    <value n="SOA_WSDL_FOLDER_NAME" v="WSDLs/"/>
 </jpr:project>

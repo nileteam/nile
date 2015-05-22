@@ -39,6 +39,7 @@
     <xsd:complexType>
       <xsd:sequence minOccurs="0">
         <xsd:element name="Quote" type="Quote_type" minOccurs="0"/>
+        <xsd:element name="Directors" type="xsd:string" minOccurs="0" maxOccurs="unbounded"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>

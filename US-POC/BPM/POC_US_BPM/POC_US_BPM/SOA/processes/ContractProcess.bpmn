@@ -640,6 +640,7 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
+                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
                         <bpmnext:AttributeExpression name="subjectExpressionFeature">
                             <bpmnext:expression language="http://www.w3.org/1999/XPath">concat('Originate Contract ','')
                                 <bpmn:extensionElements>
@@ -1284,6 +1285,111 @@
                 </bpmn:assignment>
             </bpmn:dataOutputAssociation>
         </bpmn:scriptTask>
+        <bpmn:scriptTask isForCompensation="false" name="users copy" id="ACT13062614818873">
+            <bpmn:extensionElements>
+                <bpmnext:OracleExtensions>
+                    <bpmnext:GraphicsAttributes>
+                        <bpmnext:Position x="288" y="108"/>
+                    </bpmnext:GraphicsAttributes>
+                    <bpmnext:FeatureSet>
+                        <bpmnext:BooleanFeature value="false" name="hasCheckpoint"/>
+                        <bpmnext:BooleanFeature value="false" name="isDraft"/>
+                        <bpmnext:BooleanFeature value="false" name="outputValidation"/>
+                        <bpmnext:StringFeature value="[]" name="TagFeature"/>
+                        <bpmnext:StringFeature value="PROCESS_DEFAULT" name="generatesEvents"/>
+                        <bpmnext:StringFeature value="" name="lane"/>
+                        <bpmnext:StringFeature value="Begin Level" name="level"/>
+                        <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
+                    </bpmnext:FeatureSet>
+                    <bpmnext:Localization>
+                        <bpmnext:Label>
+                            <bpmnext:LocalizedContent language="en">users copy</bpmnext:LocalizedContent>
+                        </bpmnext:Label>
+                        <bpmnext:Description>
+                            <bpmnext:LocalizedContent language="en"></bpmnext:LocalizedContent>
+                        </bpmnext:Description>
+                    </bpmnext:Localization>
+                    <bpmnext:FlowNodeProperties/>
+                    <bpmnext:LogHandlers>
+                        <bpmnext:LogHandler trigger="after_output_data_association" level="debug" mustDisplayInAuditTrail="true">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">bpmn:getDataObject('quote')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:LogHandler>
+                        <bpmnext:LogHandler trigger="before_output_data_association" level="debug" mustDisplayInAuditTrail="true">
+                            <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">bpmn:getDataObject('quote')
+                                <bpmn:extensionElements>
+                                    <bpmnext:OracleExtensions>
+                                        <bpmnext:Expression mode="xpath"/>
+                                    </bpmnext:OracleExtensions>
+                                </bpmn:extensionElements>
+                            </bpmnext:expression>
+                        </bpmnext:LogHandler>
+                    </bpmnext:LogHandlers>
+                </bpmnext:OracleExtensions>
+            </bpmn:extensionElements>
+            <bpmn:ioSpecification/>
+            <bpmn:dataOutputAssociation>
+                <bpmn:extensionElements>
+                    <bpmnext:OracleExtensions/>
+                </bpmn:extensionElements>
+                <bpmn:targetRef>directors</bpmn:targetRef>
+                <bpmn:assignment>
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:DataAssignment operation="copy_list" ignoreMissingData="false"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">ids:getUsersInAppRole('POC_US_BPM.Director','OracleBPMProcessRolesApp',false)
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:from>
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.GetUsersfromRole.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('directors')/ns:user
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:to>
+                </bpmn:assignment>
+            </bpmn:dataOutputAssociation>
+            <bpmn:dataOutputAssociation>
+                <bpmn:extensionElements>
+                    <bpmnext:OracleExtensions>
+                        <bpmnext:OtherRef>directors</bpmnext:OtherRef>
+                    </bpmnext:OracleExtensions>
+                </bpmn:extensionElements>
+                <bpmn:targetRef>quote</bpmn:targetRef>
+                <bpmn:assignment>
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:DataAssignment operation="copy_list" ignoreMissingData="false"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.GetUsersfromRole.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('directors')/ns:user
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:from>
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('quote')/ns:Directors
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:to>
+                </bpmn:assignment>
+            </bpmn:dataOutputAssociation>
+        </bpmn:scriptTask>
         <bpmn:startEvent isInterrupting="false" name="Start" id="EVT12827908675645">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
@@ -1560,7 +1666,7 @@
                 </bpmnext:OracleExtensions>
             </bpmn:extensionElements>
         </bpmn:sequenceFlow>
-        <bpmn:sequenceFlow sourceRef="ACT13051425085676" targetRef="ACT12827908675786" name="sf13051428506412" id="sf13051428506412">
+        <bpmn:sequenceFlow sourceRef="ACT13051425085676" targetRef="ACT13062614818873" name="sf13051428506412" id="sf13051428506412">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
                     <bpmnext:SequenceFlowAttributes/>
@@ -1685,6 +1791,18 @@
                 </bpmnext:OracleExtensions>
             </bpmn:extensionElements>
         </bpmn:sequenceFlow>
+        <bpmn:sequenceFlow sourceRef="ACT13062614818873" targetRef="ACT12827908675786" name="sf13062624428365" id="sf13062624428365">
+            <bpmn:extensionElements>
+                <bpmnext:OracleExtensions>
+                    <bpmnext:SequenceFlowAttributes/>
+                    <bpmnext:FeatureSet>
+                        <bpmnext:BooleanFeature value="false" name="collapseMessage"/>
+                        <bpmnext:StringFeature value="-2147483648,-2147483648" name="curve"/>
+                        <bpmnext:StringFeature value="STRAIGHT" name="routing"/>
+                    </bpmnext:FeatureSet>
+                </bpmnext:OracleExtensions>
+            </bpmn:extensionElements>
+        </bpmn:sequenceFlow>
         <bpmn:dataObject name="initiateduser" id="initiateduser">
             <bpmn:extensionElements>
                 <bpmnext:OracleExtensions>
@@ -1735,6 +1853,15 @@
                 <bpmnext:OracleExtensions>
                     <bpmnext:DataObjectType initialize="true">
                         <bpmnext:TypeRef refType="schema" name="string" namespace="http://www.w3.org/2001/XMLSchema" implementationType="type"/>
+                    </bpmnext:DataObjectType>
+                </bpmnext:OracleExtensions>
+            </bpmn:extensionElements>
+        </bpmn:dataObject>
+        <bpmn:dataObject name="directors" id="directors">
+            <bpmn:extensionElements>
+                <bpmnext:OracleExtensions>
+                    <bpmnext:DataObjectType initialize="true">
+                        <bpmnext:TypeRef refType="namespaced" name="users" namespace="http://www.GetUsersfromRole.org" elementType="ELEMENT" implementationType="businessObject"/>
                     </bpmnext:DataObjectType>
                 </bpmnext:OracleExtensions>
             </bpmn:extensionElements>
