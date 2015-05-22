@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="GetReqNo"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:db="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="GetReqNo_plt" >
+    <plt:role name="GetReqNo_role" >
+      <plt:portType name="tns:GetReqNo_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/GetReqNo" schemaLocation="../Schemas/GetReqNo.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="GetReqNoInput_msg">
+        <wsdl:part name="GetReqNoInput_msg" element="db:GetReqNoInput"/>
+    </wsdl:message>
+    <wsdl:message name="GetReqNoOutputCollection_msg">
+        <wsdl:part name="GetReqNoOutputCollection" element="db:GetReqNoOutputCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="GetReqNo_ptt">
+        <wsdl:operation name="GetReqNo">
+            <wsdl:input message="tns:GetReqNoInput_msg"/>
+            <wsdl:output message="tns:GetReqNoOutputCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

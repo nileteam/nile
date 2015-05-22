@@ -1,0 +1,203 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Faults>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in Notify User</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</file>
+      <name>D:\git checkout for contract process 05_20_2015\nile\US-POC\BPM\POC_US_BPM\POC_US_BPM\SOA\processes\CreatePurchaseOrder.bpmn</name>
+      <fix/>
+      <msg>At least one of the To, Cc or Bcc mail recipient expression is required in User Notification</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/StartContract.task</file>
+      <name>HumanTasks/StartContract.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/StartContract.task</file>
+      <name>HumanTasks/StartContract.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiateQuote.task</file>
+      <name>HumanTasks/InitiateQuote.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiateQuote.task</file>
+      <name>HumanTasks/InitiateQuote.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/NonEditableHumantask.task</file>
+      <name>HumanTasks/NonEditableHumantask.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/NonEditableHumantask.task</file>
+      <name>HumanTasks/NonEditableHumantask.task</name>
+      <fix/>
+      <msg>Task owner not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/NonEditableHumantask.task</file>
+      <name>HumanTasks/NonEditableHumantask.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ApproveQuote.task</file>
+      <name>HumanTasks/ApproveQuote.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ApproveQuote.task</file>
+      <name>HumanTasks/ApproveQuote.task</name>
+      <fix/>
+      <msg>Empty Participant definition for Stage1.Participant1</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ApproveQuote.task</file>
+      <name>HumanTasks/ApproveQuote.task</name>
+      <fix/>
+      <msg>Task owner not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ApproveQuote.task</file>
+      <name>HumanTasks/ApproveQuote.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiatorHumanTask.task</file>
+      <name>HumanTasks/InitiatorHumanTask.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/InitiatorHumanTask.task</file>
+      <name>HumanTasks/InitiatorHumanTask.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/EditableHumanTask.task</file>
+      <name>HumanTasks/EditableHumanTask.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/EditableHumanTask.task</file>
+      <name>HumanTasks/EditableHumanTask.task</name>
+      <fix/>
+      <msg>Task owner not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/EditableHumanTask.task</file>
+      <name>HumanTasks/EditableHumanTask.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+</Faults>
