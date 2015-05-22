@@ -12,7 +12,8 @@
       <xsd:element name="Name_of_Supplier" type="xsd:string" minOccurs="0"/>
       <xsd:element name="Payment_Terms" type="xsd:string" minOccurs="0"/>
       <xsd:element name="Other_Special_TermsConditions" type="xsd:string" minOccurs="0"/>
-      </xsd:sequence>
+      <xsd:element name="Comments" type="xsd:string" minOccurs="0"/>
+    </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="Input_Contract">
     <xsd:complexType>
@@ -33,6 +34,7 @@
       <xsd:element name="Client" type="xsd:string" minOccurs="0"/>
       <xsd:element name="QuoteID" type="xsd:string" minOccurs="0"/>
       <xsd:element name="ContractTerm" type="xsd:string" minOccurs="0"/>
+      <xsd:element name="Comments" minOccurs="0" type="xsd:string"/>
     </xsd:sequence>
   </xsd:complexType>
   <xsd:element name="Input_Quote">
