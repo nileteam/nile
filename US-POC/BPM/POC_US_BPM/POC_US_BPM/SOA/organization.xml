@@ -1,59 +1,71 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<ns0:organization xmlns:ns2="http://xmlns.oracle.com/bpm/identity" xmlns:ns1="http://xmlns.oracle.com/bpel/workflow/taskQuery" xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/task" xmlns:ns3="http://xmlns.oracle.com/bpm/lpg/peopleQuery" xmlns:ns0="http://xmlns.oracle.com/bpm/organization">
+<ns0:organization xmlns:ns2="http://xmlns.oracle.com/bpm/lpg/peopleQuery" xmlns:ns1="http://xmlns.oracle.com/bpm/identity" xmlns:ns4="http://xmlns.oracle.com/bpel/workflow/task" xmlns:ns3="http://xmlns.oracle.com/bpel/workflow/taskQuery" xmlns:ns0="http://xmlns.oracle.com/bpm/organization">
    <ns0:updateExistingObjects>false</ns0:updateExistingObjects>
    <ns0:organizationalUnits/>
    <ns0:applicationRoles>
       <ns0:applicationRole id="POC_US_BPM.ProcessOwner" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Process Owner</ns2:name>
+         <ns1:name>POC_US_BPM.Process Owner</ns1:name>
          <ns0:processRole id="ProcessOwner" name="Process Owner"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.ProcessReviewer" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Process Reviewer</ns2:name>
+         <ns1:name>POC_US_BPM.Process Reviewer</ns1:name>
          <ns0:processRole id="ProcessReviewer" name="Process Reviewer"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.BusinessOwner" isProcessRole="true">
-         <ns2:name>POC_US_BPM.BusinessOwner</ns2:name>
+         <ns1:name>POC_US_BPM.BusinessOwner</ns1:name>
          <ns0:processRole id="BusinessOwner" name="BusinessOwner"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.Purchasing" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Purchasing</ns2:name>
+         <ns1:name>POC_US_BPM.Purchasing</ns1:name>
          <ns0:processRole id="Purchasing" name="Purchasing"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.PurchasingManager" isProcessRole="true">
-         <ns2:name>POC_US_BPM.PurchasingManager</ns2:name>
+         <ns1:name>POC_US_BPM.PurchasingManager</ns1:name>
          <ns0:processRole id="PurchasingManager" name="PurchasingManager"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.VPCorpProcurement" isProcessRole="true">
-         <ns2:name>POC_US_BPM.VPCorpProcurement</ns2:name>
+         <ns1:name>POC_US_BPM.VPCorpProcurement</ns1:name>
          <ns0:processRole id="VPCorpProcurement" name="VPCorpProcurement"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.Executive" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Executive</ns2:name>
+         <ns1:name>POC_US_BPM.Executive</ns1:name>
          <ns0:processRole id="Executive" name="Executive"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.PurchasingCo-Ordinator" isProcessRole="true">
-         <ns2:name>POC_US_BPM.PurchasingCo-Ordinator</ns2:name>
+         <ns1:name>POC_US_BPM.PurchasingCo-Ordinator</ns1:name>
          <ns0:processRole id="PurchasingCo-Ordinator" name="PurchasingCo-Ordinator"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.Role" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Role</ns2:name>
+         <ns1:name>POC_US_BPM.Role</ns1:name>
          <ns0:processRole id="Role" name="Role"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.PurchasingTeam_1" isProcessRole="true">
-         <ns2:name>POC_US_BPM.PurchaseTeam</ns2:name>
+         <ns1:name>POC_US_BPM.PurchaseTeam</ns1:name>
          <ns0:processRole id="PurchasingTeam_1" name="PurchaseTeam"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.FinanceTeam" isProcessRole="true">
-         <ns2:name>POC_US_BPM.FinanceTeam</ns2:name>
+         <ns1:name>POC_US_BPM.FinanceTeam</ns1:name>
          <ns0:processRole id="FinanceTeam" name="FinanceTeam"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.LegalTeam" isProcessRole="true">
-         <ns2:name>POC_US_BPM.LegalTeam</ns2:name>
+         <ns1:name>POC_US_BPM.LegalTeam</ns1:name>
          <ns0:processRole id="LegalTeam" name="LegalTeam"/>
       </ns0:applicationRole>
       <ns0:applicationRole id="POC_US_BPM.Director" isProcessRole="true">
-         <ns2:name>POC_US_BPM.Director</ns2:name>
+         <ns1:name>POC_US_BPM.Director</ns1:name>
          <ns0:processRole id="Director" name="Director"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="POC_US_BPM.VP" isProcessRole="true">
+         <ns1:name>POC_US_BPM.V P</ns1:name>
+         <ns0:processRole id="VP" name="V P"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="POC_US_BPM.ContractAdministrator" isProcessRole="true">
+         <ns1:name>POC_US_BPM.Contract Administrator</ns1:name>
+         <ns0:processRole id="ContractAdministrator" name="Contract Administrator"/>
+      </ns0:applicationRole>
+      <ns0:applicationRole id="POC_US_BPM.Departmental/Manager" isProcessRole="true">
+         <ns1:name>POC_US_BPM.Departmental/Manager</ns1:name>
+         <ns0:processRole id="Departmental/Manager" name="Departmental/Manager"/>
       </ns0:applicationRole>
    </ns0:applicationRoles>
    <ns0:applicationRoleOrgUnitCalendarAssociations/>

@@ -1,21 +1,18 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<taskDefinition targetNamespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/InitiateContract" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:task="http://xmlns.oracle.com/bpel/workflow/task" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/bpel/workflow/taskDefinition" xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions">
-   <name>InitiateContract</name>
-   <id>${domain_id}_${process_id}_${process_revision}_InitiateContract</id>
+<taskDefinition targetNamespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ApproveQuote" xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20" xmlns:ora="http://schemas.oracle.com/xpath/extension" xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc" xmlns:task="http://xmlns.oracle.com/bpel/workflow/task" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://xmlns.oracle.com/bpel/workflow/taskDefinition">
+   <name>ApproveQuote</name>
+   <id>${domain_id}_${process_id}_${process_revision}_ApproveQuote</id>
    <priority>3</priority>
    <process processId="" processVersion=""/>
    <routingSlip xmlns="http://xmlns.oracle.com/bpel/workflow/routingSlip" routingType="TEMPLATE">
-      <globalConfiguration><applicationContext>OracleBPMProcessRolesApp</applicationContext>
-         <taskOwner type="STATIC" identityType="application_role">POC_US_BPM.ProcessOwner</taskOwner>
+      <globalConfiguration>
          <sharePayloadConfiguration>
             <type>USE_SYSTEM_WIDE_GLOBAL_CONFIGURATION</type>
          </sharePayloadConfiguration>
       </globalConfiguration>
       <participants isAdhocRoutingSupported="false">
          <stage name="Stage1" disabled="false">
-            <participant disabled="false" name="default.DefaultPerformer">
-               <resource type="XPATH" identityType="user">/task:task/task:creator</resource>
-            </participant>
+            <participant disabled="false" name="Stage1.Participant1"/>
          </stage>
       </participants>
       <notification includeTaskAttachments="false" actionable="false" secureNotifications="false"
@@ -33,12 +30,14 @@
          <commentScope>TASK</commentScope>
       </notification>
    </routingSlip>
-   <workflowConfiguration features="ucm,RSCUSTOMIZATION" xmlns:ns0="http://www.contractmanagement.org" xmlns="http://xmlns.oracle.com/bpel/workflow/configuration">
+   <workflowConfiguration features="ucm,RSCUSTOMIZATION" xmlns="http://xmlns.oracle.com/bpel/workflow/configuration"
+                          xmlns:ns0="http://www.contractmanagement.org">
       <outcomes>
-         <outcome>SUBMIT</outcome>
+         <outcome>APPROVE</outcome>
+         <outcome>REJECT</outcome>
       </outcomes>
-      <payload externalSchema="false" xmlSchemaDefinition="../Schemas/InitiateContractPayload.xsd"
-               typedTaskSchemaLocation="../Schemas/InitiateContractWorkflowTask.xsd">
+      <payload externalSchema="false" xmlSchemaDefinition="../Schemas/ApproveQuotePayload.xsd"
+               typedTaskSchemaLocation="../Schemas/ApproveQuoteWorkflowTask.xsd">
          <messageAttribute name="Input_Quote" attributeType="ELEMENT" type="ns0:Input_Quote" updatable="true"
                            external="false"/>
       </payload>
@@ -49,7 +48,8 @@
       <preActionMandatoryUserSteps/>
       <allowInitiatorEditParticipants>false</allowInitiatorEditParticipants>
       <allowParticipantsEditParticipants>false</allowParticipantsEditParticipants>
-      <globalCreationTask>true</globalCreationTask><enableAutoClaim>true</enableAutoClaim>
+      <globalCreationTask>false</globalCreationTask>
+      <enableAutoClaim>true</enableAutoClaim>
       <workflowConditions/>
       <taskSequenceTypes>FUTURE</taskSequenceTypes>
       <taskSequenceTypes>AGGREGATE</taskSequenceTypes>

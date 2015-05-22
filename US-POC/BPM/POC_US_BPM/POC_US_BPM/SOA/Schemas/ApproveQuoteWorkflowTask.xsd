@@ -1,5 +1,5 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
-<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:evidence="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0" elementFormDefault="qualified" blockDefault="#all"><xsd:include schemaLocation="NonEditableContractPayload.xsd" xmlns=""/>
+<schema targetNamespace="http://xmlns.oracle.com/bpel/workflow/task" xmlns:tns="http://xmlns.oracle.com/bpel/workflow/task" xmlns:evidence="http://xmlns.oracle.com/bpel/workflow/TaskEvidenceService" xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:jaxb="http://java.sun.com/xml/ns/jaxb" jaxb:version="1.0" elementFormDefault="qualified" blockDefault="#all"><xsd:include schemaLocation="ApproveQuotePayload.xsd" xmlns=""/>
      
   <xsd:annotation>
     <xsd:appinfo>
@@ -16,7 +16,7 @@
       <complexType>
         <sequence>
           <element name="title" type="xsd:string" minOccurs="0"/>
-          <element name="payload" type="tns:NonEditableContractPayloadType" minOccurs="0" maxOccurs="1"/>
+          <element name="payload" type="tns:ApproveQuotePayloadType" minOccurs="0" maxOccurs="1"/>
           <element name="taskDefinitionURI" type="xsd:string" minOccurs="0"/> <!-- Deprecated: Use taskDefinitionId instead -->
           <element name="creator" type="xsd:string" minOccurs="0"/>
           <element name="ownerUser" type="xsd:string" minOccurs="0"/>

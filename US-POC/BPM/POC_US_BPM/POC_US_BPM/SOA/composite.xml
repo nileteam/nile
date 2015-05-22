@@ -77,24 +77,6 @@
       </service>
     </componentType>
   </component>
-  <component name="InitiateContract">
-    <implementation.workflow src="HumanTasks/InitiateContract.task"/>
-    <componentType>
-      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </service>
-    </componentType>
-  </component>
-  <component name="NonEditableContract">
-    <implementation.workflow src="HumanTasks/NonEditableContract.task"/>
-    <componentType>
-      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
-        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
-                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
-      </service>
-    </componentType>
-  </component>
   <component name="TotalAmountOracleRules1">
     <implementation.decision src="TotalAmountOracleRules1.decs"/>
     <componentType>
@@ -195,7 +177,17 @@
       <reference name="Services.Externals.GetReqNo.reference" ui:wsdlLocation="WSDLs/GetReqNo.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo#wsdl.interface(GetReqNo_ptt)"/>
       </reference>
-      <reference name="HumanTasks.InitiateContract.reference"
+      <reference name="HumanTasks.ApproveQuote.reference"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </reference>
+      <reference name="HumanTasks.InitiateQuote.reference"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </reference>
+      <reference name="HumanTasks.StartContract.reference"
                  ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
                         callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
@@ -203,6 +195,33 @@
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
     <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
+  </component>
+  <component name="ApproveQuote">
+    <implementation.workflow src="HumanTasks/ApproveQuote.task"/>
+    <componentType>
+      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </service>
+    </componentType>
+  </component>
+  <component name="InitiateQuote">
+    <implementation.workflow src="HumanTasks/InitiateQuote.task"/>
+    <componentType>
+      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </service>
+    </componentType>
+  </component>
+  <component name="StartContract">
+    <implementation.workflow src="HumanTasks/StartContract.task"/>
+    <componentType>
+      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </service>
+    </componentType>
   </component>
   <reference name="BPM-NotificationService" ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
@@ -310,7 +329,15 @@
     <target.uri>GetReqNo</target.uri>
   </wire>
   <wire>
-    <source.uri>ContractProcess/HumanTasks.InitiateContract.reference</source.uri>
-    <target.uri>InitiateContract/TaskService</target.uri>
+    <source.uri>ContractProcess/HumanTasks.ApproveQuote.reference</source.uri>
+    <target.uri>ApproveQuote/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/HumanTasks.InitiateQuote.reference</source.uri>
+    <target.uri>InitiateQuote/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/HumanTasks.StartContract.reference</source.uri>
+    <target.uri>StartContract/TaskService</target.uri>
   </wire>
 </composite>

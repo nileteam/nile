@@ -11,9 +11,9 @@ package oracle.scripting.catalog.data;
 
 @com.oracle.scripting.lang.annotations.CatalogType(element = "E", 
 			namespace = "http://www.contractmanagement.org", 
-			name = "Input", 
+			name = "Input_Contract", 
 			location = "/Schemas/contractmanagement.xsd", 
 			module = "Data") 
-public class InputContractProcessBO{
+public class InputContractBO{
 
 }

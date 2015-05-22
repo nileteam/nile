@@ -2,7 +2,7 @@
 <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns="http://www.contractmanagement.org"
             targetNamespace="http://www.contractmanagement.org" elementFormDefault="qualified">
   
-  <xsd:complexType name="Header_type">
+  <xsd:complexType name="Contract_type">
     <xsd:sequence>
       <xsd:element name="Purchase_Requisition_No" type="xsd:integer" minOccurs="0"/>
       <xsd:element name="Item_Description" type="xsd:string" minOccurs="0"/>
@@ -14,10 +14,10 @@
       <xsd:element name="Other_Special_TermsConditions" type="xsd:string" minOccurs="0"/>
       </xsd:sequence>
   </xsd:complexType>
-  <xsd:element name="Input">
+  <xsd:element name="Input_Contract">
     <xsd:complexType>
       <xsd:sequence minOccurs="0">
-        <xsd:element name="Header" type="Header_type" minOccurs="0"/>
+        <xsd:element name="Contract" type="Contract_type" minOccurs="0"/>
       </xsd:sequence>
     </xsd:complexType>
   </xsd:element>
@@ -35,4 +35,11 @@
       <xsd:element name="ContractTerm" type="xsd:string" minOccurs="0"/>
     </xsd:sequence>
   </xsd:complexType>
+  <xsd:element name="Input_Quote">
+    <xsd:complexType>
+      <xsd:sequence minOccurs="0">
+        <xsd:element name="Quote" type="Quote_type" minOccurs="0"/>
+      </xsd:sequence>
+    </xsd:complexType>
+  </xsd:element>
 </xsd:schema>
