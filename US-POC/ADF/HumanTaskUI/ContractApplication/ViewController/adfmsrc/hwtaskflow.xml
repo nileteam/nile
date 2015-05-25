@@ -1,0 +1,11 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<hwTaskFlows xmlns="http://xmlns.oracle.com/bpel/workflow/hwTaskFlowProperties">
+   <ApplicationName>worklist</ApplicationName>
+   <LookupType>LOCAL</LookupType>
+   <TaskFlowDeploy>false</TaskFlowDeploy>
+   <TaskFlowServer>
+      <hostName/>
+      <httpPort/>
+      <httpsPort/>
+   </TaskFlowServer>
+<hwTaskFlow><WorkflowName>InitiateQuote</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/InitiateQuote</TaskDefinitionNamespace><TaskFlowId>InitiateQuote_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/InitiateQuote_TaskFlow.xml</TaskFlowFileName></hwTaskFlow><hwTaskFlow><WorkflowName>ApproveQuote</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ApproveQuote</TaskDefinitionNamespace><TaskFlowId>ApproveQuote_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/ApproveQuote_TaskFlow.xml</TaskFlowFileName></hwTaskFlow><hwTaskFlow><WorkflowName>StartContract</WorkflowName><TaskDefinitionNamespace>http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/StartContract</TaskDefinitionNamespace><TaskFlowId>StartContract_TaskFlow</TaskFlowId><TaskFlowFileName>WEB-INF/StartContract_TaskFlow.xml</TaskFlowFileName></hwTaskFlow></hwTaskFlows>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="windows-1252" ?>
+<!DOCTYPE PDefViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<PDefViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="Input_Quote"
+  Version="12.1.3.10.8"
+  StaticDef="ViewController_InitiateQuote.Input_Quote">
+  <DesignTime>
+    <Attr Name="_DCName" Value="viewcontroller.DataControls.ViewController_InitiateQuote"/>
+    <Attr Name="_SDName" Value="ViewController_InitiateQuote.Input_Quote"/>
+  </DesignTime>
+</PDefViewObject>

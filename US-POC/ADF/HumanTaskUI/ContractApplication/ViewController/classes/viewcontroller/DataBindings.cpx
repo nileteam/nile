@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.10.8" id="DataBindings"
+             SeparateXMLFiles="false" Package="viewcontroller" ClientType="Generic">
+  <definitionFactories>
+    <factory nameSpace="http://xmlns.oracle.com/adf/controller/binding"
+             className="oracle.adf.controller.internal.binding.TaskFlowBindingDefFactoryImpl"/>
+    <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
+  </definitionFactories>
+  <pageMap>
+    <page path="/ApproveQuote.jspx" usageId="viewcontroller_ApproveQuotePageDef"/>
+    <page path="/StartContract.jspx" usageId="viewcontroller_StartContractPageDef"/>
+    <page path="InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
+    <page path="/InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
+    <page path="com/fragments/initiatequote.jsff" usageId="viewcontroller_initiatequotePageDef"/>
+    <page path="/com/fragments/initiatequote.jsff" usageId="viewcontroller_initiatequotePageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="viewcontroller_InitiateQuotePageDef" path="viewcontroller.pageDefs.InitiateQuotePageDef"/>
+    <page id="viewcontroller_ApproveQuotePageDef" path="viewcontroller.pageDefs.ApproveQuotePageDef"/>
+    <page id="viewcontroller_StartContractPageDef" path="viewcontroller.pageDefs.StartContractPageDef"/>
+    <page id="viewcontroller_InitiateQuotePageDef1" path="viewcontroller.pageDefs.InitiateQuotePageDef1"/>
+    <page id="viewcontroller_initiatequotePageDef" path="com.fragments.initiatequotePageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <dc id="ViewController_StartContract" path="viewcontroller.ViewController_StartContract"/>
+    <dc id="ViewController_ApproveQuote" path="viewcontroller.ViewController_ApproveQuote"/>
+    <dc id="ViewController_InitiateQuote" path="viewcontroller.ViewController_InitiateQuote"/>
+  </dataControlUsages>
+</Application>

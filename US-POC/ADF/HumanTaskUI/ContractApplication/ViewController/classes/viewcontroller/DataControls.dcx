@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<DataControlConfigs xmlns="http://xmlns.oracle.com/adfm/configuration" version="12.1.3.10.8" id="DataControls"
+                    Package="viewcontroller">
+  <AdapterDataControl id="ViewController_InitiateQuote" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_InitiateQuote"
+                      BeanClass="ViewController_InitiateQuote" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/D:/USPOC CODE BCKUP/Contract 22-5-2015/nile/US-POC/BPM/POC_US_BPM/POC_US_BPM/SOA/Schemas/InitiateQuoteWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="../../../../BPM/POC_US_BPM/POC_US_BPM/SOA/HumanTasks/InitiateQuote.task"
+                      InitiationTask="true" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ViewController_ApproveQuote" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_ApproveQuote"
+                      BeanClass="ViewController_ApproveQuote" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/D:/USPOC CODE BCKUP/Contract 22-5-2015/nile/US-POC/BPM/POC_US_BPM/POC_US_BPM/SOA/Schemas/ApproveQuoteWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="../../../../BPM/POC_US_BPM/POC_US_BPM/SOA/HumanTasks/ApproveQuote.task"
+                      InitiationTask="false" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+  <AdapterDataControl id="ViewController_StartContract" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_StartContract"
+                      BeanClass="ViewController_StartContract" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/D:/USPOC CODE BCKUP/Contract 22-5-2015/nile/US-POC/BPM/POC_US_BPM/POC_US_BPM/SOA/Schemas/StartContractWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="../../../../BPM/POC_US_BPM/POC_US_BPM/SOA/HumanTasks/StartContract.task"
+                      InitiationTask="false" DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
+</DataControlConfigs>

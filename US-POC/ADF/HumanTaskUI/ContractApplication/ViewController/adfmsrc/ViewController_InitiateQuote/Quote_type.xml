@@ -1,0 +1,181 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.10.8" id="Quote_type"
+          Package="ViewController_InitiateQuote" BeanClass="ViewController_InitiateQuote.Quote_type"
+          isJavaBased="false">
+  <Attribute Name="Director" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Quote"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Director"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Director"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Quote" Type="java.math.BigInteger">
+    <Properties>
+      <CustomProperties>
+        <Property Name="originalName" Value="Quote"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Office"/>
+        <Property Name="pattern" Value="[^//.]+"/>
+        <Property Name="fractionDigits" Value="0"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="LABEL" Value="Quote"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="type" Value="java.lang.BigInteger"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="minOccurs" Value="0"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Office" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Description"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Office"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Office"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Description" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Lob"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Description"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Description"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Lob" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="ContractStartDate"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Lob"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Lob"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="ContractStartDate" Type="java.sql.Date">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="ContractEndDate"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Contract Start Date"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="ContractStartDate"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="date"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="ContractEndDate" Type="java.sql.Date">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Client"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Contract End Date"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="ContractEndDate"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="date"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Client" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="QuoteID"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Client"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Client"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="QuoteID" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="ContractTerm"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Quote ID"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="QuoteID"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="ContractTerm" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="nextSibling" Value="Comments"/>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Contract Term"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="ContractTerm"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <Attribute Name="Comments" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="1"/>
+        <Property Name="LABEL" Value="Comments"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Comments"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+</JavaBean>
