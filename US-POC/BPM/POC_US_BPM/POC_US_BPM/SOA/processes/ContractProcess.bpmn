@@ -462,7 +462,6 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
                         <bpmnext:AttributeExpression name="subjectExpressionFeature">
                             <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('VP Approval of Quote for Quote ID ','[',string(bpmn:getDataObject('quote')/ns:Quote/ns:QuoteID),']')
                                 <bpmn:extensionElements>
@@ -474,7 +473,7 @@
                         </bpmnext:AttributeExpression>
                     </bpmnext:FeatureSet>
                     <bpmnext:HumanTask>
-                        <bpmnext:humanTaskRef refType="namespaced" name="ApproveQuote" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ApproveQuote" elementType="TYPE" implementationType="humanTask"/>
+                        <bpmnext:humanTaskRef refType="namespaced" name="ApproveQuoteVP" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ApproveQuoteVP" elementType="TYPE" implementationType="humanTask"/>
                     </bpmnext:HumanTask>
                     <bpmnext:Localization>
                         <bpmnext:Label>
