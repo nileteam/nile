@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="InitiateQuote_TF_initiatequoteTF_methodCall1PageDef" Package="com.flows" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_InitiateQuote" RangeSize="25"
+                    BeanClass="ViewController_InitiateQuote.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="10"
+                      DataControl="ViewController_InitiateQuote" BeanClass="ViewController_InitiateQuote.task"
+                      id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="ViewController_InitiateQuote"
+                      BeanClass="ViewController_InitiateQuote.InitiateQuotePayloadType" id="payloadIterator"/>
+    <accessorIterator id="Input_QuoteIterator" MasterBinding="payloadIterator" Binds="Input_Quote" RangeSize="25"
+                      DataControl="ViewController_InitiateQuote" BeanClass="ViewController_InitiateQuote.Input_Quote"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_InitiateQuote"
+                  InstanceName="data.ViewController_InitiateQuote"
+                  ReturnName="data.ViewController_InitiateQuote.methodResults.getTaskDetails_ViewController_InitiateQuote_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="taskIterator" id="task">
+      <nodeDefinition DefName="ViewController_InitiateQuote.task" Name="task0">
+        <AttrNames>
+          <Item Value="title"/>
+          <Item Value="applicationContext"/>
+          <Item Value="category"/>
+          <Item Value="correlationId"/>
+          <Item Value="creator"/>
+          <Item Value="creatorDisplayName"/>
+          <Item Value="documentPackageId"/>
+          <Item Value="dueDate"/>
+          <Item Value="identificationKey"/>
+          <Item Value="identityContext"/>
+          <Item Value="isPublic"/>
+          <Item Value="longSummary"/>
+          <Item Value="mdsLabel"/>
+          <Item Value="notificationMode"/>
+          <Item Value="ownerGroup"/>
+          <Item Value="ownerGroupDisplayName"/>
+          <Item Value="ownerRole"/>
+          <Item Value="ownerRoleDisplayName"/>
+          <Item Value="ownerUser"/>
+          <Item Value="ownerUserDisplayName"/>
+          <Item Value="percentageComplete"/>
+          <Item Value="priority"/>
+          <Item Value="shortSummary"/>
+          <Item Value="startDate"/>
+          <Item Value="subcategory"/>
+          <Item Value="taskDefinitionId"/>
+          <Item Value="taskDefinitionURI"/>
+          <Item Value="taskDisplayUrl"/>
+          <Item Value="titleResourceKey"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="payload"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_InitiateQuote.InitiateQuotePayloadType" Name="task1">
+        <Accessors>
+          <Item Value="Input_Quote"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_InitiateQuote.Input_Quote" Name="task2">
+        <AttrNames>
+          <Item Value="Directors"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

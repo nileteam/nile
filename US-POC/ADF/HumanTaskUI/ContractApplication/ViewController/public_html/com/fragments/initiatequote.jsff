@@ -2,19 +2,30 @@
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
  <af:panelGroupLayout id="pgl2">
-  <af:selectOneChoice value="#{bindings.Input_Quote.inputValue}" label="#{bindings.Input_Quote.label}"
+ <!-- <af:selectOneChoice value="#{bindings.Input_Quote.inputValue}" label="#{bindings.Input_Quote.label}"
                       required="#{bindings.Input_Quote.hints.mandatory}"
-                      shortDesc="#{bindings.Input_Quote.hints.tooltip}" id="soc1">
+                      shortDesc="#{bindings.Input_Quote.hints.tooltip}" id="soc1"
+                      binding="#{pageFlowScope.ContractBean.directSoc}" autoSubmit="true">
    <f:selectItems value="#{bindings.Input_Quote.items}" id="si1"/>
    <f:validator binding="#{bindings.Input_Quote.validator}"/>
-  </af:selectOneChoice>
+  </af:selectOneChoice>-->
+  
+ 
+  
+  
+ 
+  
   <af:panelFormLayout id="pfl1">
-   <af:inputText value="#{bindings.Director.inputValue}" label="#{bindings.Director.hints.label}"
+   <!--<af:inputText value="#{bindings.Director.inputValue}" label="#{bindings.Director.hints.label}"
                  required="#{bindings.Director.hints.mandatory}" columns="#{bindings.Director.hints.displayWidth}"
                  maximumLength="#{bindings.Director.hints.precision}" shortDesc="#{bindings.Director.hints.tooltip}"
                  id="it1">
     <f:validator binding="#{bindings.Director.validator}"/>
-   </af:inputText>
+   </af:inputText>-->
+    <af:selectOneChoice label="Directors" id="soc2" autoSubmit="true"
+                      binding="#{pageFlowScope.InitiateQuote.directorVar}">
+     <f:selectItems value="#{pageFlowScope.InitiateQuote.customList}" id="si2"/>
+</af:selectOneChoice>
    <af:inputText value="#{bindings.Quote.inputValue}" label="#{bindings.Quote.hints.label}"
                  required="#{bindings.Quote.hints.mandatory}" columns="#{bindings.Quote.hints.displayWidth}"
                  maximumLength="#{bindings.Quote.hints.precision}" shortDesc="#{bindings.Quote.hints.tooltip}" id="it2">
@@ -59,9 +70,10 @@
     <f:validator binding="#{bindings.Client.validator}"/>
    </af:inputText>
    <af:inputText value="#{bindings.QuoteID.inputValue}" label="#{bindings.QuoteID.hints.label}"
+   
                  required="#{bindings.QuoteID.hints.mandatory}" columns="#{bindings.QuoteID.hints.displayWidth}"
                  maximumLength="#{bindings.QuoteID.hints.precision}" shortDesc="#{bindings.QuoteID.hints.tooltip}"
-                 id="it7">
+                 id="it7" binding="#{pageFlowScope.InitiateQuote.quoteIdVar}">
     <f:validator binding="#{bindings.QuoteID.validator}"/>
    </af:inputText>
    <af:inputText value="#{bindings.ContractTerm.inputValue}" label="#{bindings.ContractTerm.hints.label}"
@@ -77,12 +89,46 @@
                  id="it9">
     <f:validator binding="#{bindings.Comments.validator}"/>
    </af:inputText>
-   <af:inputFile label="Upload file" binding="#{pageFlowScope.ContractBean.uploadfile}"
-   id="if1"
-                 valueChangeListener="#{pageFlowScope.ContractBean.uploadfile_vcl}" autoSubmit="true"/>
-   <af:button text="Upload" action="#{pageFlowScope.ContractBean.uploadfile_Action}" id="b1"/>
-   <af:button text="Download" id="b2" action="#{pageFlowScope.ContractBean.download_Action}"/>
+  <af:inputFile label="Upload file" binding="#{pageFlowScope.InitiateQuote.uploadfileVar}"
+   id="if2" valueChangeListener="#{pageFlowScope.InitiateQuote.uploadfile_vcl}" autoSubmit="true"/>
   </af:panelFormLayout>
+  
+  
+   <af:button text="Upload" action="#{pageFlowScope.InitiateQuote.uploadfile_Action}" id="b1"/>
+   <af:button text="Download" id="b2">
+   <af:fileDownloadActionListener filename="eticket.pdf" method="#{pageFlowScope.InitiateQuote.testDownloadList}"/>
+  </af:button>
+  <af:button text="SUBMIT" id="b3" action="#{pageFlowScope.InitiateQuote.initiate_Quote_Submit}"/>
+  <af:button  text="UPDATE" id="b4" action="#{pageFlowScope.InitiateQuote.initiate_Quote_Save}"/>
  </af:panelGroupLayout>
- <!--oracle-jdev-comment:preferred-managed-bean-name:ContractBean-->
+ <af:table value="#{bindings.ContractDocUploadView1.collectionModel}" var="row"
+           rows="#{bindings.ContractDocUploadView1.rangeSize}"
+           emptyText="#{bindings.ContractDocUploadView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+           rowBandingInterval="0" selectedRowKeys="#{bindings.ContractDocUploadView1.collectionModel.selectedRow}"
+           selectionListener="#{bindings.ContractDocUploadView1.collectionModel.makeCurrent}" rowSelection="single"
+           fetchSize="#{bindings.ContractDocUploadView1.rangeSize}" id="t1" contentDelivery="immediate"
+           partialTriggers="::b1">
+  <af:column headerText="#{bindings.ContractDocUploadView1.hints.SNo.label}" id="c1">
+   <af:outputText value="#{row.SNo}" shortDesc="#{bindings.ContractDocUploadView1.hints.SNo.tooltip}" id="ot1">
+    <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractDocUploadView1.hints.SNo.format}"/>
+   </af:outputText>
+  </af:column>
+  <af:column headerText="#{bindings.ContractDocUploadView1.hints.ContractId.label}" id="c2">
+   <af:outputText value="#{row.ContractId}" shortDesc="#{bindings.ContractDocUploadView1.hints.ContractId.tooltip}"
+                  id="ot2"/>
+  </af:column>
+  <af:column headerText="#{bindings.ContractDocUploadView1.hints.ContractDoc.label}" id="c3">
+   <af:outputText value="#{row.ContractDoc}" shortDesc="#{bindings.ContractDocUploadView1.hints.ContractDoc.tooltip}"
+                  id="ot3"/>
+  </af:column>
+  <af:column headerText="#{bindings.ContractDocUploadView1.hints.FileName.label}" id="c4">
+   <af:outputText value="#{row.FileName}" shortDesc="#{bindings.ContractDocUploadView1.hints.FileName.tooltip}"
+                  id="ot4"/>
+  </af:column>
+  <af:column id="c5">
+   <af:button text="download" id="b5">
+    <af:fileDownloadActionListener filename="#{row.FileName}" method="#{pageFlowScope.InitiateQuote.testDownloadList}"/>
+   </af:button>
+  </af:column>
+ </af:table>
 </jsp:root>

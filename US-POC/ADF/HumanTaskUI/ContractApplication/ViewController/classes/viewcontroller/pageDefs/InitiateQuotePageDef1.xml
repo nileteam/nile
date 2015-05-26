@@ -50,6 +50,8 @@
                       StateValidation="false"/>
     <taskFlow id="initiatequoteTF2" taskFlowId="/com/flows/InitiateQuote_TF.xml#initiatequoteTF" activation="deferred"
               xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+    <taskFlow id="initiatequoteTF3" taskFlowId="/com/flows/InitiateQuote_TF.xml#initiatequoteTF" activation="deferred"
+              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"

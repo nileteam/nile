@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="approvequotePageDef"
+                Package="com.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_ApproveQuote" RangeSize="25"
+                    BeanClass="ViewController_ApproveQuote.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="ViewController_ApproveQuote" BeanClass="ViewController_ApproveQuote.task"
+                      id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="ViewController_ApproveQuote"
+                      BeanClass="ViewController_ApproveQuote.ApproveQuotePayloadType" id="payloadIterator"/>
+    <accessorIterator MasterBinding="payloadIterator" Binds="Input_Quote" RangeSize="25"
+                      DataControl="ViewController_ApproveQuote" BeanClass="ViewController_ApproveQuote.Input_Quote"
+                      id="Input_QuoteIterator"/>
+    <accessorIterator MasterBinding="Input_QuoteIterator" Binds="Quote" RangeSize="25"
+                      DataControl="ViewController_ApproveQuote" BeanClass="ViewController_ApproveQuote.Quote_type"
+                      id="QuoteIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_ApproveQuote"
+                  InstanceName="data.ViewController_ApproveQuote"
+                  ReturnName="data.ViewController_ApproveQuote.methodResults.getTaskDetails_ViewController_ApproveQuote_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="QuoteIterator" id="Director">
+      <AttrNames>
+        <Item Value="Director"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Quote">
+      <AttrNames>
+        <Item Value="Quote"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Office">
+      <AttrNames>
+        <Item Value="Office"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Lob">
+      <AttrNames>
+        <Item Value="Lob"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractStartDate">
+      <AttrNames>
+        <Item Value="ContractStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractEndDate">
+      <AttrNames>
+        <Item Value="ContractEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Client">
+      <AttrNames>
+        <Item Value="Client"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="QuoteID">
+      <AttrNames>
+        <Item Value="QuoteID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractTerm">
+      <AttrNames>
+        <Item Value="ContractTerm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="taskIterator" id="APPROVE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="APPROVE" IsViewObjectMethod="false" DataControl="ViewController_ApproveQuote"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <methodAction IterBinding="taskIterator" id="REJECT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="REJECT" IsViewObjectMethod="false" DataControl="ViewController_ApproveQuote"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+  </bindings>
+</pageDefinition>

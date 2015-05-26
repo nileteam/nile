@@ -1,2 +1,108 @@
 <?xml version='1.0' encoding='UTF-8'?>
-<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1"></jsp:root>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+     <af:panelGroupLayout id="pgl2">
+          <af:panelFormLayout id="pfl1">
+               <af:inputText value="#{bindings.Director.inputValue}" label="#{bindings.Director.hints.label}"
+                             required="#{bindings.Director.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Director.hints.displayWidth}"
+                             maximumLength="#{bindings.Director.hints.precision}"
+                             shortDesc="#{bindings.Director.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.Director.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.Quote.inputValue}" label="#{bindings.Quote.hints.label}"
+                             required="#{bindings.Quote.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Quote.hints.displayWidth}"
+                             maximumLength="#{bindings.Quote.hints.precision}"
+                             shortDesc="#{bindings.Quote.hints.tooltip}" id="it2">
+                    <f:validator binding="#{bindings.Quote.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Quote.format}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.Office.inputValue}" label="#{bindings.Office.hints.label}"
+                             required="#{bindings.Office.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Office.hints.displayWidth}"
+                             maximumLength="#{bindings.Office.hints.precision}"
+                             shortDesc="#{bindings.Office.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.Office.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                             required="#{bindings.Description.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Description.hints.displayWidth}"
+                             maximumLength="#{bindings.Description.hints.precision}"
+                             shortDesc="#{bindings.Description.hints.tooltip}" id="it4">
+                    <f:validator binding="#{bindings.Description.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.Lob.inputValue}" label="#{bindings.Lob.hints.label}"
+                             required="#{bindings.Lob.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Lob.hints.displayWidth}"
+                             maximumLength="#{bindings.Lob.hints.precision}" shortDesc="#{bindings.Lob.hints.tooltip}"
+                             id="it5">
+                    <f:validator binding="#{bindings.Lob.validator}"/>
+               </af:inputText>
+               <af:inputDate value="#{bindings.ContractStartDate.inputValue}" readOnly="true"
+                             label="#{bindings.ContractStartDate.hints.label}"
+                             required="#{bindings.ContractStartDate.hints.mandatory}"
+                             columns="#{bindings.ContractStartDate.hints.displayWidth}"
+                             shortDesc="#{bindings.ContractStartDate.hints.tooltip}" id="id1">
+                    <f:validator binding="#{bindings.ContractStartDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.ContractStartDate.format}"/>
+               </af:inputDate>
+               <af:inputDate value="#{bindings.ContractEndDate.inputValue}" readOnly="true"
+                             label="#{bindings.ContractEndDate.hints.label}"
+                             required="#{bindings.ContractEndDate.hints.mandatory}"
+                             columns="#{bindings.ContractEndDate.hints.displayWidth}"
+                             shortDesc="#{bindings.ContractEndDate.hints.tooltip}" id="id2">
+                    <f:validator binding="#{bindings.ContractEndDate.validator}"/>
+                    <af:convertDateTime pattern="#{bindings.ContractEndDate.format}"/>
+               </af:inputDate>
+               <af:inputText value="#{bindings.Client.inputValue}" label="#{bindings.Client.hints.label}"
+                             required="#{bindings.Client.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.Client.hints.displayWidth}"
+                             maximumLength="#{bindings.Client.hints.precision}"
+                             shortDesc="#{bindings.Client.hints.tooltip}" id="it6">
+                    <f:validator binding="#{bindings.Client.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.QuoteID.inputValue}" label="#{bindings.QuoteID.hints.label}"
+                             required="#{bindings.QuoteID.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.QuoteID.hints.displayWidth}"
+                             maximumLength="#{bindings.QuoteID.hints.precision}"
+                             shortDesc="#{bindings.QuoteID.hints.tooltip}" id="it7">
+                    <f:validator binding="#{bindings.QuoteID.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.ContractTerm.inputValue}" label="#{bindings.ContractTerm.hints.label}"
+                             required="#{bindings.ContractTerm.hints.mandatory}" readOnly="true"
+                             columns="#{bindings.ContractTerm.hints.displayWidth}"
+                             maximumLength="#{bindings.ContractTerm.hints.precision}"
+                             shortDesc="#{bindings.ContractTerm.hints.tooltip}" id="it8">
+                    <f:validator binding="#{bindings.ContractTerm.validator}"/>
+               </af:inputText>
+               <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                             required="#{bindings.Comments.hints.mandatory}" 
+                             columns="#{bindings.Comments.hints.displayWidth}"
+                             maximumLength="#{bindings.Comments.hints.precision}"
+                             shortDesc="#{bindings.Comments.hints.tooltip}" id="it9"
+                             binding="#{pageFlowScope.ApproveQuote.commentVar}">
+                    <f:validator binding="#{bindings.Comments.validator}"/>
+               </af:inputText>
+                <af:popup binding="#{pageFlowScope.ApproveQuote.rejectPopuUpVar}" childCreation="deferred"
+                  autoCancel="disabled" id="p1" contentDelivery="immediate">
+            <af:dialog id="d1" type="none" inlineStyle="background-color:#ccf2ee;height:145px;width:350px;">
+                <f:facet name="buttonBar"/>
+                 <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
+                <af:outputText value="  Please provide the reason(s) for rejecting the PO Requisition, in the Comment field." id="ot30"
+                inlineStyle="font-size:10pt;color:black;"/>
+                <af:button text="OK"
+                           inlineStyle="margin-top:45px;margin-left:140px;background-color:#e9f2f0;font-size:11pt;"
+                            id="b5" actionListener="#{pageFlowScope.ApproveQuote.closeRejectPopup}"/>
+                </af:panelFormLayout>
+            </af:dialog>
+        </af:popup>
+               
+               
+          </af:panelFormLayout>
+          <af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" 
+                     id="b1"/>
+          <af:button text="REJECT" action="#{pageFlowScope.ApproveQuote.reject_Action}"
+                     id="b2"/>
+     </af:panelGroupLayout>
+          </jsp:root>

@@ -8,6 +8,13 @@
   <packaging>war</packaging>
   <dependencies>
     <dependency>
+      <groupId>ContractApplication</groupId>
+      <artifactId>Model</artifactId>
+      <version>1.0-SNAPSHOT</version>
+      <type>jar</type>
+      <scope>compile</scope>
+    </dependency>
+    <dependency>
       <groupId>com.oracle.adf.library</groupId>
       <artifactId>JSP-Runtime</artifactId>
       <version>12.1.3-0-0</version>
@@ -198,13 +205,6 @@
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
-      <artifactId>ADF-Model-Runtime</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
       <artifactId>Oracle-JEWT</artifactId>
       <version>12.1.3-0-0</version>
       <type>pom</type>
@@ -226,13 +226,6 @@
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
-      <artifactId>BC4J-Runtime</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
       <artifactId>BC4J-Security</artifactId>
       <version>12.1.3-0-0</version>
       <type>pom</type>
@@ -240,7 +233,42 @@
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
+      <artifactId>Oracle-XML-Parser-v2</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>JDeveloper-Runtime</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>ADF-Model-Runtime</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>BC4J-Runtime</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
       <artifactId>Oracle-JDBC</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>Connection-Manager</artifactId>
       <version>12.1.3-0-0</version>
       <type>pom</type>
       <scope>provided</scope>

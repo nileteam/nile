@@ -18,6 +18,8 @@
     <accessorIterator MasterBinding="Input_QuoteIterator" Binds="Quote" RangeSize="25"
                       DataControl="ViewController_InitiateQuote" BeanClass="ViewController_InitiateQuote.Quote_type"
                       id="QuoteIterator"/>
+    <iterator Binds="ContractDocUploadView1" RangeSize="25" DataControl="ContractAMDataControl"
+              id="ContractDocUploadView1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -89,5 +91,21 @@
         <Item Value="Comments"/>
       </AttrNames>
     </attributeValues>
+    <methodAction IterBinding="taskIterator" id="SUBMIT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="SUBMIT" IsViewObjectMethod="false" DataControl="ViewController_InitiateQuote"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <methodAction IterBinding="taskIterator" id="update" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="update" IsViewObjectMethod="false" DataControl="ViewController_InitiateQuote"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <tree IterBinding="ContractDocUploadView1Iterator" id="ContractDocUploadView1">
+      <nodeDefinition DefName="model.ContractDocUploadView" Name="ContractDocUploadView10">
+        <AttrNames>
+          <Item Value="SNo"/>
+          <Item Value="ContractId"/>
+          <Item Value="ContractDoc"/>
+          <Item Value="FileName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

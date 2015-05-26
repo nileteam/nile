@@ -7,12 +7,17 @@
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
   </definitionFactories>
   <pageMap>
-    <page path="/ApproveQuote.jspx" usageId="viewcontroller_ApproveQuotePageDef"/>
     <page path="/StartContract.jspx" usageId="viewcontroller_StartContractPageDef"/>
     <page path="InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
     <page path="/InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
     <page path="com/fragments/initiatequote.jsff" usageId="viewcontroller_initiatequotePageDef"/>
     <page path="/com/fragments/initiatequote.jsff" usageId="viewcontroller_initiatequotePageDef"/>
+    <page path="/com/flows/InitiateQuote_TF.xml#initiatequoteTF@methodCall1"
+          usageId="viewcontroller_InitiateQuote_TF_initiatequoteTF_methodCall1PageDef"/>
+    <page path="ApproveQuote.jspx" usageId="viewcontroller_ApproveQuotePageDef1"/>
+    <page path="/ApproveQuote.jspx" usageId="viewcontroller_ApproveQuotePageDef1"/>
+    <page path="com/fragments/approvequote.jsff" usageId="viewcontroller_approvequotePageDef"/>
+    <page path="/com/fragments/approvequote.jsff" usageId="viewcontroller_approvequotePageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_InitiateQuotePageDef" path="viewcontroller.pageDefs.InitiateQuotePageDef"/>
@@ -20,10 +25,19 @@
     <page id="viewcontroller_StartContractPageDef" path="viewcontroller.pageDefs.StartContractPageDef"/>
     <page id="viewcontroller_InitiateQuotePageDef1" path="viewcontroller.pageDefs.InitiateQuotePageDef1"/>
     <page id="viewcontroller_initiatequotePageDef" path="com.fragments.initiatequotePageDef"/>
+    <page id="viewcontroller_InitiateQuote_TF_initiatequoteTF_methodCall1PageDef"
+          path="com.flows.InitiateQuote_TF_initiatequoteTF_methodCall1PageDef"/>
+    <page id="viewcontroller_ApproveQuotePageDef1" path="viewcontroller.pageDefs.ApproveQuotePageDef1"/>
+    <page id="viewcontroller_approvequotePageDef" path="com.fragments.approvequotePageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ViewController_StartContract" path="viewcontroller.ViewController_StartContract"/>
     <dc id="ViewController_ApproveQuote" path="viewcontroller.ViewController_ApproveQuote"/>
     <dc id="ViewController_InitiateQuote" path="viewcontroller.ViewController_InitiateQuote"/>
+    <BC4JDataControl id="ContractAMDataControl" Package="model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="ContractAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
   </dataControlUsages>
 </Application>

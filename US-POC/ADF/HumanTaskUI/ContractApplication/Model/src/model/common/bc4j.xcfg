@@ -1,0 +1,27 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="model.AppModule">
+      <AppModuleConfig name="AppModuleLocal" ApplicationName="model.AppModule" DeployPlatform="LOCAL" jbo.project="model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="model.AppModule"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="AppModuleShared" ApplicationName="model.AppModule" DeployPlatform="LOCAL" jbo.project="model.Model" java.naming.factory.initial="oracle.jbo.common.JboInitialContextFactory">
+         <AM-Pooling jbo.ampool.isuseexclusive="false" jbo.ampool.maxpoolsize="1"/>
+         <Database jbo.locking.mode="optimistic"/>
+         <Security AppModuleJndiName="model.AppModule"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="model.ContractAM">
+      <AppModuleConfig name="ContractAMLocal" jbo.project="model.Model" ApplicationName="model.ContractAM" DeployPlatform="LOCAL">
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="model.ContractAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/Connection1DS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig name="ContractAMShared" jbo.project="model.Model" ApplicationName="model.ContractAM" DeployPlatform="LOCAL">
+         <AM-Pooling jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="model.ContractAM"/>
+         <Custom ns0:JDBCDataSource="java:comp/env/jdbc/Connection1DS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

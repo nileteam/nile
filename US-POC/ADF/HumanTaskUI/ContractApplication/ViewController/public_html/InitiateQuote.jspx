@@ -119,7 +119,7 @@
                             </af:toolbar>
                         </f:facet>
                         <f:facet name="context"/>
-                        <af:region value="#{bindings.initiatequoteTF2.regionModel}" id="r1"/>
+                        <af:region value="#{bindings.initiatequoteTF3.regionModel}" id="r1"/>
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
                                 <af:spacer width="15" height="15" id="s4"/>
