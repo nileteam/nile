@@ -65,6 +65,26 @@
       <loc/>
       <line/>
       <col/>
+      <file>HumanTasks/ApproveQuoteVP.task</file>
+      <name>HumanTasks/ApproveQuoteVP.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ApproveQuoteVP.task</file>
+      <name>HumanTasks/ApproveQuoteVP.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
       <file>HumanTasks/InitiateQuote.task</file>
       <name>HumanTasks/InitiateQuote.task</name>
       <fix/>
@@ -119,16 +139,6 @@
       <name>HumanTasks/ApproveQuote.task</name>
       <fix/>
       <msg>Task title not specified</msg>
-   </Fault>
-   <Fault>
-      <severity>warning</severity>
-      <loc/>
-      <line/>
-      <col/>
-      <file>HumanTasks/ApproveQuote.task</file>
-      <name>HumanTasks/ApproveQuote.task</name>
-      <fix/>
-      <msg>Empty Participant definition for Stage1.Participant1</msg>
    </Fault>
    <Fault>
       <severity>warning</severity>

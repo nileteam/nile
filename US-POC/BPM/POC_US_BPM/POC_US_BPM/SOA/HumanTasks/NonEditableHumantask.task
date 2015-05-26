@@ -55,14 +55,15 @@
    </routingSlip>
    <workflowConfiguration features="ucm,RSCUSTOMIZATION" xmlns="http://xmlns.oracle.com/bpel/workflow/configuration"
                           xmlns:ns0="http://www.PurchaseOrderRequisition.org"
-                          xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+                          xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+                          xmlns:ns1="http://www.PurchaseOrderRequisition.org">
       <outcomes>
          <outcome>APPROVE</outcome>
          <outcome>REJECT</outcome>
       </outcomes>
       <payload externalSchema="false" xmlSchemaDefinition="../Schemas/NonEditableHumantaskPayload.xsd"
                typedTaskSchemaLocation="../Schemas/NonEditableHumantaskWorkflowTask.xsd">
-         <messageAttribute name="Input" attributeType="ELEMENT" type="ns0:Input" updatable="true" external="false"/>
+         <messageAttribute name="Input" attributeType="ELEMENT" type="ns1:Input" updatable="true" external="false"/>
          <messageAttribute name="Comments" attributeType="SIMPLE_TYPE" type="xsd:string" updatable="true"
                            external="false"/>
          <messageAttribute name="Role" attributeType="SIMPLE_TYPE" type="xsd:string" updatable="true" external="false"/>
