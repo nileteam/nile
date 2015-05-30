@@ -1,0 +1,238 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="approveQuoteVPPageDef"
+                Package="com.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_ApproveQuoteVP" RangeSize="25"
+                    BeanClass="ViewController_ApproveQuoteVP.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="ViewController_ApproveQuoteVP" BeanClass="ViewController_ApproveQuoteVP.task"
+                      id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="ViewController_ApproveQuoteVP"
+                      BeanClass="ViewController_ApproveQuoteVP.ApproveQuoteVPPayloadType" id="payloadIterator"/>
+    <accessorIterator MasterBinding="payloadIterator" Binds="Input_Quote" RangeSize="25"
+                      DataControl="ViewController_ApproveQuoteVP" BeanClass="ViewController_ApproveQuoteVP.Input_Quote"
+                      id="Input_QuoteIterator"/>
+    <accessorIterator MasterBinding="Input_QuoteIterator" Binds="Quote" RangeSize="25"
+                      DataControl="ViewController_ApproveQuoteVP" BeanClass="ViewController_ApproveQuoteVP.Quote_type"
+                      id="QuoteIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_ApproveQuoteVP"
+                  InstanceName="data.ViewController_ApproveQuoteVP"
+                  ReturnName="data.ViewController_ApproveQuoteVP.methodResults.getTaskDetails_ViewController_ApproveQuoteVP_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="taskIterator" id="title">
+      <AttrNames>
+        <Item Value="title"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="taskDefinitionURI">
+      <AttrNames>
+        <Item Value="taskDefinitionURI"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="creator">
+      <AttrNames>
+        <Item Value="creator"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerUser">
+      <AttrNames>
+        <Item Value="ownerUser"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerGroup">
+      <AttrNames>
+        <Item Value="ownerGroup"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerRole">
+      <AttrNames>
+        <Item Value="ownerRole"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="priority">
+      <AttrNames>
+        <Item Value="priority"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="identityContext">
+      <AttrNames>
+        <Item Value="identityContext"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="titleResourceKey">
+      <AttrNames>
+        <Item Value="titleResourceKey"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="identificationKey">
+      <AttrNames>
+        <Item Value="identificationKey"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="category">
+      <AttrNames>
+        <Item Value="category"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="startDate">
+      <AttrNames>
+        <Item Value="startDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="dueDate">
+      <AttrNames>
+        <Item Value="dueDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="isPublic">
+      <AttrNames>
+        <Item Value="isPublic"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="percentageComplete">
+      <AttrNames>
+        <Item Value="percentageComplete"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="applicationContext">
+      <AttrNames>
+        <Item Value="applicationContext"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="taskDefinitionId">
+      <AttrNames>
+        <Item Value="taskDefinitionId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="subcategory">
+      <AttrNames>
+        <Item Value="subcategory"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="taskDisplayUrl">
+      <AttrNames>
+        <Item Value="taskDisplayUrl"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="documentPackageId">
+      <AttrNames>
+        <Item Value="documentPackageId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="correlationId">
+      <AttrNames>
+        <Item Value="correlationId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="mdsLabel">
+      <AttrNames>
+        <Item Value="mdsLabel"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="creatorDisplayName">
+      <AttrNames>
+        <Item Value="creatorDisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerUserDisplayName">
+      <AttrNames>
+        <Item Value="ownerUserDisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerGroupDisplayName">
+      <AttrNames>
+        <Item Value="ownerGroupDisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="ownerRoleDisplayName">
+      <AttrNames>
+        <Item Value="ownerRoleDisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="shortSummary">
+      <AttrNames>
+        <Item Value="shortSummary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="longSummary">
+      <AttrNames>
+        <Item Value="longSummary"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="taskIterator" id="notificationMode">
+      <AttrNames>
+        <Item Value="notificationMode"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Director">
+      <AttrNames>
+        <Item Value="Director"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Quote">
+      <AttrNames>
+        <Item Value="Quote"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Office">
+      <AttrNames>
+        <Item Value="Office"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Description">
+      <AttrNames>
+        <Item Value="Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Lob">
+      <AttrNames>
+        <Item Value="Lob"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractStartDate">
+      <AttrNames>
+        <Item Value="ContractStartDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractEndDate">
+      <AttrNames>
+        <Item Value="ContractEndDate"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Client">
+      <AttrNames>
+        <Item Value="Client"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="QuoteID">
+      <AttrNames>
+        <Item Value="QuoteID"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="ContractTerm">
+      <AttrNames>
+        <Item Value="ContractTerm"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="QuoteIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="taskIterator" id="APPROVE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="APPROVE" IsViewObjectMethod="false" DataControl="ViewController_ApproveQuoteVP"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <methodAction IterBinding="taskIterator" id="REJECT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="REJECT" IsViewObjectMethod="false" DataControl="ViewController_ApproveQuoteVP"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+  </bindings>
+</pageDefinition>

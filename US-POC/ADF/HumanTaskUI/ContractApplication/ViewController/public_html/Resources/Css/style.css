@@ -1,0 +1,152 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+.fonteffect{
+font-family:Lucida Sans;
+font-style: normal;
+font-size: 11pt;
+}
+.btnstyle
+{
+font-family:Calibri;
+font-size: 26px;
+}
+.outputfont
+{
+font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+.Enteredfont af|inputText::content
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+.lightGrayText af|inputText::content
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    color: gray;
+}
+
+/*.tt af|column::column-header-cell-content
+{
+    font-size: 15px;
+    color: Red;
+    
+  
+}*/
+
+.FontDrpdwn af|selectOneChoice::content
+{
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+   
+
+}
+.Fontdate af|inputDate::content
+{
+font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+
+/*af|button {
+
+ height: 33px;
+ width: 124px;
+ background-color: White;   
+}*/
+.drpdwnround af|selectOneChoice::content
+{
+
+   background-color:#cfd0cf;
+   
+}
+
+
+
+.iputtxtround af|inputText::content{
+
+ background-color: #cfd0cf;
+}
+.init {
+       background-color:Black;
+}
+
+.head
+{
+ font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    background-color:      #d7dad9;
+
+}
+ af|table af|column::column-header-cell
+{
+    
+   font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    
+} 
+af|inputText::label
+{
+font-size: 11pt;
+}
+af|inputDate::label
+{
+ font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+    
+
+}
+af|inputDate::content
+{
+background-color:#cfd0cf;
+}
+
+.LabelEffect af|panelLabelAndMessage::label
+{ 
+    font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+
+ .tablecss af|column::column-header-cell {
+ 
+  background-color:      #d7dad9;
+  font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+  
+  
+} 
+
+
+ 
+  
+/*af|inputDate::launch-icon 
+{
+
+  
+    content: url("../../Images/calendar.png");
+}*/
+af|inputFile::content
+{
+font-family: Lucida Sans;
+    font-size: 11pt;
+    font-style: normal;
+}
+
+select {
+  -webkit-appearance: listbox;
+    background-position: center right;
+  background-repeat: no-repeat;
+  background-image: url("../Images/drop-down.png");
+          }

@@ -86,11 +86,6 @@
         <Item Value="ContractTerm"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="QuoteIterator" id="Comments">
-      <AttrNames>
-        <Item Value="Comments"/>
-      </AttrNames>
-    </attributeValues>
     <methodAction IterBinding="taskIterator" id="SUBMIT" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="SUBMIT" IsViewObjectMethod="false" DataControl="ViewController_InitiateQuote"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
@@ -107,5 +102,43 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <list IterBinding="QuoteIterator" id="Office1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Office"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Chichago"/>
+        <Item Value="San Franscisco"/>
+        <Item Value="New York"/>
+        <Item Value="Boston"/>
+        <Item Value="Buffalo"/>
+        <Item Value="Washington D.C"/>
+      </ValueList>
+    </list>
+    <list IterBinding="QuoteIterator" id="Client1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Client"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Pizza Hut"/>
+        <Item Value="JP Morgan"/>
+        <Item Value="HP"/>
+        <Item Value="Microsoft"/>
+      </ValueList>
+    </list>
+    <list IterBinding="QuoteIterator" id="Lob1" DTSupportsMRU="true" SelectItemValueMode="ListObject" StaticList="true">
+      <AttrNames>
+        <Item Value="Lob"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="LOB1585"/>
+        <Item Value="LOB1614"/>
+        <Item Value="LOB7869"/>
+        <Item Value="LOB6987"/>
+        <Item Value="LOB9876"/>
+      </ValueList>
+    </list>
   </bindings>
 </pageDefinition>

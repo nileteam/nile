@@ -14,6 +14,8 @@
                       BeanClass="ViewController_InitiateQuote.InitiateQuotePayloadType" id="payloadIterator"/>
     <accessorIterator id="Input_QuoteIterator" MasterBinding="payloadIterator" Binds="Input_Quote" RangeSize="25"
                       DataControl="ViewController_InitiateQuote" BeanClass="ViewController_InitiateQuote.Input_Quote"/>
+    <iterator id="DCIterator" DataControl="ContractAMDataControl" RangeSize="25" Binds="ContractDocUploadView1"/>
+ 
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -24,6 +26,7 @@
       <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
       <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
     </methodAction>
+    
     <tree IterBinding="taskIterator" id="task">
       <nodeDefinition DefName="ViewController_InitiateQuote.task" Name="task0">
         <AttrNames>
@@ -70,7 +73,29 @@
         <AttrNames>
           <Item Value="Directors"/>
         </AttrNames>
+        <Accessors>
+          <Item Value="Quote"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_InitiateQuote.Quote_type" Name="task3">
+        <AttrNames>
+          <Item Value="Director"/>
+          <Item Value="Client"/>
+          <Item Value="Comments"/>
+          <Item Value="ContractEndDate"/>
+          <Item Value="ContractStartDate"/>
+          <Item Value="ContractTerm"/>
+          <Item Value="Description"/>
+          <Item Value="Lob"/>
+          <Item Value="Office"/>
+          <Item Value="Quote"/>
+          <Item Value="QuoteID"/>
+        </AttrNames>
       </nodeDefinition>
     </tree>
+    <action IterBinding="DCIterator" id="ExecuteWithParams" InstanceName="ContractAMDataControl.ContractDocUploadView1"
+            DataControl="ContractAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
   </bindings>
 </pageDefinition>

@@ -11,7 +11,7 @@
       <groupId>ContractApplication</groupId>
       <artifactId>Model</artifactId>
       <version>1.0-SNAPSHOT</version>
-      <type>jar</type>
+      <type>sar</type>
       <scope>compile</scope>
     </dependency>
     <dependency>
@@ -212,6 +212,20 @@
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
+      <artifactId>BC4J-Security</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
+      <artifactId>Resource-Bundle-Support</artifactId>
+      <version>12.1.3-0-0</version>
+      <type>pom</type>
+      <scope>provided</scope>
+    </dependency>
+    <dependency>
+      <groupId>com.oracle.adf.library</groupId>
       <artifactId>Commons-Logging</artifactId>
       <version>12.1.3-0-0</version>
       <type>pom</type>
@@ -223,13 +237,6 @@
       <version>12.1.3-0-0</version>
       <type>pom</type>
       <scope>compile</scope>
-    </dependency>
-    <dependency>
-      <groupId>com.oracle.adf.library</groupId>
-      <artifactId>BC4J-Security</artifactId>
-      <version>12.1.3-0-0</version>
-      <type>pom</type>
-      <scope>provided</scope>
     </dependency>
     <dependency>
       <groupId>com.oracle.adf.library</groupId>
@@ -285,15 +292,28 @@
     <sourceDirectory>src/</sourceDirectory>
     <resources>
       <resource>
+        <directory>pages/</directory>
+        <includes>
+          <include>**</include>
+        </includes>
+      </resource>
+      <resource>
+        <directory>/C:/Users/Nile/Desktop/</directory>
+        <includes>
+          <include>drop-down.png</include>
+        </includes>
+      </resource>
+      <resource>
         <directory>${basedir}</directory>
         <includes>
           <include>*</include>
         </includes>
       </resource>
       <resource>
-        <directory>pages/</directory>
+        <directory>src/META-INF/resources/images/</directory>
         <includes>
-          <include>**</include>
+          <include>drop-down.png</include>
+          <include>drop-down.png</include>
         </includes>
       </resource>
     </resources>

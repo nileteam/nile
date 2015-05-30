@@ -40,4 +40,17 @@
                       InitiationTask="false" DocumentStoreConfiguration="false"/>
     </Source>
   </AdapterDataControl>
+  <AdapterDataControl id="ViewController_ApproveQuoteVP" FactoryClass="oracle.adf.model.adapter.DataControlFactoryImpl"
+                      ImplDef="oracle.bpel.services.datacontrol.XSDDataControlDefinition" SupportsTransactions="true"
+                      SupportsSortCollection="false" SupportsResetState="false" SupportsRangesize="false"
+                      SupportsFindMode="false" SupportsUpdates="false" Definition="ViewController_ApproveQuoteVP"
+                      BeanClass="ViewController_ApproveQuoteVP" xmlns="http://xmlns.oracle.com/adfm/datacontrol">
+    <Source>
+      <XSDDataControl xmlns="http://xmlns.oracle.com/bpel/workflow/task"
+                      SchemaLocation="file:/D:/USPOC CODE BCKUP/Contract 22-5-2015/nile/US-POC/ADF/HumanTaskUI/ContractApplication/POC_US_BPM/SOA/Schemas/ApproveQuoteVPWorkflowTask.xsd"
+                      RootElement="task" rootelementnamespace="http://xmlns.oracle.com/bpel/workflow/task"
+                      taskLoc="../POC_US_BPM/SOA/HumanTasks/ApproveQuoteVP.task" InitiationTask="false"
+                      DocumentStoreConfiguration="false"/>
+    </Source>
+  </AdapterDataControl>
 </DataControlConfigs>

@@ -18,7 +18,12 @@
         ResId="model.ContractDocUploadView_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
-  <SQLQuery><![CDATA[select * from contract_doc_upload]]></SQLQuery>
+  <Variable
+    Name="conid"
+    Kind="where"
+    Type="java.lang.String"/>
+  <SQLQuery><![CDATA[select * from contract_doc_upload 
+where CONTRACT_ID=:conid]]></SQLQuery>
   <ViewAttribute
     Name="SNo"
     IsUpdateable="false"

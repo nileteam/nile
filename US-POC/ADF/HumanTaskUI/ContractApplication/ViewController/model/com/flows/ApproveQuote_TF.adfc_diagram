@@ -9,16 +9,41 @@
       <property
          name="page">/com/fragments/approvequote.jsff</property>
       <property
-         name="start">true</property>
+         name="start">false</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>approvequote&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>approvequote&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
          name="y">183.94824</property>
       <property
-         name="x">279.0</property>
-      <property
          name="pageFragment">true</property>
+      <property
+         name="x">279.0</property>
    </View>
+   <MethodCall
+      id="MethodCall3">
+      <property
+         name="activityId">onload</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>onload&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  Method Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">128.5459</property>
+      <property
+         name="x">114.0</property>
+   </MethodCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="MethodCall3"
+      to="View2">
+      <property
+         name="fromOutcome">go</property>
+      <property
+         name="sdm:polyPoints">R50,155.0,128.19531,238.0,183.59766,L50</property>
+   </ControlFlowCase>
 </SDM>

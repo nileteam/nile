@@ -2,7 +2,8 @@ package com.view.beans;
 
 import com.view.utility.ADFUtils;
 import com.view.utility.JSFUtils;
-
+import java.util.Calendar;
+import java.util.Date;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -15,7 +16,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -32,6 +34,8 @@ import javax.sql.DataSource;
 
 import oracle.adf.model.BindingContext;
 import oracle.adf.model.binding.DCBindingContainer;
+import oracle.adf.view.rich.component.rich.RichPopup;
+import oracle.adf.view.rich.component.rich.input.RichInputDate;
 import oracle.adf.view.rich.component.rich.input.RichInputFile;
 
 import oracle.adf.view.rich.component.rich.input.RichInputText;
@@ -66,6 +70,13 @@ import java.sql.ResultSet;
 
 import java.sql.SQLException;
 
+import java.sql.Timestamp;
+
+import java.util.Date;
+
+import java.util.Map;
+import java.util.concurrent.TimeUnit;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.event.ActionEvent;
@@ -88,20 +99,64 @@ import oracle.jbo.domain.BlobDomain;
 
 
 import org.apache.myfaces.trinidad.model.UploadedFile;  
+import org.apache.myfaces.trinidad.util.Service;
+import oracle.adf.share.ADFContext;    
 
 public class InitiateQuote {
     private RichSelectOneChoice directorVar;
 
     List<SelectItem> customList;
+
+    public void setMinValForEndDate1(oracle.jbo.domain.Date minValForEndDate1) {
+        this.minValForEndDate1 = minValForEndDate1;
+    }
+
+    public oracle.jbo.domain.Date getMinValForEndDate1() {
+        return minValForEndDate1;
+    }
     private RichSelectOneChoice directSoc;
     String directors;
     String[] direct;
+
+    
     private RichInputFile uploadfileVar;
     private String fileName;
     private String path;
     private RichInputText quoteID;
     private RichInputText quoteIdVar;
+    private RichInputDate endDate;
+    private RichInputDate startDate;
+    private String period;
+    private RichInputText contractTerm;
+    oracle.jbo.domain.Date minValForEndDate1;
 
+    public void setMinValForEndDateJBO(oracle.jbo.domain.Date minValForEndDateJBO) {
+        this.minValForEndDateJBO = minValForEndDateJBO;
+    }
+
+    public oracle.jbo.domain.Date getMinValForEndDateJBO() {
+        return minValForEndDateJBO;
+    }
+    oracle.jbo.domain.Date minValForEndDateJBO;
+
+    public void setStartDate1(oracle.jbo.domain.Date startDate1) {
+        this.startDate1 = startDate1;
+        
+    }
+
+    public oracle.jbo.domain.Date getStartDate1() {
+        return startDate1;
+    }
+    oracle.jbo.domain.Date startDate1 ;
+    private RichInputText quoteVar;
+    private RichSelectOneChoice lobVar;
+    private RichSelectOneChoice officeVar;
+    private RichInputText descriptionVar;
+    private RichPopup submitPopup;
+    private RichPopup savePopup;
+    private String  tableFlag;
+    private Date minDate = new Date();
+    private java.sql.Date dateStart ;
     public InitiateQuote() {
     }
 
@@ -133,75 +188,181 @@ public class InitiateQuote {
         return customList;
     }
     
-    public void onload() {
-        DCBindingContainer bindings =(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
-        JUCtrlHierBinding treeBinding =(JUCtrlHierBinding)bindings.findCtrlBinding("task");
-         System.out.println("TREE BINDING IS ======"+treeBinding);
-        JUCtrlHierNodeBinding rootNode = null;
-        rootNode = treeBinding.getRootNodeBinding();
-        System.out.println("rootNode is "+rootNode);
-        
-        System.out.println("rootNode.getChildren"+rootNode.getChildren());
-        System.out.println("rootNode.getChildren.size"+rootNode.getChildren().size());
-        
-        if(rootNode.getChildren()!=null) {
-            for(int i=0; i< rootNode.getChildren().size();i++) {
-            System.out.println("bingo"+(i+1));
-
-                JUCtrlHierNodeBinding initiateQuote = (JUCtrlHierNodeBinding)rootNode.getChildren().get(0);
-                System.out.println("task----"+initiateQuote);
-
-
-                String[] attributeNames = initiateQuote.getAttributeNames();
-                
-                for(int z=0; i< attributeNames.length;i++) {
-                    
-                    System.out.println("Attribute name is "+attributeNames[z]);
-                }
-          
-             JUCtrlHierNodeBinding child= (JUCtrlHierNodeBinding)initiateQuote.getChildren().get(0);
-             System.out.println("child is -------"+child);
-
-                String[] names = child.getAttributeNames();
-                
-                for(int z=0;z<names.length;z++){
-                    
-                    System.out.println("attribute names in child is"+names[z]);
-                    
-                }
-                
-              JUCtrlHierNodeBinding childToChild   =(JUCtrlHierNodeBinding)child.getChildren().get(0);
-              System.out.println("Childt to child"+ childToChild);
-                
-                
-            
-
-                String[] attributeNames_2 = childToChild.getAttributeNames();
-                
-                for(int z=0;z<attributeNames_2.length;z++) {
-                    
-                    System.out.println(" Attributre name to child to child are "+attributeNames_2[z]);
-                }
-                             
-                     directors=(String)childToChild.getAttribute("Directors");
-                    System.out.println("directors are --------?>>>>>>>"+directors);
-                
-                    direct= directors.split(",");
-                    
-                for(String dir:direct) {
-                    System.out.println(dir);
-                    
-                }
-
-            }
-                
-            
-        }
-        
+//    public void onload() {
+//        DCBindingContainer bindings =(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
+//        JUCtrlHierBinding treeBinding =(JUCtrlHierBinding)bindings.findCtrlBinding("task");
+//         System.out.println("TREE BINDING IS ======"+treeBinding);
+//        JUCtrlHierNodeBinding rootNode = null;
+//        rootNode = treeBinding.getRootNodeBinding();
+//        System.out.println("rootNode is "+rootNode);
+//        
+//        System.out.println("rootNode.getChildren"+rootNode.getChildren());
+//        System.out.println("rootNode.getChildren.size"+rootNode.getChildren().size());
+//        
+//        if(rootNode.getChildren()!=null) {
+//            for(int i=0; i< rootNode.getChildren().size();i++) {
+//            System.out.println("bingo"+(i+1));
+//
+//                JUCtrlHierNodeBinding initiateQuote = (JUCtrlHierNodeBinding)rootNode.getChildren().get(0);
+//                System.out.println("task----"+initiateQuote);
+//
+//
+//                String[] attributeNames = initiateQuote.getAttributeNames();
+//                
+//                for(int z=0; i< attributeNames.length;i++) {
+//                    
+//                    System.out.println("Attribute name is "+attributeNames[z]);
+//                }
+//          
+//             JUCtrlHierNodeBinding child= (JUCtrlHierNodeBinding)initiateQuote.getChildren().get(0);
+//             System.out.println("child is -------"+child);
+//
+//                String[] names = child.getAttributeNames();
+//                
+//                for(int z=0;z<names.length;z++){
+//                    
+//                    System.out.println("attribute names in child is"+names[z]);
+//                    
+//                }
+//                
+//              JUCtrlHierNodeBinding childToChild   =(JUCtrlHierNodeBinding)child.getChildren().get(0);
+//              System.out.println("Childt to child"+ childToChild);
+//                
+//                
+//            
+//
+//                String[] attributeNames_2 = childToChild.getAttributeNames();
+//                
+//                for(int z=0;z<attributeNames_2.length;z++) {
+//                    
+//                    System.out.println(" Attributre name to child to child are "+attributeNames_2[z]);
+//                }
+//                             
+//                     directors=(String)childToChild.getAttribute("Directors");
+//                    System.out.println("directors are --------?>>>>>>>"+directors);
+//                
+//                    direct= directors.split(",");
+//                    
+//                for(String dir:direct) {
+//                    System.out.println(dir);
+//                    
+//                }
+//
+//            }
+//                
+//            
+//        }
+//        
+//    
+//    
+//    }
     
-    
+    public void onload() throws Exception{
+         try {
+             Map map = ADFContext.getCurrent().getSessionScope();
+
+
+             DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+             JUCtrlHierBinding treeBinding = (JUCtrlHierBinding) bindings.findCtrlBinding("task");
+             System.out.println("TREE BINDING IS ======" + treeBinding);
+             JUCtrlHierNodeBinding rootNode = null;
+             rootNode = treeBinding.getRootNodeBinding();
+             System.out.println("rootNode is " + rootNode);
+
+             System.out.println("rootNode.getChildren" + rootNode.getChildren());
+             System.out.println("rootNode.getChildren.size" + rootNode.getChildren().size());
+
+             if (rootNode.getChildren() != null) {
+                 for (int i = 0; i < rootNode.getChildren().size(); i++) {
+                     System.out.println("bingo" + (i + 1));
+
+                     JUCtrlHierNodeBinding initiateQuote = (JUCtrlHierNodeBinding) rootNode.getChildren().get(0);
+                     System.out.println("task----" + initiateQuote);
+
+
+                     String[] attributeNames = initiateQuote.getAttributeNames();
+
+                     for (int z = 0; i < attributeNames.length; i++) {
+
+                         System.out.println("Attribute name is " + attributeNames[z]);
+                     }
+
+                     JUCtrlHierNodeBinding child = (JUCtrlHierNodeBinding) initiateQuote.getChildren().get(0);
+                     System.out.println("child is -------" + child);
+
+                     String[] names = child.getAttributeNames();
+
+                     for (int z = 0; z < names.length; z++) {
+
+                         System.out.println("attribute names in child is" + names[z]);
+
+                     }
+
+                     JUCtrlHierNodeBinding childToChild = (JUCtrlHierNodeBinding) child.getChildren().get(0);
+                     System.out.println("Childt to child" + childToChild);
+
+
+                     String[] attributeNames_2 = childToChild.getAttributeNames();
+
+                     for (int z = 0; z < attributeNames_2.length; z++) {
+
+                         System.out.println(" Attributre name to child to child are " + attributeNames_2[z]);
+                     }
+
+                     directors = (String) childToChild.getAttribute("Directors");
+                     System.out.println("directors are --------?>>>>>>>" + directors);
+
+                     direct = directors.split(",");
+
+                     for (String dir : direct) {
+                         System.out.println(dir);
+                     }
+
+                     JUCtrlHierNodeBinding quotenode = (JUCtrlHierNodeBinding) childToChild.getChildren().get(0);
+                     System.out.println("quoteNode" + quotenode);
+
+                     String[] attributeNames_quotenode = quotenode.getAttributeNames();
+                     for (String c : attributeNames_quotenode) {
+                         System.out.println("attribute names for the quote node are " + c);
+
+                     }
+
+                     String quoteId = (String) quotenode.getAttribute("QuoteID");
+                     System.out.println("QuoteID-------------" + quoteId);
+                     BindingContext ctx = BindingContext.getCurrent();
+                   DCBindingContainer bc = (DCBindingContainer)ctx.getCurrentBindingsEntry();
+                   DCIteratorBinding iterator = bc.findIteratorBinding("DCIterator");
+                   ViewObject ConDocVO = iterator.getViewObject();
+                   ConDocVO.setNamedWhereClauseParam("conid", quoteId);
+                   ConDocVO.executeQuery();
+
+
+                    int noOfRows = ConDocVO.getRowCount();
+                    System.out.println("noOfRowns------"+noOfRows);
+                     
+                     if(noOfRows!=0) {
+                         System.out.println("inside stop condition");
+                         tableFlag="go";
+                         
+                     }
+                     else {
+                         System.out.println("inside else condition onload");
+                         tableFlag="stop";
+                     }
+                     
+
+                }
+
+
+             }
+         } catch (Exception e) {
+             // TODO: Add catch code
+             e.printStackTrace();
+         }
     }
-    
+
+ 
+
     public void setUploadfileVar(RichInputFile uploadfileVar) {
            this.uploadfileVar = uploadfileVar;
        }
@@ -211,6 +372,8 @@ public class InitiateQuote {
        }
 
        public String uploadfile_Action() {
+           System.out.println("inside upload action");
+           tableFlag="go";
            String quote = (String)quoteIdVar.getValue();
            BindingContext ctx = BindingContext.getCurrent();
                    DCBindingContainer bc = (DCBindingContainer)ctx.getCurrentBindingsEntry();
@@ -222,12 +385,12 @@ public class InitiateQuote {
                 char ch[]=fileName.toCharArray();
                 StringBuffer sbf=new StringBuffer();
                 StringBuffer sbe=new StringBuffer();
-                int f=0;
+                int fl=0;
                     for(int ii=0;ii<ch.length;ii++){  
                         if(ch[ii]=='.'){
-                            f=1;
+                            fl=1;
                         }
-                        if(f==0){
+                        if(fl==0){
                             sbf.append(ch[ii]);
                         }else{             
                         sbe.append(ch[ii]);
@@ -239,62 +402,72 @@ public class InitiateQuote {
 
 
 
-//               String fileCompare = str[0];
-//               System.out.println(str[0]+"--------str[0]");
-//                for(i = 0; i < rws.length; i++)
-//                {
-//                  Row row = rws[i];
-//                  String file = row.getAttribute("FileName").toString();
-//                    if(file.contains(fileCompare))
-//                    {
-//                    count++;    
-//                        }
-//                    
-//                    }
-//                  fileName = fileName.concat("V_"+rws.length);
-//                  fileName = fileCompare.concat("_V"+count).concat(str[1]);
-//          System.out.println("in upload method");
-//          
-//           try {
-//            
-//            System.out.println("quote------------------"+quote);
-//
-//            File pdfFile = new File(path);
-//               byte[] pdfData = new byte[(int) pdfFile.length()];
-//               DataInputStream dis = new DataInputStream(new FileInputStream(pdfFile));
-//               dis.readFully(pdfData);
-//               dis.close();      
-//               Connection dbConnection = null;
-//               dbConnection = getConnection("jdbc/NileDBDS");
-//               PreparedStatement ps =
-//               dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " +
-//                                                 "FILE_NAME" + ") VALUES (?,?,?)");
-//               ps.setString(1, quote);
-//               ps.setBytes(2, pdfData);
-//               ps.setString(3, fileName);
-//               ps.executeUpdate();
-//               ps.close();
-//               dbConnection.close();
-//               File f = new File(path);
-//               f.delete();
-//               System.out.println("Data Inserted Successfully.");
-//           } catch (SQLException sqle) {
-//               // TODO: Add catch code
-//               sqle.printStackTrace();
-//           } catch(NamingException e) {
-//               // TODO: Add catch code
-//              
-//           } catch (IOException ioe) {
-//               // TODO: Add catch code
-//               ioe.printStackTrace();
-//           }
-//           
-//                  logoView.setWhereClause(null);
-//                  logoView.executeQuery();
+              String fileCompare = sbf.toString();
+               System.out.println(fileCompare+"--------str[0]");
+               for(i = 0; i < rws.length; i++)
+               {
+                 Row row = rws[i];
+                 String file = row.getAttribute("FileName").toString();
+                    if(file.contains(fileCompare))
+                    {
+                    count++;    
+                       }
+                    
+                   }
+                  fileName = fileName.concat("V_"+rws.length);
+                  fileName = fileCompare.concat("_V"+count).concat(sbe.toString());
+                  System.out.println(fileName);
+         System.out.println("in upload method");
+          
+           try {
+            
+            System.out.println("quote------------------"+quote);
+
+            File pdfFile = new File(path);
+               byte[] pdfData = new byte[(int) pdfFile.length()];
+               DataInputStream dis = new DataInputStream(new FileInputStream(pdfFile));
+               dis.readFully(pdfData);
+               dis.close();      
+               Connection dbConnection = null;
+               dbConnection = getConnection("jdbc/NileDBDS");
+               PreparedStatement ps =
+               dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " +
+                                                 "FILE_NAME" + ") VALUES (?,?,?)");
+               ps.setString(1, quote);
+               ps.setBytes(2, pdfData);
+               ps.setString(3, fileName);
+               ps.executeUpdate();
+               ps.close();
+               dbConnection.close();
+               File f = new File(path);
+               f.delete();
+               System.out.println("Data Inserted Successfully.");
+           } catch (SQLException sqle) {
+               // TODO: Add catch code
+               sqle.printStackTrace();
+           } catch(NamingException e) {
+               // TODO: Add catch code
+              
+           } catch (IOException ioe) {
+               // TODO: Add catch code
+               ioe.printStackTrace();
+           }
+           
+                  logoView.setWhereClause(null);
+                  logoView.executeQuery();
+                 
            return null;
        }
 
-       public void uploadfile_vcl(ValueChangeEvent valueChangeEvent) {
+    public void setTableFlag(String tableFlag) {
+        this.tableFlag = tableFlag;
+    }
+
+    public String getTableFlag() {
+        return tableFlag;
+    }
+
+    public void uploadfile_vcl(ValueChangeEvent valueChangeEvent) {
            try {
                // The event give access to an Uploade dFile which contains data about the file and its content
                OutputStream outputStream; 
@@ -392,46 +565,62 @@ public class InitiateQuote {
        }
        public String initiate_Quote_Submit() {
            // TODO: Add catch code "Put validation and pop up"
-        String directors=(String)directorVar.getValue();
-        System.out.println("directors---------------"+directors);
+           if(directorVar.getValue()!=null && quoteVar.getValue()!=null && officeVar.getValue()!=null && descriptionVar.getValue()!=null
+              && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null) {
+               String directors=(String)directorVar.getValue();
+               System.out.println("directors---------------"+directors);
+               
+               DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
+               ViewObjectImpl inputQuoteVO =(ViewObjectImpl) bindings.findIteratorBinding("QuoteIterator").getViewObject();
+               RowSetIterator rit1 = inputQuoteVO.createRowSetIterator(null);
+               
+               while (rit1.hasNext()) {
+                                    Row row1 = rit1.next();
+                                   row1.setAttribute("Director", directors);  
+               
+               }
+                  OperationBinding SubmitOP = ADFUtils.findOperation("SUBMIT");
+                             SubmitOP.execute();
+
+                             FacesContext facesContext = FacesContext.getCurrentInstance();
+                             org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                                 org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                                              ExtendedRenderKitService.class);
+                             service.addScript(facesContext,
+                                               "window.close();window.opener.location.href = window.opener.location.href;");
+                             service.addScript(facesContext, "closeMe()");    
+           }
+           else {
+               showPopup(submitPopup
+                         ,true);
+           }
+      
+           return null;
+       }
+
+    public String initiate_Quote_Save() {
+            // TODO: Add catch code "Put validation and pop up"
+         if(directorVar.getValue()!=null && quoteVar.getValue()!=null && officeVar.getValue()!=null && descriptionVar.getValue()!=null
+            && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null) {
+             
+             OperationBinding SaveOP = ADFUtils.findOperation("update");
+                        SaveOP.execute();
+
+                        FacesContext facesContext = FacesContext.getCurrentInstance();
+                        org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                            org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                                         ExtendedRenderKitService.class);
+                        service.addScript(facesContext,
+                                          "window.close();window.opener.location.href = window.opener.location.href;");
+                        service.addScript(facesContext, "closeMe()"); 
+         }
+         else {
+             showPopup(savePopup,true);
+         }
+         
         
-    DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();  
-        ViewObjectImpl inputQuoteVO =(ViewObjectImpl) bindings.findIteratorBinding("QuoteIterator").getViewObject();
-        RowSetIterator rit1 = inputQuoteVO.createRowSetIterator(null);
-       
-        while (rit1.hasNext()) {
-                             Row row1 = rit1.next();
-                            row1.setAttribute("Director", directors);  
-        
+            return null;
         }
-           OperationBinding SubmitOP = ADFUtils.findOperation("SUBMIT");
-                      SubmitOP.execute();
-
-                      FacesContext facesContext = FacesContext.getCurrentInstance();
-                      org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
-                          org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
-                                                                                       ExtendedRenderKitService.class);
-                      service.addScript(facesContext,
-                                        "window.close();window.opener.location.href = window.opener.location.href;");
-                      service.addScript(facesContext, "closeMe()");
-           return null;
-       }
-
-       public String initiate_Quote_Save() {
-           // TODO: Add catch code "Put validation and pop up"
-           OperationBinding SaveOP = ADFUtils.findOperation("update");
-                      SaveOP.execute();
-
-                      FacesContext facesContext = FacesContext.getCurrentInstance();
-                      org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
-                          org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
-                                                                                       ExtendedRenderKitService.class);
-                      service.addScript(facesContext,
-                                        "window.close();window.opener.location.href = window.opener.location.href;");
-                      service.addScript(facesContext, "closeMe()");
-           return null;
-       }
-
 
     public void setQuoteID(RichInputText quoteID) {
         this.quoteID = quoteID;
@@ -439,6 +628,14 @@ public class InitiateQuote {
 
     public RichInputText getQuoteID() {
         return quoteID;
+    }
+
+    public void setPeriod(String period) {
+        this.period = period;
+    }
+
+    public String getPeriod() {
+        return period;
     }
 
     public void setQuoteIdVar(RichInputText quoteIdVar) {
@@ -500,4 +697,260 @@ public class InitiateQuote {
          con.close();
 
     }
+
+    public void valueChange_endDate(ValueChangeEvent valueChangeEvent) {
+       
+        java.sql.Date enddate = ( java.sql.Date)endDate.getValue();
+        System.out.println("endDate"+enddate);
+        oracle.jbo.domain.Date endDate1=getJboDateFromSqlDate(enddate);
+        System.out.println("endDate1------"+endDate1);
+        // if (startDate1 == null)
+        // startDate1 = new Date(Date.getCurrentDate()); // assume today
+        //
+        // if (endDate1 == null)
+        // endDate1 = new Date(Date.getCurrentDate()); // asume today again
+        //
+        Timestamp tsStart = startDate1.timestampValue();
+        Timestamp tsEnd = endDate1.timestampValue();
+        //
+        // long ndays = (tsEnd.getTime() - tsStart.getTime()) ;
+        // System.out.println("NDAYSSSSSSSSSSSSSS"+ndays);
+        //
+        // int days = (int) ((ndays / (1000*60*60*24)) % 7);
+        // System.out.println("days are -----------"+days);
+        // return new Number(ndays);
+        String diff="";
+        long timeDiff = Math.abs(tsStart.getTime() - tsEnd.getTime());
+        diff = String.format("%d", TimeUnit.MILLISECONDS.toDays(timeDiff));
+        System.out.println("difference is "+diff);
+        int days=Integer.parseInt(diff);
+        System.out.println("days are ------->>>"+days);
+        if(days>=365){
+        int year= days/365;
+        System.out.println("year"+year);
+        int remainingDays =days% 365;
+        if(remainingDays!=0) {
+        if(remainingDays>30) {
+        int months=remainingDays/30;
+        System.out.println("months are "+months);
+        int daysFinal=remainingDays%30;
+        System.out.println("daysFinal are "+daysFinal);
+         period=year+"years"+months+"months"+daysFinal+"days";
+        System.out.println("duration is "+period);
+        }
+        else if(remainingDays<30) {
+         period=year+"years"+remainingDays+"days";
+        System.out.println("duration is "+period);
+        }
+        }
+        }
+        else if(days<365&&days>30) {
+        int month2= days/30;
+        System.out.println("month2====="+month2);
+        int days2=month2%30;
+        System.out.println("days2-----------"+days2);
+        if(days2!=0) {
+         period= month2+"months"+days2+"days";
+        System.out.println("duration is "+period);
+        }
+        else {
+         period=month2+"months";
+        System.out.println("duration is "+period);
+        }
+        }
+        else if(days <30) {
+         period=days+"days";
+        System.out.println("duration is "+period);
+        }
+        
+        contractTerm.setValue(period);
+        
+    }
+
+    public void setEndDate(RichInputDate endDate) {
+        this.endDate = endDate;
+    }
+
+    public RichInputDate getEndDate() {
+        return endDate;
+    }
+
+    public void setStartDate(RichInputDate startDate) {
+        this.startDate = startDate;
+    }
+
+    public RichInputDate getStartDate() {
+        return startDate;
+    }
+    
+
+    public static oracle.jbo.domain.Date getJboDateFromSqlDate(java.sql.Date sqlDate) {
+    oracle.jbo.domain.Date jboDate = null;
+    if (sqlDate != null) {
+    jboDate = new oracle.jbo.domain.Date(sqlDate);
+    }
+    return jboDate;
+    }
+
+    public void setContractTerm(RichInputText contractTerm) {
+        this.contractTerm = contractTerm;
+    }
+
+    public RichInputText getContractTerm() {
+        return contractTerm;
+    }
+
+    public void valueChange_startDate(ValueChangeEvent valueChangeEvent) {
+        dateStart = ( java.sql.Date)startDate.getValue();
+                   System.out.println("dateStart-----"+dateStart);
+                   
+                  startDate1 = getJboDateFromSqlDate(dateStart);
+                  System.out.println("startDate1----------"+startDate1);
+                  
+        Date dateStartUtil=getUtilDateFromSqlDate(dateStart);   
+                  
+        java.util.Date minValForEndDate=addDays(dateStartUtil,1);
+        java.sql.Date minValForEndDateUtil = new java.sql.Date(minValForEndDate.getTime());
+        minValForEndDateJBO = new oracle.jbo.domain.Date(minValForEndDateUtil);
+           System.out.println("minval"+minValForEndDateJBO);
+//        minValForEndDate1=getJboDateFromSqlDate(minValForEndDate);
+                  
+    }
+
+    public void setQuoteVar(RichInputText quoteVar) {
+        this.quoteVar = quoteVar;
+    }
+
+    public RichInputText getQuoteVar() {
+        return quoteVar;
+    }
+
+    public void setLobVar(RichSelectOneChoice lobVar) {
+        this.lobVar = lobVar;
+    }
+
+    public RichSelectOneChoice getLobVar() {
+        return lobVar;
+    }
+
+    public void setOfficeVar(RichSelectOneChoice officeVar) {
+        this.officeVar = officeVar;
+    }
+
+    public RichSelectOneChoice getOfficeVar() {
+        return officeVar;
+    }
+
+    public void setDescriptionVar(RichInputText descriptionVar) {
+        this.descriptionVar = descriptionVar;
+    }
+
+    public RichInputText getDescriptionVar() {
+        return descriptionVar;
+    }
+    private void showPopup(RichPopup pop, boolean visible) {
+     try {
+     FacesContext context = FacesContext.getCurrentInstance();
+     if (context != null && pop != null) {
+     String popupId = pop.getClientId(context);
+     if (popupId != null) {
+     StringBuilder script = new StringBuilder();
+     script.append("var popup = AdfPage.PAGE.findComponent('").append(popupId).append("'); ");
+     if (visible) {
+     script.append("if (!popup.isPopupVisible()) { ").append("popup.show();}");
+     } else {
+     script.append("if (popup.isPopupVisible()) { ").append("popup.hide();}");
+     }
+     ExtendedRenderKitService erks =
+     Service.getService(context.getRenderKit(), ExtendedRenderKitService.class);
+     erks.addScript(context, script.toString());
+     }
+     }
+     } catch (Exception e) {
+     throw new RuntimeException(e);
+     }
+     }
+    
+    public Date getMaxDateVal() {
+        /**
+         * this method is used for the validation of date component.
+         */
+        Calendar cal = Calendar.getInstance();
+        cal.setTime(new Date());
+        cal.add(Calendar.DATE, 300);
+        return cal.getTime();
+
+    }
+
+    public Date getMinDate() {
+        /**
+         * this method is used for the validation of date component.
+         */
+        try {
+            Calendar cal = Calendar.getInstance();
+            java.util.Date date = cal.getTime();
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            String currentDate = formatter.format(date);
+            minDate = formatter.parse(currentDate);
+
+            return formatter.parse(currentDate);
+        } catch (Exception e) {
+            return null;
+        }
+    }   
+    
+    public Date getendMinDate() {
+            /**
+             * this method is used for the validation of date component.
+             */
+            try {
+                Calendar cal = Calendar.getInstance();     
+                java.util.Date date = cal.getTime();
+                DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+                String currentDate = formatter.format(date);
+                minDate = formatter.parse(currentDate);
+
+                return formatter.parse(currentDate);
+            } catch (Exception e) {
+                return null;
+            }
+    }
+    
+    public void closeSavePopup(ActionEvent actionEvent) {
+         savePopup.cancel();
+       }
+    
+    public void closeSubmitPopup(ActionEvent actionEvent) {
+        submitPopup.cancel();
+        
+       }
+
+
+    public void setSubmitPopup(RichPopup submitPopup) {
+        this.submitPopup = submitPopup;
+    }
+
+    public RichPopup getSubmitPopup() {
+        return submitPopup;
+    }
+
+    public void setSavePopup(RichPopup savePopup) {
+        this.savePopup = savePopup;
+    }
+
+    public RichPopup getSavePopup() {
+        return savePopup;
+    }
+    
+    public static Date addDays(Date date, int days)
+      {
+          Calendar cal = Calendar.getInstance();
+          cal.setTime(date);
+          cal.add(Calendar.DATE, days); //minus number would decrement the days
+          return cal.getTime();
+      }
+    public static java.util.Date getUtilDateFromSqlDate(java.sql.Date sqlDate) {  
+       return new java.util.Date(sqlDate.getTime());  
+     }  
+ 
 }

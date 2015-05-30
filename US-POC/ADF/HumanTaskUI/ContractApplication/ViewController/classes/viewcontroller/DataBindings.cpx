@@ -18,6 +18,12 @@
     <page path="/ApproveQuote.jspx" usageId="viewcontroller_ApproveQuotePageDef1"/>
     <page path="com/fragments/approvequote.jsff" usageId="viewcontroller_approvequotePageDef"/>
     <page path="/com/fragments/approvequote.jsff" usageId="viewcontroller_approvequotePageDef"/>
+    <page path="ApproveQuoteVP.jspx" usageId="viewcontroller_ApproveQuoteVPPageDef"/>
+    <page path="/ApproveQuoteVP.jspx" usageId="viewcontroller_ApproveQuoteVPPageDef"/>
+    <page path="com/fragments/approveQuoteVP.jsff" usageId="viewcontroller_approveQuoteVPPageDef"/>
+    <page path="/com/fragments/approveQuoteVP.jsff" usageId="viewcontroller_approveQuoteVPPageDef"/>
+    <page path="/com/flows/ApproveQuote_TF.xml#ApproveQuoteTF@onload"
+          usageId="viewcontroller_ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_InitiateQuotePageDef" path="viewcontroller.pageDefs.InitiateQuotePageDef"/>
@@ -29,8 +35,13 @@
           path="com.flows.InitiateQuote_TF_initiatequoteTF_methodCall1PageDef"/>
     <page id="viewcontroller_ApproveQuotePageDef1" path="viewcontroller.pageDefs.ApproveQuotePageDef1"/>
     <page id="viewcontroller_approvequotePageDef" path="com.fragments.approvequotePageDef"/>
+    <page id="viewcontroller_ApproveQuoteVPPageDef" path="viewcontroller.pageDefs.ApproveQuoteVPPageDef"/>
+    <page id="viewcontroller_approveQuoteVPPageDef" path="com.fragments.approveQuoteVPPageDef"/>
+    <page id="viewcontroller_ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"
+          path="com.flows.ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
+    <dc id="ViewController_ApproveQuoteVP" path="viewcontroller.ViewController_ApproveQuoteVP"/>
     <dc id="ViewController_StartContract" path="viewcontroller.ViewController_StartContract"/>
     <dc id="ViewController_ApproveQuote" path="viewcontroller.ViewController_ApproveQuote"/>
     <dc id="ViewController_InitiateQuote" path="viewcontroller.ViewController_InitiateQuote"/>

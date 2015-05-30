@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<JavaBean xmlns="http://xmlns.oracle.com/adfm/beanmodel" version="12.1.3.10.8" id="Input_Quote"
+          Package="ViewController_ApproveQuoteVP" BeanClass="ViewController_ApproveQuoteVP.Input_Quote"
+          isJavaBased="false">
+  <Attribute Name="Directors" Type="java.lang.String">
+    <Properties>
+      <CustomProperties>
+        <Property Name="minOccurs" Value="0"/>
+        <Property Name="maxOccurs" Value="2147483640"/>
+        <Property Name="LABEL" Value="Directors"/>
+        <Property Name="LeafElement_hint" Value="LeafElement_no_attribute"/>
+        <Property Name="nillable" Value="false"/>
+        <Property Name="originalName" Value="Directors"/>
+        <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+        <Property Name="type" Value="java.lang.String"/>
+      </CustomProperties>
+    </Properties>
+  </Attribute>
+  <AccessorAttribute id="Quote" IsCollection="true" BeanClass="ViewController_ApproveQuoteVP.Quote_type"
+                     CollectionBeanClass="ViewController_ApproveQuoteVP.Quote_type_Quote_Operations">
+    <Properties>
+      <Property Name="nextSiblingNamespace" Value="http://www.contractmanagement.org"/>
+      <Property Name="nextSibling" Value="Directors"/>
+      <Property Name="minOccurs" Value="0"/>
+      <Property Name="maxOccurs" Value="1"/>
+      <Property Name="LABEL" Value="Quote"/>
+      <Property Name="nillable" Value="false"/>
+      <Property Name="originalName" Value="Quote"/>
+      <Property Name="targetNamespace" Value="http://www.contractmanagement.org"/>
+    </Properties>
+  </AccessorAttribute>
+</JavaBean>

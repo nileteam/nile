@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="ApproveQuoteTF">
-    <default-activity>approvequote</default-activity>
+    <default-activity>onload</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
@@ -13,6 +13,19 @@
     <view id="approvequote">
       <page>/com/fragments/approvequote.jsff</page>
     </view>
+    <method-call id="onload">
+      <method>#{pageFlowScope.ApproveQuote.OnLoad}</method>
+      <outcome>
+        <fixed-outcome>go</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>onload</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>go</from-outcome>
+        <to-activity-id>approvequote</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>
