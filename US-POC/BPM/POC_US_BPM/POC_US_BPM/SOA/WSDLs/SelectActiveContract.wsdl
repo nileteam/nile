@@ -1,0 +1,32 @@
+<wsdl:definitions
+     name="SelectActiveContract"
+     targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract"
+     xmlns:tns="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract"
+     xmlns:jca="http://xmlns.oracle.com/pcbpel/wsdl/jca/"
+     xmlns:plt="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:top="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+    >
+  <plt:partnerLinkType name="SelectActiveContract_plt" >
+    <plt:role name="SelectActiveContract_role" >
+      <plt:portType name="tns:SelectActiveContract_ptt" />
+    </plt:role>
+  </plt:partnerLinkType>
+    <wsdl:types>
+      <schema xmlns="http://www.w3.org/2001/XMLSchema" >
+        <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract" schemaLocation="../Schemas/SelectActiveContract_table.xsd" />
+      </schema>
+    </wsdl:types>
+    <wsdl:message name="SelectActiveContractSelect_inputParameters">
+        <wsdl:part name="SelectActiveContractSelect_inputParameters" element="top:SelectActiveContractSelectInputParameters"/>
+    </wsdl:message>
+    <wsdl:message name="ContractTxnCollection_msg">
+        <wsdl:part name="ContractTxnCollection" element="top:ContractTxnCollection"/>
+    </wsdl:message>
+    <wsdl:portType name="SelectActiveContract_ptt">
+        <wsdl:operation name="SelectActiveContractSelect">
+            <wsdl:input message="tns:SelectActiveContractSelect_inputParameters"/>
+            <wsdl:output message="tns:ContractTxnCollection_msg"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

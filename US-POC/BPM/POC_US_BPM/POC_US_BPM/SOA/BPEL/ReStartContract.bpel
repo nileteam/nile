@@ -1,0 +1,235 @@
+<?xml version = "1.0" encoding = "UTF-8" ?>
+<!--
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  Oracle JDeveloper BPEL Designer 
+  
+  Created: Wed May 27 11:57:11 IST 2015
+  Author:  dell
+  Type: BPEL 2.0 Process
+  Purpose: Asynchronous BPEL Process
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+-->
+<process name="ReStartContract"
+         targetNamespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract"
+         xmlns="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:client="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract"
+         xmlns:ora="http://schemas.oracle.com/xpath/extension"
+         xmlns:ui="http://xmlns.oracle.com/soa/designer"
+         xmlns:bpelx="http://schemas.oracle.com/bpel/extension"
+         xmlns:bpel="http://docs.oasis-open.org/wsbpel/2.0/process/executable"
+         xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+         xmlns:ns2="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns:xp20="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.Xpath20"
+         xmlns:bpws="http://schemas.xmlsoap.org/ws/2003/03/business-process/"
+         xmlns:oraext="http://www.oracle.com/XSL/Transform/java/oracle.tip.pc.services.functions.ExtFunc"
+         xmlns:dvm="http://www.oracle.com/XSL/Transform/java/oracle.tip.dvm.LookupValue"
+         xmlns:hwf="http://xmlns.oracle.com/bpel/workflow/xpath"
+         xmlns:ids="http://xmlns.oracle.com/bpel/services/IdentityService/xpath"
+         xmlns:bpm="http://xmlns.oracle.com/bpmn20/extensions" xmlns:ess="http://xmlns.oracle.com/scheduler"
+         xmlns:xdk="http://schemas.oracle.com/bpel/extension/xpath/function/xdk"
+         xmlns:xref="http://www.oracle.com/XSL/Transform/java/oracle.tip.xref.xpath.XRefXPathFunctions"
+         xmlns:ldap="http://schemas.oracle.com/xpath/extension/ldap"
+         xmlns:ns3="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess"
+         xmlns:ns4="http://www.contractmanagement.org">
+    <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract"
+            location="../Schemas/SelectActiveContract_table.xsd" importType="http://www.w3.org/2001/XMLSchema"/>
+    <import ui:processWSDL="true" namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract" location="../WSDLs/ReStartContract.wsdl" importType="http://schemas.xmlsoap.org/wsdl/"/>
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        PARTNERLINKS                                                      
+        List of services participating in this BPEL process               
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    --> 
+    <partnerLinks>
+        <!-- 
+      The 'client' role represents the requester of this service. It is 
+      used for callback. The location and correlation information associated
+      with the client role are automatically set using WS-Addressing.
+    -->
+        <partnerLink name="restartcontract_client" partnerLinkType="client:ReStartContract" myRole="ReStartContractProvider" partnerRole="ReStartContractRequester"/>
+        <partnerLink name="SelectActiveContract" partnerLinkType="ns1:SelectActiveContract_plt"
+                     partnerRole="SelectActiveContract_role"/>
+        <partnerLink name="ReinitiateContract" partnerLinkType="ns3:ContractProcessPortTypePartnerLinkType"
+                     partnerRole="ContractProcessPortTypeProvider"/>
+    </partnerLinks>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        VARIABLES                                                        
+        List of messages and XML documents used within this BPEL process 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <variables>
+        <!-- Reference to the message passed as input during initiation -->
+        <variable name="inputVariable" messageType="client:ReStartContractRequestMessage"/>
+
+        <!-- Reference to the message that will be sent back to the requester during callback -->
+        <variable name="outputVariable" messageType="client:ReStartContractResponseMessage"/>
+        <variable name="times" type="xsd:int"/>
+        <variable name="SelectContracts_SelectActiveContractSelect_InputVariable"
+                  messageType="ns1:SelectActiveContractSelect_inputParameters"/>
+        <variable name="SelectContracts_SelectActiveContractSelect_OutputVariable"
+                  messageType="ns1:ContractTxnCollection_msg"/>
+        <variable name="CallContract_start1_InputVariable" messageType="ns3:start1"/>
+    </variables>
+
+    <!-- 
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+       ORCHESTRATION LOGIC                                               
+       Set of activities coordinating the flow of messages across the    
+       services integrated within this business process                  
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    -->
+    <sequence name="main">
+        <!-- Receive input from requestor. (Note: This maps to operation defined in ReStartContract.wsdl) -->
+        <receive name="receiveInput" partnerLink="restartcontract_client" portType="client:ReStartContract" operation="process" variable="inputVariable" createInstance="yes"/>
+        <invoke name="SelectContracts" partnerLink="SelectActiveContract"
+                portType="ns1:SelectActiveContract_ptt" operation="SelectActiveContractSelect"
+                inputVariable="SelectContracts_SelectActiveContractSelect_InputVariable"
+                outputVariable="SelectContracts_SelectActiveContractSelect_OutputVariable" bpelx:invokeAsDetail="no"/>
+        <assign name="getlength">
+            <copy>
+                <from>count($SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn)</from>
+                <to>$times</to>
+            </copy>
+            <copy>
+                <from>string($times)</from>
+                <to>$outputVariable.payload/client:result</to>
+            </copy>
+        </assign>
+        <forEach parallel="no" counterName="ForEach1Counter" name="ForEachContract">
+            <startCounterValue>1</startCounterValue>
+            <finalCounterValue>$times</finalCounterValue>
+            <scope name="ContractScope">
+                <variables>
+                    <variable name="contracts" element="ns2:ContractTxnCollection"/>
+                    <variable name="CurrentDate" type="xsd:date"/>
+                    <variable name="Date1" type="xsd:string"/>
+                </variables>
+                <sequence name="ContractSequence">
+                    <assign name="GetContract">
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:director</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:director</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:quote</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:quote</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:office</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:office</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:description</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:description</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:lob</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:lob</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:contractstartdate</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:contractstartdate</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:contractenddate</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:contractenddate</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:client</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:client</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:quoteid</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:quoteid</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:contractterm</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:contractterm</to>
+                        </copy>
+                        <copy>
+                            <from>$SelectContracts_SelectActiveContractSelect_OutputVariable.ContractTxnCollection/ns2:ContractTxn[$ForEach1Counter]/ns2:status</from>
+                            <to>$contracts/ns2:ContractTxn/ns2:status</to>
+                        </copy>
+                    </assign>
+                    <assign name="Calculatedate">
+                        <copy>
+                            <from>xp20:subtract-dayTimeDuration-from-dateTime(string($contracts/ns2:ContractTxn/ns2:contractstartdate),'P3D')</from>
+                            <to>$CurrentDate</to>
+                        </copy>
+                    </assign>
+                    <assign name="Assign1">
+                        <copy>
+                            <from>concat(string(xp20:current-date()),'T00:00:00+05:30')</from>
+                            <to>$Date1</to>
+                        </copy>
+                    </assign>
+                    <if name="StartDatecheck">
+                        <condition>$CurrentDate = $Date1</condition>
+                        <sequence name="Sequence1">
+                            <assign name="Sendthevalues">
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:director</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Director</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:quote</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Quote</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:office</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Office</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:description</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Description</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:lob</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Lob</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:contractstartdate</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:ContractStartDate</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:contractenddate</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:ContractEndDate</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:client</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:Client</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:quoteid</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:QuoteID</to>
+                                </copy>
+                                <copy>
+                                    <from>$contracts/ns2:ContractTxn/ns2:contractterm</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/ns4:Input_Quote/ns4:Quote/ns4:ContractTerm</to>
+                                </copy>
+                                <copy>
+                                    <from>number(3)</from>
+                                    <to>$CallContract_start1_InputVariable.parameters/days</to>
+                                </copy>
+                            </assign>
+                            <invoke name="CallContract" partnerLink="ReinitiateContract"
+                                    portType="ns3:ContractProcessPortType" operation="start1"
+                                    inputVariable="CallContract_start1_InputVariable" bpelx:invokeAsDetail="no"/>
+                        </sequence>
+                        <else>
+                            <empty name="Empty1"/>
+                        </else>
+                    </if>
+                </sequence>
+            </scope>
+        </forEach>
+        <!-- 
+          Asynchronous callback to the requester. (Note: the callback location and correlation id is transparently handled using WS-addressing.)
+        -->
+        <invoke name="callbackClient" partnerLink="restartcontract_client" portType="client:ReStartContractCallback" operation="processResponse" inputVariable="outputVariable"/>
+    </sequence>
+</process>

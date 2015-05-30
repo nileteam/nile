@@ -1,0 +1,39 @@
+<?xml version= '1.0' encoding= 'UTF-8' ?>
+<wsdl:definitions
+     name="ReStartContract"
+     targetNamespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:client="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract"
+     xmlns:plnk="http://docs.oasis-open.org/wsbpel/2.0/plnktype"
+     xmlns:ns1="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract"
+    >
+    <plnk:partnerLinkType name="ReStartContract">
+        <plnk:role name="ReStartContractProvider" portType="client:ReStartContract"/>
+        <plnk:role name="ReStartContractRequester" portType="client:ReStartContractCallback"/>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <schema xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract" schemaLocation="../Schemas/ReStartContract.xsd"/>
+        </schema>
+        <xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+            <xsd:import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/SelectActiveContract"
+                 schemaLocation="../Schemas/SelectActiveContract_table.xsd"/>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="ReStartContractRequestMessage">
+        <wsdl:part name="payload" element="client:process"/>
+    </wsdl:message>
+    <wsdl:message name="ReStartContractResponseMessage">
+        <wsdl:part name="payload" element="client:processResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="ReStartContract">
+        <wsdl:operation name="process">
+            <wsdl:input message="client:ReStartContractRequestMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:portType name="ReStartContractCallback">
+        <wsdl:operation name="processResponse">
+            <wsdl:input message="client:ReStartContractResponseMessage"/>
+        </wsdl:operation>
+    </wsdl:portType>
+</wsdl:definitions>

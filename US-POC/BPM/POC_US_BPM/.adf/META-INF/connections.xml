@@ -5,18 +5,18 @@
       <StringRefAddr addrType="subtype">
         <Contents>oraJDBC</Contents>
       </StringRefAddr>
-      <StringRefAddr addrType="port">
-        <Contents>1522</Contents>
+      <StringRefAddr addrType="user">
+        <Contents>C##niledb</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="hostname">
         <Contents>192.168.1.149</Contents>
       </StringRefAddr>
-      <StringRefAddr addrType="user">
-        <Contents>C##niledb</Contents>
+      <StringRefAddr addrType="port">
+        <Contents>1522</Contents>
       </StringRefAddr>
       <SecureRefAddr addrType="password"/>
       <StringRefAddr addrType="serviceName">
-        <Contents>pdborcl12c</Contents>
+        <Contents>orcl12c</Contents>
       </StringRefAddr>
       <StringRefAddr addrType="oraDriverType">
         <Contents>thin</Contents>

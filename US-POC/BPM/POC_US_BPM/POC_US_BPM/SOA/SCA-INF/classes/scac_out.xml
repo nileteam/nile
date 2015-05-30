@@ -43,6 +43,106 @@
    <Fault>
       <severity>warning</severity>
       <loc/>
+      <line>175</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>179</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>183</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>187</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>191</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>195</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>199</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>203</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>207</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line>211</line>
+      <col/>
+      <file>BPEL/ReStartContract.bpel</file>
+      <name>BPEL/ReStartContract.bpel</name>
+      <fix>Add a predicate to select an element from the sequence.</fix>
+      <msg>The XPath segment "child::ns2:ContractTxn" selects a sequence of elements - a predicate MAY be needed to correctly select an element.</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
       <line/>
       <col/>
       <file>HumanTasks/StartContract.task</file>
@@ -77,6 +177,26 @@
       <col/>
       <file>HumanTasks/ApproveQuoteVP.task</file>
       <name>HumanTasks/ApproveQuoteVP.task</name>
+      <fix/>
+      <msg>Error assignee not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ReviewContract.task</file>
+      <name>HumanTasks/ReviewContract.task</name>
+      <fix/>
+      <msg>Task title not specified</msg>
+   </Fault>
+   <Fault>
+      <severity>warning</severity>
+      <loc/>
+      <line/>
+      <col/>
+      <file>HumanTasks/ReviewContract.task</file>
+      <name>HumanTasks/ReviewContract.task</name>
       <fix/>
       <msg>Error assignee not specified</msg>
    </Fault>
