@@ -2,6 +2,19 @@ package com.view.beans;
 
 import com.view.utility.ADFUtils;
 
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+
+import java.io.OutputStream;
+
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import java.util.Map;
 
 import javax.faces.context.FacesContext;
@@ -109,6 +122,70 @@ public class ApproveQuote {
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
+    }
+
+    public String download_Action() throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
+   
+     try {
+         Class.forName("oracle.jdbc.driver.OracleDriver");
+         Connection con =
+             DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c", "c##niledb", "welcome1");
+         //Connection con=getConnection("jdbc/NileDBDS");
+         PreparedStatement pstat =
+             con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOC_UPLOAD where CONTRACT_ID = ?");
+         pstat.setString(1, "testpdf");
+         ResultSet rs = pstat.executeQuery();
+         rs.next();
+         String fileName = rs.getString("FILE_NAME");
+         System.out.println(fileName);
+         InputStream f = rs.getBinaryStream("CONTRACT_DOC");
+         FileOutputStream f1 = new FileOutputStream("D:\\image\\" + fileName);
+         int i = 0;
+         while ((i = f.read()) != -1)
+             f1.write(i);
+         f1.close();
+         pstat.close();
+         rs.close();
+         con.close();
+       
+     } catch (SQLException sqle) {
+         // TODO: Add catch code
+         sqle.printStackTrace();
+     } catch (ClassNotFoundException cnfe) {
+         // TODO: Add catch code
+         cnfe.printStackTrace();
+     } catch (FileNotFoundException fnfe) {
+         // TODO: Add catch code
+         fnfe.printStackTrace();
+     } catch (IOException ioe) {
+         // TODO: Add catch code
+         ioe.printStackTrace();
+     }
+     return null;
+        
+    }
+    
+    public void testDownloadList(FacesContext facesContext, OutputStream outputStream)  throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
+//        Class.forName("oracle.jdbc.driver.OracleDriver");
+//         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c","c##niledb","welcome1");
+//         PreparedStatement pstat = con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOCUMENT where CONTRACT_ID = ?");
+//         pstat.setString(1,"testpdf");
+//         ResultSet rs = pstat.executeQuery();
+//         rs.next();
+//         String fileName = rs.getString("FILE_NAME");
+//         System.out.println(fileName);
+//         InputStream f = rs.getBinaryStream("CONTRACT_DOC");
+//        //         FileOutputStream f1 = new FileOutputStream("D:\\image\\"+fileName);
+//         int i=0;
+//         while((i=f.read())!=-1)
+//             outputStream.write(i);
+//        //        f1.close();
+//         outputStream.close();
+//        pstat.close();
+//        rs.close();
+//         con.close();
+        
+
     }
 
     public void OnLoad() {

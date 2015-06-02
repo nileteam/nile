@@ -12,12 +12,12 @@
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
                 <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
-                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
+                    <af:panelHeader text="#{bindings.title.inputValue}" visible="false" id="ph1">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
                         <f:facet name="toolbar">
-                            <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
+                            <af:toolbar visible="false" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
@@ -128,7 +128,7 @@
                             </af:toolbar>
                         </f:facet>
                         <f:facet name="context"/>
-                        <af:region value="#{bindings.ApproveQuoteTF1.regionModel}" id="r1"/>
+                     
                         <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
                                 <af:spacer width="15" height="15" id="s4"/>
@@ -866,6 +866,7 @@
                             </af:popup>
                         </af:panelGroupLayout>-->
                     </af:panelHeader>
+                       <af:region value="#{bindings.ApproveQuoteTF1.regionModel}" id="r1"/>
                     <f:facet name="separator"/>
                 </af:panelGroupLayout>
             </af:form>

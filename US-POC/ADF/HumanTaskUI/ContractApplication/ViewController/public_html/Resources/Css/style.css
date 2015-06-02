@@ -150,3 +150,30 @@ select {
   background-repeat: no-repeat;
   background-image: url("../Images/drop-down.png");
           }
+          
+af_inputFile.LABEL_UPDATE_BUTTON
+{
+    color: Red;
+    font-size: 15pt;
+}
+af|inputFile af|commandButton {
+height:25px;
+width:100px;
+border-radius:7px 7px 7px 7px;
+background:#35A288;
+color:White;
+font-size:13.0pt;
+font-family:Calibri;
+margin-left: 5px;
+}
+
+af|inputFile af|commandButton:hover{
+height:25px;
+width:100px;
+border-radius:7px 7px 7px 7px;
+background:#35A288;
+color:White;
+font-size:13.0pt;
+font-family:Calibri;
+margin-left: 5px;
+}

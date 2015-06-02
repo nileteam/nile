@@ -18,6 +18,8 @@
     <accessorIterator MasterBinding="Input_QuoteIterator" Binds="Quote" RangeSize="25"
                       DataControl="ViewController_ApproveQuoteVP" BeanClass="ViewController_ApproveQuoteVP.Quote_type"
                       id="QuoteIterator"/>
+    <iterator Binds="ContractDocUploadView1" RangeSize="25" DataControl="ContractAMDataControl"
+              id="ContractDocUploadView1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -234,5 +236,15 @@
     <methodAction IterBinding="taskIterator" id="REJECT" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="REJECT" IsViewObjectMethod="false" DataControl="ViewController_ApproveQuoteVP"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <tree IterBinding="ContractDocUploadView1Iterator" id="ContractDocUploadView1">
+      <nodeDefinition DefName="model.ContractDocUploadView" Name="ContractDocUploadView10">
+        <AttrNames>
+          <Item Value="SNo"/>
+          <Item Value="ContractId"/>
+          <Item Value="FileName"/>
+          <Item Value="FileType"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
   </bindings>
 </pageDefinition>

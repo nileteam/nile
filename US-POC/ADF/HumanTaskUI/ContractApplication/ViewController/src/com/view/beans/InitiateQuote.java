@@ -2,6 +2,12 @@ package com.view.beans;
 
 import com.view.utility.ADFUtils;
 import com.view.utility.JSFUtils;
+
+import java.io.FileNotFoundException;
+import java.io.IOException;
+
+import java.sql.SQLException;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.io.DataInputStream;
@@ -60,6 +66,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import java.sql.CallableStatement;
 import java.sql.Connection;
 
 import java.sql.DriverManager;
@@ -71,6 +78,8 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import java.sql.Timestamp;
+
+import java.sql.Types;
 
 import java.util.Date;
 
@@ -100,12 +109,15 @@ import oracle.jbo.domain.BlobDomain;
 
 import org.apache.myfaces.trinidad.model.UploadedFile;  
 import org.apache.myfaces.trinidad.util.Service;
-import oracle.adf.share.ADFContext;    
+import oracle.adf.share.ADFContext;
+
+import oracle.jbo.JboException;
 
 public class InitiateQuote {
     private RichSelectOneChoice directorVar;
 
     List<SelectItem> customList;
+    private RichSelectOneChoice clientVar;
 
     public void setMinValForEndDate1(oracle.jbo.domain.Date minValForEndDate1) {
         this.minValForEndDate1 = minValForEndDate1;
@@ -129,6 +141,7 @@ public class InitiateQuote {
     private String period;
     private RichInputText contractTerm;
     oracle.jbo.domain.Date minValForEndDate1;
+    String difference;
 
     public void setMinValForEndDateJBO(oracle.jbo.domain.Date minValForEndDateJBO) {
         this.minValForEndDateJBO = minValForEndDateJBO;
@@ -414,8 +427,8 @@ public class InitiateQuote {
                        }
                     
                    }
-                  fileName = fileName.concat("V_"+rws.length);
-                  fileName = fileCompare.concat("_V"+count).concat(sbe.toString());
+//                  fileName = fileName.concat("V_"+rws.length);
+//                  fileName = fileCompare.concat("_V"+count).concat(sbe.toString());
                   System.out.println(fileName);
          System.out.println("in upload method");
           
@@ -431,17 +444,20 @@ public class InitiateQuote {
                Connection dbConnection = null;
                dbConnection = getConnection("jdbc/NileDBDS");
                PreparedStatement ps =
-               dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " +
-                                                 "FILE_NAME" + ") VALUES (?,?,?)");
+               dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " + "FILE_TYPE, "+ "VERSION, "+
+                                                 "FILE_NAME" + ") VALUES (?,?,?,?,?)");
                ps.setString(1, quote);
                ps.setBytes(2, pdfData);
-               ps.setString(3, fileName);
+               ps.setString(3, "Quote");
+               ps.setInt(4, count);
+               ps.setString(5, fileName);
                ps.executeUpdate();
                ps.close();
                dbConnection.close();
                File f = new File(path);
                f.delete();
                System.out.println("Data Inserted Successfully.");
+               uploadfileVar.resetValue();
            } catch (SQLException sqle) {
                // TODO: Add catch code
                sqle.printStackTrace();
@@ -528,23 +544,41 @@ public class InitiateQuote {
 //               e.printStackTrace();
 //           }
 //           return null;
-           Class.forName("oracle.jdbc.driver.OracleDriver");
-            Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c","c##niledb","welcome1");
-            PreparedStatement pstat = con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOC_UPLOAD where CONTRACT_ID = ?");
-            pstat.setString(1,"testpdf");
+        try {
+            Class.forName("oracle.jdbc.driver.OracleDriver");
+            Connection con =
+                DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c", "c##niledb", "welcome1");
+            //Connection con=getConnection("jdbc/NileDBDS");
+            PreparedStatement pstat =
+                con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOC_UPLOAD where CONTRACT_ID = ?");
+            pstat.setString(1, "testpdf");
             ResultSet rs = pstat.executeQuery();
             rs.next();
             String fileName = rs.getString("FILE_NAME");
             System.out.println(fileName);
             InputStream f = rs.getBinaryStream("CONTRACT_DOC");
-            FileOutputStream f1 = new FileOutputStream("D:\\image\\"+fileName);
-            int i=0;
-            while((i=f.read())!=-1)
+            FileOutputStream f1 = new FileOutputStream("D:\\image\\" + fileName);
+            int i = 0;
+            while ((i = f.read()) != -1)
                 f1.write(i);
-        f1.close();
-        pstat.close();
-        rs.close();
+            f1.close();
+            pstat.close();
+            rs.close();
             con.close();
+          
+        } catch (SQLException sqle) {
+            // TODO: Add catch code
+            sqle.printStackTrace();
+        } catch (ClassNotFoundException cnfe) {
+            // TODO: Add catch code
+            cnfe.printStackTrace();
+        } catch (FileNotFoundException fnfe) {
+            // TODO: Add catch code
+            fnfe.printStackTrace();
+        } catch (IOException ioe) {
+            // TODO: Add catch code
+            ioe.printStackTrace();
+        }
         return null;
            
        }
@@ -566,7 +600,7 @@ public class InitiateQuote {
        public String initiate_Quote_Submit() {
            // TODO: Add catch code "Put validation and pop up"
            if(directorVar.getValue()!=null && quoteVar.getValue()!=null && officeVar.getValue()!=null && descriptionVar.getValue()!=null
-              && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null) {
+              && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null && clientVar.getValue()!=null) {
                String directors=(String)directorVar.getValue();
                System.out.println("directors---------------"+directors);
                
@@ -601,7 +635,7 @@ public class InitiateQuote {
     public String initiate_Quote_Save() {
             // TODO: Add catch code "Put validation and pop up"
          if(directorVar.getValue()!=null && quoteVar.getValue()!=null && officeVar.getValue()!=null && descriptionVar.getValue()!=null
-            && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null) {
+            && lobVar.getValue()!=null && startDate.getValue()!=null && endDate.getValue()!=null &&  clientVar.getValue()!=null) {
              
              OperationBinding SaveOP = ADFUtils.findOperation("update");
                         SaveOP.execute();
@@ -647,24 +681,24 @@ public class InitiateQuote {
     }
 
     public void testDownloadList(FacesContext facesContext, OutputStream outputStream)  throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
-        Class.forName("oracle.jdbc.driver.OracleDriver");
-         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c","c##niledb","welcome1");
-         PreparedStatement pstat = con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOCUMENT where CONTRACT_ID = ?");
-         pstat.setString(1,"testpdf");
-         ResultSet rs = pstat.executeQuery();
-         rs.next();
-         String fileName = rs.getString("FILE_NAME");
-         System.out.println(fileName);
-         InputStream f = rs.getBinaryStream("CONTRACT_DOC");
-        //         FileOutputStream f1 = new FileOutputStream("D:\\image\\"+fileName);
-         int i=0;
-         while((i=f.read())!=-1)
-             outputStream.write(i);
-        //        f1.close();
-         outputStream.close();
-        pstat.close();
-        rs.close();
-         con.close();
+//        Class.forName("oracle.jdbc.driver.OracleDriver");
+//         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c","c##niledb","welcome1");
+//         PreparedStatement pstat = con.prepareStatement("select CONTRACT_DOC,FILE_NAME from CONTRACT_DOCUMENT where CONTRACT_ID = ?");
+//         pstat.setString(1,"testpdf");
+//         ResultSet rs = pstat.executeQuery();
+//         rs.next();
+//         String fileName = rs.getString("FILE_NAME");
+//         System.out.println(fileName);
+//         InputStream f = rs.getBinaryStream("CONTRACT_DOC");
+//        //         FileOutputStream f1 = new FileOutputStream("D:\\image\\"+fileName);
+//         int i=0;
+//         while((i=f.read())!=-1)
+//             outputStream.write(i);
+//        //        f1.close();
+//         outputStream.close();
+//        pstat.close();
+//        rs.close();
+//         con.close();
         
 
     }
@@ -698,7 +732,7 @@ public class InitiateQuote {
 
     }
 
-    public void valueChange_endDate(ValueChangeEvent valueChangeEvent) {
+    public void valueChange_endDate (ValueChangeEvent valueChangeEvent) {
        
         java.sql.Date enddate = ( java.sql.Date)endDate.getValue();
         System.out.println("endDate"+enddate);
@@ -719,52 +753,69 @@ public class InitiateQuote {
         // int days = (int) ((ndays / (1000*60*60*24)) % 7);
         // System.out.println("days are -----------"+days);
         // return new Number(ndays);
-        String diff="";
-        long timeDiff = Math.abs(tsStart.getTime() - tsEnd.getTime());
-        diff = String.format("%d", TimeUnit.MILLISECONDS.toDays(timeDiff));
-        System.out.println("difference is "+diff);
-        int days=Integer.parseInt(diff);
-        System.out.println("days are ------->>>"+days);
-        if(days>=365){
-        int year= days/365;
-        System.out.println("year"+year);
-        int remainingDays =days% 365;
-        if(remainingDays!=0) {
-        if(remainingDays>30) {
-        int months=remainingDays/30;
-        System.out.println("months are "+months);
-        int daysFinal=remainingDays%30;
-        System.out.println("daysFinal are "+daysFinal);
-         period=year+"years"+months+"months"+daysFinal+"days";
-        System.out.println("duration is "+period);
+       
+//        OperationBinding binding=ADFUtils.findOperation("getDateDifference");
+//        binding.getParamsMap().put("d1",dateStart);
+//        binding.getParamsMap().put("d2",enddate);
+//        binding.execute();
+
+               
+     
+//        try{
+//
+//        cs=getDBTransaction().createCallableStatement("begin ? := DATE_DIFF(?,?); end;",0);
+//
+//        cs.registerOutParameter(1, Types.VARCHAR);
+//
+//        cs.setDate(2, d1);
+//            
+//        cs.setDate(3, d2);    
+//
+//        cs.executeUpdate();
+//
+//        return cs.getString(1);
+//
+//        }catch(SQLException e){
+//
+//        throw new JboException(e);
+//
+//        }
+        try {
+            Connection dbConnection = null;
+            dbConnection = getConnection("jdbc/NileDBDS");
+            String sql = "{ ? = call date_diff(?,?) }";
+            CallableStatement statement = dbConnection.prepareCall(sql);
+            statement.setDate(2,dateStart);
+            statement.setDate(3,enddate);
+            statement.registerOutParameter(1, Types.VARCHAR);
+            
+            
+            statement.execute();   
+            //this is the main line
+            difference = statement.getString(1);
+            System.out.println("difference is "+difference);
+            
+            int x=difference.indexOf("years");
+            System.out.println("index of years is"+x);
+
+           String subString1= difference.substring(0);
+           System.out.println("subString1"+subString1);
+            
+            if(subString1.equals("0")) {
+//              String monthIndex=difference.indexOf("month");
+            }
+
+
+        } catch (SQLException sqle) {
+            // TODO: Add catch code
+            sqle.printStackTrace();
+        } catch (NamingException ne) {
+            // TODO: Add catch code
+            ne.printStackTrace();
         }
-        else if(remainingDays<30) {
-         period=year+"years"+remainingDays+"days";
-        System.out.println("duration is "+period);
-        }
-        }
-        }
-        else if(days<365&&days>30) {
-        int month2= days/30;
-        System.out.println("month2====="+month2);
-        int days2=month2%30;
-        System.out.println("days2-----------"+days2);
-        if(days2!=0) {
-         period= month2+"months"+days2+"days";
-        System.out.println("duration is "+period);
-        }
-        else {
-         period=month2+"months";
-        System.out.println("duration is "+period);
-        }
-        }
-        else if(days <30) {
-         period=days+"days";
-        System.out.println("duration is "+period);
-        }
-        
-        contractTerm.setValue(period);
-        
+
+        contractTerm.setValue(difference);
+
     }
 
     public void setEndDate(RichInputDate endDate) {
@@ -951,6 +1002,13 @@ public class InitiateQuote {
       }
     public static java.util.Date getUtilDateFromSqlDate(java.sql.Date sqlDate) {  
        return new java.util.Date(sqlDate.getTime());  
-     }  
- 
+     }
+
+    public void setClientVar(RichSelectOneChoice clientVar) {
+        this.clientVar = clientVar;
+    }
+
+    public RichSelectOneChoice getClientVar() {
+        return clientVar;
+    }
 }

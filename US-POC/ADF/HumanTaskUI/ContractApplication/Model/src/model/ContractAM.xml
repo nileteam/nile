@@ -6,11 +6,32 @@
   Name="ContractAM"
   Version="12.1.3.10.8"
   InheritPersonalization="merge"
-  ClearCacheOnRollback="true">
-  <ViewUsage
-    Name="ContractDocumentView1"
-    ViewObjectName="model.ContractDocumentView"/>
+  ClearCacheOnRollback="true"
+  ComponentClass="model.ContractAMImpl"
+  ComponentInterface="model.common.ContractAM">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <ViewUsage
     Name="ContractDocUploadView1"
     ViewObjectName="model.ContractDocUploadView"/>
+     <ViewUsage
+    Name="socVo1"
+    ViewObjectName="model.socVo"/>
+  <ClientInterface
+    Name="__clientInterface">
+    <Method
+      Name="getDateDifference"
+      MethodName="getDateDifference">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="d1"
+        Type="java.sql.Date"/>
+      <Parameter
+        Name="d2"
+        Type="java.sql.Date"/>
+    </Method>
+  </ClientInterface>
 </AppModule>

@@ -24,6 +24,8 @@
     <page path="/com/fragments/approveQuoteVP.jsff" usageId="viewcontroller_approveQuoteVPPageDef"/>
     <page path="/com/flows/ApproveQuote_TF.xml#ApproveQuoteTF@onload"
           usageId="viewcontroller_ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
+    <page path="/com/flows/ApproveQuoteVP_TF.xml#ApproveQuoteVP_TF@OnLoad"
+          usageId="viewcontroller_ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_InitiateQuotePageDef" path="viewcontroller.pageDefs.InitiateQuotePageDef"/>
@@ -39,6 +41,8 @@
     <page id="viewcontroller_approveQuoteVPPageDef" path="com.fragments.approveQuoteVPPageDef"/>
     <page id="viewcontroller_ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"
           path="com.flows.ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
+    <page id="viewcontroller_ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"
+          path="com.flows.ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ViewController_ApproveQuoteVP" path="viewcontroller.ViewController_ApproveQuoteVP"/>

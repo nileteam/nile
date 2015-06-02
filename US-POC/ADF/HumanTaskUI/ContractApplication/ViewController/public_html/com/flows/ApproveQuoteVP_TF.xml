@@ -1,13 +1,31 @@
 <?xml version="1.0" encoding="windows-1252" ?>
 <adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
   <task-flow-definition id="ApproveQuoteVP_TF">
-    <default-activity>approveQuoteVP</default-activity>
+    <default-activity>OnLoad</default-activity>
     <data-control-scope>
       <shared/>
     </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>ApproveQuote</managed-bean-name>
+      <managed-bean-class>com.view.beans.ApproveQuote</managed-bean-class>
+      <managed-bean-scope>pageFlow</managed-bean-scope>
+    </managed-bean>
     <view id="approveQuoteVP">
       <page>/com/fragments/approveQuoteVP.jsff</page>
     </view>
+    <method-call id="OnLoad">
+      <method>#{pageFlowScope.ApproveQuote.OnLoad}</method>
+      <outcome>
+        <fixed-outcome>go</fixed-outcome>
+      </outcome>
+    </method-call>
+    <control-flow-rule id="__2">
+      <from-activity-id>OnLoad</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>go</from-outcome>
+        <to-activity-id>approveQuoteVP</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
     <use-page-fragments/>
   </task-flow-definition>
 </adfc-config>

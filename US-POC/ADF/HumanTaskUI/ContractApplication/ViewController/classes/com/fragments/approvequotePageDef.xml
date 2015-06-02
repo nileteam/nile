@@ -97,6 +97,7 @@
           <Item Value="SNo"/>
           <Item Value="ContractId"/>
           <Item Value="FileName"/>
+          <Item Value="FileType"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

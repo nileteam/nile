@@ -99,6 +99,7 @@
           <Item Value="ContractId"/>
           <Item Value="ContractDoc"/>
           <Item Value="FileName"/>
+          <Item Value="FileType"/>
         </AttrNames>
       </nodeDefinition>
     </tree>
@@ -140,5 +141,12 @@
         <Item Value="LOB9876"/>
       </ValueList>
     </list>
+    <methodAction id="getDateDifference" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getDateDifference"
+                  IsViewObjectMethod="false" DataControl="ContractAMDataControl"
+                  InstanceName="data.ContractAMDataControl.dataProvider"
+                  ReturnName="data.ContractAMDataControl.methodResults.getDateDifference_ContractAMDataControl_dataProvider_getDateDifference_result">
+      <NamedData NDName="d1" NDType="java.sql.Date"/>
+      <NamedData NDName="d2" NDType="java.sql.Date"/>
+    </methodAction>
   </bindings>
 </pageDefinition>

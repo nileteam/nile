@@ -75,6 +75,21 @@ where CONTRACT_ID=:conid]]></SQLQuery>
       <Attr Name="_DisplaySize" Value="4000"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="FileType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="FILE_TYPE"
+    Expression="FILE_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
   <AttrArray Name="KeyAttributes">
     <Item Value="SNo"/>
   </AttrArray>

@@ -1,300 +1,246 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
-     <af:panelGroupLayout id="pgl2">
-          <af:panelFormLayout id="pfl1">
-               <af:panelGroupLayout id="pgl13" layout="horizontal">
-                    <af:panelGroupLayout id="pgl1">
-                         <af:outputText value="Director" id="ot1" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.Director.inputValue}"
-                                       required="#{bindings.Director.hints.mandatory}"
-                                       columns="#{bindings.Director.hints.displayWidth}"
-                                       maximumLength="#{bindings.Director.hints.precision}"
-                                       shortDesc="#{bindings.Director.hints.tooltip}" id="it1"
-                                       contentStyle="height:20pt;" disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Director.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl3">
-                         <af:outputText value="Quote" id="ot2" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.Quote.inputValue}" required="#{bindings.Quote.hints.mandatory}"
-                                       columns="#{bindings.Quote.hints.displayWidth}"
-                                       maximumLength="#{bindings.Quote.hints.precision}"
-                                       shortDesc="#{bindings.Quote.hints.tooltip}" id="it2" contentStyle="height:20pt;"
-                                       disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Quote.validator}"/>
-                              <af:convertNumber groupingUsed="false" pattern="#{bindings.Quote.format}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl4">
-                         <af:outputText value="Office" id="ot3" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText required="#{bindings.Office.hints.mandatory}"
-                                       columns="#{bindings.Office.hints.displayWidth}"
-                                       maximumLength="#{bindings.Office.hints.precision}"
-                                       shortDesc="#{bindings.Office.hints.tooltip}" id="it3"
-                                       value="#{bindings.Office.inputValue}" contentStyle="height:20pt;"
-                                       disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Office.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl5">
-                         <af:outputText value="Description" id="ot4" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.Description.inputValue}"
-                                       required="#{bindings.Description.hints.mandatory}"
-                                       columns="#{bindings.Description.hints.displayWidth}"
-                                       maximumLength="#{bindings.Description.hints.precision}"
-                                       shortDesc="#{bindings.Description.hints.tooltip}" id="it4"
-                                       contentStyle="height:20pt;" disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Description.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl6">
-                         <af:outputText value="Lob" id="ot5" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.Lob.inputValue}" required="#{bindings.Lob.hints.mandatory}"
-                                       columns="#{bindings.Lob.hints.displayWidth}"
-                                       maximumLength="#{bindings.Lob.hints.precision}"
-                                       shortDesc="#{bindings.Lob.hints.tooltip}" id="it5" contentStyle="height:20pt;"
-                                       disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Lob.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-               </af:panelGroupLayout><br/>
-               <af:panelGroupLayout id="pgl14" layout="horizontal">
-                    <af:panelGroupLayout id="pgl7">
-                         <af:outputText value="Contract Start Date" id="ot6" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.ContractStartDate.inputValue}"
-                                       required="#{bindings.ContractStartDate.hints.mandatory}"
-                                       columns="#{bindings.ContractStartDate.hints.displayWidth}"
-                                       shortDesc="#{bindings.ContractStartDate.hints.tooltip}" id="id1"
-                                       contentStyle="height:20pt;" disabled="true" inlineStyle="margin-top:15px;"
-                                       styleClass="Enteredfont fonteffect">
-                              <f:validator binding="#{bindings.ContractStartDate.validator}"/>
-                              <af:convertDateTime pattern="#{bindings.ContractStartDate.format}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl8">
-                         <af:outputText value="Contract End Date" id="ot7" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.ContractEndDate.inputValue}"
-                                       required="#{bindings.ContractEndDate.hints.mandatory}"
-                                       columns="#{bindings.ContractEndDate.hints.displayWidth}"
-                                       shortDesc="#{bindings.ContractEndDate.hints.tooltip}" id="id2"
-                                       contentStyle="height:20pt;" disabled="true" inlineStyle="margin-top:15px;"
-                                       styleClass="Enteredfont fonteffect">
-                              <f:validator binding="#{bindings.ContractEndDate.validator}"/>
-                              <af:convertDateTime pattern="#{bindings.ContractEndDate.format}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-               </af:panelGroupLayout><br/><br/>
-               <af:panelGroupLayout id="pgl9" layout="horizontal">
-                    <af:panelGroupLayout id="pgl15">
-                         <af:outputText value="Client" id="ot8" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.Client.inputValue}"
-                                       required="#{bindings.Client.hints.mandatory}"
-                                       columns="#{bindings.Client.hints.displayWidth}"
-                                       maximumLength="#{bindings.Client.hints.precision}"
-                                       shortDesc="#{bindings.Client.hints.tooltip}" id="it6"
-                                       contentStyle="height:20pt;" disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.Client.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl10">
-                         <af:outputText value="Quote ID" id="ot9" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.QuoteID.inputValue}"
-                                       required="#{bindings.QuoteID.hints.mandatory}"
-                                       columns="#{bindings.QuoteID.hints.displayWidth}"
-                                       maximumLength="#{bindings.QuoteID.hints.precision}"
-                                       shortDesc="#{bindings.QuoteID.hints.tooltip}" id="it7"
-                                       contentStyle="height:20pt;" disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.QuoteID.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-                    <af:panelGroupLayout id="pgl11">
-                         <af:outputText value="Contract Term" id="ot10" styleClass="fonteffect"
-                                        inlineStyle="padding-left:6px;"/>
-                         <af:inputText value="#{bindings.ContractTerm.inputValue}"
-                                       required="#{bindings.ContractTerm.hints.mandatory}"
-                                       columns="#{bindings.ContractTerm.hints.displayWidth}"
-                                       maximumLength="#{bindings.ContractTerm.hints.precision}"
-                                       shortDesc="#{bindings.ContractTerm.hints.tooltip}" id="it8"
-                                       contentStyle="height:20pt;" disabled="true" styleClass="Enteredfont fonteffect"
-                                       inlineStyle="margin-top:15px;">
-                              <f:validator binding="#{bindings.ContractTerm.validator}"/>
-                         </af:inputText>
-                    </af:panelGroupLayout>
-               </af:panelGroupLayout><br/><br/>
-               <af:panelGroupLayout id="pgl12">
-                    <af:outputText value="Comments" id="ot11" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
-                    <af:inputText value="#{bindings.Comments.inputValue}"
-                                  required="#{bindings.Comments.hints.mandatory}"
-                                  columns="#{bindings.Comments.hints.displayWidth}"
-                                  maximumLength="#{bindings.Comments.hints.precision}"
-                                  shortDesc="#{bindings.Comments.hints.tooltip}" id="it9" rows="5"
-                                  inlineStyle="margin-top:15px;" styleClass="Enteredfont fonteffect"
-                                  binding="#{pageFlowScope.ApproveQuote.commentVar}">
-                         <f:validator binding="#{bindings.Comments.validator}"/>
+   <br/> <af:panelGroupLayout id="pgl2">
+        <af:panelFormLayout id="pfl1">
+            <af:panelGroupLayout id="pgl13" layout="horizontal">
+                <af:panelGroupLayout id="pgl10">
+                    <af:outputText value="Quote ID:" id="ot9" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.QuoteID.inputValue}" required="#{bindings.QuoteID.hints.mandatory}"
+                                  columns="#{bindings.QuoteID.hints.displayWidth}"
+                                  maximumLength="#{bindings.QuoteID.hints.precision}"
+                                  shortDesc="#{bindings.QuoteID.hints.tooltip}" id="it7"
+                                  contentStyle="height:20pt;width:100px;" disabled="true"
+                                  styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.QuoteID.validator}"/>
                     </af:inputText>
-               </af:panelGroupLayout>
-          </af:panelFormLayout><br/><br/>
-          <!--<af:panelFormLayout id="pfl1">
-               <af:inputText value="#{bindings.Director.inputValue}" label="#{bindings.Director.hints.label}"
-                             required="#{bindings.Director.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Director.hints.displayWidth}"
-                             maximumLength="#{bindings.Director.hints.precision}"
-                             shortDesc="#{bindings.Director.hints.tooltip}" id="it1">
-                    <f:validator binding="#{bindings.Director.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Quote.inputValue}" label="#{bindings.Quote.hints.label}"
-                             required="#{bindings.Quote.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Quote.hints.displayWidth}"
-                             maximumLength="#{bindings.Quote.hints.precision}"
-                             shortDesc="#{bindings.Quote.hints.tooltip}" id="it2">
-                    <f:validator binding="#{bindings.Quote.validator}"/>
-                    <af:convertNumber groupingUsed="false" pattern="#{bindings.Quote.format}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Office.inputValue}" label="#{bindings.Office.hints.label}"
-                             required="#{bindings.Office.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Office.hints.displayWidth}"
-                             maximumLength="#{bindings.Office.hints.precision}"
-                             shortDesc="#{bindings.Office.hints.tooltip}" id="it3">
-                    <f:validator binding="#{bindings.Office.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
-                             required="#{bindings.Description.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Description.hints.displayWidth}"
-                             maximumLength="#{bindings.Description.hints.precision}"
-                             shortDesc="#{bindings.Description.hints.tooltip}" id="it4">
-                    <f:validator binding="#{bindings.Description.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Lob.inputValue}" label="#{bindings.Lob.hints.label}"
-                             required="#{bindings.Lob.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Lob.hints.displayWidth}"
-                             maximumLength="#{bindings.Lob.hints.precision}" shortDesc="#{bindings.Lob.hints.tooltip}"
-                             id="it5">
-                    <f:validator binding="#{bindings.Lob.validator}"/>
-               </af:inputText>
-               <af:inputDate value="#{bindings.ContractStartDate.inputValue}" readOnly="true"
-                             label="#{bindings.ContractStartDate.hints.label}"
-                             required="#{bindings.ContractStartDate.hints.mandatory}"
-                             columns="#{bindings.ContractStartDate.hints.displayWidth}"
-                             shortDesc="#{bindings.ContractStartDate.hints.tooltip}" id="id1">
-                    <f:validator binding="#{bindings.ContractStartDate.validator}"/>
-                    <af:convertDateTime pattern="#{bindings.ContractStartDate.format}"/>
-               </af:inputDate>
-               <af:inputDate value="#{bindings.ContractEndDate.inputValue}" readOnly="true"
-                             label="#{bindings.ContractEndDate.hints.label}"
-                             required="#{bindings.ContractEndDate.hints.mandatory}"
-                             columns="#{bindings.ContractEndDate.hints.displayWidth}"
-                             shortDesc="#{bindings.ContractEndDate.hints.tooltip}" id="id2">
-                    <f:validator binding="#{bindings.ContractEndDate.validator}"/>
-                    <af:convertDateTime pattern="#{bindings.ContractEndDate.format}"/>
-               </af:inputDate>
-               <af:inputText value="#{bindings.Client.inputValue}" label="#{bindings.Client.hints.label}"
-                             required="#{bindings.Client.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.Client.hints.displayWidth}"
-                             maximumLength="#{bindings.Client.hints.precision}"
-                             shortDesc="#{bindings.Client.hints.tooltip}" id="it6">
-                    <f:validator binding="#{bindings.Client.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.QuoteID.inputValue}" label="#{bindings.QuoteID.hints.label}"
-                             required="#{bindings.QuoteID.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.QuoteID.hints.displayWidth}"
-                             maximumLength="#{bindings.QuoteID.hints.precision}"
-                             shortDesc="#{bindings.QuoteID.hints.tooltip}" id="it7">
-                    <f:validator binding="#{bindings.QuoteID.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.ContractTerm.inputValue}" label="#{bindings.ContractTerm.hints.label}"
-                             required="#{bindings.ContractTerm.hints.mandatory}" readOnly="true"
-                             columns="#{bindings.ContractTerm.hints.displayWidth}"
-                             maximumLength="#{bindings.ContractTerm.hints.precision}"
-                             shortDesc="#{bindings.ContractTerm.hints.tooltip}" id="it8">
-                    <f:validator binding="#{bindings.ContractTerm.validator}"/>
-               </af:inputText>
-               <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
-                             required="#{bindings.Comments.hints.mandatory}" 
-                             columns="#{bindings.Comments.hints.displayWidth}"
-                             maximumLength="#{bindings.Comments.hints.precision}"
-                             shortDesc="#{bindings.Comments.hints.tooltip}" id="it9"
-                             binding="#{pageFlowScope.ApproveQuote.commentVar}">
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl1">
+                    <af:outputText value="Director:" id="ot1" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.Director.inputValue}"
+                                  required="#{bindings.Director.hints.mandatory}"
+                                  columns="#{bindings.Director.hints.displayWidth}"
+                                  maximumLength="#{bindings.Director.hints.precision}"
+                                  shortDesc="#{bindings.Director.hints.tooltip}" id="it1"
+                                  contentStyle="height:20pt;width:185px;" disabled="true"
+                                  styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Director.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl4">
+                    <af:outputText value="Office:" id="ot3" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText required="#{bindings.Office.hints.mandatory}"
+                                  columns="#{bindings.Office.hints.displayWidth}"
+                                  maximumLength="#{bindings.Office.hints.precision}"
+                                  shortDesc="#{bindings.Office.hints.tooltip}" id="it3"
+                                  value="#{bindings.Office.inputValue}" contentStyle="height:20pt;width:185px;"
+                                  disabled="true" styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Office.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl6">
+                    <af:outputText value="Lob:" id="ot5" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.Lob.inputValue}" required="#{bindings.Lob.hints.mandatory}"
+                                  columns="#{bindings.Lob.hints.displayWidth}"
+                                  maximumLength="#{bindings.Lob.hints.precision}"
+                                  shortDesc="#{bindings.Lob.hints.tooltip}" id="it5"
+                                  contentStyle="height:20pt;width:190px;" disabled="true"
+                                  styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Lob.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl5">
+                    <af:outputText value="Description:" id="ot4" styleClass="fonteffect"
+                                   inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.Description.inputValue}"
+                                  required="#{bindings.Description.hints.mandatory}"
+                                  columns="#{bindings.Description.hints.displayWidth}"
+                                  maximumLength="#{bindings.Description.hints.precision}"
+                                  shortDesc="#{bindings.Description.hints.tooltip}" id="it4" contentStyle="height:20pt;"
+                                  disabled="true" styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Description.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <br/>
+            <af:panelGroupLayout id="pgl14" layout="horizontal">
+                <af:panelGroupLayout id="pgl7">
+                    <af:outputText value="Contract Start Date:" id="ot6" styleClass="fonteffect"
+                                   inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.ContractStartDate.inputValue}"
+                                  required="#{bindings.ContractStartDate.hints.mandatory}"
+                                  columns="#{bindings.ContractStartDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.ContractStartDate.hints.tooltip}" id="id1"
+                                  contentStyle="height:20pt;" disabled="true" inlineStyle="margin-top:15px;"
+                                  styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.ContractStartDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.ContractStartDate.format}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl8">
+                    <af:outputText value="Contract End Date:" id="ot7" styleClass="fonteffect"
+                                   inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.ContractEndDate.inputValue}"
+                                  required="#{bindings.ContractEndDate.hints.mandatory}"
+                                  columns="#{bindings.ContractEndDate.hints.displayWidth}"
+                                  shortDesc="#{bindings.ContractEndDate.hints.tooltip}" id="id2"
+                                  contentStyle="height:20pt;" disabled="true" inlineStyle="margin-top:15px;"
+                                  styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{bindings.ContractEndDate.validator}"/>
+                        <af:convertDateTime pattern="#{bindings.ContractEndDate.format}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <br/>
+            <br/>
+            <af:panelGroupLayout id="pgl9" layout="horizontal">
+                <af:panelGroupLayout id="pgl15">
+                    <af:outputText value="Client:" id="ot8" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.Client.inputValue}" required="#{bindings.Client.hints.mandatory}"
+                                  columns="#{bindings.Client.hints.displayWidth}"
+                                  maximumLength="#{bindings.Client.hints.precision}"
+                                  shortDesc="#{bindings.Client.hints.tooltip}" id="it6" contentStyle="height:20pt;"
+                                  disabled="true" styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Client.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl3">
+                    <af:outputText value="Quote:" id="ot2" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.Quote.inputValue}" required="#{bindings.Quote.hints.mandatory}"
+                                  columns="#{bindings.Quote.hints.displayWidth}"
+                                  maximumLength="#{bindings.Quote.hints.precision}"
+                                  shortDesc="#{bindings.Quote.hints.tooltip}" id="it2" contentStyle="height:20pt;"
+                                  disabled="true" styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.Quote.validator}"/>
+                        <af:convertNumber groupingUsed="false" pattern="#{bindings.Quote.format}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+                <af:panelGroupLayout id="pgl11">
+                    <af:outputText value="Contract Term:" id="ot10" styleClass="fonteffect"
+                                   inlineStyle="padding-left:6px;"/>
+                    <af:inputText value="#{bindings.ContractTerm.inputValue}"
+                                  required="#{bindings.ContractTerm.hints.mandatory}"
+                                  columns="#{bindings.ContractTerm.hints.displayWidth}"
+                                  maximumLength="#{bindings.ContractTerm.hints.precision}"
+                                  shortDesc="#{bindings.ContractTerm.hints.tooltip}" id="it8"
+                                  contentStyle="height:20pt;width:220px;" disabled="true" styleClass="Enteredfont fonteffect"
+                                  inlineStyle="margin-top:15px;">
+                        <f:validator binding="#{bindings.ContractTerm.validator}"/>
+                    </af:inputText>
+                </af:panelGroupLayout>
+            </af:panelGroupLayout>
+            <br/>
+            <br/>
+            <af:panelGroupLayout id="pgl12">
+            <af:outputText value="*" id="ot23" inlineStyle="color:Red;padding-left:8px;"/>
+                <af:outputText value="Comments:" id="ot11" styleClass="fonteffect"/>
+                <af:inputText value="#{bindings.Comments.inputValue}" required="#{bindings.Comments.hints.mandatory}"
+                              columns="#{bindings.Comments.hints.displayWidth}"
+                              maximumLength="#{bindings.Comments.hints.precision}"
+                              shortDesc="#{bindings.Comments.hints.tooltip}" id="it9" rows="5"
+                              inlineStyle="margin-top:15px;" styleClass="Enteredfont fonteffect"
+                              binding="#{pageFlowScope.ApproveQuote.commentVar}" contentStyle="width:250px;">
                     <f:validator binding="#{bindings.Comments.validator}"/>
-               </af:inputText>
-              
-        
-        
-        
-        
-               
-               
-          </af:panelFormLayout>-->
-            <af:popup binding="#{pageFlowScope.ApproveQuote.rejectPopuUpVar}" childCreation="deferred"
-                  autoCancel="disabled" id="p1" contentDelivery="immediate">
+                </af:inputText>
+            </af:panelGroupLayout>
+        </af:panelFormLayout>
+        <br/>
+        <br/>
+        <af:popup binding="#{pageFlowScope.ApproveQuote.rejectPopuUpVar}" childCreation="deferred" autoCancel="disabled"
+                  id="p1" contentDelivery="immediate">
             <af:dialog id="d1" type="none" inlineStyle="background-color:#ccf2ee;height:145px;width:350px;">
                 <f:facet name="buttonBar"/>
-                 <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
-                <af:outputText value="  Please provide the reason(s) for rejecting the PO Requisition, in the Comment field." id="ot30"
-                inlineStyle="font-size:10pt;color:black;"/>
-                <af:button text="OK"
-                           inlineStyle="margin-top:45px;margin-left:140px;background-color:#e9f2f0;font-size:11pt;"
-                            id="b5" actionListener="#{pageFlowScope.ApproveQuote.closeRejectPopup}"/>
+                <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
+                    <af:outputText value="  Please provide the reason(s) for rejecting the Quote, in the Comment field."
+                                   id="ot30" inlineStyle="font-size:10pt;color:black;"/>
+                    <af:button text="OK"
+                               inlineStyle="margin-top:45px;margin-left:140px;background-color:#e9f2f0;font-size:11pt;"
+                               id="b5" actionListener="#{pageFlowScope.ApproveQuote.closeRejectPopup}"/>
                 </af:panelFormLayout>
             </af:dialog>
         </af:popup>
-          <af:table value="#{bindings.ContractDocUploadView1.collectionModel}" var="row"
-                    rows="#{bindings.ContractDocUploadView1.rangeSize}"
-                    emptyText="#{bindings.ContractDocUploadView1.viewable ? 'No data to display.' : 'Access Denied.'}"
-                    rowBandingInterval="0" fetchSize="#{bindings.ContractDocUploadView1.rangeSize}" id="t1">
-               <af:column headerText="#{bindings.ContractDocUploadView1.hints.SNo.label}" id="c1">
+        <af:panelFormLayout id="pfl2" inlineStyle="background-color:#e9f2f0;">
+         <af:panelGroupLayout id="pgl19" inlineStyle="width:200px;">
+                   <br/> <af:outputText value="DOCUMENT DETAILS" id="ot12"
+                                   inlineStyle=" margin-left:13px; border-bottom-color:WindowText; border-bottom-style:outset; border-bottom-width:thin;"
+                                   styleClass="fonteffect"/>
+                </af:panelGroupLayout><br/><br/>
+            <af:table value="#{bindings.ContractDocUploadView1.collectionModel}" var="row"
+                      rows="#{bindings.ContractDocUploadView1.rangeSize}"
+                      emptyText="#{bindings.ContractDocUploadView1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                      rowBandingInterval="0" fetchSize="#{bindings.ContractDocUploadView1.rangeSize}" id="t1"
+                      styleClass="tablecss" inlineStyle="margin-left:15px;" width="853" autoHeightRows="10">
+                <af:column headerText="S.No" id="c1"
+                           styleClass="head tablecss" align="center" width="150">
                     <af:inputText value="#{row.bindings.SNo.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.SNo.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.SNo.mandatory}"
                                   columns="#{bindings.ContractDocUploadView1.hints.SNo.displayWidth}"
                                   maximumLength="#{bindings.ContractDocUploadView1.hints.SNo.precision}"
-                                  shortDesc="#{bindings.ContractDocUploadView1.hints.SNo.tooltip}" id="it10">
-                         <f:validator binding="#{row.bindings.SNo.validator}"/>
-                         <af:convertNumber groupingUsed="false"
-                                           pattern="#{bindings.ContractDocUploadView1.hints.SNo.format}"/>
+                                  shortDesc="#{bindings.ContractDocUploadView1.hints.SNo.tooltip}" id="it10"
+                                  styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{row.bindings.SNo.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ContractDocUploadView1.hints.SNo.format}"/>
                     </af:inputText>
-               </af:column>
-               <af:column headerText="#{bindings.ContractDocUploadView1.hints.ContractId.label}" id="c2">
+                </af:column>
+                <af:column headerText="Contract Id" id="c2"
+                           styleClass="head tablecss" align="center" width="150">
                     <af:inputText value="#{row.bindings.ContractId.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.ContractId.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.ContractId.mandatory}"
                                   columns="#{bindings.ContractDocUploadView1.hints.ContractId.displayWidth}"
                                   maximumLength="#{bindings.ContractDocUploadView1.hints.ContractId.precision}"
-                                  shortDesc="#{bindings.ContractDocUploadView1.hints.ContractId.tooltip}" id="it11">
-                         <f:validator binding="#{row.bindings.ContractId.validator}"/>
+                                  shortDesc="#{bindings.ContractDocUploadView1.hints.ContractId.tooltip}" id="it11"
+                                  styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{row.bindings.ContractId.validator}"/>
                     </af:inputText>
-               </af:column>
-               <af:column headerText="#{bindings.ContractDocUploadView1.hints.FileName.label}" id="c3">
+                </af:column>
+                <af:column headerText="#{bindings.ContractDocUploadView1.hints.FileType.label}" id="c4" width="150">
+                    <af:inputText value="#{row.bindings.FileType.inputValue}"
+                                  label="#{bindings.ContractDocUploadView1.hints.FileType.label}"
+                                  required="#{bindings.ContractDocUploadView1.hints.FileType.mandatory}"
+                                  columns="#{bindings.ContractDocUploadView1.hints.FileType.displayWidth}"
+                                  maximumLength="#{bindings.ContractDocUploadView1.hints.FileType.precision}"
+                                  shortDesc="#{bindings.ContractDocUploadView1.hints.FileType.tooltip}" id="it13">
+                        <f:validator binding="#{row.bindings.FileType.validator}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="File Name" id="c3"
+                           styleClass="head tablecss" width="300" align="center">
                     <af:inputText value="#{row.bindings.FileName.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.FileName.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.FileName.mandatory}"
                                   columns="#{bindings.ContractDocUploadView1.hints.FileName.displayWidth}"
                                   maximumLength="#{bindings.ContractDocUploadView1.hints.FileName.precision}"
-                                  shortDesc="#{bindings.ContractDocUploadView1.hints.FileName.tooltip}" id="it12">
-                         <f:validator binding="#{row.bindings.FileName.validator}"/>
+                                  shortDesc="#{bindings.ContractDocUploadView1.hints.FileName.tooltip}" id="it12"
+                                  styleClass="Enteredfont fonteffect">
+                        <f:validator binding="#{row.bindings.FileName.validator}"/>
                     </af:inputText>
-               </af:column>
-          </af:table>
-          <af:panelGroupLayout id="pgl16">
-               <af:commandImageLink id="l1" actionListener="#{bindings.APPROVE.execute}" icon="/Resources/Images/APPROVE-Black.png"/>
-               <af:commandImageLink id="l2" action="#{pageFlowScope.ApproveQuote.reject_Action}" icon="/Resources/Images/REJECT-Black.png"
-                                    inlineStyle="margin-left:5px;"/>
-               <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" id="b1"/>-->
-               <!--<af:button text="REJECT" action="#{pageFlowScope.ApproveQuote.reject_Action}" id="b2"/>-->
-          </af:panelGroupLayout>
-     </af:panelGroupLayout>
-          </jsp:root>
+                </af:column>
+                <af:column id="c5" headerText="Download" styleClass="head tablecss" width="78" align="center">
+                    <!--<af:button text="download" id="b2">
+     <af:fileDownloadActionListener filename="#{row.FileName}" method="#{pageFlowScope.ApproveQuote.testDownloadList}"/>
+    </af:button>-->
+                    <af:commandImageLink id="l3" icon="/Resources/Images/download-icon.png">
+                        <af:fileDownloadActionListener filename="#{row.FileName}"
+                                                       method="#{pageFlowScope.ApproveQuote.testDownloadList}"/>
+                    </af:commandImageLink>
+                </af:column>
+            </af:table>
+            <br/>
+            <br/>
+            <af:panelGroupLayout id="pgl16" inlineStyle="margin-left:15px;">
+                <af:commandImageLink id="l1" actionListener="#{bindings.APPROVE.execute}"
+                                     icon="/Resources/Images/APPROVE-Black.png"/>
+                <af:commandImageLink id="l2" action="#{pageFlowScope.ApproveQuote.reject_Action}"
+                                     icon="/Resources/Images/REJECT-Black.png" inlineStyle="margin-left:5px;"/>
+                <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" id="b1"/>-->
+                <!--<af:button text="REJECT" action="#{pageFlowScope.ApproveQuote.reject_Action}" id="b2"/>-->
+            </af:panelGroupLayout>
+            <af:panelGroupLayout id="pgl18">
+                <af:spacer width="10" height="30" id="s1"/>
+            </af:panelGroupLayout>
+        </af:panelFormLayout>
+    </af:panelGroupLayout>
+</jsp:root>

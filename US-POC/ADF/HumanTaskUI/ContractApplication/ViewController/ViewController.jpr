@@ -420,7 +420,7 @@
                <value n="remoteProtocol" v="SOA"/>
             </hash>
             <value n="remoteDebuggingProfiling" v="true"/>
-            <url n="targetURL" path="SOA\composite.xml"/>
+            <url n="targetURL" protocol="sqldev.nav" path="%2540D%2540%2540USPOC%2540CODE%2540BCKUP%2540new%2540check%2540out%254030_05%2540nile%2540US-POC%2540ADF%2540HumanTaskUI%2540ContractApplication%2540ContractApplication.jws%2523Connection1//C%23%23NILEDB/FUNCTION/DATE_DIFF"/>
          </hash>
       </hash>
    </hash>
