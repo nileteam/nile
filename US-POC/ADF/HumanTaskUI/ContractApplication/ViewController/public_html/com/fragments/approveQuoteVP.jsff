@@ -170,7 +170,7 @@
                       emptyText="#{bindings.ContractDocUploadView1.viewable ? 'No data to display.' : 'Access Denied.'}"
                       rowBandingInterval="0" fetchSize="#{bindings.ContractDocUploadView1.rangeSize}" id="t1"
                       styleClass="tablecss" inlineStyle="margin-left:15px;" width="853" autoHeightRows="10">
-                <af:column headerText="#{bindings.ContractDocUploadView1.hints.SNo.label}" id="c1"
+                <af:column headerText="S.No" id="c1"
                            styleClass="head tablecss" align="center" width="150">
                     <af:inputText value="#{row.bindings.SNo.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.SNo.label}"
@@ -184,7 +184,7 @@
                                           pattern="#{bindings.ContractDocUploadView1.hints.SNo.format}"/>
                     </af:inputText>
                 </af:column>
-                <af:column headerText="#{bindings.ContractDocUploadView1.hints.ContractId.label}" id="c2"
+                <af:column headerText="Contract Id" id="c2"
                            styleClass="head tablecss" align="center" width="150">
                     <af:inputText value="#{row.bindings.ContractId.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.ContractId.label}"
@@ -196,7 +196,7 @@
                         <f:validator binding="#{row.bindings.ContractId.validator}"/>
                     </af:inputText>
                 </af:column>
-                <af:column headerText="#{bindings.ContractDocUploadView1.hints.FileType.label}" id="c4"
+                <af:column headerText="File Type" id="c4"
                            styleClass="head tablecss" align="center" width="150">
                     <af:inputText value="#{row.bindings.FileType.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.FileType.label}"
@@ -208,7 +208,7 @@
                         <f:validator binding="#{row.bindings.FileType.validator}"/>
                     </af:inputText>
                 </af:column>
-                <af:column headerText="#{bindings.ContractDocUploadView1.hints.FileName.label}" id="c3"
+                <af:column headerText="File Name" id="c3"
                            styleClass="head tablecss" width="300" align="center">
                     <af:inputText value="#{row.bindings.FileName.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.FileName.label}"

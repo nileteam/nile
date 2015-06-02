@@ -251,7 +251,7 @@ id="b7" actionListener="#{pageFlowScope.InitiateQuote.closeSavePopup}"/>
     <af:outputText value="#{row.ContractDoc}" shortDesc="#{bindings.ContractDocUploadView1.hints.ContractDoc.tooltip}"
                    id="ot3"/>
    </af:column>-->
-     <af:column headerText="FileType" id="c3" styleClass="head tablecss"
+     <af:column headerText="File Type" id="c3" styleClass="head tablecss"
               align="center" width="150">
       <af:outputText value="#{row.FileType}" shortDesc="#{bindings.ContractDocUploadView1.hints.FileType.tooltip}"
                      id="ot11"/>
