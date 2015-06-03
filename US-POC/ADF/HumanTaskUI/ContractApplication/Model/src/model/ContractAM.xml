@@ -18,6 +18,12 @@
      <ViewUsage
     Name="socVo1"
     ViewObjectName="model.socVo"/>
+  <ViewUsage
+    Name="quoteVO1"
+    ViewObjectName="model.quoteVO"/>
+  <ViewUsage
+    Name="contractVO1"
+    ViewObjectName="model.contractVO"/>
   <ClientInterface
     Name="__clientInterface">
     <Method

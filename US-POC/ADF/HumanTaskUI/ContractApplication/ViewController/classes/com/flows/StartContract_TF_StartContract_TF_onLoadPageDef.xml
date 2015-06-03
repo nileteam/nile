@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="StartContract_TF_StartContract_TF_onLoadPageDef" Package="com.flows" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_StartContract" RangeSize="25"
+                    BeanClass="ViewController_StartContract.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="10"
+                      DataControl="ViewController_StartContract" BeanClass="ViewController_StartContract.task"
+                      id="taskIterator"/>
+    <iterator Binds="ContractDocUploadView1" RangeSize="10" DataControl="ContractAMDataControl"
+              id="ContractDocUploadView1Iterator"/>
+    <iterator Binds="contractVO1" RangeSize="10" DataControl="ContractAMDataControl" id="contractVO1Iterator"/>
+    <iterator Binds="quoteVO1" RangeSize="10" DataControl="ContractAMDataControl" id="quoteVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_StartContract"
+                  InstanceName="data.ViewController_StartContract"
+                  ReturnName="data.ViewController_StartContract.methodResults.getTaskDetails_ViewController_StartContract_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="taskIterator" id="task">
+      <nodeDefinition DefName="ViewController_StartContract.task" Name="task0">
+        <AttrNames>
+          <Item Value="title"/>
+          <Item Value="applicationContext"/>
+          <Item Value="category"/>
+          <Item Value="correlationId"/>
+          <Item Value="creator"/>
+          <Item Value="creatorDisplayName"/>
+          <Item Value="documentPackageId"/>
+          <Item Value="dueDate"/>
+          <Item Value="identificationKey"/>
+          <Item Value="identityContext"/>
+          <Item Value="isPublic"/>
+          <Item Value="longSummary"/>
+          <Item Value="mdsLabel"/>
+          <Item Value="notificationMode"/>
+          <Item Value="ownerGroup"/>
+          <Item Value="ownerGroupDisplayName"/>
+          <Item Value="ownerRole"/>
+          <Item Value="ownerRoleDisplayName"/>
+          <Item Value="ownerUser"/>
+          <Item Value="ownerUserDisplayName"/>
+          <Item Value="percentageComplete"/>
+          <Item Value="priority"/>
+          <Item Value="shortSummary"/>
+          <Item Value="startDate"/>
+          <Item Value="subcategory"/>
+          <Item Value="taskDefinitionId"/>
+          <Item Value="taskDefinitionURI"/>
+          <Item Value="taskDisplayUrl"/>
+          <Item Value="titleResourceKey"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="payload"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_StartContract.StartContractPayloadType" Name="task1">
+        <Accessors>
+          <Item Value="Input_Contract"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_StartContract.Input_Contract" Name="task2">
+        <Accessors>
+          <Item Value="Contract"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_StartContract.Contract_type" Name="task3">
+        <AttrNames>
+          <Item Value="Purchase_Requisition_No"/>
+          <Item Value="Comments"/>
+          <Item Value="Cost_Centre"/>
+          <Item Value="Item_Description"/>
+          <Item Value="Name_of_Supplier"/>
+          <Item Value="Need_By_Date"/>
+          <Item Value="Other_Special_TermsConditions"/>
+          <Item Value="Payment_Terms"/>
+          <Item Value="Value_of_Item"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="ContractDocUploadView1Iterator" id="ExecuteWithParams"
+            InstanceName="ContractAMDataControl.ContractDocUploadView1" DataControl="ContractAMDataControl"
+            RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="contractVO1Iterator" id="ExecuteWithParams1" InstanceName="ContractAMDataControl.contractVO1"
+            DataControl="ContractAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="quoteVO1Iterator" id="ExecuteWithParams2" InstanceName="ContractAMDataControl.quoteVO1"
+            DataControl="ContractAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
+  </bindings>
+</pageDefinition>

@@ -90,6 +90,16 @@ where CONTRACT_ID=:conid]]></SQLQuery>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="VERSION"
+    Expression="VERSION"
+    SQLType="NUMERIC"/>
   <AttrArray Name="KeyAttributes">
     <Item Value="SNo"/>
   </AttrArray>

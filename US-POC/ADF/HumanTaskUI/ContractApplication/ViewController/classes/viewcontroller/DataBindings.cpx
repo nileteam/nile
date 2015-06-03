@@ -7,7 +7,6 @@
     <dtfactory className="oracle.adf.controller.internal.dtrt.binding.BindingDTObjectFactory"/>
   </definitionFactories>
   <pageMap>
-    <page path="/StartContract.jspx" usageId="viewcontroller_StartContractPageDef"/>
     <page path="InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
     <page path="/InitiateQuote.jspx" usageId="viewcontroller_InitiateQuotePageDef1"/>
     <page path="com/fragments/initiatequote.jsff" usageId="viewcontroller_initiatequotePageDef"/>
@@ -26,6 +25,12 @@
           usageId="viewcontroller_ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
     <page path="/com/flows/ApproveQuoteVP_TF.xml#ApproveQuoteVP_TF@OnLoad"
           usageId="viewcontroller_ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"/>
+    <page path="StartContract.jspx" usageId="viewcontroller_StartContractPageDef1"/>
+    <page path="/StartContract.jspx" usageId="viewcontroller_StartContractPageDef1"/>
+    <page path="/com/flows/StartContract_TF.xml#StartContract_TF@onLoad"
+          usageId="viewcontroller_StartContract_TF_StartContract_TF_onLoadPageDef"/>
+    <page path="com/fragments/startcontract.jsff" usageId="viewcontroller_startcontractPageDef"/>
+    <page path="/com/fragments/startcontract.jsff" usageId="viewcontroller_startcontractPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="viewcontroller_InitiateQuotePageDef" path="viewcontroller.pageDefs.InitiateQuotePageDef"/>
@@ -43,6 +48,10 @@
           path="com.flows.ApproveQuote_TF_ApproveQuoteTF_onloadPageDef"/>
     <page id="viewcontroller_ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"
           path="com.flows.ApproveQuoteVP_TF_ApproveQuoteVP_TF_OnLoadPageDef"/>
+    <page id="viewcontroller_StartContractPageDef1" path="viewcontroller.pageDefs.StartContractPageDef1"/>
+    <page id="viewcontroller_StartContract_TF_StartContract_TF_onLoadPageDef"
+          path="com.flows.StartContract_TF_StartContract_TF_onLoadPageDef"/>
+    <page id="viewcontroller_startcontractPageDef" path="com.fragments.startcontractPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <dc id="ViewController_ApproveQuoteVP" path="viewcontroller.ViewController_ApproveQuoteVP"/>

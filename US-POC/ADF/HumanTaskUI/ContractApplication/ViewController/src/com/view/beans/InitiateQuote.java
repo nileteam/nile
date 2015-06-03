@@ -617,13 +617,12 @@ public class InitiateQuote {
                              SubmitOP.execute();
 
                              FacesContext facesContext = FacesContext.getCurrentInstance();
-                             org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+            org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
                                  org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
                                                                                               ExtendedRenderKitService.class);
-                             service.addScript(facesContext,
-                                               "window.close();window.opener.location.href = window.opener.location.href;");
-                             service.addScript(facesContext, "closeMe()");    
-           }
+               service.addScript(facesContext,
+                                        "window.close();window.opener.location.href = window.opener.location.href;");
+                      service.addScript(facesContext, "closeMe()");           }
            else {
                showPopup(submitPopup
                          ,true);

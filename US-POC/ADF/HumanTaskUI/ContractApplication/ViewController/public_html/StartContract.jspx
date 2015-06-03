@@ -12,12 +12,12 @@
             <af:resource type="javascript" source="/jsLibs/commonBPM.js"/>
             <af:form id="f1" usesUpload="true">
                 <af:panelGroupLayout layout="vertical" inlineStyle="padding: 5px;" id="pgl1">
-                    <af:panelHeader text="#{bindings.title.inputValue}" id="ph1">
+                    <af:panelHeader text="#{bindings.title.inputValue}" visible="false" id="ph1">
                         <f:facet name="info"/>
                         <f:facet name="legend"/>
                         <f:facet name="menuBar"/>
                         <f:facet name="toolbar">
-                            <af:toolbar visible="#{actionAvailable.toolbarAvailable}" id="t1">
+                            <af:toolbar visible="false" id="t1">
                                 <af:switcher id="customActionButtons"
                                              facetName="#{actionAvailable.isCustomActionButtons}">
                                     <f:facet name="true">
@@ -128,7 +128,7 @@
                             </af:toolbar>
                         </f:facet>
                         <f:facet name="context"/>
-                        <af:panelGroupLayout layout="vertical" id="pgl4">
+                        <!--<af:panelGroupLayout layout="vertical" id="pgl4">
                             <f:facet name="separator">
                                 <af:spacer width="15" height="15" id="s4"/>
                             </f:facet>
@@ -143,9 +143,9 @@
                                     </af:link>
                                 </f:facet>
                                 <f:facet name="toolbar"/>
-                                <!--trh:tableLayout id="detailTableLayout" width="98%">
+                                --><!--trh:tableLayout id="detailTableLayout" width="98%">
                         <trh:rowLayout>
-                            <trh:cellFormat width="50%" valign="top"-->
+                            <trh:cellFormat width="50%" valign="top"--><!--
                                 <af:panelFormLayout maxColumns="3" rows="4" id="pfl1">
                                     <af:switcher facetName="#{bindings.taskViewContext == 'FYI'}" id="s5">
                                         <f:facet name="false">
@@ -225,7 +225,7 @@
                                         <af:outputText value="#{resources[bindings.state.inputValue]}" id="ot12"/>
                                     </af:panelLabelAndMessage>
                                 </af:panelFormLayout>
-                                <!--/trh:cellFormat>
+                                --><!--/trh:cellFormat>
                             <trh:cellFormat>
                                 <af:spacer width="15" height="15"/>
                             </trh:cellFormat>
@@ -235,7 +235,7 @@
                                 </af:panelFormLayout>
                             </trh:cellFormat>
                         </trh:rowLayout>
-                    </trh:tableLayout-->
+                    </trh:tableLayout--><!--
                             </af:showDetailHeader>
                             <af:showDetailHeader size="2" id="apCntHd" text="#{resources.CONTENTS}"
                                                  disclosed="#{actionAvailable.discloseContents}">
@@ -833,8 +833,9 @@
                                     </f:facet>
                                 </af:switcher>
                             </af:popup>
-                        </af:panelGroupLayout>
+                        </af:panelGroupLayout>-->
                     </af:panelHeader>
+                    <af:region value="#{bindings.StartContract_TF2.regionModel}" id="r1"/>
                     <f:facet name="separator"/>
                 </af:panelGroupLayout>
             </af:form>

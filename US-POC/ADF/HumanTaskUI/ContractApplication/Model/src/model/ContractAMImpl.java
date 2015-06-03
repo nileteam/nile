@@ -64,6 +64,21 @@ public class ContractAMImpl extends ApplicationModuleImpl implements ContractAM 
         
         
     }
-    
+
+    /**
+     * Container's getter for quoteVO1.
+     * @return quoteVO1
+     */
+    public ViewObjectImpl getquoteVO1() {
+        return (ViewObjectImpl) findViewObject("quoteVO1");
+    }
+
+    /**
+     * Container's getter for contractVO1.
+     * @return contractVO1
+     */
+    public ViewObjectImpl getcontractVO1() {
+        return (ViewObjectImpl) findViewObject("contractVO1");
+    }
 }
 
