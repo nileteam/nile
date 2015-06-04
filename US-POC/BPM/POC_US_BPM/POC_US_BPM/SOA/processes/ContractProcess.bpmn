@@ -676,7 +676,6 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
                         <bpmnext:AttributeExpression name="subjectExpressionFeature">
                             <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('Originate Contract for Req No [',string(bpmn:getDataObject('contract')/ns:Contract/ns:Purchase_Requisition_No),']')
                                 <bpmn:extensionElements>
@@ -710,6 +709,13 @@
                         </bpmnext:OracleExtensions>
                     </bpmn:extensionElements>
                 </bpmn:dataInput>
+                <bpmn:dataInput name="flag" id="flag">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="schema" name="string" namespace="http://www.w3.org/2001/XMLSchema" implementationType="type"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataInput>
                 <bpmn:dataInput name="execData" id="execData">
                     <bpmn:extensionElements>
                         <bpmnext:OracleExtensions>
@@ -721,6 +727,13 @@
                     <bpmn:extensionElements>
                         <bpmnext:OracleExtensions>
                             <bpmnext:TypeRef refType="namespaced" name="Input_Contract" namespace="http://www.contractmanagement.org" elementType="ELEMENT" implementationType="businessObject"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataOutput>
+                <bpmn:dataOutput name="flag" id="flag">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="schema" name="string" namespace="http://www.w3.org/2001/XMLSchema" implementationType="type"/>
                         </bpmnext:OracleExtensions>
                     </bpmn:extensionElements>
                 </bpmn:dataOutput>
@@ -740,10 +753,12 @@
                 </bpmn:dataOutput>
                 <bpmn:inputSet id="ACT13051357637759_uniqueInputSet">
                     <bpmn:dataInputRefs>inputContract</bpmn:dataInputRefs>
+                    <bpmn:dataInputRefs>flag</bpmn:dataInputRefs>
                     <bpmn:dataInputRefs>execData</bpmn:dataInputRefs>
                 </bpmn:inputSet>
                 <bpmn:outputSet id="ACT13051357637759_uniqueOutputSet">
                     <bpmn:dataOutputRefs>inputContract</bpmn:dataOutputRefs>
+                    <bpmn:dataOutputRefs>flag</bpmn:dataOutputRefs>
                     <bpmn:dataOutputRefs>execData</bpmn:dataOutputRefs>
                     <bpmn:dataOutputRefs>outcome</bpmn:dataOutputRefs>
                 </bpmn:outputSet>
@@ -768,6 +783,33 @@
                         </bpmn:extensionElements>
                     </bpmn:from>
                     <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataInput('inputContract')
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="simple"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:to>
+                </bpmn:assignment>
+            </bpmn:dataInputAssociation>
+            <bpmn:dataInputAssociation>
+                <bpmn:extensionElements>
+                    <bpmnext:OracleExtensions/>
+                </bpmn:extensionElements>
+                <bpmn:targetRef>flag</bpmn:targetRef>
+                <bpmn:assignment>
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:DataAssignment operation="copy" ignoreMissingData="false"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'StartContract'
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:from>
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataInput('flag')
                         <bpmn:extensionElements>
                             <bpmnext:OracleExtensions>
                                 <bpmnext:Expression mode="simple"/>
@@ -1068,7 +1110,6 @@
                         <bpmnext:StringFeature value="USE_PROCESS_PERMISSION" name="sealType"/>
                         <bpmnext:StringFeature value="REUSE_PAYLOAD" name="reinitiatorPolicy"/>
                         <bpmnext:StringFeature value="SIMPLE" name="humanTaskType"/>
-                        <bpmnext:StringFeature value="" name="reinitiateSource"/>
                         <bpmnext:AttributeExpression name="subjectExpressionFeature">
                             <bpmnext:expression language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace">concat('CA sign in contract for Req no [',string(bpmn:getDataObject('contract')/ns:Contract/ns:Purchase_Requisition_No))
                                 <bpmn:extensionElements>
@@ -1102,6 +1143,13 @@
                         </bpmnext:OracleExtensions>
                     </bpmn:extensionElements>
                 </bpmn:dataInput>
+                <bpmn:dataInput name="flag" id="flag">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="schema" name="string" namespace="http://www.w3.org/2001/XMLSchema" implementationType="type"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataInput>
                 <bpmn:dataInput name="execData" id="execData">
                     <bpmn:extensionElements>
                         <bpmnext:OracleExtensions>
@@ -1113,6 +1161,13 @@
                     <bpmn:extensionElements>
                         <bpmnext:OracleExtensions>
                             <bpmnext:TypeRef refType="namespaced" name="Input_Contract" namespace="http://www.contractmanagement.org" elementType="ELEMENT" implementationType="businessObject"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                </bpmn:dataOutput>
+                <bpmn:dataOutput name="flag" id="flag">
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:TypeRef refType="schema" name="string" namespace="http://www.w3.org/2001/XMLSchema" implementationType="type"/>
                         </bpmnext:OracleExtensions>
                     </bpmn:extensionElements>
                 </bpmn:dataOutput>
@@ -1132,10 +1187,12 @@
                 </bpmn:dataOutput>
                 <bpmn:inputSet id="ACT13051415248578_uniqueInputSet">
                     <bpmn:dataInputRefs>inputContract</bpmn:dataInputRefs>
+                    <bpmn:dataInputRefs>flag</bpmn:dataInputRefs>
                     <bpmn:dataInputRefs>execData</bpmn:dataInputRefs>
                 </bpmn:inputSet>
                 <bpmn:outputSet id="ACT13051415248578_uniqueOutputSet">
                     <bpmn:dataOutputRefs>inputContract</bpmn:dataOutputRefs>
+                    <bpmn:dataOutputRefs>flag</bpmn:dataOutputRefs>
                     <bpmn:dataOutputRefs>execData</bpmn:dataOutputRefs>
                     <bpmn:dataOutputRefs>outcome</bpmn:dataOutputRefs>
                 </bpmn:outputSet>
@@ -1160,6 +1217,33 @@
                         </bpmn:extensionElements>
                     </bpmn:from>
                     <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataInput('inputContract')
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="simple"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:to>
+                </bpmn:assignment>
+            </bpmn:dataInputAssociation>
+            <bpmn:dataInputAssociation>
+                <bpmn:extensionElements>
+                    <bpmnext:OracleExtensions/>
+                </bpmn:extensionElements>
+                <bpmn:targetRef>flag</bpmn:targetRef>
+                <bpmn:assignment>
+                    <bpmn:extensionElements>
+                        <bpmnext:OracleExtensions>
+                            <bpmnext:DataAssignment operation="copy" ignoreMissingData="false"/>
+                        </bpmnext:OracleExtensions>
+                    </bpmn:extensionElements>
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">'CAsign'
+                        <bpmn:extensionElements>
+                            <bpmnext:OracleExtensions>
+                                <bpmnext:Expression mode="xpath"/>
+                            </bpmnext:OracleExtensions>
+                        </bpmn:extensionElements>
+                    </bpmn:from>
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataInput('flag')
                         <bpmn:extensionElements>
                             <bpmnext:OracleExtensions>
                                 <bpmnext:Expression mode="simple"/>
@@ -1407,14 +1491,14 @@
                             <bpmnext:DataAssignment operation="copy" ignoreMissingData="false"/>
                         </bpmnext:OracleExtensions>
                     </bpmn:extensionElements>
-                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('quote')/ns:Quote/ns:ContractTerm
+                    <bpmn:from xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('quote')/ns:Quote/ns:Client
                         <bpmn:extensionElements>
                             <bpmnext:OracleExtensions>
                                 <bpmnext:Expression mode="simple"/>
                             </bpmnext:OracleExtensions>
                         </bpmn:extensionElements>
                     </bpmn:from>
-                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('contract')/ns:Contract/ns:Payment_Terms
+                    <bpmn:to xsi:type="bpmn:tFormalExpression" language="http://www.w3.org/1999/XPath" xpathns:ns="http://www.contractmanagement.org" xpathns:bpmn="http://www.omg.org/bpmn20" xmlns:xpathns="http://xmlns.oracle.com/bpm/XPathNamespace" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">bpmn:getDataObject('contract')/ns:Contract/ns:Name_of_Supplier
                         <bpmn:extensionElements>
                             <bpmnext:OracleExtensions>
                                 <bpmnext:Expression mode="simple"/>
