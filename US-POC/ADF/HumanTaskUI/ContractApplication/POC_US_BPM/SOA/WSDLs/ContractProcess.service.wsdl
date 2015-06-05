@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions
+    
+     targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess"
+     xmlns:tns6="http://www.contractmanagement.org"
+     xmlns:plnk="http://schemas.xmlsoap.org/ws/2003/05/partner-link/"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema"
+     xmlns:SOAP-ENC="http://schemas.xmlsoap.org/soap/encoding/"
+     xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+     xmlns:tns="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess"
+     xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+     xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+    >
+    <wsdl:documentation>
+        <abstractWSDL>http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM!2.0/WSDLs/ContractProcess.wsdl</abstractWSDL>
+    </wsdl:documentation>
+    <plnk:partnerLinkType name="ContractProcessPortTypePartnerLinkType">
+        <plnk:role name="ContractProcessPortTypeProvider">
+            <plnk:portType name="tns:ContractProcessPortType"/>
+        </plnk:role>
+    </plnk:partnerLinkType>
+    <wsdl:types>
+        <xsd:schema targetNamespace="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess">
+            <xsd:import namespace="http://www.contractmanagement.org" schemaLocation="http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM/ContractProcess.service?XSD=../Schemas/contractmanagement.xsd"/>
+            <xsd:element name="start1">
+                <xsd:complexType>
+                    <xsd:sequence>
+                        <xsd:element ref="tns6:Input_Quote"/>
+                        <xsd:element name="days" type="xsd:int"/>
+                    </xsd:sequence>
+                </xsd:complexType>
+            </xsd:element>
+        </xsd:schema>
+    </wsdl:types>
+    <wsdl:message name="start1">
+        <wsdl:part name="parameters" element="tns:start1"/>
+    </wsdl:message>
+    <wsdl:portType name="ContractProcessPortType">
+        <wsdl:operation name="start1">
+            <wsdl:input message="tns:start1"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="ContractProcessBinding" type="tns:ContractProcessPortType">
+        <wsdlsoap:binding transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="start1">
+            <wsdlsoap:operation style="document" soapAction="start1"/>
+            <wsdl:input>
+                <wsdlsoap:body use="literal"/>
+            </wsdl:input>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="ContractProcess.service">
+        <wsdl:port name="ContractProcessPort" binding="tns:ContractProcessBinding">
+            <wsdlsoap:address location="http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM/ContractProcess.service"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>

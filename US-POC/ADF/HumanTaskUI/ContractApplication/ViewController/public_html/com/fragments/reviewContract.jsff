@@ -1,0 +1,185 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+          xmlns:f="http://java.sun.com/jsf/core">
+          
+<af:resource type="javascript">
+    
+
+      function closeMe(e) {
+          //alert('Ok');
+          //alert(parent);
+          parent.$(parent.document).trigger("yourproject.namespace.successfulSignIn");
+          //alert("Done");
+      }         
+          
+  </af:resource>      
+          
+          
+  <af:panelFormLayout id="pfl1">
+    <af:inputText value="#{bindings.Purchase_Requisition_No.inputValue}"
+                  label="#{bindings.Purchase_Requisition_No.hints.label}"
+                  required="#{bindings.Purchase_Requisition_No.hints.mandatory}"
+                  columns="#{bindings.Purchase_Requisition_No.hints.displayWidth}"
+                  maximumLength="#{bindings.Purchase_Requisition_No.hints.precision}"
+                  shortDesc="#{bindings.Purchase_Requisition_No.hints.tooltip}" id="it1">
+      <f:validator binding="#{bindings.Purchase_Requisition_No.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Purchase_Requisition_No.format}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Item_Description.inputValue}" label="#{bindings.Item_Description.hints.label}"
+                  required="#{bindings.Item_Description.hints.mandatory}"
+                  columns="#{bindings.Item_Description.hints.displayWidth}"
+                  maximumLength="#{bindings.Item_Description.hints.precision}"
+                  shortDesc="#{bindings.Item_Description.hints.tooltip}" id="it2">
+      <f:validator binding="#{bindings.Item_Description.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Value_of_Item.inputValue}" label="#{bindings.Value_of_Item.hints.label}"
+                  required="#{bindings.Value_of_Item.hints.mandatory}"
+                  columns="#{bindings.Value_of_Item.hints.displayWidth}"
+                  maximumLength="#{bindings.Value_of_Item.hints.precision}"
+                  shortDesc="#{bindings.Value_of_Item.hints.tooltip}" id="it3">
+      <f:validator binding="#{bindings.Value_of_Item.validator}"/>
+      <af:convertNumber groupingUsed="false" pattern="#{bindings.Value_of_Item.format}"/>
+    </af:inputText>
+    <af:inputDate value="#{bindings.Need_By_Date.inputValue}" label="#{bindings.Need_By_Date.hints.label}"
+                  required="#{bindings.Need_By_Date.hints.mandatory}"
+                  columns="#{bindings.Need_By_Date.hints.displayWidth}"
+                  shortDesc="#{bindings.Need_By_Date.hints.tooltip}" id="id1">
+      <f:validator binding="#{bindings.Need_By_Date.validator}"/>
+      <af:convertDateTime pattern="#{bindings.Need_By_Date.format}"/>
+    </af:inputDate>
+    <af:inputText value="#{bindings.Cost_Centre.inputValue}" label="#{bindings.Cost_Centre.hints.label}"
+                  required="#{bindings.Cost_Centre.hints.mandatory}"
+                  columns="#{bindings.Cost_Centre.hints.displayWidth}"
+                  maximumLength="#{bindings.Cost_Centre.hints.precision}"
+                  shortDesc="#{bindings.Cost_Centre.hints.tooltip}" id="it4">
+      <f:validator binding="#{bindings.Cost_Centre.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Name_of_Supplier.inputValue}" label="#{bindings.Name_of_Supplier.hints.label}"
+                  required="#{bindings.Name_of_Supplier.hints.mandatory}"
+                  columns="#{bindings.Name_of_Supplier.hints.displayWidth}"
+                  maximumLength="#{bindings.Name_of_Supplier.hints.precision}"
+                  shortDesc="#{bindings.Name_of_Supplier.hints.tooltip}" id="it5">
+      <f:validator binding="#{bindings.Name_of_Supplier.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Payment_Terms.inputValue}" label="#{bindings.Payment_Terms.hints.label}"
+                  required="#{bindings.Payment_Terms.hints.mandatory}"
+                  columns="#{bindings.Payment_Terms.hints.displayWidth}"
+                  maximumLength="#{bindings.Payment_Terms.hints.precision}"
+                  shortDesc="#{bindings.Payment_Terms.hints.tooltip}" id="it6">
+      <f:validator binding="#{bindings.Payment_Terms.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Other_Special_TermsConditions.inputValue}"
+                  label="#{bindings.Other_Special_TermsConditions.hints.label}"
+                  required="#{bindings.Other_Special_TermsConditions.hints.mandatory}"
+                  columns="#{bindings.Other_Special_TermsConditions.hints.displayWidth}"
+                  maximumLength="#{bindings.Other_Special_TermsConditions.hints.precision}"
+                  shortDesc="#{bindings.Other_Special_TermsConditions.hints.tooltip}" id="it7">
+      <f:validator binding="#{bindings.Other_Special_TermsConditions.validator}"/>
+    </af:inputText>
+    <af:inputText value="#{bindings.Comments.inputValue}" label="#{bindings.Comments.hints.label}"
+                  required="#{bindings.Comments.hints.mandatory}" columns="#{bindings.Comments.hints.displayWidth}"
+                  maximumLength="#{bindings.Comments.hints.precision}" shortDesc="#{bindings.Comments.hints.tooltip}"
+                  id="it8" binding="#{pageFlowScope.ReviewContract.commentVar}">
+      <f:validator binding="#{bindings.Comments.validator}"/>
+    </af:inputText>
+  </af:panelFormLayout>
+    <af:popup binding="#{pageFlowScope.ReviewContract.rejectPopuUpVar}" childCreation="deferred" autoCancel="disabled"
+                  id="p1" contentDelivery="immediate">
+            <af:dialog id="d1" type="none" inlineStyle="background-color:#ccf2ee;height:145px;width:350px;">
+                <f:facet name="buttonBar"/>
+                <af:panelFormLayout id="pfl4" inlineStyle="background-color:white; height:107px;">
+                    <af:outputText value="  Please provide the reason(s) for rejecting the Contract, in the Comment field."
+                                   id="ot30" inlineStyle="font-size:10pt;color:black;"/>
+                    <af:button text="OK"
+                               inlineStyle="margin-top:45px;margin-left:140px;background-color:#e9f2f0;font-size:11pt;"
+                               id="b5" actionListener="#{pageFlowScope.ReviewContract.closeRejectPopup}"/>
+                </af:panelFormLayout>
+            </af:dialog>
+        </af:popup>
+  <af:table value="#{bindings.contractVO1.collectionModel}" var="row" rows="#{bindings.contractVO1.rangeSize}"
+            emptyText="#{bindings.contractVO1.viewable ? 'No data to display.' : 'Access Denied.'}"
+            rowBandingInterval="0" fetchSize="#{bindings.contractVO1.rangeSize}" id="t1">
+    <af:column headerText="#{bindings.contractVO1.hints.SNo.label}" id="c1">
+      <af:outputText value="#{row.SNo}" shortDesc="#{bindings.contractVO1.hints.SNo.tooltip}" id="ot1">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.contractVO1.hints.SNo.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.contractVO1.hints.ContractId.label}" id="c2">
+      <af:outputText value="#{row.ContractId}" shortDesc="#{bindings.contractVO1.hints.ContractId.tooltip}" id="ot2"/>
+    </af:column>
+    <af:column headerText="#{bindings.contractVO1.hints.Version.label}" id="c3">
+      <af:outputText value="#{row.Version}" shortDesc="#{bindings.contractVO1.hints.Version.tooltip}" id="ot3">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.contractVO1.hints.Version.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.contractVO1.hints.FileType.label}" id="c4">
+      <af:outputText value="#{row.FileType}" shortDesc="#{bindings.contractVO1.hints.FileType.tooltip}" id="ot4"/>
+    </af:column>
+    <af:column headerText="#{bindings.contractVO1.hints.FileName.label}" id="c5">
+      <af:outputText value="#{row.FileName}" shortDesc="#{bindings.contractVO1.hints.FileName.tooltip}" id="ot5"/>
+    </af:column>
+    
+    <af:column id="c11" headerText="Download" styleClass="head tablecss" width="77" align="center"><!--<af:button text="download" id="b2">
+     <af:fileDownloadActionListener filename="#{row.FileName}"
+                                    method="#{pageFlowScope.InitiateQuote.testDownloadList}"/>
+    </af:button>-->
+    <af:commandImageLink id="l4" icon="/Resources/Images/download-icon.png">
+        <af:fileDownloadActionListener filename="#{row.FileName}"
+                                     method="#{pageFlowScope.ReviewContract.downloadTestListener}"/>
+    
+    </af:commandImageLink>
+   </af:column>
+    
+  </af:table>
+  <af:table value="#{bindings.quoteVO1.collectionModel}" var="row" rows="#{bindings.quoteVO1.rangeSize}"
+            emptyText="#{bindings.quoteVO1.viewable ? 'No data to display.' : 'Access Denied.'}" rowBandingInterval="0"
+            fetchSize="#{bindings.quoteVO1.rangeSize}" id="t2">
+    <af:column headerText="#{bindings.quoteVO1.hints.SNo.label}" id="c6">
+      <af:outputText value="#{row.SNo}" shortDesc="#{bindings.quoteVO1.hints.SNo.tooltip}" id="ot6">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.quoteVO1.hints.SNo.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.quoteVO1.hints.ContractId.label}" id="c7">
+      <af:outputText value="#{row.ContractId}" shortDesc="#{bindings.quoteVO1.hints.ContractId.tooltip}" id="ot7"/>
+    </af:column>
+    <af:column headerText="#{bindings.quoteVO1.hints.Version.label}" id="c8">
+      <af:outputText value="#{row.Version}" shortDesc="#{bindings.quoteVO1.hints.Version.tooltip}" id="ot8">
+        <af:convertNumber groupingUsed="false" pattern="#{bindings.quoteVO1.hints.Version.format}"/>
+      </af:outputText>
+    </af:column>
+    <af:column headerText="#{bindings.quoteVO1.hints.FileType.label}" id="c9">
+      <af:outputText value="#{row.FileType}" shortDesc="#{bindings.quoteVO1.hints.FileType.tooltip}" id="ot9"/>
+    </af:column>
+    <af:column headerText="#{bindings.quoteVO1.hints.FileName.label}" id="c10">
+      <af:outputText value="#{row.FileName}" shortDesc="#{bindings.quoteVO1.hints.FileName.tooltip}" id="ot10"/>
+    </af:column>
+    <af:column id="c12" headerText="Download" styleClass="head tablecss" width="77" align="center"><!--<af:button text="download" id="b2">
+     <af:fileDownloadActionListener filename="#{row.FileName}"
+                                    method="#{pageFlowScope.InitiateQuote.testDownloadList}"/>
+    </af:button>-->
+    <af:commandImageLink id="cil1" icon="/Resources/Images/download-icon.png">
+        <af:fileDownloadActionListener filename="#{row.FileName}"
+                                       method="#{pageFlowScope.ReviewContract.downloadTestListener}"/>
+    
+    </af:commandImageLink>
+   </af:column>
+    
+    
+  </af:table>
+  
+    <af:panelGroupLayout id="pgl16" inlineStyle="margin-left:15px;">
+                <af:commandImageLink id="l1" actionListener="#{pageFlowScope.ReviewContract.review_Approve}"
+                                     icon="/Resources/Images/APPROVE-Black.png"/>
+                <af:commandImageLink id="l2" 
+                                     icon="/Resources/Images/REJECT-Black.png" inlineStyle="margin-left:5px;"
+                                     actionListener="#{pageFlowScope.ReviewContract.review_Reject}"/>
+                <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" id="b1"/>-->
+                <!--<af:button text="REJECT" action="#{pageFlowScope.ApproveQuote.reject_Action}" id="b2"/>-->
+            </af:panelGroupLayout>
+</jsp:root>
+
+ 
+ 
+ 
+ 
+ 

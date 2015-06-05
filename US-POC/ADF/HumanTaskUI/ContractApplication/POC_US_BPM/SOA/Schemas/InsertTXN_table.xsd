@@ -1,0 +1,29 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<xs:schema targetNamespace="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertTXN" xmlns="http://xmlns.oracle.com/pcbpel/adapter/db/top/InsertTXN" elementFormDefault="qualified" attributeFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+   <xs:element name="ContractTxnCollection" type="ContractTxnCollection"/>
+   <xs:complexType name="ContractTxnCollection">
+      <xs:sequence>
+         <xs:element name="ContractTxn" type="ContractTxn" minOccurs="0" maxOccurs="unbounded"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:complexType name="ContractTxn">
+      <xs:sequence>
+         <xs:element name="director" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="quote" type="xs:decimal" minOccurs="0" nillable="true"/>
+         <xs:element name="office" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="description" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="lob" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="contractstartdate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="contractenddate" type="xs:dateTime" minOccurs="0" nillable="true"/>
+         <xs:element name="client" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="quoteid" type="string20"/>
+         <xs:element name="contractterm" type="string20" minOccurs="0" nillable="true"/>
+         <xs:element name="status" type="string20" minOccurs="0" nillable="true"/>
+      </xs:sequence>
+   </xs:complexType>
+   <xs:simpleType name="string20">
+      <xs:restriction base="xs:string">
+         <xs:maxLength value="20"/>
+      </xs:restriction>
+   </xs:simpleType>
+</xs:schema>

@@ -61,6 +61,9 @@
         </Accessors>
       </nodeDefinition>
       <nodeDefinition DefName="ViewController_StartContract.StartContractPayloadType" Name="task1">
+        <AttrNames>
+          <Item Value="Flag"/>
+        </AttrNames>
         <Accessors>
           <Item Value="Input_Contract"/>
         </Accessors>

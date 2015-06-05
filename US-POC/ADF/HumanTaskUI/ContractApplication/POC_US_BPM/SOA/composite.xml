@@ -19,6 +19,19 @@
           location="WSDLs/TotalAmountOracleRules1_DecisionService_1.wsdl" importType="wsdl"/>
   <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo"
           location="WSDLs/GetReqNo.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract"
+          location="WSDLs/ReStartContract.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract"
+          location="WSDLs/SelectActiveContract.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess" location="WSDLs/ContractProcess.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/InsertTXN"
+          location="WSDLs/InsertTXN.wsdl" importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess"
+          location="http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM!2.0/WSDLs/ContractProcess.wsdl"
+          importType="wsdl"/>
+  <import namespace="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess"
+          location="WSDLs/ContractProcess.service.wsdl" importType="wsdl"/>
   <service name="client" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
                     callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
@@ -39,6 +52,18 @@
            ui:wsdlLocation="WSDLs/TotalAmountOracleRules1_DecisionService_1.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/TotalAmountOracleRules1/TotalAmountOracleRules1_DecisionService_1#wsdl.interface(IDecisionService)"/>
     <binding.ws port="http://xmlns.oracle.com/TotalAmountOracleRules1/TotalAmountOracleRules1_DecisionService_1#wsdl.endpoint(TotalAmountOracleRules1_DecisionService_1_ep/IDecisionService_pt)"/>
+  </service>
+  <service name="restartcontract_client_ep" ui:wsdlLocation="WSDLs/ReStartContract.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.interface(ReStartContract)"
+                    callbackInterface="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.interface(ReStartContractCallback)"/>
+    <binding.ws port="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.endpoint(restartcontract_client_ep/ReStartContract_pt)"/>
+    <callback>
+      <binding.ws port="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.endpoint(restartcontract_client_ep/ReStartContractCallback_pt)"/>
+    </callback>
+  </service>
+  <service name="ContractProcess.service" ui:wsdlLocation="WSDLs/ContractProcess.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.interface(ContractProcessPortType)"/>
+    <binding.ws port="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.endpoint(ContractProcess.service/ContractProcessPort)"/>
   </service>
   <property name="productVersion" type="xs:string" many="false">12.1.3.0.0</property>
   <property name="compositeID" type="xs:string" many="false">06a19583-9020-4821-9406-60c348804cd1</property>
@@ -174,6 +199,10 @@
   <component name="ContractProcess">
     <implementation.bpmn src="processes/ContractProcess.bpmn"/>
     <componentType>
+      <service name="ContractProcess.service" ui:wsdlLocation="WSDLs/ContractProcess.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.interface(ContractProcessPortType)"/>
+        <property name="bpm.generated.service.reference" type="xs:string" many="false">ContractProcess.service</property>
+      </service>
       <reference name="Services.Externals.GetReqNo.reference" ui:wsdlLocation="WSDLs/GetReqNo.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/GetReqNo#wsdl.interface(GetReqNo_ptt)"/>
       </reference>
@@ -196,6 +225,22 @@
                  ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
                         callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </reference>
+      <reference name="Services.Externals.InsertTXN.reference" ui:wsdlLocation="WSDLs/InsertTXN.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/InsertTXN#wsdl.interface(InsertTXN_ptt)"/>
+      </reference>
+      <reference name="HumanTasks.ReviewContract.reference"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </reference>
+      <reference name="NotificationService.ACT13156990060273"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
+      <reference name="NotificationService.ACT13157105417716"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
       </reference>
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
@@ -237,6 +282,32 @@
       </service>
     </componentType>
   </component>
+    <component name="ReviewContract">
+    <implementation.workflow src="HumanTasks/ReviewContract.task"/>
+    <componentType>
+      <service name="TaskService" ui:wsdlLocation="oramds:/soa/shared/workflow/TaskServiceInterface.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskService)"
+                        callbackInterface="http://xmlns.oracle.com/bpel/workflow/taskService#wsdl.interface(TaskServiceCallback)"/>
+      </service>
+    </componentType>
+  </component>
+  <component name="ReStartContract" version="2.0">
+    <implementation.bpel src="BPEL/ReStartContract.bpel"/>
+    <componentType>
+      <service name="restartcontract_client" ui:wsdlLocation="WSDLs/ReStartContract.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.interface(ReStartContract)"
+                        callbackInterface="http://xmlns.oracle.com/POC_US_BPM/POC_US_BPM/ReStartContract#wsdl.interface(ReStartContractCallback)"/>
+      </service>
+      <reference name="SelectActiveContract" ui:wsdlLocation="WSDLs/SelectActiveContract.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract#wsdl.interface(SelectActiveContract_ptt)"/>
+      </reference>
+      <reference name="ReinitiateContract"
+                 ui:wsdlLocation="http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM!2.0/WSDLs/ContractProcess.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.interface(ContractProcessPortType)"/>
+      </reference>
+    </componentType>
+    <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">async.persist</property>
+  </component>
   <reference name="BPM-NotificationService" ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
     <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
     <binding.wsif port="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.endpoint(NotificationService/JavaPort)"
@@ -249,6 +320,30 @@
     <property name="jca.retry.interval" type="xs:int" many="false" override="may">1</property>
     <property name="jca.retry.backoff" type="xs:int" many="false" override="may">2</property>
     <property name="jca.retry.maxInterval" type="xs:int" many="false" override="may">120</property>
+  </reference>
+  <reference name="SelectActiveContract" ui:wsdlLocation="WSDLs/SelectActiveContract.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/SelectActiveContract#wsdl.interface(SelectActiveContract_ptt)"/>
+    <binding.jca config="Adapters/SelectActiveContract_db.jca"/>
+    <property name="jca.retry.count" type="xs:int" many="false" override="may">4</property>
+    <property name="jca.retry.interval" type="xs:int" many="false" override="may">1</property>
+    <property name="jca.retry.backoff" type="xs:int" many="false" override="may">2</property>
+    <property name="jca.retry.maxInterval" type="xs:int" many="false" override="may">120</property>
+  </reference>
+  <reference name="InsertTXN" ui:wsdlLocation="WSDLs/InsertTXN.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/pcbpel/adapter/db/POC_US_BPM/POC_US_BPM/InsertTXN#wsdl.interface(InsertTXN_ptt)"/>
+    <binding.jca config="Adapters/InsertTXN_db.jca"/>
+    <property name="jca.retry.count" type="xs:int" many="false" override="may">4</property>
+    <property name="jca.retry.interval" type="xs:int" many="false" override="may">1</property>
+    <property name="jca.retry.backoff" type="xs:int" many="false" override="may">2</property>
+    <property name="jca.retry.maxInterval" type="xs:int" many="false" override="may">120</property>
+  </reference>
+  <reference name="ReinitiateContract" ui:wsdlLocation="WSDLs/ContractProcess.service.wsdl">
+    <interface.wsdl interface="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.interface(ContractProcessPortType)"/>
+    <binding.ws port="http://xmlns.oracle.com/bpmn/bpmnProcess/ContractProcess#wsdl.endpoint(ContractProcess.service/ContractProcessPort)"
+                location="http://192.168.1.152:7503/soa-infra/services/default/POC_US_BPM/ContractProcess.service?WSDL"
+                soapVersion="1.1">
+      <property name="weblogic.wsee.wsat.transaction.flowOption" type="xs:string" many="false">WSDLDriven</property>
+    </binding.ws>
   </reference>
   <wire>
     <source.uri>client</source.uri>
@@ -357,5 +452,37 @@
   <wire>
     <source.uri>ContractProcess/HumanTasks.ApproveQuoteVP.reference</source.uri>
     <target.uri>ApproveQuoteVP/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>restartcontract_client_ep</source.uri>
+    <target.uri>ReStartContract/restartcontract_client</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ReStartContract/SelectActiveContract</source.uri>
+    <target.uri>SelectActiveContract</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/Services.Externals.InsertTXN.reference</source.uri>
+    <target.uri>InsertTXN</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ReStartContract/ReinitiateContract</source.uri>
+    <target.uri>ReinitiateContract</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/HumanTasks.ReviewContract.reference</source.uri>
+    <target.uri>ReviewContract/TaskService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/NotificationService.ACT13156990060273</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/NotificationService.ACT13157105417716</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess.service</source.uri>
+    <target.uri>ContractProcess/ContractProcess.service</target.uri>
   </wire>
 </composite>

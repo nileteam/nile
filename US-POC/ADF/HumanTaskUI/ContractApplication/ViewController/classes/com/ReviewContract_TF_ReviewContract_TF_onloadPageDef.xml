@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8"
+                id="ReviewContract_TF_ReviewContract_TF_onloadPageDef" Package="com" SkipValidation="true">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_ReviewContract" RangeSize="25"
+                    BeanClass="ViewController_ReviewContract.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="10"
+                      DataControl="ViewController_ReviewContract" BeanClass="ViewController_ReviewContract.task"
+                      id="taskIterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_ReviewContract"
+                  InstanceName="data.ViewController_ReviewContract"
+                  ReturnName="data.ViewController_ReviewContract.methodResults.getTaskDetails_ViewController_ReviewContract_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <tree IterBinding="taskIterator" id="task">
+      <nodeDefinition DefName="ViewController_ReviewContract.task" Name="task0">
+        <AttrNames>
+          <Item Value="title"/>
+          <Item Value="applicationContext"/>
+          <Item Value="category"/>
+          <Item Value="correlationId"/>
+          <Item Value="creator"/>
+          <Item Value="creatorDisplayName"/>
+          <Item Value="documentPackageId"/>
+          <Item Value="dueDate"/>
+          <Item Value="identificationKey"/>
+          <Item Value="identityContext"/>
+          <Item Value="isPublic"/>
+          <Item Value="longSummary"/>
+          <Item Value="mdsLabel"/>
+          <Item Value="notificationMode"/>
+          <Item Value="ownerGroup"/>
+          <Item Value="ownerGroupDisplayName"/>
+          <Item Value="ownerRole"/>
+          <Item Value="ownerRoleDisplayName"/>
+          <Item Value="ownerUser"/>
+          <Item Value="ownerUserDisplayName"/>
+          <Item Value="percentageComplete"/>
+          <Item Value="priority"/>
+          <Item Value="shortSummary"/>
+          <Item Value="startDate"/>
+          <Item Value="subcategory"/>
+          <Item Value="taskDefinitionId"/>
+          <Item Value="taskDefinitionURI"/>
+          <Item Value="taskDisplayUrl"/>
+          <Item Value="titleResourceKey"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="payload"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_ReviewContract.ReviewContractPayloadType" Name="task1">
+        <AttrNames>
+          <Item Value="Assigneduser"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="Input_Contract"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_ReviewContract.Input_Contract" Name="task2">
+        <Accessors>
+          <Item Value="Contract"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="ViewController_ReviewContract.Contract_type" Name="task3">
+        <AttrNames>
+          <Item Value="Purchase_Requisition_No"/>
+          <Item Value="Comments"/>
+          <Item Value="Cost_Centre"/>
+          <Item Value="Item_Description"/>
+          <Item Value="Name_of_Supplier"/>
+          <Item Value="Need_By_Date"/>
+          <Item Value="Other_Special_TermsConditions"/>
+          <Item Value="Payment_Terms"/>
+          <Item Value="Value_of_Item"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

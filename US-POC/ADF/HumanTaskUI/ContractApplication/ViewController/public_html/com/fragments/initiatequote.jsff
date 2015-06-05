@@ -1,6 +1,18 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core"><br/>
+          
+  <af:resource type="javascript">
+    
+
+      function closeMe(e) {
+          //alert('Ok');
+          //alert(parent);
+          parent.$(parent.document).trigger("yourproject.namespace.successfulSignIn");
+          //alert("Done");
+      }         
+          
+  </af:resource>        
  <af:panelGroupLayout id="pgl2">
  <!-- <af:selectOneChoice value="#{bindings.Input_Quote.inputValue}" label="#{bindings.Input_Quote.label}"
                       required="#{bindings.Input_Quote.hints.mandatory}"
@@ -209,7 +221,7 @@ id="b7" actionListener="#{pageFlowScope.InitiateQuote.closeSavePopup}"/>
     </af:panelGroupLayout>
    </af:panelGroupLayout><br/><br/>
    <af:panelGroupLayout id="pgl13" layout="horizontal" inlineStyle="margin-left:5px;">
-    <af:outputText value="Upload File" id="ot25" styleClass="fonteffect"/>
+    <af:outputText value="Upload Quote" id="ot25" styleClass="fonteffect"/>
     <af:inputFile binding="#{pageFlowScope.InitiateQuote.uploadfileVar}" id="if2"
                   valueChangeListener="#{pageFlowScope.InitiateQuote.uploadfile_vcl}" autoSubmit="true"
                   partialTriggers="l3"/>
@@ -236,13 +248,13 @@ id="b7" actionListener="#{pageFlowScope.InitiateQuote.closeSavePopup}"/>
             partialTriggers="::l3" styleClass="tablecss" inlineStyle="margin-left:15px;" width="853"
             visible="#{pageFlowScope.InitiateQuote.tableFlag eq 'go'}" autoHeightRows="10">
    <af:column headerText="S.No" id="c1" styleClass="head tablecss"
-              align="center" width="150">
+              align="center" width="120">
     <af:outputText value="#{row.SNo}" shortDesc="#{bindings.ContractDocUploadView1.hints.SNo.tooltip}" id="ot1">
      <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractDocUploadView1.hints.SNo.format}"/>
     </af:outputText>
    </af:column>
    <af:column headerText="Contract Id" id="c2" styleClass="head tablecss"
-              align="center" width="150">
+              align="center" width="120">
     <af:outputText value="#{row.ContractId}" shortDesc="#{bindings.ContractDocUploadView1.hints.ContractId.tooltip}"
                    id="ot2"/>
    </af:column>
@@ -251,13 +263,20 @@ id="b7" actionListener="#{pageFlowScope.InitiateQuote.closeSavePopup}"/>
     <af:outputText value="#{row.ContractDoc}" shortDesc="#{bindings.ContractDocUploadView1.hints.ContractDoc.tooltip}"
                    id="ot3"/>
    </af:column>-->
+     <af:column headerText="Version" id="c6" styleClass="head tablecss"
+              align="center" width="120">
+      <af:outputText value="#{row.Version}" shortDesc="#{bindings.ContractDocUploadView1.hints.Version.tooltip}"
+                     id="ot26">
+       <af:convertNumber groupingUsed="false" pattern="#{bindings.ContractDocUploadView1.hints.Version.format}"/>
+      </af:outputText>
+     </af:column>
      <af:column headerText="File Type" id="c3" styleClass="head tablecss"
-              align="center" width="150">
+              align="center" width="120">
       <af:outputText value="#{row.FileType}" shortDesc="#{bindings.ContractDocUploadView1.hints.FileType.tooltip}"
                      id="ot11"/>
      </af:column>
      <af:column headerText="File Name" id="c4" styleClass="head tablecss"
-              width="300" align="center">
+              width="265" align="center">
     <af:outputText value="#{row.FileName}" shortDesc="#{bindings.ContractDocUploadView1.hints.FileName.tooltip}"
                    id="ot4"/>
    </af:column>

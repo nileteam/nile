@@ -15,11 +15,11 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">182.94824</property>
+         name="y">92.49414</property>
+      <property
+         name="x">501.0</property>
       <property
          name="pageFragment">true</property>
-      <property
-         name="x">222.0</property>
    </View>
    <MethodCall
       id="MethodCall3">
@@ -32,18 +32,68 @@
       <property
          name="exceptionHandler">false</property>
       <property
-         name="y">138.59766</property>
+         name="y">164.79297</property>
       <property
-         name="x">61.0</property>
+         name="x">-150.0</property>
    </MethodCall>
    <ControlFlowCase
       islink="true"
       id="ControlFlowCase4"
       from="MethodCall3"
-      to="View2">
+      to="Router6">
       <property
          name="fromOutcome">go</property>
       <property
-         name="sdm:polyPoints">R50,102.0,138.24707,181.0,182.59766,L50</property>
+         name="sdm:polyPoints">R50,-109.0,164.44238,129.0,194.14355,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">startContractNonEdit</property>
+      <property
+         name="page">/com/fragments/startContractNonEdit.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>startContractNonEdit&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">271.79297</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">570.0</property>
+   </View>
+   <Router
+      id="Router6">
+      <property
+         name="activityId">router1</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>router1&lt;/b>&lt;/p>&lt;p>Activity Type:  Router&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">194.49414</property>
+      <property
+         name="x">170.0</property>
+   </Router>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="Router6"
+      to="View2">
+      <property
+         name="fromOutcome">startContract</property>
+      <property
+         name="sdm:polyPoints">R46,211.0,190.64355,460.0,92.143555,L50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="Router6"
+      to="View5">
+      <property
+         name="fromOutcome">startContractNonEdit</property>
+      <property
+         name="sdm:polyPoints">R54,211.0,197.64355,529.0,271.44238,L50</property>
    </ControlFlowCase>
 </SDM>

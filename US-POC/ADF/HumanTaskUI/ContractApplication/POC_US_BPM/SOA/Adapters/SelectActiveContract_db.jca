@@ -1,0 +1,14 @@
+<adapter-config name="SelectActiveContract" adapter="db" wsdlLocation="../WSDLs/SelectActiveContract.wsdl" xmlns="http://platform.integration.oracle/blocks/adapter/fw/metadata">
+  
+  <connection-factory UIConnectionName="149" location="eis/DB/US_POC"/>
+  <endpoint-interaction portType="SelectActiveContract_ptt" operation="SelectActiveContractSelect">
+    <interaction-spec className="oracle.tip.adapter.db.DBReadInteractionSpec">
+      <property name="DescriptorName" value="SelectActiveContract.ContractTxn"/>
+      <property name="QueryName" value="SelectActiveContractSelect"/>
+      <property name="MappingsMetaDataURL" value="SelectActiveContract-or-mappings.xml"/>
+      <property name="ReturnSingleResultSet" value="false"/>
+      <property name="GetActiveUnitOfWork" value="false"/>
+    </interaction-spec>
+  </endpoint-interaction>
+
+</adapter-config>

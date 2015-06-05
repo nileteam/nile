@@ -19,11 +19,36 @@
         <fixed-outcome>go</fixed-outcome>
       </outcome>
     </method-call>
+    <view id="startContractNonEdit">
+      <page>/com/fragments/startContractNonEdit.jsff</page>
+    </view>
+    <router id="router1">
+      <case id="__4">
+        <expression>#{pageFlowScope.StartContract.flagForFlow =='editable'}</expression>
+        <outcome>startContract</outcome>
+      </case>
+      <case id="__8">
+        <expression>#{pageFlowScope.StartContract.flagForFlow =='noneditable'}</expression>
+        <outcome>startContractNonEdit</outcome>
+      </case>
+      <default-outcome>startContract</default-outcome>
+    </router>
     <control-flow-rule id="__1">
       <from-activity-id>onLoad</from-activity-id>
       <control-flow-case id="__2">
         <from-outcome>go</from-outcome>
+        <to-activity-id>router1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>router1</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>startContract</from-outcome>
         <to-activity-id>startcontract</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__7">
+        <from-outcome>startContractNonEdit</from-outcome>
+        <to-activity-id>startContractNonEdit</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

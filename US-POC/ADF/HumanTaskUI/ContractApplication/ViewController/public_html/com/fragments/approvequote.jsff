@@ -1,6 +1,19 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <jsp:root xmlns:jsp="http://java.sun.com/JSP/Page" version="2.1" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
           xmlns:f="http://java.sun.com/jsf/core">
+          
+    <af:resource type="javascript">
+    
+
+      function closeMe(e) {
+          //alert('Ok');
+          //alert(parent);
+          parent.$(parent.document).trigger("yourproject.namespace.successfulSignIn");
+          //alert("Done");
+      }         
+          
+  </af:resource>         
+          
    <br/> <af:panelGroupLayout id="pgl2">
         <af:panelFormLayout id="pfl1">
             <af:panelGroupLayout id="pgl13" layout="horizontal">
@@ -171,7 +184,7 @@
                       rowBandingInterval="0" fetchSize="#{bindings.ContractDocUploadView1.rangeSize}" id="t1"
                       styleClass="tablecss" inlineStyle="margin-left:15px;" width="853" autoHeightRows="10">
                 <af:column headerText="S.No" id="c1"
-                           styleClass="head tablecss" align="center" width="150">
+                           styleClass="head tablecss" align="center" width="120">
                     <af:inputText value="#{row.bindings.SNo.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.SNo.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.SNo.mandatory}"
@@ -185,7 +198,7 @@
                     </af:inputText>
                 </af:column>
                 <af:column headerText="Contract Id" id="c2"
-                           styleClass="head tablecss" align="center" width="150">
+                           styleClass="head tablecss" align="center" width="120">
                     <af:inputText value="#{row.bindings.ContractId.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.ContractId.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.ContractId.mandatory}"
@@ -196,7 +209,19 @@
                         <f:validator binding="#{row.bindings.ContractId.validator}"/>
                     </af:inputText>
                 </af:column>
-                <af:column headerText="File Type" id="c4" width="150"
+                <af:column headerText="Version" id="c6" styleClass="head tablecss" align="center" width="120">
+                    <af:inputText value="#{row.bindings.Version.inputValue}"
+                                  label="#{bindings.ContractDocUploadView1.hints.Version.label}"
+                                  required="#{bindings.ContractDocUploadView1.hints.Version.mandatory}"
+                                  columns="#{bindings.ContractDocUploadView1.hints.Version.displayWidth}"
+                                  maximumLength="#{bindings.ContractDocUploadView1.hints.Version.precision}"
+                                  shortDesc="#{bindings.ContractDocUploadView1.hints.Version.tooltip}" id="it14">
+                        <f:validator binding="#{row.bindings.Version.validator}"/>
+                        <af:convertNumber groupingUsed="false"
+                                          pattern="#{bindings.ContractDocUploadView1.hints.Version.format}"/>
+                    </af:inputText>
+                </af:column>
+                <af:column headerText="File Type" id="c4" width="120"
                            styleClass="head tablecss" align="center">
                     <af:inputText value="#{row.bindings.FileType.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.FileType.label}"
@@ -209,7 +234,7 @@
                     </af:inputText>
                 </af:column>
                 <af:column headerText="File Name" id="c3"
-                           styleClass="head tablecss" width="300" align="center">
+                           styleClass="head tablecss" width="265" align="center">
                     <af:inputText value="#{row.bindings.FileName.inputValue}"
                                   label="#{bindings.ContractDocUploadView1.hints.FileName.label}"
                                   required="#{bindings.ContractDocUploadView1.hints.FileName.mandatory}"

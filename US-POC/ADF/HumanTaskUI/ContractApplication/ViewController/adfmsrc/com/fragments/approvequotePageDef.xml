@@ -98,6 +98,7 @@
           <Item Value="ContractId"/>
           <Item Value="FileName"/>
           <Item Value="FileType"/>
+          <Item Value="Version"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

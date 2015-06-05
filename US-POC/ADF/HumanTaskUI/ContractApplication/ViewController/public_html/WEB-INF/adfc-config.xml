@@ -95,4 +95,27 @@
       <to-activity-id>Empty1_jspx</to-activity-id>
     </control-flow-case>
   </control-flow-rule>
+  <control-flow-rule id="__25">
+    <from-activity-id>*</from-activity-id>
+    <control-flow-case id="__26">
+      <from-outcome>done</from-outcome>
+      <to-activity-id>Empty1_jspx</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__27">
+      <from-outcome>refresh</from-outcome>
+      <to-activity-id>Empty1_jspx</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__28">
+      <from-outcome>previous</from-outcome>
+      <to-activity-id>Empty1_jspx</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__29">
+      <from-outcome>next</from-outcome>
+      <to-activity-id>Empty1_jspx</to-activity-id>
+    </control-flow-case>
+    <control-flow-case id="__30">
+      <from-outcome>new</from-outcome>
+      <to-activity-id>Empty1_jspx</to-activity-id>
+    </control-flow-case>
+  </control-flow-rule>
 </adfc-config>

@@ -109,12 +109,14 @@ public class StartContract {
     private RichInputText valOfItemVar;
     private RichPopup savePopup;
     private RichPopup submitpopup;
+    private String flagForFlow;
 
 
     public StartContract() {
     }
 
-    public void onLoad() {
+    public String onLoad() {
+       
      System.out.println("Inside the onload method ");
      
         DCBindingContainer bindings = (DCBindingContainer) BindingContext.getCurrent().getCurrentBindingsEntry();
@@ -154,6 +156,22 @@ public class StartContract {
                     System.out.println("attribute name for startContractPayload" + name);
 
                 }
+                
+                String flag1= (String)startContractPayload.getAttribute("Flag");
+                System.out.println("flag1======"+flag1);
+           
+                if(flag1.equalsIgnoreCase("StartContract")) {
+                     System.out.println("inside editable condition");
+                     flagForFlow="editable";
+                    
+                }
+           
+                else if(flag1.equalsIgnoreCase("CAsign")) {
+                      System.out.println("inside non editable ");
+                     flagForFlow="noneditable";
+                }
+                
+                System.out.println("flag for flow ==================="+flagForFlow);
                 
                 JUCtrlHierNodeBinding inputContract=(JUCtrlHierNodeBinding)startContractPayload.getChildren().get(0);
                 System.out.println("Input contract is "+inputContract);
@@ -224,10 +242,18 @@ public class StartContract {
             
         }
         
-        
+        return flagForFlow; 
     }
- 
- 
+
+    public void setFlagForFlow(String flagForFlow) {
+        this.flagForFlow = flagForFlow;
+    }
+
+    public String getFlagForFlow() {
+        return flagForFlow;
+    }
+
+
     public void testDownloadList(FacesContext facesContext, OutputStream outputStream)  throws ClassNotFoundException, SQLException, FileNotFoundException, IOException {
     //        Class.forName("oracle.jdbc.driver.OracleDriver");
     //         Connection con = DriverManager.getConnection("jdbc:oracle:thin:@192.168.1.149:1522:orcl12c","c##niledb","welcome1");

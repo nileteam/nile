@@ -131,5 +131,16 @@
     <methodAction IterBinding="taskIterator" id="APPROVE" RequiresUpdateModel="true" Action="invokeMethod"
                   MethodName="APPROVE" IsViewObjectMethod="false" DataControl="ViewController_StartContract"
                   InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <list IterBinding="ContractIterator" id="Cost_Centre1" DTSupportsMRU="true" SelectItemValueMode="ListObject"
+          StaticList="true">
+      <AttrNames>
+        <Item Value="Cost_Centre"/>
+      </AttrNames>
+      <ValueList>
+        <Item Value="Management"/>
+        <Item Value="HR"/>
+        <Item Value="Purchase"/>
+      </ValueList>
+    </list>
   </bindings>
 </pageDefinition>

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="reviewContractPageDef"
+                Package="com.fragments">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <methodIterator Binds="getTaskDetails.result" DataControl="ViewController_ReviewContract" RangeSize="25"
+                    BeanClass="ViewController_ReviewContract.getTaskDetails" id="getTaskDetailsIterator"/>
+    <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="25"
+                      DataControl="ViewController_ReviewContract" BeanClass="ViewController_ReviewContract.task"
+                      id="taskIterator"/>
+    <accessorIterator MasterBinding="taskIterator" Binds="payload" RangeSize="25"
+                      DataControl="ViewController_ReviewContract"
+                      BeanClass="ViewController_ReviewContract.ReviewContractPayloadType" id="payloadIterator"/>
+    <accessorIterator MasterBinding="payloadIterator" Binds="Input_Contract" RangeSize="25"
+                      DataControl="ViewController_ReviewContract"
+                      BeanClass="ViewController_ReviewContract.Input_Contract" id="Input_ContractIterator"/>
+    <accessorIterator MasterBinding="Input_ContractIterator" Binds="Contract" RangeSize="25"
+                      DataControl="ViewController_ReviewContract"
+                      BeanClass="ViewController_ReviewContract.Contract_type" id="ContractIterator"/>
+    <iterator Binds="contractVO1" RangeSize="25" DataControl="ContractAMDataControl" id="contractVO1Iterator"/>
+    <iterator Binds="quoteVO1" RangeSize="25" DataControl="ContractAMDataControl" id="quoteVO1Iterator"/>
+  </executables>
+  <bindings>
+    <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
+                  IsViewObjectMethod="false" DataControl="ViewController_ReviewContract"
+                  InstanceName="data.ViewController_ReviewContract"
+                  ReturnName="data.ViewController_ReviewContract.methodResults.getTaskDetails_ViewController_ReviewContract_getTaskDetails_result">
+      <NamedData NDName="bpmWorklistContext" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskId" NDType="java.lang.String"/>
+      <NamedData NDName="bpmWorklistTaskVersion" NDType="java.lang.String"/>
+    </methodAction>
+    <attributeValues IterBinding="ContractIterator" id="Purchase_Requisition_No">
+      <AttrNames>
+        <Item Value="Purchase_Requisition_No"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Item_Description">
+      <AttrNames>
+        <Item Value="Item_Description"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Value_of_Item">
+      <AttrNames>
+        <Item Value="Value_of_Item"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Need_By_Date">
+      <AttrNames>
+        <Item Value="Need_By_Date"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Cost_Centre">
+      <AttrNames>
+        <Item Value="Cost_Centre"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Name_of_Supplier">
+      <AttrNames>
+        <Item Value="Name_of_Supplier"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Payment_Terms">
+      <AttrNames>
+        <Item Value="Payment_Terms"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Other_Special_TermsConditions">
+      <AttrNames>
+        <Item Value="Other_Special_TermsConditions"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="ContractIterator" id="Comments">
+      <AttrNames>
+        <Item Value="Comments"/>
+      </AttrNames>
+    </attributeValues>
+    <methodAction IterBinding="taskIterator" id="APPROVE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="APPROVE" IsViewObjectMethod="false" DataControl="ViewController_ReviewContract"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <methodAction IterBinding="taskIterator" id="REJECT" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="REJECT" IsViewObjectMethod="false" DataControl="ViewController_ReviewContract"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
+    <tree IterBinding="contractVO1Iterator" id="contractVO1">
+      <nodeDefinition DefName="model.contractVO" Name="contractVO10">
+        <AttrNames>
+          <Item Value="SNo"/>
+          <Item Value="ContractId"/>
+          <Item Value="Version"/>
+          <Item Value="FileType"/>
+          <Item Value="FileName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="quoteVO1Iterator" id="quoteVO1">
+      <nodeDefinition DefName="model.quoteVO" Name="quoteVO10">
+        <AttrNames>
+          <Item Value="SNo"/>
+          <Item Value="ContractId"/>
+          <Item Value="Version"/>
+          <Item Value="FileType"/>
+          <Item Value="FileName"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
