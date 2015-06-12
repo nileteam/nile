@@ -100,8 +100,6 @@ public class StartContract {
     private String  tableFlag;
     private RichInputText reqNoVar;
     private RichInputText itemDescriptionVar;
-    private RichInputDate needByDateVar;
-    private RichInputText costCentreVar;
     private RichInputText nameOfSupplierVar;
     private RichInputText paymentTermsVar;
     private RichInputText specialTermsConditions;
@@ -110,6 +108,9 @@ public class StartContract {
     private RichPopup savePopup;
     private RichPopup submitpopup;
     private String flagForFlow;
+    private RichSelectOneChoice costCentreVar;
+    private RichInputText needByDateVar;
+    private RichInputText costcentreBVar;
 
 
     public StartContract() {
@@ -295,19 +296,40 @@ public class StartContract {
             fileName = file.getFilename();
             path="/home/oracle/Oracle/Middleware12c/Oracle_Home/user_projects/domains/bpm_domain/uploadcontract/";
             path=path.concat(fileName);
-            InputStream in = file.getInputStream();
-            outputStream =new FileOutputStream(new File(path));
-             
-                            int read = 0;
-                            byte[] bytes = new byte[8192222];
-             
-                            while ((read = in.read(bytes)) != -1) {
-                                    outputStream.write(bytes, 0, read);
-                            }
-            outputStream.flush();
-            outputStream.close();
+           
+           if(!(fileName.endsWith("docx") || fileName.endsWith("pdf") || fileName.endsWith("doc"))) {
+               System.out.println("inside if condition");
+               FacesContext.getCurrentInstance().addMessage( uploadfileVar.getClientId(FacesContext.getCurrentInstance())
+                                                                , new FacesMessage(FacesMessage.SEVERITY_ERROR
+                                                                                   , " only files of format .pdf,.docx,.doc are allowed"
+                                                                                   , "This file ("+ fileName+") is not allowed."
+                                                                                   ));
+               
+           }
+           
+           else {
+               System.out.println("inside else condition");
+               InputStream in = file.getInputStream();
+               outputStream =new FileOutputStream(new File(path));
+                
+                
+                
+                
+                
+               int read = 0;
+                               byte[] bytes = new byte[8192222];
+                
+                               while ((read = in.read(bytes)) != -1) {
+                                       outputStream.write(bytes, 0, read);
+                               }
+               outputStream.flush();
+               outputStream.close();
+               
+               System.out.println("file written");
+               
+           }
+           
             
-          System.out.println("file written");
         
         } catch (IOException ioe) {
             // TODO: Add catch code
@@ -465,7 +487,7 @@ public class StartContract {
                                                                              ExtendedRenderKitService.class);
             service.addScript(facesContext,
                               "window.close();window.opener.location.href = window.opener.location.href;");
-            service.addScript(facesContext, "closeMe()");
+            //service.addScript(facesContext, "closeMe()");
 
 
         }
@@ -487,22 +509,6 @@ public class StartContract {
 
     public RichInputText getItemDescriptionVar() {
         return itemDescriptionVar;
-    }
-
-    public void setNeedByDateVar(RichInputDate needByDateVar) {
-        this.needByDateVar = needByDateVar;
-    }
-
-    public RichInputDate getNeedByDateVar() {
-        return needByDateVar;
-    }
-
-    public void setCostCentreVar(RichInputText costCentreVar) {
-        this.costCentreVar = costCentreVar;
-    }
-
-    public RichInputText getCostCentreVar() {
-        return costCentreVar;
     }
 
     public void setNameOfSupplierVar(RichInputText nameOfSupplierVar) {
@@ -620,5 +626,89 @@ public class StartContract {
 
     public void closeSubmitPopup(ActionEvent actionEvent) {
         submitpopup.cancel();
+    }
+
+    public void setCostCentreVar(RichSelectOneChoice costCentreVar) {
+        this.costCentreVar = costCentreVar;
+    }
+
+    public RichSelectOneChoice getCostCentreVar() {
+        return costCentreVar;
+    }
+
+    public void setNeedByDateVar(RichInputText needByDateVar) {
+        this.needByDateVar = needByDateVar;
+    }
+
+    public RichInputText getNeedByDateVar() {
+        return needByDateVar;
+    }
+
+    public void setCostcentreBVar(RichInputText costcentreBVar) {
+        this.costcentreBVar = costcentreBVar;
+    }
+
+    public RichInputText getCostcentreBVar() {
+        return costcentreBVar;
+    }
+
+    public String start_contract_nonedit_Submit() {
+        if(reqNoVar.getValue()!=null && itemDescriptionVar.getValue()!=null &&
+            valOfItemVar.getValue()!=null && needByDateVar.getValue()!=null &&
+            costcentreBVar.getValue()!=null && nameOfSupplierVar.getValue()!=null
+            && paymentTermsVar.getValue()!=null && specialTermsConditions.getValue()!=null
+            && commentsVar.getValue()!=null) {
+
+            OperationBinding SubmitOP = ADFUtils.findOperation("APPROVE");
+            SubmitOP.execute();
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                             ExtendedRenderKitService.class);
+            service.addScript(facesContext,
+                              "window.close();window.opener.location.href = window.opener.location.href;");
+            service.addScript(facesContext, "closeMe()");
+
+
+        }
+        else {
+            /**
+             * show popup code here
+             */
+            showPopup(submitpopup,true);
+            
+        }
+        return null;
+    }
+
+    public String start_contract_nonedit_Save() {
+        if(reqNoVar.getValue()!=null && itemDescriptionVar.getValue()!=null &&
+            valOfItemVar.getValue()!=null && needByDateVar.getValue()!=null &&
+            costcentreBVar.getValue()!=null && nameOfSupplierVar.getValue()!=null
+            && paymentTermsVar.getValue()!=null && specialTermsConditions.getValue()!=null
+            && commentsVar.getValue()!=null) {
+
+            OperationBinding SaveOP = ADFUtils.findOperation("update");
+            SaveOP.execute();
+
+            FacesContext facesContext = FacesContext.getCurrentInstance();
+            org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                             ExtendedRenderKitService.class);
+            service.addScript(facesContext,
+                              "window.close();window.opener.location.href = window.opener.location.href;");
+            //service.addScript(facesContext, "closeMe()");
+
+
+        }
+        else {
+            /**
+             * show popup code here
+             */
+            showPopup(savePopup,true);
+            
+        }
+        return null;
     }
 }

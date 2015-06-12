@@ -9,6 +9,8 @@
     <accessorIterator MasterBinding="getTaskDetailsIterator" Binds="task" RangeSize="10"
                       DataControl="ViewController_ReviewContract" BeanClass="ViewController_ReviewContract.task"
                       id="taskIterator"/>
+    <iterator Binds="contractVO1" RangeSize="10" DataControl="ContractAMDataControl" id="contractVO1Iterator"/>
+    <iterator Binds="quoteVO1" RangeSize="10" DataControl="ContractAMDataControl" id="quoteVO1Iterator"/>
   </executables>
   <bindings>
     <methodAction id="getTaskDetails" RequiresUpdateModel="true" Action="invokeMethod" MethodName="getTaskDetails"
@@ -83,5 +85,13 @@
         </AttrNames>
       </nodeDefinition>
     </tree>
+    <action IterBinding="contractVO1Iterator" id="ExecuteWithParams" InstanceName="ContractAMDataControl.contractVO1"
+            DataControl="ContractAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
+    <action IterBinding="quoteVO1Iterator" id="ExecuteWithParams1" InstanceName="ContractAMDataControl.quoteVO1"
+            DataControl="ContractAMDataControl" RequiresUpdateModel="true" Action="executeWithParams">
+      <NamedData NDName="conid" NDType="java.lang.String"/>
+    </action>
   </bindings>
 </pageDefinition>

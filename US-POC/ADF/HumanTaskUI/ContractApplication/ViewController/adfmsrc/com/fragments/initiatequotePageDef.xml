@@ -110,12 +110,14 @@
         <Item Value="Office"/>
       </AttrNames>
       <ValueList>
-        <Item Value="Chichago"/>
-        <Item Value="San Franscisco"/>
-        <Item Value="New York"/>
         <Item Value="Boston"/>
-        <Item Value="Buffalo"/>
-        <Item Value="Washington D.C"/>
+        <Item Value="Chicago"/>
+        <Item Value="California"/>
+        <Item Value="Florida"/>
+        <Item Value="New York"/>
+        <Item Value="Ohio"/>
+        <Item Value="San Francisco"/>
+        <Item Value="Texas"/>
       </ValueList>
     </list>
     <list IterBinding="QuoteIterator" id="Client1" DTSupportsMRU="true" SelectItemValueMode="ListObject"

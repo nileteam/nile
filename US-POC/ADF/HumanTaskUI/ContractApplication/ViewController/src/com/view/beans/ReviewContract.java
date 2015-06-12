@@ -26,7 +26,7 @@ import org.apache.myfaces.trinidad.util.Service;
 public class ReviewContract {
     private RichInputText commentVar;
     private RichPopup rejectPopuUpVar;
-
+    private String  tableFlag;
     public ReviewContract() {
     }
 
@@ -112,7 +112,29 @@ public class ReviewContract {
                                  
                                      System.out.println("poNo--------------"+poNo);
 
-            
+                   BindingContext ctx = BindingContext.getCurrent();
+                   DCBindingContainer bc = (DCBindingContainer)ctx.getCurrentBindingsEntry();
+                   DCIteratorBinding iterator = bc.findIteratorBinding("contractVO1Iterator");
+                   ViewObject conDocVO = iterator.getViewObject();
+                   conDocVO.setNamedWhereClauseParam("conid", poNo);
+                   conDocVO.executeQuery();
+
+                   int countRowContract = conDocVO.getRowCount();
+                   
+                   if(countRowContract==0) {
+                       tableFlag="stop";
+                   }
+                   else {
+                       
+                       tableFlag="go";
+                       
+                   }
+
+                   DCBindingContainer bindingCon = (DCBindingContainer)ctx.getCurrentBindingsEntry();
+                   DCIteratorBinding quoteIter = bindingCon.findIteratorBinding("quoteVO1Iterator");
+                   ViewObject quoteVO = quoteIter.getViewObject();
+                   quoteVO.setNamedWhereClauseParam("conid", poNo);
+                   quoteVO.executeQuery();
                    
                    
                }
@@ -124,7 +146,15 @@ public class ReviewContract {
     }
 
     public void review_Approve(ActionEvent actionEvent) {
-        // Add event code here...
+        OperationBinding rejectOP = ADFUtils.findOperation("APPROVE");
+                   rejectOP.execute();
+                   FacesContext facesContext = FacesContext.getCurrentInstance();
+                   org.apache.myfaces.trinidad.render.ExtendedRenderKitService service =
+                       org.apache.myfaces.trinidad.util.Service.getRenderKitService(facesContext,
+                                                                                    ExtendedRenderKitService.class);
+                   service.addScript(facesContext,
+                                     "window.close();window.opener.location.href = window.opener.location.href;");
+                   service.addScript(facesContext, "closeMe()");
     }
 
     public void review_Reject(ActionEvent actionEvent) {

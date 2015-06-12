@@ -3,15 +3,12 @@
           xmlns:f="http://java.sun.com/jsf/core">
           
     <af:resource type="javascript">
-    
-
-      function closeMe(e) {
+    function closeMe(e) {
           //alert('Ok');
           //alert(parent);
           parent.$(parent.document).trigger("yourproject.namespace.successfulSignIn");
           //alert("Done");
-      }         
-          
+      }                   
   </af:resource>         
           
    <br/> <af:panelGroupLayout id="pgl2">
@@ -52,7 +49,7 @@
                     </af:inputText>
                 </af:panelGroupLayout>
                 <af:panelGroupLayout id="pgl6">
-                    <af:outputText value="Lob:" id="ot5" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
+                    <af:outputText value="LOB:" id="ot5" styleClass="fonteffect" inlineStyle="padding-left:6px;"/>
                     <af:inputText value="#{bindings.Lob.inputValue}" required="#{bindings.Lob.hints.mandatory}"
                                   columns="#{bindings.Lob.hints.displayWidth}"
                                   maximumLength="#{bindings.Lob.hints.precision}"
@@ -122,7 +119,8 @@
                     <af:inputText value="#{bindings.Quote.inputValue}" required="#{bindings.Quote.hints.mandatory}"
                                   columns="#{bindings.Quote.hints.displayWidth}"
                                   maximumLength="#{bindings.Quote.hints.precision}"
-                                  shortDesc="#{bindings.Quote.hints.tooltip}" id="it2" contentStyle="height:20pt;"
+                                  shortDesc="#{bindings.Quote.hints.tooltip}" id="it2"
+                                  contentStyle="height:20pt;text-align:left;"
                                   disabled="true" styleClass="Enteredfont fonteffect" inlineStyle="margin-top:15px;">
                         <f:validator binding="#{bindings.Quote.validator}"/>
                         <af:convertNumber groupingUsed="false" pattern="#{bindings.Quote.format}"/>
@@ -151,7 +149,7 @@
                               columns="#{bindings.Comments.hints.displayWidth}"
                               maximumLength="#{bindings.Comments.hints.precision}"
                               shortDesc="#{bindings.Comments.hints.tooltip}" id="it9" rows="5"
-                              inlineStyle="margin-top:15px;" styleClass="Enteredfont fonteffect"
+                              inlineStyle="margin-top:15px;" styleClass="Enteredfont fonteffect iputtxtround"
                               binding="#{pageFlowScope.ApproveQuote.commentVar}" contentStyle="width:250px;">
                     <f:validator binding="#{bindings.Comments.validator}"/>
                 </af:inputText>
@@ -174,7 +172,7 @@
         </af:popup>
         <af:panelFormLayout id="pfl2" inlineStyle="background-color:#e9f2f0;">
          <af:panelGroupLayout id="pgl19" inlineStyle="width:200px;">
-                   <br/> <af:outputText value="DOCUMENT DETAILS" id="ot12"
+                   <br/> <af:outputText value="QUOTE DOCUMENT DETAILS" id="ot12"
                                    inlineStyle=" margin-left:13px; border-bottom-color:WindowText; border-bottom-style:outset; border-bottom-width:thin;"
                                    styleClass="fonteffect"/>
                 </af:panelGroupLayout><br/><br/>
@@ -258,8 +256,9 @@
             <br/>
             <br/>
             <af:panelGroupLayout id="pgl16" inlineStyle="margin-left:15px;">
-                <af:commandImageLink id="l1" actionListener="#{bindings.APPROVE.execute}"
-                                     icon="/Resources/Images/APPROVE-Black.png"/>
+                <af:commandImageLink id="l1" 
+                                     icon="/Resources/Images/APPROVE-Black.png"
+                                     action="#{pageFlowScope.ApproveQuote.approve_Action}"/>
                 <af:commandImageLink id="l2" action="#{pageFlowScope.ApproveQuote.reject_Action}"
                                      icon="/Resources/Images/REJECT-Black.png" inlineStyle="margin-left:5px;"/>
                 <!--<af:button actionListener="#{bindings.APPROVE.execute}" text="APPROVE" id="b1"/>-->

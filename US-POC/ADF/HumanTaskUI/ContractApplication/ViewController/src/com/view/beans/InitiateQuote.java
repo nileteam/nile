@@ -119,6 +119,10 @@ public class InitiateQuote {
     List<SelectItem> customList;
     private RichSelectOneChoice clientVar;
 
+  
+
+   
+
     public void setMinValForEndDate1(oracle.jbo.domain.Date minValForEndDate1) {
         this.minValForEndDate1 = minValForEndDate1;
     }
@@ -126,7 +130,6 @@ public class InitiateQuote {
     public oracle.jbo.domain.Date getMinValForEndDate1() {
         return minValForEndDate1;
     }
-    private RichSelectOneChoice directSoc;
     String directors;
     String[] direct;
 
@@ -190,85 +193,11 @@ public class InitiateQuote {
                      customList.add(new SelectItem(dir,dir));
                      
                  }
-    //                 customList.add(new SelectItem(,));
-    //                 customList.add(new SelectItem(,));
-    //                 customList.add(new SelectItem(,));
-    //                 customList.add(new SelectItem(,));
-    //                 customList.add(new SelectItem(,));
              }
         
         
         return customList;
     }
-    
-//    public void onload() {
-//        DCBindingContainer bindings =(DCBindingContainer)BindingContext.getCurrent().getCurrentBindingsEntry();
-//        JUCtrlHierBinding treeBinding =(JUCtrlHierBinding)bindings.findCtrlBinding("task");
-//         System.out.println("TREE BINDING IS ======"+treeBinding);
-//        JUCtrlHierNodeBinding rootNode = null;
-//        rootNode = treeBinding.getRootNodeBinding();
-//        System.out.println("rootNode is "+rootNode);
-//        
-//        System.out.println("rootNode.getChildren"+rootNode.getChildren());
-//        System.out.println("rootNode.getChildren.size"+rootNode.getChildren().size());
-//        
-//        if(rootNode.getChildren()!=null) {
-//            for(int i=0; i< rootNode.getChildren().size();i++) {
-//            System.out.println("bingo"+(i+1));
-//
-//                JUCtrlHierNodeBinding initiateQuote = (JUCtrlHierNodeBinding)rootNode.getChildren().get(0);
-//                System.out.println("task----"+initiateQuote);
-//
-//
-//                String[] attributeNames = initiateQuote.getAttributeNames();
-//                
-//                for(int z=0; i< attributeNames.length;i++) {
-//                    
-//                    System.out.println("Attribute name is "+attributeNames[z]);
-//                }
-//          
-//             JUCtrlHierNodeBinding child= (JUCtrlHierNodeBinding)initiateQuote.getChildren().get(0);
-//             System.out.println("child is -------"+child);
-//
-//                String[] names = child.getAttributeNames();
-//                
-//                for(int z=0;z<names.length;z++){
-//                    
-//                    System.out.println("attribute names in child is"+names[z]);
-//                    
-//                }
-//                
-//              JUCtrlHierNodeBinding childToChild   =(JUCtrlHierNodeBinding)child.getChildren().get(0);
-//              System.out.println("Childt to child"+ childToChild);
-//                
-//                
-//            
-//
-//                String[] attributeNames_2 = childToChild.getAttributeNames();
-//                
-//                for(int z=0;z<attributeNames_2.length;z++) {
-//                    
-//                    System.out.println(" Attributre name to child to child are "+attributeNames_2[z]);
-//                }
-//                             
-//                     directors=(String)childToChild.getAttribute("Directors");
-//                    System.out.println("directors are --------?>>>>>>>"+directors);
-//                
-//                    direct= directors.split(",");
-//                    
-//                for(String dir:direct) {
-//                    System.out.println(dir);
-//                    
-//                }
-//
-//            }
-//                
-//            
-//        }
-//        
-//    
-//    
-//    }
     
     public void onload() throws Exception{
          try {
@@ -386,91 +315,112 @@ public class InitiateQuote {
 
        public String uploadfile_Action() {
            System.out.println("inside upload action");
-           tableFlag="go";
-           String quote = (String)quoteIdVar.getValue();
-           BindingContext ctx = BindingContext.getCurrent();
-                   DCBindingContainer bc = (DCBindingContainer)ctx.getCurrentBindingsEntry();
-                          DCIteratorBinding iterator = bc.findIteratorBinding("ContractDocUploadView1Iterator");
-                  ViewObject logoView = iterator.getViewObject();
-                Row [] rws =   logoView.getFilteredRows("ContractId", quote);
-                int i = 0;
-                int count = 0;
-                char ch[]=fileName.toCharArray();
-                StringBuffer sbf=new StringBuffer();
-                StringBuffer sbe=new StringBuffer();
-                int fl=0;
-                    for(int ii=0;ii<ch.length;ii++){  
-                        if(ch[ii]=='.'){
-                            fl=1;
-                        }
-                        if(fl==0){
-                            sbf.append(ch[ii]);
-                        }else{             
-                        sbe.append(ch[ii]);
-                        }
-                       }  
-                System.out.println("NAME OF THE FILE  "+sbf);
-                System.out.println("EXTENSION OF THE FILE  "+sbe);
-
-
-
-
-              String fileCompare = sbf.toString();
-               System.out.println(fileCompare+"--------str[0]");
-               for(i = 0; i < rws.length; i++)
-               {
-                 Row row = rws[i];
-                 String file = row.getAttribute("FileName").toString();
-                    if(file.contains(fileCompare))
-                    {
-                    count++;    
-                       }
-                    
-                   }
-//                  fileName = fileName.concat("V_"+rws.length);
-//                  fileName = fileCompare.concat("_V"+count).concat(sbe.toString());
-                  System.out.println(fileName);
-         System.out.println("in upload method");
-          
-           try {
-            
-            System.out.println("quote------------------"+quote);
-
-            File pdfFile = new File(path);
-               byte[] pdfData = new byte[(int) pdfFile.length()];
-               DataInputStream dis = new DataInputStream(new FileInputStream(pdfFile));
-               dis.readFully(pdfData);
-               dis.close();      
-               Connection dbConnection = null;
-               dbConnection = getConnection("jdbc/NileDBDS");
-               PreparedStatement ps =
-               dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " + "FILE_TYPE, "+ "VERSION, "+
-                                                 "FILE_NAME" + ") VALUES (?,?,?,?,?)");
-               ps.setString(1, quote);
-               ps.setBytes(2, pdfData);
-               ps.setString(3, "Quote");
-               ps.setInt(4, count);
-               ps.setString(5, fileName);
-               ps.executeUpdate();
-               ps.close();
-               dbConnection.close();
-               File f = new File(path);
-               f.delete();
-               System.out.println("Data Inserted Successfully.");
-               uploadfileVar.resetValue();
-           } catch (SQLException sqle) {
-               // TODO: Add catch code
-               sqle.printStackTrace();
-           } catch(NamingException e) {
-               // TODO: Add catch code
+          if(uploadfileVar.getValue()!=null) {
               
-           } catch (IOException ioe) {
-               // TODO: Add catch code
-               ioe.printStackTrace();
-           }
+              tableFlag="go";
+              String quote = (String)quoteIdVar.getValue();
+              BindingContext ctx = BindingContext.getCurrent();
+                      DCBindingContainer bc = (DCBindingContainer)ctx.getCurrentBindingsEntry();
+                             DCIteratorBinding iterator = bc.findIteratorBinding("ContractDocUploadView1Iterator");
+                     ViewObject logoView = iterator.getViewObject();
+                   Row [] rws =   logoView.getFilteredRows("ContractId", quote);
+                   int i = 0;
+                   int count = 0;
+                   char ch[]=fileName.toCharArray();
+                   StringBuffer sbf=new StringBuffer();
+                   StringBuffer sbe=new StringBuffer();
+                   int fl=0;
+                       for(int ii=0;ii<ch.length;ii++){  
+                           if(ch[ii]=='.'){
+                               fl=1;
+                           }
+                           if(fl==0){
+                               sbf.append(ch[ii]);
+                           }else{             
+                           sbe.append(ch[ii]);
+                           }
+                          }  
+                   System.out.println("NAME OF THE FILE  "+sbf);
+                   System.out.println("EXTENSION OF THE FILE  "+sbe);
+
+
+
+
+                 String fileCompare = sbf.toString();
+                  System.out.println(fileCompare+"--------str[0]");
+                  for(i = 0; i < rws.length; i++)
+                  {
+                    Row row = rws[i];
+                    String file = row.getAttribute("FileName").toString();
+                       if(file.contains(fileCompare))
+                       {
+                       count++;    
+                          }
+                       
+                      }
+              //                  fileName = fileName.concat("V_"+rws.length);
+              //                  fileName = fileCompare.concat("_V"+count).concat(sbe.toString());
+                     System.out.println("file nameeeee isssssss==============-=-=-"+fileName);
+              System.out.println("in upload method");
+              
+               
+              
+              
+              try {
+               
+               System.out.println("quote------------------"+quote);
+
+               File pdfFile = new File(path);
+                  byte[] pdfData = new byte[(int) pdfFile.length()];
+                  DataInputStream dis = new DataInputStream(new FileInputStream(pdfFile));
+                  dis.readFully(pdfData);
+                  dis.close();      
+                  Connection dbConnection = null;
+                  dbConnection = getConnection("jdbc/NileDBDS");
+                  PreparedStatement ps =
+                  dbConnection.prepareStatement("INSERT INTO CONTRACT_DOC_UPLOAD (" + "CONTRACT_ID, " + "CONTRACT_DOC, " + "FILE_TYPE, "+ "VERSION, "+
+                                                    "FILE_NAME" + ") VALUES (?,?,?,?,?)");
+                  ps.setString(1, quote);
+                  ps.setBytes(2, pdfData);
+                  ps.setString(3, "Quote");
+                  ps.setInt(4, count);
+                  ps.setString(5, fileName);
+                  ps.executeUpdate();
+                  ps.close();
+                  dbConnection.close();
+                  File f = new File(path);
+                  f.delete();
+                  System.out.println("Data Inserted Successfully.");
+                  uploadfileVar.resetValue();
+              } catch (SQLException sqle) {
+                  // TODO: Add catch code
+                  sqle.printStackTrace();
+              } catch(NamingException e) {
+                  // TODO: Add catch code
+                 
+              } catch (IOException ioe) {
+                  // TODO: Add catch code
+                  ioe.printStackTrace();
+              }
+              
+                     logoView.setWhereClause(null);
+                     logoView.executeQuery();
+              
+          }
            
-                  logoView.setWhereClause(null);
-                  logoView.executeQuery();
+           else {
+              /**
+               * show popup
+               */
+              showPopup(submitPopup
+                        ,true);
+          
+          }
+           
+           
+          
+         
+                 
                  
            return null;
        }
@@ -491,19 +441,41 @@ public class InitiateQuote {
                fileName = file.getFilename();
                path="/home/oracle/Oracle/Middleware12c/Oracle_Home/user_projects/domains/bpm_domain/uploadcontract/";
                path=path.concat(fileName);
-               InputStream in = file.getInputStream();
-               outputStream =new FileOutputStream(new File(path));
-                
-                               int read = 0;
-                               byte[] bytes = new byte[8192222];
-                
-                               while ((read = in.read(bytes)) != -1) {
-                                       outputStream.write(bytes, 0, read);
-                               }
-               outputStream.flush();
-               outputStream.close();
+              
+              if(!(fileName.endsWith("docx") || fileName.endsWith("pdf") || fileName.endsWith("doc"))) {
+                  System.out.println("inside if condition");
+                  FacesContext.getCurrentInstance().addMessage( uploadfileVar.getClientId(FacesContext.getCurrentInstance())
+                                                                   , new FacesMessage(FacesMessage.SEVERITY_ERROR
+                                                                                      , " only files of format .pdf,.docx,.doc are allowed"
+                                                                                      , "This file ("+ fileName+") is not allowed."
+                                                                                      ));
+                  
+              }
+              
+              else {
+                  System.out.println("inside else condition");
+                  InputStream in = file.getInputStream();
+                  outputStream =new FileOutputStream(new File(path));
+                   
+                   
+                   
+                   
+                   
+                  int read = 0;
+                                  byte[] bytes = new byte[8192222];
+                   
+                                  while ((read = in.read(bytes)) != -1) {
+                                          outputStream.write(bytes, 0, read);
+                                  }
+                  outputStream.flush();
+                  outputStream.close();
+                  
+                  System.out.println("file written");
+                  
+                  
+              }
+              
                
-             System.out.println("file written");
          
            } catch (IOException ioe) {
                // TODO: Add catch code
@@ -645,7 +617,7 @@ public class InitiateQuote {
                                                                                          ExtendedRenderKitService.class);
                         service.addScript(facesContext,
                                           "window.close();window.opener.location.href = window.opener.location.href;");
-                        service.addScript(facesContext, "closeMe()"); 
+                        //service.addScript(facesContext, "closeMe()"); 
          }
          else {
              showPopup(savePopup,true);
@@ -791,19 +763,85 @@ public class InitiateQuote {
             
             statement.execute();   
             //this is the main line
-            difference = statement.getString(1);
+            String difference = statement.getString(1);
             System.out.println("difference is "+difference);
-            
-            int x=difference.indexOf("years");
-            System.out.println("index of years is"+x);
 
-           String subString1= difference.substring(0);
-           System.out.println("subString1"+subString1);
+            String[] splittedString = difference.split(" ");
+            System.out.println("splittedString+++++"+splittedString);
             
-            if(subString1.equals("0")) {
-//              String monthIndex=difference.indexOf("month");
+            System.out.println("element at index 0"+ splittedString[0]);
+            String years= splittedString[0];
+            System.out.println("element at index 2"+ splittedString[2]);
+             String months= splittedString[2];
+            
+             System.out.println("element at index 2"+ splittedString[2]);
+             
+             String days= splittedString[4];
+             System.out.println("element at index 4 "+ days);
+            
+            if(years.equalsIgnoreCase("0"))
+            {
+            if(years.equalsIgnoreCase("0") && months.equalsIgnoreCase("0")){
+                
+                String difference1 = splittedString[4]+" "+splittedString[5];
+                System.out.println("difference1"+difference1);
+                
+                contractTerm.setValue(difference1);
+                
             }
-
+            else {
+                /**
+                 * if days =0
+                 */
+                if(days.equalsIgnoreCase("0")) {
+                    String difference2 = splittedString[2]+" "+splittedString[3];
+                    System.out.println("difference2-------"+difference2);
+                    contractTerm.setValue(difference2);
+                    
+                }
+                else
+                {
+                String difference2 = splittedString[2]+" "+splittedString[3]+" "+splittedString[4]+" "+splittedString[5];
+                System.out.println("difference2-------"+difference2);
+                contractTerm.setValue(difference2);
+                }
+            }
+            }
+            
+            else {
+           
+                 if(months.equalsIgnoreCase("0") && days.equalsIgnoreCase("0")) {
+                      System.out.println("write the code for years only");
+                      
+                      String difference1=splittedString[0]+" "+splittedString[1];
+                      System.out.println("difference1----------------"+difference1);
+                      contractTerm.setValue(difference1);
+                     
+                 }
+                 
+                 else if(months.equalsIgnoreCase("0")) {
+                 
+                     String difference1=splittedString[0]+" "+splittedString[1]+" "+splittedString[4]+" "+splittedString[5];
+                     System.out.println("difference1----------------"+difference1);
+                     contractTerm.setValue(difference1);
+                 
+                     
+                 }
+                
+                else if(days.equalsIgnoreCase("0")) {
+                   
+                     String difference1=splittedString[0]+" "+splittedString[1]+" "+splittedString[2]+" "+splittedString[3];
+                     System.out.println("difference1----------------"+difference1);
+                     contractTerm.setValue(difference1);
+                     
+                     
+                 }
+              else
+              {
+                contractTerm.setValue(difference);
+              }
+               
+            }
 
         } catch (SQLException sqle) {
             // TODO: Add catch code
@@ -813,7 +851,7 @@ public class InitiateQuote {
             ne.printStackTrace();
         }
 
-        contractTerm.setValue(difference);
+   
 
     }
 

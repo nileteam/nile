@@ -97,5 +97,8 @@
         <Item Value="Comments"/>
       </AttrNames>
     </attributeValues>
+    <methodAction IterBinding="taskIterator" id="APPROVE" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="APPROVE" IsViewObjectMethod="false" DataControl="ViewController_StartContract"
+                  InstanceName="bindings.taskIterator.currentRow.dataProvider" IsLocalObjectReference="true"/>
   </bindings>
 </pageDefinition>

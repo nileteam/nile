@@ -156,7 +156,7 @@ af_inputFile.LABEL_UPDATE_BUTTON
     color: Red;
     font-size: 15pt;
 }
-af|inputFile af|commandButton {
+/*af|inputFile af|commandButton {
 height:25px;
 width:100px;
 border-radius:7px 7px 7px 7px;
@@ -167,6 +167,7 @@ font-family:Calibri;
 margin-left: 5px;
 }
 
+
 af|inputFile af|commandButton:hover{
 height:25px;
 width:100px;
@@ -176,4 +177,26 @@ color:White;
 font-size:13.0pt;
 font-family:Calibri;
 margin-left: 5px;
+}*/
+button
+{
+height:30px;
+width:70px;
+font-size:11pt;
+font-family: Lucida Sans;
+}
+af|inputFile af|commandButton
+{
+font-size:11pt;
+font-family: Lucida Sans;
+font-style: normal;
+margin-left:10px;
+
+}
+af|inputFile af|commandButton:hover
+{
+font-size:11pt;
+font-family: Lucida Sans;
+font-style: normal;
+margin-left:10px;
 }
