@@ -36,12 +36,6 @@
       </participants>
       <notification includeTaskAttachments="false" actionable="false" secureNotifications="false"
                     oneNotificationPerUserPerAction="false" hideWorklistUrlInEmail="false">
-         <action name="ASSIGN" recipient="ASSIGNEES">
-            <![CDATA[concat(string('Task '), /task:task/task:title, string(' requires your attention.'))]]>
-         </action>
-         <action name="COMPLETE" recipient="CREATOR">
-            <![CDATA[concat(string('Task '), /task:task/task:title, string(' requires your attention.'))]]>
-         </action>
          <action name="ERROR" recipient="OWNER">
             <![CDATA[concat(string('Task '), /task:task/task:title, string(' requires your attention.'))]]>
          </action>

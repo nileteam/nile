@@ -242,6 +242,10 @@
                  ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
         <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
       </reference>
+      <reference name="NotificationService.ACT13252484292678"
+                 ui:wsdlLocation="oramds:/soa/shared/workflow/NotificationService.wsdl">
+        <interface.wsdl interface="http://xmlns.oracle.com/ias/pcbpel/NotificationService#wsdl.interface(NotificationService)"/>
+      </reference>
     </componentType>
     <property name="bpel.config.oneWayDeliveryPolicy" type="xs:string" many="false">sync</property>
     <property name="bpel.config.transaction" type="xs:string" many="false">required</property>
@@ -479,6 +483,10 @@
   </wire>
   <wire>
     <source.uri>ContractProcess/NotificationService.ACT13157105417716</source.uri>
+    <target.uri>BPM-NotificationService</target.uri>
+  </wire>
+  <wire>
+    <source.uri>ContractProcess/NotificationService.ACT13252484292678</source.uri>
     <target.uri>BPM-NotificationService</target.uri>
   </wire>
   <wire>
